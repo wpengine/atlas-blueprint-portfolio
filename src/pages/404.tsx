@@ -13,7 +13,7 @@ export default function Page(): JSX.Element {
           {generalSettings?.title} - {generalSettings?.description}
         </title>
       </Head>
-      <main>
+      <main className="content">
         404 Page
       </main>
     </>
