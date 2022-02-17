@@ -1,20 +1,29 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
+import {getNextStaticProps} from '@faustjs/next';
+import Head from 'next/head';
+import React from 'react';
+import { client } from 'client';
+import { GetStaticPropsContext } from 'next';
 
-const Home: NextPage = () => {
+export default function Page() {
+  const {useQuery} = client;
+  const generalSettings = useQuery().generalSettings;
+
   return (
-    <div>
+    <>
       <Head>
-        <title>Atlas Blueprint Blog Starter</title>
-        <meta name="description" content="" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>
+          {generalSettings?.title} - {generalSettings?.description}
+        </title>
       </Head>
-
-      <main>
-
-      </main>
-    </div>
+      <main className="content" />
+    </>
   )
+
 }
 
-export default Home
+export async function getStaticProps(context: GetStaticPropsContext) {
+  return getNextStaticProps(context, {
+    Page,
+    client,
+  });
+}
