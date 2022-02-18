@@ -13,7 +13,7 @@ export default function Page() {
         <title>Posts - {generalSettings?.title}</title>
       </Head>
 
-      <main className="content" />
+      <main className="content content-single" />
     </>
   );
 }
