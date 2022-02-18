@@ -5,18 +5,18 @@ import { GetStaticPropsContext } from 'next';
 import { client } from 'client';
 
 export default function Page() {
-  const { useQuery, useCategory } = client;
+  const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
   const categories = useQuery()?.categories();
 
   if (useQuery().$state.isLoading) {
     return null;
   }
-  debugger;
+
   return (
     <>
       <Head>
-        <title> All Categories - {generalSettings?.title}</title>
+        <title>All Categories - {generalSettings?.title}</title>
       </Head>
 
       <main className="content">
