@@ -1,0 +1,59 @@
+@import "Variables";
+
+// Base Module
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// Set box-sizing globally to handle padding and border widths
+*,
+*:after,
+*:before {
+  box-sizing: inherit
+}
+
+// The base font-size is set at 62.5% for having the convenience
+// of sizing rems in a way that is similar to using px: 1.6rem = 16px
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $font-family;
+  font-size: 1.6em;
+  font-weight: $font-weight-normal;
+  letter-spacing: .01em;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+}
+
+// Lists
+dl,
+ol,
+ul {
+  list-style: none;
+  margin-top: 0;
+  padding-left: 0;
+
+  dl,
+  ol,
+  ul {
+    font-size: 90%;
+    margin: 1.5rem 0 1.5rem 3.0rem;
+  }
+}
+ol {
+  list-style: decimal inside;
+}
+ul {
+  list-style: circle inside;
+}
+
+// Dividers
+hr {
+  border: 0;
+  border-top: .1rem solid $color-secondary;
+  margin: 3.0rem 0;
+}

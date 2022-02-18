@@ -16,7 +16,7 @@ export default function Page() {
         </title>
       </Head>
 
-      <main className="content content-index"/>
+      <main className="content"/>
     </>
   );
 }
