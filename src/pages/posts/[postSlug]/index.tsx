@@ -21,11 +21,11 @@ export function PostComponent({ post }: PostProps) {
       </Head>
 
       <main className="container">
-        <article className="content">
+        <div className="content">
           <Heading className="text-center" level="h2">{post?.title()}</Heading>
           <FeaturedImage image={post?.featuredImage?.node?.sourceUrl()}/>
           <div dangerouslySetInnerHTML={{ __html: post?.content() ?? '' }} />
-        </article>
+        </div>
       </main>
     </>
   );
