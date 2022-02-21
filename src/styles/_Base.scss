@@ -1,5 +1,4 @@
 @import "Variables";
-@import "Mixins";
 
 // Base Module
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -60,8 +59,6 @@ ul {
 // Dividers
 hr {
   border: 0;
-  @include themify {
-    border-top: .1rem solid themed( 'color-primary' );
-  }
+  border-top: .1rem solid $color-secondary;
   margin: 3.0rem 0;
 }
