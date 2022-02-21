@@ -42,7 +42,7 @@ function Posts({
               key={post.id ?? ''}
               id={`post-${post.id}`}>
               <div>
-                <FeaturedImage image={post?.featuredImage?.node?.sourceUrl() ?? ''} />
+                <FeaturedImage image={post?.featuredImage?.node?.sourceUrl()} />
                 <Heading level="h4" className={styles['post-header']}>
                   <Link href={`/posts/${post.slug}`}>
                     <a>{post.title()}</a>
