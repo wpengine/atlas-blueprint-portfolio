@@ -19,8 +19,8 @@ export default function Page() {
         <title>All Categories - {generalSettings?.title}</title>
       </Head>
 
-      <main className="container">
-        <div className="content">
+      <main className="content">
+        <div className="container">
           <h1>All Categories</h1>
           <ul>
             {

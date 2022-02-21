@@ -19,8 +19,8 @@ export function PageComponent({ page }: PageProps) {
         </title>
       </Head>
 
-      <main className="container">
-        <div className="content">
+      <main className="content">
+        <div className="container">
           <div dangerouslySetInnerHTML={{ __html: page?.content() ?? '' }} />
         </div>
       </main>
