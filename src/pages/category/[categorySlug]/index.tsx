@@ -1,11 +1,24 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { GetStaticPropsContext } from 'next';
 import { client } from 'client';
+import { Pagination, Posts, Heading } from 'components';
+import appConfig from 'app.config';
 
 export default function Page() {
-  const { useQuery } = client;
+  const { useQuery, usePosts, useCategory } = client;
+  const { query = {} } = useRouter();
+  const { categorySlug, paginationTerm, categoryCursor } = query;
   const generalSettings = useQuery().generalSettings;
+  const category = useCategory();
+  const isBefore = paginationTerm === 'before';
+  const posts = usePosts({
+    after: !isBefore ? (categoryCursor as string) : undefined,
+    before: isBefore ? (categoryCursor as string) : undefined,
+    first: !isBefore ? appConfig.postsPerPage : undefined,
+    last: isBefore ? appConfig.postsPerPage : undefined,
+  });
 
   return (
     <>
@@ -13,7 +26,14 @@ export default function Page() {
         <title>Posts - {generalSettings?.title}</title>
       </Head>
 
-      <main className="content content-single" />
+      <main className="container">
+        <Heading level="h2">Category: {category?.name}</Heading>
+        <Posts posts={posts.nodes} />
+        <Pagination
+          pageInfo={posts.pageInfo}
+          basePath={`/category/${categorySlug}`}
+        />
+      </main>
     </>
   );
 }
