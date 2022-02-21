@@ -21,7 +21,6 @@ export default function Page() {
 
       <main className="content">
         <div className="container">
-          <h1>All Categories</h1>
           <ul>
             {
               categories?.nodes?.map(({ id, name }) => {
