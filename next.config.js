@@ -5,6 +5,9 @@ const nextConfig = {
   reactStrictMode: true,
   sassOptions: {
     "includePaths": [ "node_modules" ]
+  },
+  images: {
+    domains: ['localhost']
   }
 }
 

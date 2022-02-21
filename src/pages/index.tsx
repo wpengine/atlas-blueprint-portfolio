@@ -25,7 +25,7 @@ export default function Page() {
         </title>
       </Head>
       <main className="container">
-        <Heading>Latest Posts</Heading>
+        <Heading className="text-center">Latest Posts</Heading>
         <Posts posts={posts?.nodes} readMoreText={"Read More"} id="posts-list"/>
         <Pagination pageInfo={posts?.pageInfo} basePath="posts"/>
       </main>
