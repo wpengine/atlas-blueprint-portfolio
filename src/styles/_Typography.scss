@@ -1,4 +1,5 @@
 @import "Variables";
+@import "Mixins";
 
 // Typography Module
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -12,8 +13,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 4.6rem;
-  line-height: 1.2;
+  font-size: 4.8rem;
+  line-height: 150%;
 }
 
 h2 {
@@ -24,12 +25,12 @@ h2 {
 h3 {
   font-size: 2.8rem;
   line-height: 1.3;
+
 }
 
 h4 {
-  font-size: 2.2rem;
-  letter-spacing: -.08rem;
-  line-height: 1.35;
+  font-size: 2.4rem;
+  line-height: 125%;
 }
 
 h5 {
@@ -51,11 +52,15 @@ p {
 
 // Links
 a {
-  color: $color-primary;
+  @include themify {
+    color: themed( 'color-primary' );
+  }
   text-decoration: none;
 }
 
 a:focus,
 a:hover {
-  color: lighten($color-primary, 15);
+  @include themify {
+    color: lighten(themed( 'color-primary' ), 15);
+  }
 }

@@ -1,7 +1,9 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import { client, Page as PageType } from 'client';
+import { Heading, FeaturedImage } from 'components';
 
 export interface PageProps {
   page: PageType | PageType['preview']['node'] | null | undefined;
@@ -19,10 +21,12 @@ export function PageComponent({ page }: PageProps) {
         </title>
       </Head>
 
-      <main className="content">
-        <div className="container">
+      <main className="container">
+        <article className="content">
+          <Heading className="text-center" level="h2">{page?.title()}</Heading>
+          <FeaturedImage image={page?.featuredImage?.node?.sourceUrl()} />
           <div dangerouslySetInnerHTML={{ __html: page?.content() ?? '' }} />
-        </div>
+        </article>
       </main>
     </>
   );

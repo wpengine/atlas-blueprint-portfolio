@@ -1,0 +1,20 @@
+.posts {}
+
+.post-info {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+}
+
+.post-header {
+  margin-bottom: 2rem;
+}
+
+.post-image {
+  border: 20px solid #fff;
+  box-sizing: border-box;
+  filter: drop-shadow(0px 0px 50px rgba(0, 0, 0, 0.1));
+  width: 36rem;
+  height: auto;
+  margin-bottom: 2rem;
+}

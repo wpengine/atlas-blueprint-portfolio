@@ -1,14 +1,25 @@
+import React from 'react';
 import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
-import React from 'react';
+import { Pagination, Posts, Heading } from 'components';
+import appConfig from 'app.config';
 
 export default function Page() {
-  const { useQuery, usePosts } = client;
+  const { query = {} } = useRouter();
+  const { postSlug, postCursor } = query;
+  const { usePosts, useQuery } = client;
   const generalSettings = useQuery().generalSettings;
-  const posts = usePosts({});
+  const isBefore = postSlug === 'before';
+  const posts = usePosts({
+    after: !isBefore ? (postCursor as string) : undefined,
+    before: isBefore ? (postCursor as string) : undefined,
+    first: !isBefore ? appConfig.postsPerPage : undefined,
+    last: isBefore ? appConfig.postsPerPage : undefined,
+  });
 
   if (useQuery().$state.isLoading) {
     return null;
@@ -22,22 +33,10 @@ export default function Page() {
         </title>
       </Head>
 
-      <main className="content">
-        <div className="container">
-          <ul>
-            {
-              posts?.nodes?.map(({ id, title, uri }) => {
-                return (<li key={id}>
-                  {
-                    uri && <Link href={uri}>
-                      <a>{title()}</a>
-                    </Link>
-                  }
-                </li>)
-              })
-            }
-          </ul>
-        </div>
+      <main className="container">
+        <Heading className="text-center">Latest Posts</Heading>
+        <Posts posts={posts?.nodes} readMoreText={"Read More"} id="posts-list" />
+        <Pagination pageInfo={posts?.pageInfo} basePath="/posts"/>
       </main>
     </>
   );
