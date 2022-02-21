@@ -1,3 +1,3 @@
 export default {
-  postsPerPage: 9
+  postsPerPage: 10
 };

@@ -36,7 +36,7 @@ export default function Page() {
       <main className="container">
         <Heading>Latest Posts</Heading>
         <Posts posts={posts?.nodes} readMoreText={"Read More"} id="posts-list" />
-        <Pagination pageInfo={posts?.pageInfo} basePath="/posts"/>
+        <Pagination pageInfo={posts?.pageInfo} />
       </main>
     </>
   );
