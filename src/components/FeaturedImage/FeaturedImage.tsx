@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 export interface FeaturedImageProps {
   image: string | undefined;
-  width?: string;
-  height?: string;
+  width: string;
+  height: string;
   [key: string]: any;
 }
 
