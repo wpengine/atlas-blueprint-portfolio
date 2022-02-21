@@ -22,13 +22,11 @@ export function PageComponent({ page }: PageProps) {
       </Head>
 
       <main className="container">
-        <div className="content">
-          <div>
-            <Heading className="text-center" level="h2">{page?.title()}</Heading>
-            <FeaturedImage image={page?.featuredImage?.node?.sourceUrl()} />
-            <div dangerouslySetInnerHTML={{ __html: page?.content() ?? '' }} />
-          </div>
-        </div>
+        <article className="content">
+          <Heading className="text-center" level="h2">{page?.title()}</Heading>
+          <FeaturedImage image={page?.featuredImage?.node?.sourceUrl()} />
+          <div dangerouslySetInnerHTML={{ __html: page?.content() ?? '' }} />
+        </article>
       </main>
     </>
   );
