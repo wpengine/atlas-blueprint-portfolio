@@ -24,7 +24,7 @@ export function PageComponent({ page }: PageProps) {
       <main className="container">
         <div className="content">
           <div>
-            <Heading className="text-center" level="h2">{page?.title()}</Heading>
+            <Heading level="h2">{page?.title()}</Heading>
             <FeaturedImage image={page?.featuredImage?.node?.sourceUrl()} />
             <div dangerouslySetInnerHTML={{ __html: page?.content() ?? '' }} />
           </div>
