@@ -19,8 +19,8 @@ export function PostComponent({ post }: PostProps) {
         </title>
       </Head>
 
-      <main className="content">
-        <div className="container" dangerouslySetInnerHTML={{ __html: post?.content() ?? '' }}>
+      <main className="container">
+        <div className="content" dangerouslySetInnerHTML={{ __html: post?.content() ?? '' }}>
         </div>
       </main>
     </>

@@ -3,6 +3,16 @@ import Link from 'next/link';
 import type { Post } from 'client';
 import styles from './Posts.module.scss';
 
+interface PostInfoProps {
+  post: Post | undefined;
+}
+
+function PostInfo({post}: PostInfoProps) {
+  const formatOptions: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric'};
+  const postedAt = new Date(post?.date).toLocaleDateString("en-US", formatOptions) ?? '';
+  return <p className={styles['post-info']}>{postedAt} By {post?.author?.node?.name ?? ''}</p>
+}
+
 interface Props {
   posts: Post[] | undefined;
   intro?: string;
@@ -22,27 +32,19 @@ function Posts({
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
       {intro && <p>{intro}</p>}
-      <div className={styles.posts}>
+      <div className="row row-wrap">
         {posts?.map((post) => (
           <div
-            className={styles.posts__single}
+            className="column column-33 text-center"
             key={post.id ?? ''}
             id={`post-${post.id}`}>
             <div>
-              <h3>
+              <h4>
                 <Link href={`/posts/${post.slug}`}>
                   <a>{post.title()}</a>
                 </Link>
-              </h3>
-              <div
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{ __html: post.excerpt() ?? '' }}
-              />
-              <Link href={`/posts/${post.slug}`}>
-                <a aria-label={`Read more about ${post.title || 'the post'}`}>
-                  {readMoreText}
-                </a>
-              </Link>
+              </h4>
+              <PostInfo post={post} />
             </div>
           </div>
         ))}
