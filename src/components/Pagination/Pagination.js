@@ -1,12 +1,7 @@
 import Link from 'next/link';
-import type { WPPageInfo } from 'client';
 import styles from './Pagination.module.scss';
 
-interface NextPageNavigationProps {
-  href: string;
-}
-
-function NextPageNavigation(props: NextPageNavigationProps) {
+function NextPageNavigation(props) {
   return (
     <Link href={props.href}>
       <a aria-label={'Next page.'}>Next Page →</a>
@@ -14,11 +9,7 @@ function NextPageNavigation(props: NextPageNavigationProps) {
   );
 }
 
-interface PreviousPageNavigationProps {
-  href: string;
-}
-
-function PreviousPageNavigation(props: PreviousPageNavigationProps) {
+function PreviousPageNavigation(props) {
   return (
     <Link href={props.href}>
       <a aria-label={'Previous page.'}>← Previous Page</a>
@@ -26,12 +17,8 @@ function PreviousPageNavigation(props: PreviousPageNavigationProps) {
   );
 }
 
-export interface PaginationProps {
-  pageInfo: WPPageInfo;
-  basePath: string
-}
 
-export default function Pagination({ pageInfo, basePath }: PaginationProps) {
+export default function Pagination({ pageInfo, basePath }) {
   const previousPageUrl = `${basePath}/before/${pageInfo?.startCursor}`;
   const nextPageUrl = `${basePath}/after/${pageInfo?.endCursor}`;
 

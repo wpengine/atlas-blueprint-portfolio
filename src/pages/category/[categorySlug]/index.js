@@ -14,8 +14,8 @@ export default function Page() {
   const category = useCategory();
   const isBefore = paginationTerm === 'before';
   const posts = usePosts({
-    after: !isBefore ? (categoryCursor as string) : undefined,
-    before: isBefore ? (categoryCursor as string) : undefined,
+    after: !isBefore ? categoryCursor : undefined,
+    before: isBefore ? categoryCursor : undefined,
     first: !isBefore ? appConfig.postsPerPage : undefined,
     last: isBefore ? appConfig.postsPerPage : undefined,
   });
@@ -38,7 +38,7 @@ export default function Page() {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context) {
   return getNextStaticProps(context, {
     Page,
     client,

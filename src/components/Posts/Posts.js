@@ -1,26 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import type { Post } from 'client';
 import { Heading, FeaturedImage } from 'components';
 import styles from './Posts.module.scss';
 
-interface PostProps {
-  post: Post | undefined;
-}
-
-function PostInfo({post}: PostProps) {
-  const formatOptions: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric'};
+function PostInfo({post}) {
+  const formatOptions = { year: 'numeric', month: 'long', day: 'numeric'};
   const postedAt = new Date(post?.date).toLocaleDateString("en-US", formatOptions) ?? '';
   return <p className={styles['post-info']}>{postedAt} By {post?.author?.node?.name ?? ''}</p>
-}
-
-interface Props {
-  posts: Post[] | undefined;
-  intro?: string;
-  id?: string;
-  heading?: string;
-  readMoreText?: string;
 }
 
 function Posts({
@@ -29,7 +16,7 @@ function Posts({
                  heading,
                  id,
                  readMoreText = 'Read more',
-               }: Props): JSX.Element {
+               }) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>

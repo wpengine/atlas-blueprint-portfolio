@@ -2,7 +2,7 @@ import React from 'react';
 import { client } from 'client';
 import Head from "next/head";
 
-export default function Page(): JSX.Element {
+export default function Page() {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
 

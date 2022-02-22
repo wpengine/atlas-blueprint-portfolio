@@ -6,7 +6,6 @@ import { GetStaticPropsContext } from 'next';
 import { Posts, Pagination, Heading } from 'components';
 import appConfig from 'app.config';
 
-
 export default function Page() {
   const {useQuery, usePosts} = client;
   const generalSettings = useQuery().generalSettings;
@@ -31,10 +30,9 @@ export default function Page() {
       </main>
     </>
   )
-
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context) {
   return getNextStaticProps(context, {
     Page,
     client,

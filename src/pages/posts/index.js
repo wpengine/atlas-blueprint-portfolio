@@ -15,8 +15,8 @@ export default function Page() {
   const generalSettings = useQuery().generalSettings;
   const isBefore = postSlug === 'before';
   const posts = usePosts({
-    after: !isBefore ? (postCursor as string) : undefined,
-    before: isBefore ? (postCursor as string) : undefined,
+    after: !isBefore ? postCursor : undefined,
+    before: isBefore ? postCursor : undefined,
     first: !isBefore ? appConfig.postsPerPage : undefined,
     last: isBefore ? appConfig.postsPerPage : undefined,
   });
@@ -42,7 +42,7 @@ export default function Page() {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context) {
   return getNextStaticProps(context, {
     Page,
     client,

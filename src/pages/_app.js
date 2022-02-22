@@ -4,9 +4,8 @@ import 'normalize.css/normalize.css';
 import 'styles/main.scss';
 import React from 'react';
 import { client } from 'client';
-import type { AppProps } from 'next/app';
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <FaustProvider client={client} pageProps={pageProps}>

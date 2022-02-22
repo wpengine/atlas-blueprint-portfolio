@@ -1,4 +1,3 @@
-import type { Page, Post } from 'client';
 import { client } from 'client';
 import { PostComponent } from './posts/[postSlug]';
 import { PageComponent } from './[...pageUri]';
@@ -17,11 +16,11 @@ export default function Preview() {
 
   switch (typeName) {
     case 'Page': {
-      const page = node as Page;
+      const page = node;
       return <PageComponent page={page} />;
     }
     case 'Post': {
-      const post = node as Post;
+      const post = node;
       return <PostComponent post={post} />;
     }
     // Add custom post types here as needed

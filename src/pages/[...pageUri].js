@@ -5,11 +5,7 @@ import Image from 'next/image';
 import { client, Page as PageType } from 'client';
 import { Heading, FeaturedImage, ContentWrapper } from 'components';
 
-export interface PageProps {
-  page: PageType | PageType['preview']['node'] | null | undefined;
-}
-
-export function PageComponent({ page }: PageProps) {
+export function PageComponent({ page }) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
 
@@ -39,7 +35,7 @@ export default function Page() {
   return <PageComponent page={page} />;
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context) {
   return getNextStaticProps(context, {
     Page,
     client,

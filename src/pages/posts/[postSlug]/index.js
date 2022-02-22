@@ -4,11 +4,7 @@ import { GetStaticPropsContext } from 'next';
 import { Heading, FeaturedImage, ContentWrapper } from 'components';
 import Head from 'next/head';
 
-export interface PostProps {
-  post: Post | Post['preview']['node'] | null | undefined;
-}
-
-export function PostComponent({ post }: PostProps) {
+export function PostComponent({ post }) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
 
@@ -38,7 +34,7 @@ export default function Page() {
   return <PostComponent post={post} />;
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context) {
   return getNextStaticProps(context, {
     Page,
     client,
