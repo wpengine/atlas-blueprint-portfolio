@@ -3,7 +3,7 @@ import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { client, Page as PageType } from 'client';
-import { Heading, FeaturedImage } from 'components';
+import { Heading, FeaturedImage, ContentWrapper } from 'components';
 
 export interface PageProps {
   page: PageType | PageType['preview']['node'] | null | undefined;
@@ -22,11 +22,11 @@ export function PageComponent({ page }: PageProps) {
       </Head>
 
       <main className="container">
-        <article className="content">
-          <Heading className="text-center" level="h2">{page?.title()}</Heading>
-          <FeaturedImage image={page?.featuredImage?.node?.sourceUrl()} />
-          <div dangerouslySetInnerHTML={{ __html: page?.content() ?? '' }} />
-        </article>
+        <ContentWrapper
+          title={page?.title()}
+          featuredImage={page?.featuredImage?.node?.sourceUrl()}
+          content={page?.content()}
+        />
       </main>
     </>
   );

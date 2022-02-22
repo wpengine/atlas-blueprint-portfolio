@@ -1,7 +1,7 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import { client, Post } from 'client';
 import { GetStaticPropsContext } from 'next';
-import { Heading, FeaturedImage } from 'components';
+import { Heading, FeaturedImage, ContentWrapper } from 'components';
 import Head from 'next/head';
 
 export interface PostProps {
@@ -21,11 +21,11 @@ export function PostComponent({ post }: PostProps) {
       </Head>
 
       <main className="container">
-        <article className="content">
-          <Heading className="text-center" level="h2">{post?.title()}</Heading>
-          <FeaturedImage image={post?.featuredImage?.node?.sourceUrl()}/>
-          <div dangerouslySetInnerHTML={{ __html: post?.content() ?? '' }} />
-        </article>
+        <ContentWrapper
+          title={post?.title()}
+          featuredImage={post?.featuredImage?.node?.sourceUrl()}
+          content={post?.content()}
+        />
       </main>
     </>
   );

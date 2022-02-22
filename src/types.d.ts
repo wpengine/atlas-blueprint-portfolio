@@ -1,0 +1,3 @@
+type CommonProps = {
+  className?: string;
+}
