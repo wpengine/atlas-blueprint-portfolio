@@ -1,13 +1,5 @@
 @import "Themes";
-/**
- * themify - Change color of a css property based on the currently active theme
- *
- * @param  {key}     CSS property
- * @param  {color}   Color name defined in the themes under _color-palette.scss
- *
- * @example - @include theme-aware('background', 'color-background');
- * @returns - background: #FFF;
- */
+
 @mixin themify( $themes: $themes ) {
   @each $theme, $map in $themes {
 
