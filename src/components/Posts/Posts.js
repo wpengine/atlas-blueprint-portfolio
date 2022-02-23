@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Heading, FeaturedImage } from 'components';
 import styles from './Posts.module.scss';
 
@@ -13,9 +12,7 @@ function PostInfo({post}) {
 function Posts({
                  posts,
                  intro,
-                 heading,
                  id,
-                 readMoreText = 'Read more',
                }) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
@@ -29,7 +26,7 @@ function Posts({
               key={post.id ?? ''}
               id={`post-${post.id}`}>
               <div>
-                <FeaturedImage image={post?.featuredImage?.node?.sourceUrl()} />
+                <FeaturedImage image={post?.featuredImage?.node?.sourceUrl()} alt={post?.featuredImage?.node?.altText} />
                 <Heading level="h4" className={styles['post-header']}>
                   <Link href={`/posts/${post.slug}`}>
                     <a>{post.title()}</a>

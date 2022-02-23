@@ -1,4 +1,3 @@
-import { GetStaticPropsContext } from 'next';
 import Page from 'pages/category/[categorySlug]';
 import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';

@@ -2,7 +2,6 @@ import { getNextStaticProps } from '@faustjs/next';
 import Head from 'next/head';
 import React from 'react';
 import { client } from 'client';
-import { GetStaticPropsContext } from 'next';
 import { Posts, Pagination, Heading } from 'components';
 import appConfig from 'app.config';
 

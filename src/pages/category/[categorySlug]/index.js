@@ -1,7 +1,6 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { GetStaticPropsContext } from 'next';
 import { client } from 'client';
 import { Pagination, Posts, Heading } from 'components';
 import appConfig from 'app.config';

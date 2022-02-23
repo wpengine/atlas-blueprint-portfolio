@@ -1,7 +1,6 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { GetStaticPropsContext } from 'next';
 import { client } from 'client';
 
 export default function Page() {

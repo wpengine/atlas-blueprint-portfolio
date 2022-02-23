@@ -1,13 +1,11 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
-import { client, Post } from 'client';
-import { GetStaticPropsContext } from 'next';
-import { Heading, FeaturedImage, ContentWrapper } from 'components';
+import { client } from 'client';
+import { ContentWrapper } from 'components';
 import Head from 'next/head';
 
 export function PostComponent({ post }) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
-
   return (
     <>
       <Head>
@@ -19,7 +17,7 @@ export function PostComponent({ post }) {
       <main className="container">
         <ContentWrapper
           title={post?.title()}
-          featuredImage={post?.featuredImage?.node?.sourceUrl()}
+          featuredImage={post?.featuredImage?.node}
           content={post?.content()}
         />
       </main>
