@@ -1,13 +1,13 @@
-import { GetStaticPropsContext } from 'next';
-import Page from 'pages/category/[categorySlug]';
 import { getNextStaticProps } from '@faustjs/next';
+import Page from '..';
 import { client } from 'client';
 
 export default Page;
 
-export async function getStaticProps(context: GetStaticPropsContext) {
-  const { paginationTerm } = context.params;
-  if (!(paginationTerm === 'after' || paginationTerm === 'before')) {
+export async function getStaticProps(context) {
+  const { postSlug } = context.params;
+
+  if (!(postSlug === 'after' || postSlug === 'before')) {
     return {
       notFound: true,
     };

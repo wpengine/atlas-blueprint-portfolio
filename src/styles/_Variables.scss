@@ -1,15 +1,8 @@
-$color-initial: #fff !default;
-$color-primary: #0070f3 !default;
-$color-secondary: #1f1f1f !default;
-$color-tertiary: #f2f2f2 !default;
-$color-quaternary: #606060 !default;
-
-$color-black: #000;
-$color-white: #fff;
-
-$font-family: Verdana, Arial, Helvetica, sans-serif;
+$font-family: Inter, Verdana, Arial, Helvetica, sans-serif;
 $font-weight-normal: 300;
 $font-weight-bold: 600;
 
 $breakpoint-small: 768px;
 $breakpoint-medium: 1024px;
+
+$grid-max-width: 62rem;

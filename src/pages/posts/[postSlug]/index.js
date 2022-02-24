@@ -1,16 +1,11 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
-import { client, Post } from 'client';
-import { GetStaticPropsContext } from 'next';
+import { client } from 'client';
+import { ContentWrapper } from 'components';
 import Head from 'next/head';
 
-export interface PostProps {
-  post: Post | Post['preview']['node'] | null | undefined;
-}
-
-export function PostComponent({ post }: PostProps) {
+export function PostComponent({ post }) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
-
   return (
     <>
       <Head>
@@ -19,9 +14,12 @@ export function PostComponent({ post }: PostProps) {
         </title>
       </Head>
 
-      <main className="content">
-        <div className="container" dangerouslySetInnerHTML={{ __html: post?.content() ?? '' }}>
-        </div>
+      <main className="container">
+        <ContentWrapper
+          title={post?.title()}
+          featuredImage={post?.featuredImage?.node}
+          content={post?.content()}
+        />
       </main>
     </>
   );
@@ -34,7 +32,7 @@ export default function Page() {
   return <PostComponent post={post} />;
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context) {
   return getNextStaticProps(context, {
     Page,
     client,

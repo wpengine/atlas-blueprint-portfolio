@@ -10,9 +10,9 @@ const config = {
     endpoint: `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`,
     headers: {},
   },
-  destination: './src/client/index.ts',
+  destination: './src/client/index.js',
   subscriptions: false,
-  javascriptOutput: false,
+  javascriptOutput: true,
 };
 
 console.log(`Using "${config.introspection.endpoint}" to generate schema...`);

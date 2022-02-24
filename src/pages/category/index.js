@@ -1,7 +1,6 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { GetStaticPropsContext } from 'next';
 import { client } from 'client';
 
 export default function Page() {
@@ -19,8 +18,9 @@ export default function Page() {
         <title>All Categories - {generalSettings?.title}</title>
       </Head>
 
-      <main className="content">
-        <div className="container">
+      <main className="container">
+        <div className="content">
+          <h1>All Categories</h1>
           <ul>
             {
               categories?.nodes?.map(({ id, name }) => {
@@ -40,7 +40,7 @@ export default function Page() {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getStaticProps(context) {
   return getNextStaticProps(context, {
     Page,
     client,
