@@ -34,8 +34,6 @@ export default function usePagination(fn, {
 
   React.useEffect(() => {
     if (paginationArgs?.after) {
-      debugger;
-
       client.client.resolved(() => {
         return fnRef.current(client.client.query, paginationArgs)
       })
