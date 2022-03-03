@@ -4996,7 +4996,6 @@ export declare const generatedSchema: {
     databaseId: { __type: "Int!" };
     date: { __type: "String" };
     dateGmt: { __type: "String" };
-    description: { __type: "String" };
     desiredSlug: { __type: "String" };
     editingLockedBy: { __type: "ContentNodeToEditLockConnectionEdge" };
     enclosure: { __type: "String" };
@@ -5023,11 +5022,13 @@ export declare const generatedSchema: {
     modified: { __type: "String" };
     modifiedGmt: { __type: "String" };
     portfolioId: { __type: "Int!" };
+    portfolioTitle: { __type: "String" };
     preview: { __type: "PortfolioToPreviewConnectionEdge" };
     previewRevisionDatabaseId: { __type: "Int" };
     previewRevisionId: { __type: "ID" };
     slug: { __type: "String" };
     status: { __type: "String" };
+    summary: { __type: "String" };
     template: { __type: "ContentTemplate" };
     templates: { __type: "[String]" };
     title: {
@@ -11200,10 +11201,6 @@ export interface Portfolio {
    */
   dateGmt?: Maybe<ScalarsEnums["String"]>;
   /**
-   * Portfolio Description
-   */
-  description?: Maybe<ScalarsEnums["String"]>;
-  /**
    * The desired slug of the post
    */
   desiredSlug?: Maybe<ScalarsEnums["String"]>;
@@ -11319,6 +11316,10 @@ export interface Portfolio {
    */
   portfolioId: ScalarsEnums["Int"];
   /**
+   * Portfolio Title
+   */
+  portfolioTitle?: Maybe<ScalarsEnums["String"]>;
+  /**
    * Connection between the portfolio type and the portfolio type
    */
   preview?: Maybe<PortfolioToPreviewConnectionEdge>;
@@ -11338,6 +11339,10 @@ export interface Portfolio {
    * The current status of the object
    */
   status?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * Portfolio Summary
+   */
+  summary?: Maybe<ScalarsEnums["String"]>;
   /**
    * The template assigned to a node of content
    */
