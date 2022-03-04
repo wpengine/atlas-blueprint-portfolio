@@ -1,27 +1,29 @@
 import React from 'react';
 import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { Pagination, Posts, Heading } from 'components';
-import appConfig from 'app.config';
+import { Posts, Heading } from 'components';
+import usePagination from "../../hooks/usePagination";
+import appConfig from "../../app.config";
 
 export default function Page() {
-  const { query = {} } = useRouter();
-  const { postSlug, postCursor } = query;
-  const { usePosts, useQuery } = client;
-  const generalSettings = useQuery().generalSettings;
-  const isBefore = postSlug === 'before';
+  const { useQuery, usePosts } = client;
   const posts = usePosts({
-    after: !isBefore ? postCursor : undefined,
-    before: isBefore ? postCursor : undefined,
-    first: !isBefore ? appConfig.postsPerPage : undefined,
-    last: isBefore ? appConfig.postsPerPage : undefined,
+    first: appConfig.postsPerPage
   });
-
-  if (useQuery().$state.isLoading) {
-    return null;
-  }
+  const generalSettings = useQuery().generalSettings;
+  const {data, fetchMore} = usePagination((query, args) => {
+    const {
+      nodes,
+      pageInfo: { hasNextPage, endCursor },
+    } = query.posts(args);
+    return {
+      nodes: Array.from(nodes),
+      hasNextPage,
+      endCursor,
+    };
+  }, {nodes: posts?.nodes, pageInfo: posts?.pageInfo});
+  const isLoading = useQuery().$state.isLoading;
 
   return (
     <>
@@ -33,8 +35,18 @@ export default function Page() {
 
       <main className="container">
         <Heading className="text-center">Latest Posts</Heading>
-        <Posts posts={posts?.nodes} readMoreText={"Read More"} id="posts-list" />
-        <Pagination pageInfo={posts?.pageInfo} basePath="/posts"/>
+        <Posts posts={data?.nodes} readMoreText={"Read More"} id="posts-list"/>
+        {isLoading && <p>Loading...</p>}
+        {data?.pageInfo?.hasNextPage && data?.pageInfo?.endCursor ? (
+          <button
+            disabled={isLoading}
+            onClick={() => {
+              fetchMore()
+            }}
+          >
+            Load more Posts
+          </button>
+        ) : null}
       </main>
     </>
   );

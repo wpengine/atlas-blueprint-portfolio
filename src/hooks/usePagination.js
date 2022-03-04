@@ -22,7 +22,7 @@ export default function usePagination(fn, {
     first: appConfig.postsPerPage,
     after: undefined
   }
-}) {
+} = {}) {
   const fnRef = React.useRef(fn);
   fnRef.current = fn;
   const [data, setData] = React.useState({
