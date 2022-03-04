@@ -373,7 +373,9 @@ export type ContentTypeEnum =
   /** The Type of Content object */
   | "PAGE"
   /** The Type of Content object */
-  | "POST";
+  | "POST"
+  /** The Type of Content object */
+  | "PROJECT";
 
 /** The Type of Identifier used to fetch a single Content Type node. To be used along with the "id" field. Default is "ID". */
 export type ContentTypeIdTypeEnum =
@@ -589,6 +591,26 @@ export interface CreatePostInput {
   toPing?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
 }
 
+/** Input for the createProject mutation */
+export interface CreateProjectInput {
+  /** The userId to assign as the author of the object */
+  authorId?: InputMaybe<Scalars["ID"]>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars["String"]>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars["Int"]>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars["String"]>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars["String"]>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars["String"]>;
+}
+
 /** Input for the createTag mutation */
 export interface CreateTagInput {
   /** The slug that the post_tag will be an alias of */
@@ -739,6 +761,16 @@ export interface DeletePostInput {
   id: Scalars["ID"];
 }
 
+/** Input for the deleteProject mutation */
+export interface DeleteProjectInput {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]>;
+  /** Whether the object should be force deleted instead of being moved to the trash */
+  forceDelete?: InputMaybe<Scalars["Boolean"]>;
+  /** The ID of the project to delete */
+  id: Scalars["ID"];
+}
+
 /** Input for the deleteTag mutation */
 export interface DeleteTagInput {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -870,8 +902,6 @@ export type MediaItemSizeEnum =
   | "MEDIUM"
   /** MediaItem with the medium_large size */
   | "MEDIUM_LARGE"
-  /** MediaItem with the post-thumbnail size */
-  | "POST_THUMBNAIL"
   /** MediaItem with the thumbnail size */
   | "THUMBNAIL"
   /** MediaItem with the 1536x1536 size */
@@ -1872,6 +1902,17 @@ export interface PostToTermNodeConnectionWhereArgs {
   updateTermMetaCache?: InputMaybe<Scalars["Boolean"]>;
 }
 
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export type ProjectIdType =
+  /** Identify a resource by the Database ID. */
+  | "DATABASE_ID"
+  /** Identify a resource by the (hashed) Global ID. */
+  | "ID"
+  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+  | "SLUG"
+  /** Identify a resource by the URI. */
+  | "URI";
+
 /** Input for the registerUser mutation */
 export interface RegisterUserInput {
   /** User's AOL IM account. */
@@ -2347,6 +2388,52 @@ export interface RootQueryToPostFormatConnectionWhereArgs {
   updateTermMetaCache?: InputMaybe<Scalars["Boolean"]>;
 }
 
+/** Arguments for filtering the RootQueryToProjectConnection connection */
+export interface RootQueryToProjectConnectionWhereArgs {
+  /** The user that's connected as the author of the object. Use the userId for the author object. */
+  author?: InputMaybe<Scalars["Int"]>;
+  /** Find objects connected to author(s) in the array of author's userIds */
+  authorIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Find objects connected to the author by the author's nicename */
+  authorName?: InputMaybe<Scalars["String"]>;
+  /** Find objects NOT connected to author(s) in the array of author's userIds */
+  authorNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars["Boolean"]>;
+  /** Specific ID of the object */
+  id?: InputMaybe<Scalars["Int"]>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars["String"]>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** What paramater to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars["ID"]>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars["String"]>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars["String"]>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars["String"]>;
+}
+
 /** Arguments for filtering the RootQueryToTagConnection connection */
 export interface RootQueryToTagConnectionWhereArgs {
   /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
@@ -2810,8 +2897,33 @@ export interface UpdatePostInput {
   toPing?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
 }
 
+/** Input for the updateProject mutation */
+export interface UpdateProjectInput {
+  /** The userId to assign as the author of the object */
+  authorId?: InputMaybe<Scalars["ID"]>;
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars["String"]>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars["String"]>;
+  /** The ID of the project object */
+  id: Scalars["ID"];
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars["Int"]>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars["String"]>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars["String"]>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars["String"]>;
+}
+
 /** Input for the updateSettings mutation */
 export interface UpdateSettingsInput {
+  atlasContentModelerSettingsSettingsAtlasContentModelerUsageTracking?: InputMaybe<
+    Scalars["String"]
+  >;
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars["String"]>;
   /** Allow people to submit comments on new posts. */
@@ -2836,12 +2948,8 @@ export interface UpdateSettingsInput {
   generalSettingsTitle?: InputMaybe<Scalars["String"]>;
   /** Site URL. */
   generalSettingsUrl?: InputMaybe<Scalars["String"]>;
-  /** The ID of the page that should be displayed on the front page */
-  readingSettingsPageOnFront?: InputMaybe<Scalars["Float"]>;
   /** Blog pages show at most. */
   readingSettingsPostsPerPage?: InputMaybe<Scalars["Int"]>;
-  /** What to show on the front page */
-  readingSettingsShowOnFront?: InputMaybe<Scalars["String"]>;
   /** Default post category. */
   writingSettingsDefaultCategory?: InputMaybe<Scalars["Int"]>;
   /** Default post format. */
@@ -3194,6 +3302,52 @@ export interface UserToPostConnectionWhereArgs {
   title?: InputMaybe<Scalars["String"]>;
 }
 
+/** Arguments for filtering the UserToProjectConnection connection */
+export interface UserToProjectConnectionWhereArgs {
+  /** The user that's connected as the author of the object. Use the userId for the author object. */
+  author?: InputMaybe<Scalars["Int"]>;
+  /** Find objects connected to author(s) in the array of author's userIds */
+  authorIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Find objects connected to the author by the author's nicename */
+  authorName?: InputMaybe<Scalars["String"]>;
+  /** Find objects NOT connected to author(s) in the array of author's userIds */
+  authorNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars["Boolean"]>;
+  /** Specific ID of the object */
+  id?: InputMaybe<Scalars["Int"]>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars["String"]>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** What paramater to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars["ID"]>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars["String"]>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars["String"]>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars["String"]>;
+}
+
 /** Field to order the connection by */
 export type UsersConnectionOrderbyEnum =
   /** Order by display name */
@@ -3236,6 +3390,10 @@ export type UsersConnectionSearchColumnEnum =
 
 export declare const scalarsEnumsHash: import("gqty").ScalarsEnumsHash;
 export declare const generatedSchema: {
+  AtlasContentModelerSettingsSettings: {
+    __typename: { __type: "String!" };
+    atlasContentModelerUsageTracking: { __type: "String" };
+  };
   Avatar: {
     __typename: { __type: "String!" };
     default: { __type: "String" };
@@ -3888,6 +4046,21 @@ export declare const generatedSchema: {
     clientMutationId: { __type: "String" };
     post: { __type: "Post" };
   };
+  CreateProjectInput: {
+    authorId: { __type: "ID" };
+    clientMutationId: { __type: "String" };
+    date: { __type: "String" };
+    menuOrder: { __type: "Int" };
+    password: { __type: "String" };
+    slug: { __type: "String" };
+    status: { __type: "PostStatusEnum" };
+    title: { __type: "String" };
+  };
+  CreateProjectPayload: {
+    __typename: { __type: "String!" };
+    clientMutationId: { __type: "String" };
+    project: { __type: "Project" };
+  };
   CreateTagInput: {
     aliasOf: { __type: "String" };
     clientMutationId: { __type: "String" };
@@ -4017,6 +4190,17 @@ export declare const generatedSchema: {
     clientMutationId: { __type: "String" };
     deletedId: { __type: "ID" };
     post: { __type: "Post" };
+  };
+  DeleteProjectInput: {
+    clientMutationId: { __type: "String" };
+    forceDelete: { __type: "Boolean" };
+    id: { __type: "ID!" };
+  };
+  DeleteProjectPayload: {
+    __typename: { __type: "String!" };
+    clientMutationId: { __type: "String" };
+    deletedId: { __type: "ID" };
+    project: { __type: "Project" };
   };
   DeleteTagInput: {
     clientMutationId: { __type: "String" };
@@ -5338,11 +5522,66 @@ export declare const generatedSchema: {
     viewItem: { __type: "String" };
     viewItems: { __type: "String" };
   };
+  Project: {
+    __typename: { __type: "String!" };
+    author: { __type: "NodeWithAuthorToUserConnectionEdge" };
+    authorDatabaseId: { __type: "Int" };
+    authorId: { __type: "ID" };
+    conditionalTags: { __type: "ConditionalTags" };
+    contentArea: { __type: "String" };
+    contentType: { __type: "ContentNodeToContentTypeConnectionEdge" };
+    contentTypeName: { __type: "String!" };
+    databaseId: { __type: "Int!" };
+    date: { __type: "String" };
+    dateGmt: { __type: "String" };
+    desiredSlug: { __type: "String" };
+    editingLockedBy: { __type: "ContentNodeToEditLockConnectionEdge" };
+    enclosure: { __type: "String" };
+    enqueuedScripts: {
+      __type: "ContentNodeToEnqueuedScriptConnection";
+      __args: { after: "String"; before: "String"; first: "Int"; last: "Int" };
+    };
+    enqueuedStylesheets: {
+      __type: "ContentNodeToEnqueuedStylesheetConnection";
+      __args: { after: "String"; before: "String"; first: "Int"; last: "Int" };
+    };
+    featuredImage: { __type: "NodeWithFeaturedImageToMediaItemConnectionEdge" };
+    featuredImageDatabaseId: { __type: "Int" };
+    featuredImageId: { __type: "ID" };
+    guid: { __type: "String" };
+    id: { __type: "ID!" };
+    image: { __type: "MediaItem" };
+    isContentNode: { __type: "Boolean!" };
+    isPreview: { __type: "Boolean" };
+    isRestricted: { __type: "Boolean" };
+    isTermNode: { __type: "Boolean!" };
+    lastEditedBy: { __type: "ContentNodeToEditLastConnectionEdge" };
+    link: { __type: "String" };
+    modified: { __type: "String" };
+    modifiedGmt: { __type: "String" };
+    preview: { __type: "ProjectToPreviewConnectionEdge" };
+    previewRevisionDatabaseId: { __type: "Int" };
+    previewRevisionId: { __type: "ID" };
+    projectId: { __type: "Int!" };
+    projectTitle: { __type: "String" };
+    slug: { __type: "String" };
+    status: { __type: "String" };
+    summary: { __type: "String" };
+    template: { __type: "ContentTemplate" };
+    templates: { __type: "[String]" };
+    title: {
+      __type: "String";
+      __args: { format: "PostObjectFieldFormatEnum" };
+    };
+    uri: { __type: "String" };
+  };
+  ProjectToPreviewConnectionEdge: {
+    __typename: { __type: "String!" };
+    node: { __type: "Project" };
+  };
   ReadingSettings: {
     __typename: { __type: "String!" };
-    pageOnFront: { __type: "Float" };
     postsPerPage: { __type: "Int" };
-    showOnFront: { __type: "String" };
   };
   RegisterUserInput: {
     aim: { __type: "String" };
@@ -5748,6 +5987,40 @@ export declare const generatedSchema: {
     termTaxonomId: { __type: "[ID]" };
     updateTermMetaCache: { __type: "Boolean" };
   };
+  RootQueryToProjectConnection: {
+    __typename: { __type: "String!" };
+    edges: { __type: "[RootQueryToProjectConnectionEdge]" };
+    nodes: { __type: "[Project]" };
+    pageInfo: { __type: "WPPageInfo" };
+  };
+  RootQueryToProjectConnectionEdge: {
+    __typename: { __type: "String!" };
+    cursor: { __type: "String" };
+    node: { __type: "Project" };
+  };
+  RootQueryToProjectConnectionWhereArgs: {
+    author: { __type: "Int" };
+    authorIn: { __type: "[ID]" };
+    authorName: { __type: "String" };
+    authorNotIn: { __type: "[ID]" };
+    dateQuery: { __type: "DateQueryInput" };
+    hasPassword: { __type: "Boolean" };
+    id: { __type: "Int" };
+    in: { __type: "[ID]" };
+    mimeType: { __type: "MimeTypeEnum" };
+    name: { __type: "String" };
+    nameIn: { __type: "[String]" };
+    notIn: { __type: "[ID]" };
+    orderby: { __type: "[PostObjectsConnectionOrderbyInput]" };
+    parent: { __type: "ID" };
+    parentIn: { __type: "[ID]" };
+    parentNotIn: { __type: "[ID]" };
+    password: { __type: "String" };
+    search: { __type: "String" };
+    stati: { __type: "[PostStatusEnum]" };
+    status: { __type: "PostStatusEnum" };
+    title: { __type: "String" };
+  };
   RootQueryToTagConnection: {
     __typename: { __type: "String!" };
     edges: { __type: "[RootQueryToTagConnectionEdge]" };
@@ -5887,6 +6160,9 @@ export declare const generatedSchema: {
   };
   Settings: {
     __typename: { __type: "String!" };
+    atlasContentModelerSettingsSettingsAtlasContentModelerUsageTracking: {
+      __type: "String";
+    };
     discussionSettingsDefaultCommentStatus: { __type: "String" };
     discussionSettingsDefaultPingStatus: { __type: "String" };
     generalSettingsDateFormat: { __type: "String" };
@@ -5898,9 +6174,7 @@ export declare const generatedSchema: {
     generalSettingsTimezone: { __type: "String" };
     generalSettingsTitle: { __type: "String" };
     generalSettingsUrl: { __type: "String" };
-    readingSettingsPageOnFront: { __type: "Float" };
     readingSettingsPostsPerPage: { __type: "Int" };
-    readingSettingsShowOnFront: { __type: "String" };
     writingSettingsDefaultCategory: { __type: "Int" };
     writingSettingsDefaultPostFormat: { __type: "String" };
     writingSettingsUseSmilies: { __type: "Boolean" };
@@ -6069,6 +6343,22 @@ export declare const generatedSchema: {
     __typename: { __type: "String!" };
     cursor: { __type: "String" };
     node: { __type: "ContentType" };
+  };
+  Template_Blank: {
+    __typename: { __type: "String!" };
+    templateName: { __type: "String" };
+  };
+  Template_PageLargeHeader: {
+    __typename: { __type: "String!" };
+    templateName: { __type: "String" };
+  };
+  Template_PageNoSeparators: {
+    __typename: { __type: "String!" };
+    templateName: { __type: "String" };
+  };
+  Template_SinglePostNoSeparators: {
+    __typename: { __type: "String!" };
+    templateName: { __type: "String" };
   };
   TermNode: {
     __typename: { __type: "String!" };
@@ -6257,7 +6547,26 @@ export declare const generatedSchema: {
     clientMutationId: { __type: "String" };
     post: { __type: "Post" };
   };
+  UpdateProjectInput: {
+    authorId: { __type: "ID" };
+    clientMutationId: { __type: "String" };
+    date: { __type: "String" };
+    id: { __type: "ID!" };
+    menuOrder: { __type: "Int" };
+    password: { __type: "String" };
+    slug: { __type: "String" };
+    status: { __type: "PostStatusEnum" };
+    title: { __type: "String" };
+  };
+  UpdateProjectPayload: {
+    __typename: { __type: "String!" };
+    clientMutationId: { __type: "String" };
+    project: { __type: "Project" };
+  };
   UpdateSettingsInput: {
+    atlasContentModelerSettingsSettingsAtlasContentModelerUsageTracking: {
+      __type: "String";
+    };
     clientMutationId: { __type: "String" };
     discussionSettingsDefaultCommentStatus: { __type: "String" };
     discussionSettingsDefaultPingStatus: { __type: "String" };
@@ -6270,9 +6579,7 @@ export declare const generatedSchema: {
     generalSettingsTimezone: { __type: "String" };
     generalSettingsTitle: { __type: "String" };
     generalSettingsUrl: { __type: "String" };
-    readingSettingsPageOnFront: { __type: "Float" };
     readingSettingsPostsPerPage: { __type: "Int" };
-    readingSettingsShowOnFront: { __type: "String" };
     writingSettingsDefaultCategory: { __type: "Int" };
     writingSettingsDefaultPostFormat: { __type: "String" };
     writingSettingsUseSmilies: { __type: "Boolean" };
@@ -6280,6 +6587,9 @@ export declare const generatedSchema: {
   UpdateSettingsPayload: {
     __typename: { __type: "String!" };
     allSettings: { __type: "Settings" };
+    atlasContentModelerSettingsSettings: {
+      __type: "AtlasContentModelerSettingsSettings";
+    };
     clientMutationId: { __type: "String" };
     discussionSettings: { __type: "DiscussionSettings" };
     generalSettings: { __type: "GeneralSettings" };
@@ -6397,6 +6707,16 @@ export declare const generatedSchema: {
         first: "Int";
         last: "Int";
         where: "UserToPostConnectionWhereArgs";
+      };
+    };
+    projects: {
+      __type: "UserToProjectConnection";
+      __args: {
+        after: "String";
+        before: "String";
+        first: "Int";
+        last: "Int";
+        where: "UserToProjectConnectionWhereArgs";
       };
     };
     registeredDate: { __type: "String" };
@@ -6636,6 +6956,40 @@ export declare const generatedSchema: {
     tagSlugIn: { __type: "[String]" };
     title: { __type: "String" };
   };
+  UserToProjectConnection: {
+    __typename: { __type: "String!" };
+    edges: { __type: "[UserToProjectConnectionEdge]" };
+    nodes: { __type: "[Project]" };
+    pageInfo: { __type: "WPPageInfo" };
+  };
+  UserToProjectConnectionEdge: {
+    __typename: { __type: "String!" };
+    cursor: { __type: "String" };
+    node: { __type: "Project" };
+  };
+  UserToProjectConnectionWhereArgs: {
+    author: { __type: "Int" };
+    authorIn: { __type: "[ID]" };
+    authorName: { __type: "String" };
+    authorNotIn: { __type: "[ID]" };
+    dateQuery: { __type: "DateQueryInput" };
+    hasPassword: { __type: "Boolean" };
+    id: { __type: "Int" };
+    in: { __type: "[ID]" };
+    mimeType: { __type: "MimeTypeEnum" };
+    name: { __type: "String" };
+    nameIn: { __type: "[String]" };
+    notIn: { __type: "[ID]" };
+    orderby: { __type: "[PostObjectsConnectionOrderbyInput]" };
+    parent: { __type: "ID" };
+    parentIn: { __type: "[ID]" };
+    parentNotIn: { __type: "[ID]" };
+    password: { __type: "String" };
+    search: { __type: "String" };
+    stati: { __type: "[PostStatusEnum]" };
+    status: { __type: "PostStatusEnum" };
+    title: { __type: "String" };
+  };
   UserToUserRoleConnection: {
     __typename: { __type: "String!" };
     edges: { __type: "[UserToUserRoleConnectionEdge]" };
@@ -6690,6 +7044,10 @@ export declare const generatedSchema: {
       __type: "CreatePostFormatPayload";
       __args: { input: "CreatePostFormatInput!" };
     };
+    createProject: {
+      __type: "CreateProjectPayload";
+      __args: { input: "CreateProjectInput!" };
+    };
     createTag: {
       __type: "CreateTagPayload";
       __args: { input: "CreateTagInput!" };
@@ -6721,6 +7079,10 @@ export declare const generatedSchema: {
     deletePostFormat: {
       __type: "DeletePostFormatPayload";
       __args: { input: "DeletePostFormatInput!" };
+    };
+    deleteProject: {
+      __type: "DeleteProjectPayload";
+      __args: { input: "DeleteProjectInput!" };
     };
     deleteTag: {
       __type: "DeleteTagPayload";
@@ -6775,6 +7137,10 @@ export declare const generatedSchema: {
       __type: "UpdatePostFormatPayload";
       __args: { input: "UpdatePostFormatInput!" };
     };
+    updateProject: {
+      __type: "UpdateProjectPayload";
+      __args: { input: "UpdateProjectInput!" };
+    };
     updateSettings: {
       __type: "UpdateSettingsPayload";
       __args: { input: "UpdateSettingsInput!" };
@@ -6791,6 +7157,9 @@ export declare const generatedSchema: {
   query: {
     __typename: { __type: "String!" };
     allSettings: { __type: "Settings" };
+    atlasContentModelerSettingsSettings: {
+      __type: "AtlasContentModelerSettingsSettings";
+    };
     categories: {
       __type: "RootQueryToCategoryConnection";
       __args: {
@@ -6951,6 +7320,24 @@ export declare const generatedSchema: {
         where: "RootQueryToPostConnectionWhereArgs";
       };
     };
+    project: {
+      __type: "Project";
+      __args: { asPreview: "Boolean"; id: "ID!"; idType: "ProjectIdType" };
+    };
+    projectBy: {
+      __type: "Project";
+      __args: { id: "ID"; projectId: "Int"; slug: "String"; uri: "String" };
+    };
+    projects: {
+      __type: "RootQueryToProjectConnection";
+      __args: {
+        after: "String";
+        before: "String";
+        first: "Int";
+        last: "Int";
+        where: "RootQueryToProjectConnectionWhereArgs";
+      };
+    };
     readingSettings: { __type: "ReadingSettings" };
     registeredScripts: {
       __type: "RootQueryToEnqueuedScriptConnection";
@@ -7045,11 +7432,12 @@ export declare const generatedSchema: {
       "Page",
       "Post",
       "PostFormat",
+      "Project",
       "Tag",
       "User"
     ];
     HierarchicalTermNode: ["Category"];
-    MenuItemLinkable: ["Category", "Page", "Post", "PostFormat", "Tag"];
+    MenuItemLinkable: ["Category", "Page", "Post", "Tag"];
     Node: [
       "Category",
       "Comment",
@@ -7064,6 +7452,7 @@ export declare const generatedSchema: {
       "Plugin",
       "Post",
       "PostFormat",
+      "Project",
       "Tag",
       "Taxonomy",
       "Theme",
@@ -7078,28 +7467,46 @@ export declare const generatedSchema: {
       "Page",
       "Post",
       "PostFormat",
+      "Project",
       "Tag",
       "User"
     ];
     Commenter: ["CommentAuthor", "User"];
     ContentRevisionUnion: ["Page", "Post"];
-    ContentTemplate: ["DefaultTemplate"];
+    ContentTemplate: [
+      "DefaultTemplate",
+      "Template_Blank",
+      "Template_PageLargeHeader",
+      "Template_PageNoSeparators",
+      "Template_SinglePostNoSeparators"
+    ];
     EnqueuedAsset: ["EnqueuedScript", "EnqueuedStylesheet"];
-    ContentNode: ["MediaItem", "Page", "Post"];
+    ContentNode: ["MediaItem", "Page", "Post", "Project"];
     HierarchicalContentNode: ["MediaItem", "Page"];
-    NodeWithAuthor: ["MediaItem", "Page", "Post"];
+    NodeWithAuthor: ["MediaItem", "Page", "Post", "Project"];
     NodeWithComments: ["MediaItem", "Page", "Post"];
-    NodeWithTemplate: ["MediaItem", "Page", "Post"];
-    NodeWithTitle: ["MediaItem", "Page", "Post"];
-    MenuItemObjectUnion: ["Category", "Page", "Post", "PostFormat", "Tag"];
+    NodeWithTemplate: ["MediaItem", "Page", "Post", "Project"];
+    NodeWithTitle: ["MediaItem", "Page", "Post", "Project"];
+    MenuItemObjectUnion: ["Category", "Page", "Post", "Tag"];
     NodeWithContentEditor: ["Page", "Post"];
-    NodeWithFeaturedImage: ["Page", "Post"];
+    NodeWithFeaturedImage: ["Page", "Post", "Project"];
     NodeWithPageAttributes: ["Page"];
     NodeWithRevisions: ["Page", "Post"];
     NodeWithExcerpt: ["Post"];
     NodeWithTrackbacks: ["Post"];
   };
 };
+
+/**
+ * The atlasContentModelerSettings setting type
+ */
+export interface AtlasContentModelerSettingsSettings {
+  __typename?: "AtlasContentModelerSettingsSettings";
+  /**
+   * The string Settings Group
+   */
+  atlasContentModelerUsageTracking?: Maybe<ScalarsEnums["String"]>;
+}
 
 /**
  * Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from.
@@ -7208,6 +7615,9 @@ export interface Category {
      */
     where?: Maybe<CategoryToCategoryConnectionWhereArgs>;
   }) => Maybe<CategoryToCategoryConnection>;
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * Connection between the category type and the ContentNode type
@@ -7782,90 +8192,112 @@ export interface ConditionalTags {
   __typename?: "ConditionalTags";
   /**
    * Determines whether the query is for an existing archive page.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isArchive?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing attachment page.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isAttachment?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing author archive page.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isAuthor?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing category archive page.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isCategory?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing date archive.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isDate?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing day archive.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isDay?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for the front page of the site.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isFrontPage?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for the blog homepage.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isHome?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing month archive.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isMonth?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether this site has more than one author.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isMultiAuthor?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing single page.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isPage?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether currently in a page template.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isPageTemplate?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing post type archive page.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isPostTypeArchive?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for a post or page preview.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isPreview?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for the Privacy Policy page.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isPrivacyPolicy?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for a search.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isSearch?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing single post.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isSingle?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing single post of any post type (post, attachment, page, custom post types).
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isSingular?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether a post is sticky.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isSticky?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing tag archive page.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isTag?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing custom taxonomy archive page.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isTax?: Maybe<ScalarsEnums["Boolean"]>;
   /**
    * Determines whether the query is for an existing year archive.
+   * @deprecated Deprecated in favor of using Next.js pages
    */
   isYear?: Maybe<ScalarsEnums["Boolean"]>;
 }
@@ -7874,7 +8306,10 @@ export interface ConditionalTags {
  * Nodes used to manage content
  */
 export interface ContentNode {
-  __typename?: "MediaItem" | "Page" | "Post";
+  __typename?: "MediaItem" | "Page" | "Post" | "Project";
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * Connection between the ContentNode type and the ContentType type
@@ -8135,7 +8570,12 @@ export interface ContentRevisionUnion {
  * The template assigned to a node of content
  */
 export interface ContentTemplate {
-  __typename?: "DefaultTemplate";
+  __typename?:
+    | "DefaultTemplate"
+    | "Template_Blank"
+    | "Template_PageLargeHeader"
+    | "Template_PageNoSeparators"
+    | "Template_SinglePostNoSeparators";
   /**
    * The name of the template
    */
@@ -8152,6 +8592,9 @@ export interface ContentType {
    * Whether this content type should can be exported.
    */
   canExport?: Maybe<ScalarsEnums["Boolean"]>;
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * Connection between the ContentType type and the Taxonomy type
@@ -8481,6 +8924,21 @@ export interface CreatePostPayload {
 }
 
 /**
+ * The payload for the createProject mutation
+ */
+export interface CreateProjectPayload {
+  __typename?: "CreateProjectPayload";
+  /**
+   * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+   */
+  clientMutationId?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The Post object mutation type.
+   */
+  project?: Maybe<Project>;
+}
+
+/**
  * The payload for the createTag mutation
  */
 export interface CreateTagPayload {
@@ -8523,6 +8981,7 @@ export interface DatabaseIdentifier {
     | "Page"
     | "Post"
     | "PostFormat"
+    | "Project"
     | "Tag"
     | "User";
   /**
@@ -8655,6 +9114,25 @@ export interface DeletePostPayload {
    * The object before it was deleted
    */
   post?: Maybe<Post>;
+}
+
+/**
+ * The payload for the deleteProject mutation
+ */
+export interface DeleteProjectPayload {
+  __typename?: "DeleteProjectPayload";
+  /**
+   * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+   */
+  clientMutationId?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The ID of the deleted object
+   */
+  deletedId?: Maybe<ScalarsEnums["ID"]>;
+  /**
+   * The object before it was deleted
+   */
+  project?: Maybe<Project>;
 }
 
 /**
@@ -9187,6 +9665,9 @@ export interface MediaItem {
      */
     where?: Maybe<MediaItemToCommentConnectionWhereArgs>;
   }) => Maybe<MediaItemToCommentConnection>;
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * Connection between the ContentNode type and the ContentType type
@@ -9719,7 +10200,7 @@ export interface MenuItem {
  * Nodes that can be linked to as Menu Items
  */
 export interface MenuItemLinkable {
-  __typename?: "Category" | "Page" | "Post" | "PostFormat" | "Tag";
+  __typename?: "Category" | "Page" | "Post" | "Tag";
   /**
    * The unique resource identifier path
    */
@@ -9739,7 +10220,7 @@ export interface MenuItemLinkable {
  * Deprecated in favor of MenuItemLinkeable Interface
  */
 export interface MenuItemObjectUnion {
-  __typename?: "Category" | "Page" | "Post" | "PostFormat" | "Tag";
+  __typename?: "Category" | "Page" | "Post" | "Tag";
   $on: $MenuItemObjectUnion;
 }
 
@@ -9851,6 +10332,7 @@ export interface Node {
     | "Plugin"
     | "Post"
     | "PostFormat"
+    | "Project"
     | "Tag"
     | "Taxonomy"
     | "Theme"
@@ -9867,7 +10349,7 @@ export interface Node {
  * A node that can have an author assigned to it
  */
 export interface NodeWithAuthor {
-  __typename?: "MediaItem" | "Page" | "Post";
+  __typename?: "MediaItem" | "Page" | "Post" | "Project";
   /**
    * Connection between the NodeWithAuthor type and the User type
    */
@@ -9948,7 +10430,10 @@ export interface NodeWithExcerpt {
  * A node that can have a featured image set
  */
 export interface NodeWithFeaturedImage {
-  __typename?: "Page" | "Post";
+  __typename?: "Page" | "Post" | "Project";
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * Connection between the ContentNode type and the ContentType type
@@ -10158,7 +10643,7 @@ export interface NodeWithRevisionsToContentNodeConnectionEdge {
  * A node that can have a template associated with it
  */
 export interface NodeWithTemplate {
-  __typename?: "MediaItem" | "Page" | "Post";
+  __typename?: "MediaItem" | "Page" | "Post" | "Project";
   /**
    * The template assigned to the node
    */
@@ -10170,7 +10655,7 @@ export interface NodeWithTemplate {
  * A node that NodeWith a title
  */
 export interface NodeWithTitle {
-  __typename?: "MediaItem" | "Page" | "Post";
+  __typename?: "MediaItem" | "Page" | "Post" | "Project";
   /**
    * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
    */
@@ -10303,6 +10788,9 @@ export interface Page {
      */
     where?: Maybe<PageToCommentConnectionWhereArgs>;
   }) => Maybe<PageToCommentConnection>;
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * The content of the post.
@@ -10742,6 +11230,9 @@ export interface Post {
      */
     where?: Maybe<PostToCommentConnectionWhereArgs>;
   }) => Maybe<PostToCommentConnection>;
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * The content of the post.
@@ -11061,6 +11552,9 @@ export interface Post {
  */
 export interface PostFormat {
   __typename?: "PostFormat";
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * Connection between the postFormat type and the ContentNode type
@@ -11092,7 +11586,7 @@ export interface PostFormat {
    */
   count?: Maybe<ScalarsEnums["Int"]>;
   /**
-   * The unique resource identifier path
+   * The unique identifier stored in the database
    */
   databaseId: ScalarsEnums["Int"];
   /**
@@ -11624,22 +12118,233 @@ export interface PostTypeLabelDetails {
 }
 
 /**
+ * The project type
+ */
+export interface Project {
+  __typename?: "Project";
+  /**
+   * Connection between the NodeWithAuthor type and the User type
+   */
+  author?: Maybe<NodeWithAuthorToUserConnectionEdge>;
+  /**
+   * The database identifier of the author of the node
+   */
+  authorDatabaseId?: Maybe<ScalarsEnums["Int"]>;
+  /**
+   * The globally unique identifier of the author of the node
+   */
+  authorId?: Maybe<ScalarsEnums["ID"]>;
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
+  conditionalTags?: Maybe<ConditionalTags>;
+  /**
+   * Project Content Area
+   */
+  contentArea?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * Connection between the ContentNode type and the ContentType type
+   */
+  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /**
+   * The name of the Content Type the node belongs to
+   */
+  contentTypeName: ScalarsEnums["String"];
+  /**
+   * The unique identifier stored in the database
+   */
+  databaseId: ScalarsEnums["Int"];
+  /**
+   * Post publishing date.
+   */
+  date?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The publishing date set in GMT.
+   */
+  dateGmt?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The desired slug of the post
+   */
+  desiredSlug?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds
+   */
+  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
+  /**
+   * The RSS enclosure for the object
+   */
+  enclosure?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * Connection between the ContentNode type and the EnqueuedScript type
+   */
+  enqueuedScripts: (args?: {
+    /**
+     * Cursor used along with the "first" argument to reference where in the dataset to get data
+     */
+    after?: Maybe<Scalars["String"]>;
+    /**
+     * Cursor used along with the "last" argument to reference where in the dataset to get data
+     */
+    before?: Maybe<Scalars["String"]>;
+    /**
+     * The number of items to return after the referenced "after" cursor
+     */
+    first?: Maybe<Scalars["Int"]>;
+    /**
+     * The number of items to return before the referenced "before" cursor
+     */
+    last?: Maybe<Scalars["Int"]>;
+  }) => Maybe<ContentNodeToEnqueuedScriptConnection>;
+  /**
+   * Connection between the ContentNode type and the EnqueuedStylesheet type
+   */
+  enqueuedStylesheets: (args?: {
+    /**
+     * Cursor used along with the "first" argument to reference where in the dataset to get data
+     */
+    after?: Maybe<Scalars["String"]>;
+    /**
+     * Cursor used along with the "last" argument to reference where in the dataset to get data
+     */
+    before?: Maybe<Scalars["String"]>;
+    /**
+     * The number of items to return after the referenced "after" cursor
+     */
+    first?: Maybe<Scalars["Int"]>;
+    /**
+     * The number of items to return before the referenced "before" cursor
+     */
+    last?: Maybe<Scalars["Int"]>;
+  }) => Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+  /**
+   * Connection between the NodeWithFeaturedImage type and the MediaItem type
+   */
+  featuredImage?: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge>;
+  /**
+   * The database identifier for the featured image node assigned to the content node
+   */
+  featuredImageDatabaseId?: Maybe<ScalarsEnums["Int"]>;
+  /**
+   * Globally unique ID of the featured image assigned to the node
+   */
+  featuredImageId?: Maybe<ScalarsEnums["ID"]>;
+  /**
+   * The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table.
+   */
+  guid?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The globally unique identifier of the project object.
+   */
+  id: ScalarsEnums["ID"];
+  /**
+   * Project Featured Image
+   */
+  image?: Maybe<MediaItem>;
+  /**
+   * Whether the node is a Content Node
+   */
+  isContentNode: ScalarsEnums["Boolean"];
+  /**
+   * Whether the object is a node in the preview state
+   */
+  isPreview?: Maybe<ScalarsEnums["Boolean"]>;
+  /**
+   * Whether the object is restricted from the current viewer
+   */
+  isRestricted?: Maybe<ScalarsEnums["Boolean"]>;
+  /**
+   * Whether the node is a Term
+   */
+  isTermNode: ScalarsEnums["Boolean"];
+  /**
+   * The user that most recently edited the node
+   */
+  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
+  /**
+   * The permalink of the post
+   */
+  link?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+   */
+  modified?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT.
+   */
+  modifiedGmt?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * Connection between the project type and the project type
+   */
+  preview?: Maybe<ProjectToPreviewConnectionEdge>;
+  /**
+   * The database id of the preview node
+   */
+  previewRevisionDatabaseId?: Maybe<ScalarsEnums["Int"]>;
+  /**
+   * Whether the object is a node in the preview state
+   */
+  previewRevisionId?: Maybe<ScalarsEnums["ID"]>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of the databaseId field
+   */
+  projectId: ScalarsEnums["Int"];
+  /**
+   * Project Title
+   */
+  projectTitle?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
+   */
+  slug?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The current status of the object
+   */
+  status?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * Project Summary
+   */
+  summary?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The template assigned to a node of content
+   */
+  template?: Maybe<ContentTemplate>;
+  templates?: Maybe<Array<Maybe<ScalarsEnums["String"]>>>;
+  /**
+   * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
+   */
+  title: (args?: {
+    /**
+     * Format of the field output
+     */
+    format?: Maybe<PostObjectFieldFormatEnum>;
+  }) => Maybe<ScalarsEnums["String"]>;
+  /**
+   * The unique resource identifier path
+   */
+  uri?: Maybe<ScalarsEnums["String"]>;
+}
+
+/**
+ * Connection between the project type and the project type
+ */
+export interface ProjectToPreviewConnectionEdge {
+  __typename?: "ProjectToPreviewConnectionEdge";
+  /**
+   * The node of the connection, without the edges
+   */
+  node?: Maybe<Project>;
+}
+
+/**
  * The reading setting type
  */
 export interface ReadingSettings {
   __typename?: "ReadingSettings";
   /**
-   * The ID of the page that should be displayed on the front page
-   */
-  pageOnFront?: Maybe<ScalarsEnums["Float"]>;
-  /**
    * Blog pages show at most.
    */
   postsPerPage?: Maybe<ScalarsEnums["Int"]>;
-  /**
-   * What to show on the front page
-   */
-  showOnFront?: Maybe<ScalarsEnums["String"]>;
 }
 
 /**
@@ -12168,6 +12873,40 @@ export interface RootQueryToPostFormatConnectionEdge {
 }
 
 /**
+ * Connection between the RootQuery type and the project type
+ */
+export interface RootQueryToProjectConnection {
+  __typename?: "RootQueryToProjectConnection";
+  /**
+   * Edges for the RootQueryToProjectConnection connection
+   */
+  edges?: Maybe<Array<Maybe<RootQueryToProjectConnectionEdge>>>;
+  /**
+   * The nodes of the connection, without the edges
+   */
+  nodes?: Maybe<Array<Maybe<Project>>>;
+  /**
+   * Information about pagination in a connection.
+   */
+  pageInfo?: Maybe<WPPageInfo>;
+}
+
+/**
+ * An edge in a connection
+ */
+export interface RootQueryToProjectConnectionEdge {
+  __typename?: "RootQueryToProjectConnectionEdge";
+  /**
+   * A cursor for use in pagination
+   */
+  cursor?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The item at the end of the edge
+   */
+  node?: Maybe<Project>;
+}
+
+/**
  * Connection between the RootQuery type and the tag type
  */
 export interface RootQueryToTagConnection {
@@ -12394,6 +13133,12 @@ export interface Settings {
   /**
    * Settings of the the string Settings Group
    */
+  atlasContentModelerSettingsSettingsAtlasContentModelerUsageTracking?: Maybe<
+    ScalarsEnums["String"]
+  >;
+  /**
+   * Settings of the the string Settings Group
+   */
   discussionSettingsDefaultCommentStatus?: Maybe<ScalarsEnums["String"]>;
   /**
    * Settings of the the string Settings Group
@@ -12436,17 +13181,9 @@ export interface Settings {
    */
   generalSettingsUrl?: Maybe<ScalarsEnums["String"]>;
   /**
-   * Settings of the the number Settings Group
-   */
-  readingSettingsPageOnFront?: Maybe<ScalarsEnums["Float"]>;
-  /**
    * Settings of the the integer Settings Group
    */
   readingSettingsPostsPerPage?: Maybe<ScalarsEnums["Int"]>;
-  /**
-   * Settings of the the string Settings Group
-   */
-  readingSettingsShowOnFront?: Maybe<ScalarsEnums["String"]>;
   /**
    * Settings of the the integer Settings Group
    */
@@ -12466,6 +13203,9 @@ export interface Settings {
  */
 export interface Tag {
   __typename?: "Tag";
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * Connection between the tag type and the ContentNode type
@@ -12845,10 +13585,57 @@ export interface TaxonomyToContentTypeConnectionEdge {
 }
 
 /**
+ * The template assigned to the node
+ */
+export interface Template_Blank {
+  __typename?: "Template_Blank";
+  /**
+   * The name of the template
+   */
+  templateName?: Maybe<ScalarsEnums["String"]>;
+}
+
+/**
+ * The template assigned to the node
+ */
+export interface Template_PageLargeHeader {
+  __typename?: "Template_PageLargeHeader";
+  /**
+   * The name of the template
+   */
+  templateName?: Maybe<ScalarsEnums["String"]>;
+}
+
+/**
+ * The template assigned to the node
+ */
+export interface Template_PageNoSeparators {
+  __typename?: "Template_PageNoSeparators";
+  /**
+   * The name of the template
+   */
+  templateName?: Maybe<ScalarsEnums["String"]>;
+}
+
+/**
+ * The template assigned to the node
+ */
+export interface Template_SinglePostNoSeparators {
+  __typename?: "Template_SinglePostNoSeparators";
+  /**
+   * The name of the template
+   */
+  templateName?: Maybe<ScalarsEnums["String"]>;
+}
+
+/**
  * Terms are nodes within a Taxonomy, used to group and relate other nodes.
  */
 export interface TermNode {
   __typename?: "Category" | "PostFormat" | "Tag";
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * The number of objects connected to the object
@@ -13082,8 +13869,12 @@ export interface UniformResourceIdentifiable {
     | "Page"
     | "Post"
     | "PostFormat"
+    | "Project"
     | "Tag"
     | "User";
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * The unique resource identifier path
@@ -13200,6 +13991,21 @@ export interface UpdatePostPayload {
 }
 
 /**
+ * The payload for the updateProject mutation
+ */
+export interface UpdateProjectPayload {
+  __typename?: "UpdateProjectPayload";
+  /**
+   * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+   */
+  clientMutationId?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The Post object mutation type.
+   */
+  project?: Maybe<Project>;
+}
+
+/**
  * The payload for the updateSettings mutation
  */
 export interface UpdateSettingsPayload {
@@ -13208,6 +14014,10 @@ export interface UpdateSettingsPayload {
    * Update all settings.
    */
   allSettings?: Maybe<Settings>;
+  /**
+   * Update the atlasContentModelerSettings setting.
+   */
+  atlasContentModelerSettingsSettings?: Maybe<AtlasContentModelerSettingsSettings>;
   /**
    * If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
    */
@@ -13316,6 +14126,9 @@ export interface User {
      */
     where?: Maybe<UserToCommentConnectionWhereArgs>;
   }) => Maybe<UserToCommentConnection>;
+  /**
+   * @deprecated Deprecated in favor of using Next.js pages
+   */
   conditionalTags?: Maybe<ConditionalTags>;
   /**
    * Identifies the primary key from the database.
@@ -13490,6 +14303,31 @@ export interface User {
      */
     where?: Maybe<UserToPostConnectionWhereArgs>;
   }) => Maybe<UserToPostConnection>;
+  /**
+   * Connection between the User type and the project type
+   */
+  projects: (args?: {
+    /**
+     * Cursor used along with the "first" argument to reference where in the dataset to get data
+     */
+    after?: Maybe<Scalars["String"]>;
+    /**
+     * Cursor used along with the "last" argument to reference where in the dataset to get data
+     */
+    before?: Maybe<Scalars["String"]>;
+    /**
+     * The number of items to return after the referenced "after" cursor
+     */
+    first?: Maybe<Scalars["Int"]>;
+    /**
+     * The number of items to return before the referenced "before" cursor
+     */
+    last?: Maybe<Scalars["Int"]>;
+    /**
+     * Arguments for filtering the connection
+     */
+    where?: Maybe<UserToProjectConnectionWhereArgs>;
+  }) => Maybe<UserToProjectConnection>;
   /**
    * The date the user registered or was created. The field follows a full ISO8601 date string format.
    */
@@ -13830,6 +14668,40 @@ export interface UserToPostConnectionEdge {
 }
 
 /**
+ * Connection between the User type and the project type
+ */
+export interface UserToProjectConnection {
+  __typename?: "UserToProjectConnection";
+  /**
+   * Edges for the UserToProjectConnection connection
+   */
+  edges?: Maybe<Array<Maybe<UserToProjectConnectionEdge>>>;
+  /**
+   * The nodes of the connection, without the edges
+   */
+  nodes?: Maybe<Array<Maybe<Project>>>;
+  /**
+   * Information about pagination in a connection.
+   */
+  pageInfo?: Maybe<WPPageInfo>;
+}
+
+/**
+ * An edge in a connection
+ */
+export interface UserToProjectConnectionEdge {
+  __typename?: "UserToProjectConnectionEdge";
+  /**
+   * A cursor for use in pagination
+   */
+  cursor?: Maybe<ScalarsEnums["String"]>;
+  /**
+   * The item at the end of the edge
+   */
+  node?: Maybe<Project>;
+}
+
+/**
  * Connection between the User type and the UserRole type
  */
 export interface UserToUserRoleConnection {
@@ -13921,6 +14793,9 @@ export interface Mutation {
   createPostFormat: (args: {
     input: CreatePostFormatInput;
   }) => Maybe<CreatePostFormatPayload>;
+  createProject: (args: {
+    input: CreateProjectInput;
+  }) => Maybe<CreateProjectPayload>;
   createTag: (args: { input: CreateTagInput }) => Maybe<CreateTagPayload>;
   createUser: (args: { input: CreateUserInput }) => Maybe<CreateUserPayload>;
   deleteCategory: (args: {
@@ -13937,6 +14812,9 @@ export interface Mutation {
   deletePostFormat: (args: {
     input: DeletePostFormatInput;
   }) => Maybe<DeletePostFormatPayload>;
+  deleteProject: (args: {
+    input: DeleteProjectInput;
+  }) => Maybe<DeleteProjectPayload>;
   deleteTag: (args: { input: DeleteTagInput }) => Maybe<DeleteTagPayload>;
   deleteUser: (args: { input: DeleteUserInput }) => Maybe<DeleteUserPayload>;
   generateAuthorizationCode: (args: {
@@ -13971,6 +14849,9 @@ export interface Mutation {
   updatePostFormat: (args: {
     input: UpdatePostFormatInput;
   }) => Maybe<UpdatePostFormatPayload>;
+  updateProject: (args: {
+    input: UpdateProjectInput;
+  }) => Maybe<UpdateProjectPayload>;
   updateSettings: (args: {
     input: UpdateSettingsInput;
   }) => Maybe<UpdateSettingsPayload>;
@@ -13981,6 +14862,7 @@ export interface Mutation {
 export interface Query {
   __typename?: "Query";
   allSettings?: Maybe<Settings>;
+  atlasContentModelerSettingsSettings?: Maybe<AtlasContentModelerSettingsSettings>;
   categories: (args?: {
     after?: Maybe<Scalars["String"]>;
     before?: Maybe<Scalars["String"]>;
@@ -14122,6 +15004,24 @@ export interface Query {
     last?: Maybe<Scalars["Int"]>;
     where?: Maybe<RootQueryToPostConnectionWhereArgs>;
   }) => Maybe<RootQueryToPostConnection>;
+  project: (args: {
+    asPreview?: Maybe<Scalars["Boolean"]>;
+    id: Scalars["ID"];
+    idType?: Maybe<ProjectIdType>;
+  }) => Maybe<Project>;
+  projectBy: (args?: {
+    id?: Maybe<Scalars["ID"]>;
+    projectId?: Maybe<Scalars["Int"]>;
+    slug?: Maybe<Scalars["String"]>;
+    uri?: Maybe<Scalars["String"]>;
+  }) => Maybe<Project>;
+  projects: (args?: {
+    after?: Maybe<Scalars["String"]>;
+    before?: Maybe<Scalars["String"]>;
+    first?: Maybe<Scalars["Int"]>;
+    last?: Maybe<Scalars["Int"]>;
+    where?: Maybe<RootQueryToProjectConnectionWhereArgs>;
+  }) => Maybe<RootQueryToProjectConnection>;
   readingSettings?: Maybe<ReadingSettings>;
   registeredScripts: (args?: {
     after?: Maybe<Scalars["String"]>;
@@ -14206,6 +15106,7 @@ export interface Subscription {
 }
 
 export interface SchemaObjectTypes {
+  AtlasContentModelerSettingsSettings: AtlasContentModelerSettingsSettings;
   Avatar: Avatar;
   Category: Category;
   CategoryToAncestorsCategoryConnection: CategoryToAncestorsCategoryConnection;
@@ -14244,6 +15145,7 @@ export interface SchemaObjectTypes {
   CreatePagePayload: CreatePagePayload;
   CreatePostFormatPayload: CreatePostFormatPayload;
   CreatePostPayload: CreatePostPayload;
+  CreateProjectPayload: CreateProjectPayload;
   CreateTagPayload: CreateTagPayload;
   CreateUserPayload: CreateUserPayload;
   DefaultTemplate: DefaultTemplate;
@@ -14253,6 +15155,7 @@ export interface SchemaObjectTypes {
   DeletePagePayload: DeletePagePayload;
   DeletePostFormatPayload: DeletePostFormatPayload;
   DeletePostPayload: DeletePostPayload;
+  DeleteProjectPayload: DeleteProjectPayload;
   DeleteTagPayload: DeleteTagPayload;
   DeleteUserPayload: DeleteUserPayload;
   DiscussionSettings: DiscussionSettings;
@@ -14311,6 +15214,8 @@ export interface SchemaObjectTypes {
   PostToTermNodeConnection: PostToTermNodeConnection;
   PostToTermNodeConnectionEdge: PostToTermNodeConnectionEdge;
   PostTypeLabelDetails: PostTypeLabelDetails;
+  Project: Project;
+  ProjectToPreviewConnectionEdge: ProjectToPreviewConnectionEdge;
   Query: Query;
   ReadingSettings: ReadingSettings;
   RegisterUserPayload: RegisterUserPayload;
@@ -14344,6 +15249,8 @@ export interface SchemaObjectTypes {
   RootQueryToPostConnectionEdge: RootQueryToPostConnectionEdge;
   RootQueryToPostFormatConnection: RootQueryToPostFormatConnection;
   RootQueryToPostFormatConnectionEdge: RootQueryToPostFormatConnectionEdge;
+  RootQueryToProjectConnection: RootQueryToProjectConnection;
+  RootQueryToProjectConnectionEdge: RootQueryToProjectConnectionEdge;
   RootQueryToTagConnection: RootQueryToTagConnection;
   RootQueryToTagConnectionEdge: RootQueryToTagConnectionEdge;
   RootQueryToTaxonomyConnection: RootQueryToTaxonomyConnection;
@@ -14368,6 +15275,10 @@ export interface SchemaObjectTypes {
   Taxonomy: Taxonomy;
   TaxonomyToContentTypeConnection: TaxonomyToContentTypeConnection;
   TaxonomyToContentTypeConnectionEdge: TaxonomyToContentTypeConnectionEdge;
+  Template_Blank: Template_Blank;
+  Template_PageLargeHeader: Template_PageLargeHeader;
+  Template_PageNoSeparators: Template_PageNoSeparators;
+  Template_SinglePostNoSeparators: Template_SinglePostNoSeparators;
   TermNodeToEnqueuedScriptConnection: TermNodeToEnqueuedScriptConnection;
   TermNodeToEnqueuedScriptConnectionEdge: TermNodeToEnqueuedScriptConnectionEdge;
   TermNodeToEnqueuedStylesheetConnection: TermNodeToEnqueuedStylesheetConnection;
@@ -14379,6 +15290,7 @@ export interface SchemaObjectTypes {
   UpdatePagePayload: UpdatePagePayload;
   UpdatePostFormatPayload: UpdatePostFormatPayload;
   UpdatePostPayload: UpdatePostPayload;
+  UpdateProjectPayload: UpdateProjectPayload;
   UpdateSettingsPayload: UpdateSettingsPayload;
   UpdateTagPayload: UpdateTagPayload;
   UpdateUserPayload: UpdateUserPayload;
@@ -14398,12 +15310,15 @@ export interface SchemaObjectTypes {
   UserToPageConnectionEdge: UserToPageConnectionEdge;
   UserToPostConnection: UserToPostConnection;
   UserToPostConnectionEdge: UserToPostConnectionEdge;
+  UserToProjectConnection: UserToProjectConnection;
+  UserToProjectConnectionEdge: UserToProjectConnectionEdge;
   UserToUserRoleConnection: UserToUserRoleConnection;
   UserToUserRoleConnectionEdge: UserToUserRoleConnectionEdge;
   WPPageInfo: WPPageInfo;
   WritingSettings: WritingSettings;
 }
 export type SchemaObjectTypesNames =
+  | "AtlasContentModelerSettingsSettings"
   | "Avatar"
   | "Category"
   | "CategoryToAncestorsCategoryConnection"
@@ -14442,6 +15357,7 @@ export type SchemaObjectTypesNames =
   | "CreatePagePayload"
   | "CreatePostFormatPayload"
   | "CreatePostPayload"
+  | "CreateProjectPayload"
   | "CreateTagPayload"
   | "CreateUserPayload"
   | "DefaultTemplate"
@@ -14451,6 +15367,7 @@ export type SchemaObjectTypesNames =
   | "DeletePagePayload"
   | "DeletePostFormatPayload"
   | "DeletePostPayload"
+  | "DeleteProjectPayload"
   | "DeleteTagPayload"
   | "DeleteUserPayload"
   | "DiscussionSettings"
@@ -14509,6 +15426,8 @@ export type SchemaObjectTypesNames =
   | "PostToTermNodeConnection"
   | "PostToTermNodeConnectionEdge"
   | "PostTypeLabelDetails"
+  | "Project"
+  | "ProjectToPreviewConnectionEdge"
   | "Query"
   | "ReadingSettings"
   | "RegisterUserPayload"
@@ -14542,6 +15461,8 @@ export type SchemaObjectTypesNames =
   | "RootQueryToPostConnectionEdge"
   | "RootQueryToPostFormatConnection"
   | "RootQueryToPostFormatConnectionEdge"
+  | "RootQueryToProjectConnection"
+  | "RootQueryToProjectConnectionEdge"
   | "RootQueryToTagConnection"
   | "RootQueryToTagConnectionEdge"
   | "RootQueryToTaxonomyConnection"
@@ -14566,6 +15487,10 @@ export type SchemaObjectTypesNames =
   | "Taxonomy"
   | "TaxonomyToContentTypeConnection"
   | "TaxonomyToContentTypeConnectionEdge"
+  | "Template_Blank"
+  | "Template_PageLargeHeader"
+  | "Template_PageNoSeparators"
+  | "Template_SinglePostNoSeparators"
   | "TermNodeToEnqueuedScriptConnection"
   | "TermNodeToEnqueuedScriptConnectionEdge"
   | "TermNodeToEnqueuedStylesheetConnection"
@@ -14577,6 +15502,7 @@ export type SchemaObjectTypesNames =
   | "UpdatePagePayload"
   | "UpdatePostFormatPayload"
   | "UpdatePostPayload"
+  | "UpdateProjectPayload"
   | "UpdateSettingsPayload"
   | "UpdateTagPayload"
   | "UpdateUserPayload"
@@ -14596,6 +15522,8 @@ export type SchemaObjectTypesNames =
   | "UserToPageConnectionEdge"
   | "UserToPostConnection"
   | "UserToPostConnectionEdge"
+  | "UserToProjectConnection"
+  | "UserToProjectConnectionEdge"
   | "UserToUserRoleConnection"
   | "UserToUserRoleConnectionEdge"
   | "WPPageInfo"
@@ -14610,6 +15538,7 @@ export interface $ContentNode {
   MediaItem?: MediaItem;
   Page?: Page;
   Post?: Post;
+  Project?: Project;
 }
 
 export interface $ContentRevisionUnion {
@@ -14619,6 +15548,10 @@ export interface $ContentRevisionUnion {
 
 export interface $ContentTemplate {
   DefaultTemplate?: DefaultTemplate;
+  Template_Blank?: Template_Blank;
+  Template_PageLargeHeader?: Template_PageLargeHeader;
+  Template_PageNoSeparators?: Template_PageNoSeparators;
+  Template_SinglePostNoSeparators?: Template_SinglePostNoSeparators;
 }
 
 export interface $DatabaseIdentifier {
@@ -14630,6 +15563,7 @@ export interface $DatabaseIdentifier {
   Page?: Page;
   Post?: Post;
   PostFormat?: PostFormat;
+  Project?: Project;
   Tag?: Tag;
   User?: User;
 }
@@ -14652,7 +15586,6 @@ export interface $MenuItemLinkable {
   Category?: Category;
   Page?: Page;
   Post?: Post;
-  PostFormat?: PostFormat;
   Tag?: Tag;
 }
 
@@ -14660,7 +15593,6 @@ export interface $MenuItemObjectUnion {
   Category?: Category;
   Page?: Page;
   Post?: Post;
-  PostFormat?: PostFormat;
   Tag?: Tag;
 }
 
@@ -14678,6 +15610,7 @@ export interface $Node {
   Plugin?: Plugin;
   Post?: Post;
   PostFormat?: PostFormat;
+  Project?: Project;
   Tag?: Tag;
   Taxonomy?: Taxonomy;
   Theme?: Theme;
@@ -14689,6 +15622,7 @@ export interface $NodeWithAuthor {
   MediaItem?: MediaItem;
   Page?: Page;
   Post?: Post;
+  Project?: Project;
 }
 
 export interface $NodeWithComments {
@@ -14709,6 +15643,7 @@ export interface $NodeWithExcerpt {
 export interface $NodeWithFeaturedImage {
   Page?: Page;
   Post?: Post;
+  Project?: Project;
 }
 
 export interface $NodeWithPageAttributes {
@@ -14724,12 +15659,14 @@ export interface $NodeWithTemplate {
   MediaItem?: MediaItem;
   Page?: Page;
   Post?: Post;
+  Project?: Project;
 }
 
 export interface $NodeWithTitle {
   MediaItem?: MediaItem;
   Page?: Page;
   Post?: Post;
+  Project?: Project;
 }
 
 export interface $NodeWithTrackbacks {
@@ -14749,6 +15686,7 @@ export interface $UniformResourceIdentifiable {
   Page?: Page;
   Post?: Post;
   PostFormat?: PostFormat;
+  Project?: Project;
   Tag?: Tag;
   User?: User;
 }
@@ -14792,6 +15730,7 @@ export interface ScalarsEnums extends MakeNullable<Scalars> {
     | PostObjectsConnectionOrderbyEnum
     | undefined;
   PostStatusEnum: PostStatusEnum | undefined;
+  ProjectIdType: ProjectIdType | undefined;
   RelationEnum: RelationEnum | undefined;
   TagIdType: TagIdType | undefined;
   TaxonomyEnum: TaxonomyEnum | undefined;
