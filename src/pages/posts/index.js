@@ -12,7 +12,7 @@ export default function Page() {
     first: appConfig.postsPerPage
   });
   const generalSettings = useQuery().generalSettings;
-  const {data, fetchMore} = usePagination((query, args) => {
+  const {data, fetchMore, isLoading} = usePagination((query, args) => {
     const {
       nodes,
       pageInfo: { hasNextPage, endCursor },
@@ -23,7 +23,6 @@ export default function Page() {
       endCursor,
     };
   }, {nodes: posts?.nodes, pageInfo: posts?.pageInfo});
-  const isLoading = useQuery().$state.isLoading;
 
   return (
     <>

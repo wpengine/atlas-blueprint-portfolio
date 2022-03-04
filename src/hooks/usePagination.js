@@ -30,10 +30,11 @@ export default function usePagination(fn, {
     pageInfo: pageInfo
   });
   const [paginationArgs, setPaginationArgs] = React.useState(initialArgs);
-
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
     if (paginationArgs?.after) {
+      setIsLoading(true);
       client.client.resolved(() => {
         return fnRef.current(client.client.query, paginationArgs)
       })
@@ -45,6 +46,9 @@ export default function usePagination(fn, {
             }
           })
         })
+        .finally(() => {
+          setIsLoading(false);
+      })
     }
   }, [paginationArgs?.after])
 
@@ -55,5 +59,5 @@ export default function usePagination(fn, {
     });
   };
 
-  return {data, fetchMore}
+  return {data, fetchMore, isLoading}
 }
