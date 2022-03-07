@@ -40,7 +40,10 @@ export default function Page() {
           <button
             disabled={isLoading}
             onClick={() => {
-              fetchMore()
+              fetchMore({
+                first: appConfig.postsPerPage,
+                after: data?.pageInfo?.endCursor
+              })
             }}
           >
             Load more Posts

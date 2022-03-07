@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { client } from 'client';
 import appConfig from 'app.config';
 
@@ -52,11 +52,8 @@ export default function usePagination(fn, {
     }
   }, [paginationArgs?.after])
 
-  const fetchMore = () => {
-    setPaginationArgs({
-      ...paginationArgs,
-      after: data?.pageInfo?.endCursor
-    });
+  const fetchMore = (args) => {
+    setPaginationArgs(args);
   };
 
   return {data, fetchMore, isLoading}
