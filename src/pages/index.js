@@ -18,12 +18,11 @@ export default function Page() {
   const {data, fetchMore, isLoading} = usePagination((query, args) => {
     const {
       nodes,
-      pageInfo: { hasNextPage, endCursor },
+      pageInfo,
     } = query.posts(args);
     return {
       nodes: Array.from(nodes),
-      hasNextPage,
-      endCursor,
+      pageInfo
     };
   }, {nodes: posts?.nodes, pageInfo: posts?.pageInfo});
 
