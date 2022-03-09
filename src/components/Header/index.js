@@ -1,16 +1,12 @@
-import { Heading, NavigationMenu } from 'components';
+import { FaSearch } from "react-icons/fa";
+import { Heading, NavigationMenu, PostInfo } from 'components';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaSearch } from "react-icons/fa";
 import styles from './Header.module.scss';
 
 const PRIMARY_MENU_LOCATION = "PRIMARY";
 
 export default function Header({title, image, date, author}) {
-    // This is duplicated in the Posts component. Can we fix that?
-    const formatOptions = { year: 'numeric', month: 'long', day: 'numeric'};
-    const postedAt = !! date ? new Date(date)?.toLocaleDateString("en-US", formatOptions) : undefined;
-
     const src = image?.sourceUrl();
     const { altText } = image || '';
     const { width, height } = image?.mediaDetails || {};
@@ -46,13 +42,11 @@ export default function Header({title, image, date, author}) {
                 { hasText && (
                     <div className={ styles['header__text'] } >
                         { !! title && <Heading className={ styles['header__title']}>{title}</Heading> }
-                        { ( !! date || !! author ) &&
-                            <div className={ styles['header__byline'] }>
-                                { date && <time dateTime={date}>{postedAt}</time> }
-                                {/* Is there a better way to space these than using margin? */}
-                                { author && <span>By {author}</span> }
-                            </div>
-                        }
+                        <PostInfo
+                            className={styles['header__byline']}
+                            author={author}
+                            date={date}
+                        />
                     </div>
                 ) }
             </div>
