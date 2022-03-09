@@ -1,27 +1,27 @@
 import React from 'react';
 import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { Pagination, Posts, Header } from 'components';
-import appConfig from 'app.config';
+import { Posts, Header, LoadMore } from 'components';
+import usePagination from "../../hooks/usePagination";
+import appConfig from "../../app.config";
 
 export default function Page() {
-  const { query = {} } = useRouter();
-  const { postSlug, postCursor } = query;
-  const { usePosts, useQuery } = client;
-  const generalSettings = useQuery().generalSettings;
-  const isBefore = postSlug === 'before';
+  const { useQuery, usePosts } = client;
   const posts = usePosts({
-    after: !isBefore ? postCursor : undefined,
-    before: isBefore ? postCursor : undefined,
-    first: !isBefore ? appConfig.postsPerPage : undefined,
-    last: isBefore ? appConfig.postsPerPage : undefined,
+    first: appConfig.postsPerPage
   });
-
-  if (useQuery().$state.isLoading) {
-    return null;
-  }
+  const generalSettings = useQuery().generalSettings;
+  const {data, fetchMore, isLoading} = usePagination((query, args) => {
+    const {
+      nodes,
+      pageInfo,
+    } = query.posts(args);
+    return {
+      nodes: Array.from(nodes),
+      pageInfo
+    };
+  }, {nodes: posts?.nodes, pageInfo: posts?.pageInfo});
 
   return (
     <>
@@ -36,8 +36,8 @@ export default function Page() {
       />
 
       <main className="container">
-        <Posts posts={posts?.nodes} readMoreText={"Read More"} id="posts-list" />
-        <Pagination pageInfo={posts?.pageInfo} basePath="/posts"/>
+        <Posts posts={data?.nodes} readMoreText={"Read More"} id="posts-list"/>
+        <LoadMore pageInfo={data.pageInfo} isLoading={isLoading} fetchMore={fetchMore}/>
       </main>
     </>
   );
