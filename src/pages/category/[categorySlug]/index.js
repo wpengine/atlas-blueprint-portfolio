@@ -2,23 +2,34 @@ import { getNextStaticProps, is404 } from '@faustjs/next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { client } from 'client';
-import { Pagination, Posts, Heading } from 'components';
+import { Posts, Heading, LoadMore } from 'components';
 import appConfig from 'app.config';
+import usePagination from "../../../hooks/usePagination";
+import React from "react";
 
 export default function Page() {
   const { useQuery, usePosts, useCategory } = client;
   const { query = {} } = useRouter();
-  const { categorySlug, paginationTerm, categoryCursor } = query;
+  const { categorySlug } = query;
   const generalSettings = useQuery().generalSettings;
   const category = useCategory();
-  const isBefore = paginationTerm === 'before';
   const posts = usePosts({
-    after: !isBefore ? categoryCursor : undefined,
-    before: isBefore ? categoryCursor : undefined,
-    first: !isBefore ? appConfig.postsPerPage : undefined,
-    last: isBefore ? appConfig.postsPerPage : undefined,
+    first: appConfig.postsPerPage,
+    where: {
+      categoryName: categorySlug,
+    },
   });
 
+  const {data, fetchMore, isLoading} = usePagination((query, args) => {
+    const {
+      nodes,
+      pageInfo,
+    } = query.posts(args);
+    return {
+      nodes: Array.from(nodes),
+      pageInfo
+    };
+  }, {nodes: posts?.nodes, pageInfo: posts?.pageInfo});
   return (
     <>
       <Head>
@@ -27,11 +38,8 @@ export default function Page() {
 
       <main className="container">
         <Heading level="h2">Category: {category?.name}</Heading>
-        <Posts posts={posts.nodes} />
-        <Pagination
-          pageInfo={posts.pageInfo}
-          basePath={`/category/${categorySlug}`}
-        />
+        <Posts posts={data.nodes} />
+        <LoadMore pageInfo={data.pageInfo} isLoading={isLoading} fetchMore={fetchMore}/>
       </main>
     </>
   );
