@@ -43,15 +43,32 @@ export function NextLinkWrapper({ href, children }) {
  *
  * @param  {Props} props The props object.
  * @param  {string} props.href Required: The href attribute.
- * @param  {primary|secondary} props.type The type of the button
+ * @param  {primary|primary-inverted|secondary} props.type The type of the button
  * @return {React.ReactElement} The Button component.
  */
-export default function Button({ href, type = "primary", children }) {
+export default function Button({ href, type, children }) {
   if (!href) {
     throw new Error("The href prop is required on the <Button /> component.");
   }
 
-  const buttonType = type === "secondary" ? "secondary" : "primary";
+  let buttonType;
+  switch (type) {
+    case "primary": {
+      buttonType = "primary";
+      break;
+    }
+    case "primary-inverted": {
+      buttonType = "primary-inverted";
+      break;
+    }
+    case "secondary": {
+      buttonType = "secondary";
+      break;
+    }
+    default: {
+      buttonType = "primary";
+    }
+  }
 
   return (
     <NextLinkWrapper href={href}>
