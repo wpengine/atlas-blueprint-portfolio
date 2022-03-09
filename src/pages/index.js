@@ -5,6 +5,8 @@ import { client } from "client";
 import { Posts, Pagination, Heading } from "components";
 import appConfig from "app.config";
 import CTA from "components/CTA/CTA";
+import Button from "components/Button/Button";
+import { FaArrowRight } from "react-icons/fa";
 
 export default function Page() {
   const { useQuery, usePosts } = client;
@@ -25,7 +27,13 @@ export default function Page() {
       </Head>
 
       <main className="container">
-        <CTA Button={() => <button>testing</button>}>
+        <CTA
+          Button={() => (
+            <Button href="/posts">
+              Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
+            </Button>
+          )}
+        >
           Learn about Core Web Vitals and how Atlas can help you reach your most
           demanding speed and user experience requirements.
         </CTA>

@@ -1,6 +1,9 @@
+@import "../../styles/Variables";
+
 .cta {
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background-color: #000066; // TODO: Remove hard coded color.
@@ -9,14 +12,31 @@
   color: #fff;
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+
+    @media (min-width: $breakpoint-small) {
+        flex-direction: row;
+    }
 }
 
 .content {
-    width: 60%;
+    width: 100%;
+    margin-bottom: 2rem;
+
+
+    @media (min-width: $breakpoint-small) {
+        width: 60%;
+        margin-bottom: 0;
+    }
+        
 }
 
 .action {
-    width: 40%;
-    text-align: right;
+    width: 100%;
+    text-align: center;
+
+    @media (min-width: $breakpoint-small) {
+        width: 40%;
+        text-align: right;
+    }
 
 }
