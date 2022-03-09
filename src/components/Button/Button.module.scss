@@ -1,0 +1,25 @@
+.button {
+    border: 1px solid transparent;
+    background-color: transparent;
+    text-transform: uppercase;
+    padding: 1.5rem 5rem;
+    font-size: 1.25rem;
+    appearance: none;
+
+    &.btn-primary {
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+
+    &.btn-secondary {
+        color: var(--color-white);
+        border-color: var(--color-primary);
+        background-color: var(--color-primary);
+    }
+
+    &:hover {
+        border-color: var(--color-black);
+        background-color: var(--color-black);
+        color: #fff;
+    }
+}
