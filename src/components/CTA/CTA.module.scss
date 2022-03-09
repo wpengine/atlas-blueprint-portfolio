@@ -1,0 +1,22 @@
+.cta {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000066; // TODO: Remove hard coded color.
+  padding: 4rem;
+  border: 1.5rem solid #fff;
+  color: #fff;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+
+.content {
+    width: 60%;
+}
+
+.action {
+    width: 40%;
+    text-align: right;
+
+}
