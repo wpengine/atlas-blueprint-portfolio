@@ -21,9 +21,9 @@ export function isHrefRelative(href) {
  * Conditionally wrap the button in a Next/Link component if the href prop is
  * relative.
  *
- * @param  {Props} props The props object.
- * @param  {string} props.href The href attribute.
- * @param  {React.ReactElement} props.children The content to be wrapped
+ * @param {Props} props The props object.
+ * @param {string} props.href The href attribute.
+ * @param {React.ReactElement} props.children The content to be wrapped
  * @return {React.ReactElement} The children, possibly wrapped in <Link>.
  */
 export function NextLinkWrapper({ href, children }) {
@@ -41,12 +41,13 @@ export function NextLinkWrapper({ href, children }) {
 /**
  * Render the Button component.
  *
- * @param  {Props} props The props object.
- * @param  {string} props.href Required: The href attribute.
- * @param  {primary|primary-inverted|secondary} props.type The type of the button
+ * @param {Props} props The props object.
+ * @param {string} props.href Required: The href attribute.
+ * @param {primary|primary-inverted|secondary} props.type The type of the button
+ * @param {string} props.className An optional className to be added to the button
  * @return {React.ReactElement} The Button component.
  */
-export default function Button({ href, type, children }) {
+export default function Button({ href, type, className, children }) {
   if (!href) {
     throw new Error("The href prop is required on the <Button /> component.");
   }
@@ -70,12 +71,15 @@ export default function Button({ href, type, children }) {
     }
   }
 
+  let buttonClassName = [
+    styles.button,
+    styles[`btn-${buttonType}`],
+    className ?? undefined,
+  ].join(" ");
+
   return (
     <NextLinkWrapper href={href}>
-      <a
-        href={href}
-        className={[styles.button, styles[`btn-${buttonType}`]].join(" ")}
-      >
+      <a href={href} className={buttonClassName}>
         {children}
       </a>
     </NextLinkWrapper>
