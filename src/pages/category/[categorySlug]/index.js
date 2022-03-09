@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { client } from 'client';
 import { Posts, Heading, LoadMore } from 'components';
 import appConfig from 'app.config';
-import usePagination from "../../../hooks/usePagination";
+import usePagination from "hooks/usePagination";
 import React from "react";
 
 export default function Page() {

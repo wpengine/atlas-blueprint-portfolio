@@ -28,7 +28,7 @@ function Posts({
               <div>
                 <FeaturedImage image={post?.featuredImage?.node?.sourceUrl()} alt={post?.featuredImage?.node?.altText} />
                 <Heading level="h4" className={styles['post-header']}>
-                  <Link href={`/posts/${post.slug}`}>
+                  <Link href={post.uri ?? '#'}>
                     <a>{post.title()}</a>
                   </Link>
                 </Heading>
