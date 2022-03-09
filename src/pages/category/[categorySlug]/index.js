@@ -20,16 +20,6 @@ export default function Page() {
     },
   });
 
-  const {data, fetchMore, isLoading} = usePagination((query, args) => {
-    const {
-      nodes,
-      pageInfo,
-    } = query.posts(args);
-    return {
-      nodes: Array.from(nodes),
-      pageInfo
-    };
-  }, {nodes: posts?.nodes, pageInfo: posts?.pageInfo});
   return (
     <>
       <Head>
