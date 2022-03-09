@@ -3,7 +3,7 @@ import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import { Pagination, Posts, Heading } from 'components';
+import { Pagination, Posts, Header } from 'components';
 import appConfig from 'app.config';
 
 export default function Page() {
@@ -31,8 +31,11 @@ export default function Page() {
         </title>
       </Head>
 
+      <Header
+        title="Latest Posts"
+      />
+
       <main className="container">
-        <Heading className="text-center">Latest Posts</Heading>
         <Posts posts={posts?.nodes} readMoreText={"Read More"} id="posts-list" />
         <Pagination pageInfo={posts?.pageInfo} basePath="/posts"/>
       </main>

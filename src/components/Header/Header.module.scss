@@ -1,0 +1,113 @@
+@import 'styles/Variables';
+@import 'styles/Mixins';
+
+.header {
+    margin-bottom: 10rem;
+
+    @include themify(true) {
+        color: themed( 'color-white' );
+        background-color: themed( 'color-primary' );
+    }
+}
+
+.header__bar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 3.0rem 0;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+.primary-navigation {
+    :global(.menu) {
+        display: flex;
+        list-style: none;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        padding: 1.0rem 0;
+        margin: 0;
+
+        li {
+            margin: 0;
+        }
+        
+        a {
+            padding: 1.0rem 2.0rem;
+            font-weight: $font-weight-bold;
+
+            &:hover,
+            &:focus {
+                border: 1px solid white;
+                padding-left: 1.9rem;
+                padding-right: 1.9rem;
+            }
+
+            @include themify(true) {
+                color: themed( 'color-white' );
+
+                &:hover,
+                &:focus {
+                    color: themed( 'color-white' );
+                }
+            }
+        }
+    }
+}
+
+.header__text,
+.header__image {
+    margin: auto;
+    text-align: center;
+}
+
+.header__text {
+    width: 100%;
+    max-width: 82rem;
+    padding: 8.25rem 0;
+}
+
+.header__title {
+    line-height: 1.25;
+}
+
+.header__byline {
+    font-weight: $font-weight-bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+
+    time + span {
+        margin-left: 0.7rem;
+    }
+}
+
+.header__image {
+    display: block;
+    position: relative;
+
+    figure {
+        margin: 0;
+        padding: 20px;
+        background-color: white;
+        filter: drop-shadow(0px 0px 50px rgba(0, 0, 0, 0.1));
+    }
+
+    span {
+        position: relative;
+        z-index: 2;
+    }
+
+    &:before {
+        content: " ";
+        position: absolute;
+        height: 50%;
+        width: 100vw;
+        background-color: white;
+        bottom: 0;
+        left: 0;
+        z-index: 0;
+    }
+}
