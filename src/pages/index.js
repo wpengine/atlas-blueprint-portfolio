@@ -1,22 +1,30 @@
-import { getNextStaticProps } from "@faustjs/next";
-import Head from "next/head";
-import React from "react";
-import { client } from "client";
-import { Posts, Pagination, Heading } from "components";
-import appConfig from "app.config";
-import CTA from "components/CTA/CTA";
-import Button from "components/Button/Button";
-import { FaArrowRight } from "react-icons/fa";
+import {getNextStaticProps} from '@faustjs/next';
+import Head from 'next/head';
+import React from 'react';
+import {client} from 'client';
+import { Posts, Heading, LoadMore } from 'components';
+import appConfig from 'app.config';
+import usePagination from "hooks/usePagination";
 
 export default function Page() {
-  const { useQuery, usePosts } = client;
+  const {useQuery, usePosts} = client;
   const generalSettings = useQuery().generalSettings;
   const posts = usePosts({
     first: appConfig.postsPerPage,
     where: {
-      categoryName: "uncategorized",
+      categoryName: 'uncategorized',
     },
   });
+  const {data, fetchMore, isLoading} = usePagination((query, args) => {
+    const {
+      nodes,
+      pageInfo,
+    } = query.posts(args);
+    return {
+      nodes: Array.from(nodes),
+      pageInfo
+    };
+  }, {nodes: posts?.nodes, pageInfo: posts?.pageInfo});
 
   return (
     <>
@@ -25,21 +33,13 @@ export default function Page() {
           {generalSettings?.title} - {generalSettings?.description}
         </title>
       </Head>
-
       <main className="container">
-        <CTA
-          Button={() => (
-            <Button href="/posts">
-              Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
-            </Button>
-          )}
-        >
-          Learn about Core Web Vitals and how Atlas can help you reach your most
-          demanding speed and user experience requirements.
-        </CTA>
+        <Heading className="text-center">Latest Posts</Heading>
+        <Posts posts={data?.nodes} readMoreText={"Read More"} id="posts-list"/>
+        <LoadMore pageInfo={data.pageInfo} isLoading={isLoading} fetchMore={fetchMore}/>
       </main>
     </>
-  );
+  )
 }
 
 export async function getStaticProps(context) {
