@@ -1,5 +1,3 @@
-import { Heading, FeaturedImage } from 'components';
-
 export default function ContentWrapper({content, className, children}) {
   return (
     <article className={['content', className].join(' ')}>

@@ -1,5 +1,5 @@
 import { FaSearch } from "react-icons/fa";
-import { Heading, NavigationMenu, PostInfo } from 'components';
+import { FeaturedImage, Heading, NavigationMenu, PostInfo } from 'components';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.scss';
@@ -7,12 +7,7 @@ import styles from './Header.module.scss';
 const PRIMARY_MENU_LOCATION = "PRIMARY";
 
 export default function Header({title, image, date, author}) {
-    const src = image?.sourceUrl();
-    const { altText } = image || '';
-    const { width, height } = image?.mediaDetails || {};
-
-    const hasText  = !! title || !! date || !! author;
-    const hasImage = !! src && !! width && !! height;
+    const hasText = title || date || author;
 
     return (
         <header className={ styles['header'] }>
@@ -51,13 +46,13 @@ export default function Header({title, image, date, author}) {
                 ) }
             </div>
 
-            { hasImage && (
+            { image && (
                 <div className={ styles['header__image'] } >
                     <div className="container" >
-                        {/* Could this be the FeaturedImage component? */}
-                        <figure>
-                            <Image src={ src } alt={ altText } width={ width } height={ height } />
-                        </figure>
+                        <FeaturedImage
+                            className={styles['featured-image']}
+                            image={image}
+                        />
                     </div>
                 </div>
             ) }

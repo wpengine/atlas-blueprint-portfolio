@@ -84,18 +84,6 @@
     display: block;
     position: relative;
 
-    figure {
-        margin: 0;
-        padding: 20px;
-        background-color: white;
-        filter: drop-shadow(0px 0px 50px rgba(0, 0, 0, 0.1));
-    }
-
-    span {
-        position: relative;
-        z-index: 2;
-    }
-
     &:before {
         content: " ";
         position: absolute;
@@ -106,4 +94,8 @@
         left: 0;
         z-index: 0;
     }
+}
+
+.featured-image {
+    margin: 0;
 }
