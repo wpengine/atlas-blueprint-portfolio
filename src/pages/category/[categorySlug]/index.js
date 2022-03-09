@@ -2,7 +2,7 @@ import { getNextStaticProps, is404 } from '@faustjs/next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { client } from 'client';
-import { Posts, Heading } from 'components';
+import { Posts, Heading, LoadMore } from 'components';
 import appConfig from 'app.config';
 import usePagination from "../../../hooks/usePagination";
 import React from "react";
@@ -39,18 +39,7 @@ export default function Page() {
       <main className="container">
         <Heading level="h2">Category: {category?.name}</Heading>
         <Posts posts={data.nodes} />
-        {isLoading && <p>Loading...</p>}
-        {data?.pageInfo?.hasNextPage && data?.pageInfo?.endCursor ? (
-          <button
-            disabled={isLoading}
-            onClick={() => fetchMore({
-              first: appConfig.postsPerPage,
-              after: data?.pageInfo?.endCursor
-            })}
-          >
-            Load more Posts
-          </button>
-        ) : null}
+        <LoadMore pageInfo={data.pageInfo} isLoading={isLoading} fetchMore={fetchMore}/>
       </main>
     </>
   );
