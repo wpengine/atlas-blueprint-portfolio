@@ -1,5 +1,5 @@
-import styles from "./Button.module.scss";
-import Link from "next/link";
+import styles from './Button.module.scss';
+import Link from 'next/link';
 
 /**
  * Determine if a given href attribute is a relative path.
@@ -49,25 +49,29 @@ export function NextLinkWrapper({ href, children }) {
  */
 export default function Button({ href, type, className, children }) {
   if (!href) {
-    throw new Error("The href prop is required on the <Button /> component.");
+    if (process.env.NODE_ENV === 'development') {
+      throw new Error('The href prop is required on the <Button /> component.');
+    }
+
+    return null;
   }
 
   let buttonType;
   switch (type) {
-    case "primary": {
-      buttonType = "primary";
+    case 'primary': {
+      buttonType = 'primary';
       break;
     }
-    case "primary-inverted": {
-      buttonType = "primary-inverted";
+    case 'primary-inverted': {
+      buttonType = 'primary-inverted';
       break;
     }
-    case "secondary": {
-      buttonType = "secondary";
+    case 'secondary': {
+      buttonType = 'secondary';
       break;
     }
     default: {
-      buttonType = "primary";
+      buttonType = 'primary';
     }
   }
 
@@ -75,7 +79,7 @@ export default function Button({ href, type, className, children }) {
     styles.button,
     styles[`btn-${buttonType}`],
     className ?? undefined,
-  ].join(" ");
+  ].join(' ');
 
   return (
     <NextLinkWrapper href={href}>
