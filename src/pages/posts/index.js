@@ -3,7 +3,7 @@ import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
 import Head from 'next/head';
 import { Posts, Header, LoadMore } from 'components';
-import usePagination from "../../hooks/usePagination";
+import usePagination from "hooks/usePagination";
 import appConfig from "../../app.config";
 
 export default function Page() {

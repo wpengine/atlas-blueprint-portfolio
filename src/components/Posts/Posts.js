@@ -27,7 +27,7 @@ function Posts({
                   height={340}
                 />
                 <Heading level="h4" className={styles['post-header']}>
-                  <Link href={`/posts/${post.slug}`}>
+                  <Link href={post.uri ?? '#'}>
                     <a>{post.title()}</a>
                   </Link>
                 </Heading>

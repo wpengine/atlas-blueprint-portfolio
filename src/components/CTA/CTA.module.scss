@@ -1,0 +1,41 @@
+@import "styles/Variables";
+
+.cta {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  background-color: var(--color-primary);
+  padding: 4rem;
+  border: 1.5rem solid #fff;
+  color: #fff;
+  box-shadow: #000 0px 0px 0px 0px,
+    #000 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+
+    @media (min-width: $breakpoint-small) {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.content {
+    width: 100%;
+    margin-bottom: 2rem;
+
+    @media (min-width: $breakpoint-small) {
+        width: 60%;
+        margin-bottom: 0;
+    }
+}
+
+.action {
+    width: 100%;
+    text-align: center;
+
+    @media (min-width: $breakpoint-small) {
+        width: 40%;
+        text-align: right;
+    }
+}
