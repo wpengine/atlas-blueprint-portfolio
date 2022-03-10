@@ -16,7 +16,13 @@
   font-size: 2.75rem;
 }
 
-.quoteIcon {
+.quote-icon {
   font-size: 3rem;
   margin-bottom: 2rem;
+}
+
+.slide-content {
+  p:only-child {
+    margin-bottom: 0;
+  }
 }

@@ -19,7 +19,7 @@ export default function Testimonials({ testimonials }) {
   return (
     <>
       <div className={styles.container}>
-        <FaQuoteRight className={styles.quoteIcon} />
+        <FaQuoteRight className={styles['quote-icon']} />
 
         <Carousel
           showIndicators={false}
@@ -39,8 +39,16 @@ export default function Testimonials({ testimonials }) {
           showStatus={false}
         >
           {testimonials.map((testimonial, index) => (
-            <TestimonialItem author={testimonial?.author} key={index}>
-              {testimonial?.content}
+            <TestimonialItem
+              author={testimonial?.testimonialAuthor}
+              key={index}
+            >
+              <div
+                className={styles['slide-content']}
+                dangerouslySetInnerHTML={{
+                  __html: testimonial?.testimonialContent,
+                }}
+              />
             </TestimonialItem>
           ))}
         </Carousel>
