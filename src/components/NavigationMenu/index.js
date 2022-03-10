@@ -3,7 +3,11 @@ import Link from 'next/link';
 
 export default function NavigationMenu({ className, menuLocation, children }) {
     if ( ! menuLocation ) {
-        throw new Error("The menuLocation prop is required on the <NavigationMenu /> component.");
+        if (process.env.NODE_ENV === 'development') {
+            throw new Error("The menuLocation prop is required on the <NavigationMenu /> component.");
+        }
+
+        return null;
     }
 
     const { useQuery } = client;
