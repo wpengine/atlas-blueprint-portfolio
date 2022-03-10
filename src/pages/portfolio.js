@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { client } from 'client';
 import appConfig from '../app.config';
 import usePagination from 'hooks/usePagination';
-import { Heading, LoadMore, Projects } from 'components';
+import { Header, LoadMore, Projects } from 'components';
 import { getNextStaticProps } from '@faustjs/next';
 
 export default function Page() {
@@ -30,8 +30,8 @@ export default function Page() {
           {generalSettings?.title} - {generalSettings?.description}
         </title>
       </Head>
+      <Header title="Portfolio" />
       <main className="container">
-        <Heading className="text-center">Portfolio</Heading>
         <Projects projects={data.nodes} id="portfolio-list" />
         <LoadMore
           pageInfo={data.pageInfo}
