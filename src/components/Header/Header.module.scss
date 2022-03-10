@@ -1,13 +1,9 @@
 @import 'styles/Variables';
-@import 'styles/Mixins';
 
 .header {
     margin-bottom: 10rem;
-
-    @include themify(true) {
-        color: themed( 'color-white' );
-        background-color: themed( 'color-primary' );
-    }
+    color: var(--color-white);
+    background-color: var(--color-primary);
 }
 
 .header__bar {
@@ -38,21 +34,14 @@
         a {
             padding: 1.0rem;
             font-weight: $font-weight-bold;
+            color: var(--color-white);
 
             &:hover,
             &:focus {
-                border: 1px solid white;
+                border: 1px solid var(--color-white);
+                color: var(--color-white);
                 padding-left: 0.9rem;
                 padding-right: 0.9rem;
-            }
-
-            @include themify(true) {
-                color: themed( 'color-white' );
-
-                &:hover,
-                &:focus {
-                    color: themed( 'color-white' );
-                }
             }
         }
     }
@@ -89,7 +78,7 @@
         position: absolute;
         height: 50%;
         width: 100vw;
-        background-color: white;
+        background-color: var(--color-white);
         bottom: 0;
         left: 0;
         z-index: 0;
