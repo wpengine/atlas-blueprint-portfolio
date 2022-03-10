@@ -18,14 +18,6 @@ import styles from './Testimonials.module.scss';
 export default function Testimonials({ testimonials }) {
   return (
     <>
-      <style jsx global>{`
-        .carousel.carousel-slider {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-      `}</style>
-
       <div className={styles.container}>
         <FaQuoteRight className={styles.quoteIcon} />
 
