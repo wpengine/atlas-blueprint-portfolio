@@ -65,3 +65,9 @@ hr {
   }
   margin: 3.0rem 0;
 }
+
+#__next {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}

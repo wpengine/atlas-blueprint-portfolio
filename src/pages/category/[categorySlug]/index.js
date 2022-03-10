@@ -2,10 +2,10 @@ import { getNextStaticProps, is404 } from '@faustjs/next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { client } from 'client';
-import { Posts, Heading, LoadMore } from 'components';
+import { Posts, Heading, LoadMore, Footer, Main, Header } from 'components';
 import appConfig from 'app.config';
-import usePagination from "hooks/usePagination";
-import React from "react";
+import usePagination from 'hooks/usePagination';
+import React from 'react';
 
 export default function Page() {
   const { useQuery, usePosts, useCategory } = client;
@@ -26,11 +26,19 @@ export default function Page() {
         <title>Posts - {generalSettings?.title}</title>
       </Head>
 
-      <main className="container">
+      <Header title={`${category?.name} Posts`} />
+
+      <Main className="container">
         <Heading level="h2">Category: {category?.name}</Heading>
         <Posts posts={data.nodes} />
-        <LoadMore pageInfo={data.pageInfo} isLoading={isLoading} fetchMore={fetchMore}/>
-      </main>
+        <LoadMore
+          pageInfo={data.pageInfo}
+          isLoading={isLoading}
+          fetchMore={fetchMore}
+        />
+      </Main>
+
+      <Footer />
     </>
   );
 }
