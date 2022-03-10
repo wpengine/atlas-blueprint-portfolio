@@ -1,19 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { Heading, FeaturedImage } from 'components';
+import { Heading, FeaturedImage, PostInfo } from 'components';
 import styles from './Posts.module.scss';
 
-function PostInfo({post}) {
-  const formatOptions = { year: 'numeric', month: 'long', day: 'numeric'};
-  const postedAt = new Date(post?.date).toLocaleDateString("en-US", formatOptions) ?? '';
-  return <p className={styles['post-info']}>{postedAt} By {post?.author?.node?.name ?? ''}</p>
-}
-
-function Posts({
-                 posts,
-                 intro,
-                 id,
-               }) {
+function Posts({ posts, intro, id }) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
@@ -24,15 +14,25 @@ function Posts({
             <div
               className="column column-33 text-center"
               key={post.id ?? ''}
-              id={`post-${post.id}`}>
+              id={`post-${post.id}`}
+            >
               <div>
-                <FeaturedImage image={post?.featuredImage?.node?.sourceUrl()} alt={post?.featuredImage?.node?.altText} />
+                <FeaturedImage
+                  className={styles['post__featured-image']}
+                  image={post?.featuredImage?.node}
+                  width={340}
+                  height={340}
+                />
                 <Heading level="h4" className={styles['post-header']}>
                   <Link href={post.uri ?? '#'}>
                     <a>{post.title()}</a>
                   </Link>
                 </Heading>
-                <PostInfo post={post}/>
+                <PostInfo
+                  className={styles['post-info']}
+                  author={post?.author?.node?.name}
+                  date={post?.date}
+                />
               </div>
             </div>
           );
