@@ -1,0 +1,21 @@
+@import "styles/Variables";
+
+.list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.image {
+  min-width: 40rem;
+
+  @media (max-width: $breakpoint-small) {
+    min-width: 20rem;
+  }
+}
+
+.list-item-content {
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+}
