@@ -1,6 +1,6 @@
 import React from 'react';
 import { client } from 'client';
-import Head from "next/head";
+import Head from 'next/head';
 
 export default function Page() {
   const { useQuery } = client;
@@ -13,9 +13,7 @@ export default function Page() {
           {generalSettings?.title} - {generalSettings?.description}
         </title>
       </Head>
-      <main className="content">
-        404 Page
-      </main>
+      <main className="content">404 Page</main>
     </>
   );
 }

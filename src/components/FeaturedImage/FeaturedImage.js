@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import styles from './FeaturedImage.module.scss';
 
-export default function FeaturedImage({className, image, ...props}) {
+export default function FeaturedImage({ className, image, ...props }) {
   const src = image?.sourceUrl();
   const { altText } = image || '';
   const { width, height } = image?.mediaDetails || {};
 
-  return ( src && width && height ) ? (
+  return src && width && height ? (
     <figure className={[styles['featured-image'], className].join(' ')}>
       <Image
         src={src}
@@ -16,5 +16,6 @@ export default function FeaturedImage({className, image, ...props}) {
         layout="responsive"
         {...props}
       />
-    </figure>) : null;
+    </figure>
+  ) : null;
 }

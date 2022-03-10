@@ -3,17 +3,18 @@ import Link from 'next/link';
 import { Heading, FeaturedImage } from 'components';
 import styles from './Posts.module.scss';
 
-function PostInfo({post}) {
-  const formatOptions = { year: 'numeric', month: 'long', day: 'numeric'};
-  const postedAt = new Date(post?.date).toLocaleDateString("en-US", formatOptions) ?? '';
-  return <p className={styles['post-info']}>{postedAt} By {post?.author?.node?.name ?? ''}</p>
+function PostInfo({ post }) {
+  const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const postedAt =
+    new Date(post?.date).toLocaleDateString('en-US', formatOptions) ?? '';
+  return (
+    <p className={styles['post-info']}>
+      {postedAt} By {post?.author?.node?.name ?? ''}
+    </p>
+  );
 }
 
-function Posts({
-                 posts,
-                 intro,
-                 id,
-               }) {
+function Posts({ posts, intro, id }) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
@@ -24,15 +25,19 @@ function Posts({
             <div
               className="column column-33 text-center"
               key={post.id ?? ''}
-              id={`post-${post.id}`}>
+              id={`post-${post.id}`}
+            >
               <div>
-                <FeaturedImage image={post?.featuredImage?.node?.sourceUrl()} alt={post?.featuredImage?.node?.altText} />
+                <FeaturedImage
+                  image={post?.featuredImage?.node?.sourceUrl()}
+                  alt={post?.featuredImage?.node?.altText}
+                />
                 <Heading level="h4" className={styles['post-header']}>
                   <Link href={post.uri ?? '#'}>
                     <a>{post.title()}</a>
                   </Link>
                 </Heading>
-                <PostInfo post={post}/>
+                <PostInfo post={post} />
               </div>
             </div>
           );
