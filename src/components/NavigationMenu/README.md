@@ -6,7 +6,7 @@ Renders a navigation menu from WordPress.
 
 ```jsx
 import { NavigationMenu } from 'components';
-import { styles } from 'MyNavigationMenu.module.scss';
+import styles from 'MyNavigationMenu.module.scss';
 
 const MyNavigationMenu = () => (
 	<NavigationMenu
