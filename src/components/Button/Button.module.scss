@@ -1,3 +1,5 @@
+@import 'styles/variables';
+
 .button {
     display: inline-flex;
     align-items: center;
@@ -7,27 +9,21 @@
     padding: 1.75rem 5rem;
     font-size: 1.25rem;
     appearance: none;
-    font-weight: 700;
+    font-weight: $font-weight-bold;
 
-    &.btn-primary {
+    &.button-primary {
         color: var(--color-black);
         border-color: var(--color-black);
         background-color: var(--color-white);
     }
 
-    &.btn-primary-inverted {
-        color: var(--color-white);
-        border-color: var(--color-black);
-        background-color: var(--color-black);
-    }
-
-    &.btn-secondary {
+    &.button-secondary {
         color: var(--color-white);
         border-color: var(--color-primary);
         background-color: var(--color-primary);
     }
 
-    &:hover {
+    &:hover, &:focus {
         border-color: var(--color-black);
         background-color: var(--color-black);
         color: #fff !important; // TODO: Remove important declaration when mixins are removed.
