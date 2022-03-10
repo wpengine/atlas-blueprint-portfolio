@@ -3,11 +3,7 @@ import Link from 'next/link';
 import { Heading, FeaturedImage, PostInfo } from 'components';
 import styles from './Posts.module.scss';
 
-function Posts({
-                 posts,
-                 intro,
-                 id,
-               }) {
+function Posts({ posts, intro, id }) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
@@ -18,7 +14,8 @@ function Posts({
             <div
               className="column column-33 text-center"
               key={post.id ?? ''}
-              id={`post-${post.id}`}>
+              id={`post-${post.id}`}
+            >
               <div>
                 <FeaturedImage
                   className={styles['post__featured-image']}
@@ -32,9 +29,9 @@ function Posts({
                   </Link>
                 </Heading>
                 <PostInfo
-                    className={styles['post-info']}
-                    author={post?.author?.node?.name}
-                    date={post?.date}
+                  className={styles['post-info']}
+                  author={post?.author?.node?.name}
+                  date={post?.date}
                 />
               </div>
             </div>

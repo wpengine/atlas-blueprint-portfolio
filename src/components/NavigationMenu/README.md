@@ -9,14 +9,11 @@ import { NavigationMenu } from 'components';
 import styles from 'MyNavigationMenu.module.scss';
 
 const MyNavigationMenu = () => (
-	<NavigationMenu
-        className={ styles.my_class }
-        menuLocation="PRIMARY"
-    >
-        <li>
-            <a href="https://faustjs.org">Faust.js</a>
-        </li>
-    </NavigationMenu>
+  <NavigationMenu className={styles.my_class} menuLocation="PRIMARY">
+    <li>
+      <a href="https://faustjs.org">Faust.js</a>
+    </li>
+  </NavigationMenu>
 );
 ```
 

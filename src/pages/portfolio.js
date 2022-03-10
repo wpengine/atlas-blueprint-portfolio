@@ -30,7 +30,7 @@ export default function Page() {
           {generalSettings?.title} - {generalSettings?.description}
         </title>
       </Head>
-      <Header title="Portfolio"/>
+      <Header title="Portfolio" />
       <main className="container">
         <Projects projects={data.nodes} id="portfolio-list" />
         <LoadMore

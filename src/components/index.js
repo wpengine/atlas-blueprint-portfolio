@@ -9,13 +9,13 @@ import ContentWrapper from './ContentWrapper';
 import Projects from './Projects';
 
 export {
-    Posts,
-    PostInfo,
-    Header,
-    Heading,
-    NavigationMenu,
-    FeaturedImage,
-    ContentWrapper,
-    LoadMore,
-    Projects,
+  Posts,
+  PostInfo,
+  Header,
+  Heading,
+  NavigationMenu,
+  FeaturedImage,
+  ContentWrapper,
+  LoadMore,
+  Projects,
 };

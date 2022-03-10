@@ -14,12 +14,7 @@ This component also renders the page title, date, author, and featured image if 
 import { Header } from 'components';
 
 const MyHeader = () => (
-	<Header
-        title="Home Page"
-        image={ image }
-        date={ date }
-        author={ author }
-    />
+  <Header title="Home Page" image={image} date={date} author={author} />
 );
 ```
 

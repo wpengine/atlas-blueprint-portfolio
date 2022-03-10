@@ -15,10 +15,10 @@ export function PostComponent({ post }) {
       </Head>
 
       <Header
-        title={ post?.title() }
-        date={ post?.date }
-        author={ post?.author?.node?.name }
-        image={ post?.featuredImage?.node }
+        title={post?.title()}
+        date={post?.date}
+        author={post?.author?.node?.name}
+        image={post?.featuredImage?.node}
       />
 
       <main className="container">

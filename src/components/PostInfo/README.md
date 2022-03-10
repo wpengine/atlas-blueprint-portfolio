@@ -11,11 +11,7 @@ import { PostInfo } from 'components';
 import styles from 'MyStyles.module.scss';
 
 const MyPostInfo = () => (
-	<PostInfo
-        className={ styles.my_class }
-        date={ date }
-        author={ author }
-    />
+  <PostInfo className={styles.my_class} date={date} author={author} />
 );
 ```
 
