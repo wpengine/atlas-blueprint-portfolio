@@ -16,10 +16,9 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
           >
             <div className={styles['list-item']}>
               <FeaturedImage
-                image={project?.featuredImage?.node?.sourceUrl()}
+                className={styles['image']}
+                image={project?.featuredImage?.node}
                 alt={project?.featuredImage?.node?.altText}
-                width={400}
-                layout="fixed"
               />
               <div className={styles['list-item-content']}>
                 <Heading level="h3">
