@@ -37,7 +37,6 @@ export default function Testimonials({ testimonials }) {
           )}
           infiniteLoop={true}
           showStatus={false}
-          className={styles.testimonialSlider}
         >
           {testimonials.map((testimonial, index) => (
             <TestimonialItem author={testimonial?.author} key={index}>
