@@ -22,17 +22,17 @@ export default function Page() {
         <div className="content">
           <h1>All Categories</h1>
           <ul>
-            {
-              categories?.nodes?.map(({ id, name }) => {
-                return (<li key={id}>
+            {categories?.nodes?.map(({ id, name }) => {
+              return (
+                <li key={id}>
                   {
                     <Link href={`category/${name}`}>
                       <a>{name}</a>
                     </Link>
                   }
-                </li>)
-              })
-            }
+                </li>
+              );
+            })}
           </ul>
         </div>
       </main>
