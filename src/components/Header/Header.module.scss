@@ -24,7 +24,6 @@
     list-style: none;
     text-transform: uppercase;
     font-size: 1.4rem;
-    padding: 1rem 0;
     margin: 0;
 
     li {
@@ -32,6 +31,9 @@
     }
 
     a {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
       padding: 1rem;
       font-weight: $font-weight-bold;
       color: var(--color-white);
@@ -40,8 +42,7 @@
       &:focus {
         border: 1px solid var(--color-white);
         color: var(--color-white);
-        padding-left: 0.9rem;
-        padding-right: 0.9rem;
+        padding: 0.9rem;
       }
     }
   }

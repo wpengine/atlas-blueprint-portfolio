@@ -21,6 +21,7 @@ export default function Header({ title, image, date, author }) {
                   width={400}
                   height={80}
                   alt="Blueprint media logo"
+                  layout="responsive"
                 />
               </a>
             </Link>
