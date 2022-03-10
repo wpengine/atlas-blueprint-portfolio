@@ -6,7 +6,7 @@ export default function FeaturedImage({className, image, ...props}) {
   const { altText } = image || '';
   const { width, height } = image?.mediaDetails || {};
 
-  return (!! src && !! width && !! height ) ? (
+  return ( src && width && height ) ? (
     <figure className={[styles['featured-image'], className].join(' ')}>
       <Image
         src={src}
