@@ -6,7 +6,7 @@ import styles from './Button.module.scss';
  *
  * @param {Props} props The props object.
  * @param {string} props.href Required: The href attribute.
- * @param {primary|primary-inverted|secondary} props.type The type of the button
+ * @param {primary|secondary} props.type The type of the button
  * @param {string} props.className An optional className to be added to the button
  * @return {React.ReactElement} The Button component.
  */
@@ -25,10 +25,6 @@ export default function Button({ href, type, className, children }) {
       buttonType = 'primary';
       break;
     }
-    case 'primary-inverted': {
-      buttonType = 'primary-inverted';
-      break;
-    }
     case 'secondary': {
       buttonType = 'secondary';
       break;
@@ -40,7 +36,7 @@ export default function Button({ href, type, className, children }) {
 
   let buttonClassName = [
     styles.button,
-    styles[`btn-${buttonType}`],
+    styles[`button-${buttonType}`],
     className ?? undefined,
   ].join(' ');
 
