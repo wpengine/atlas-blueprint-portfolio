@@ -7,6 +7,7 @@ import NavigationMenu from './NavigationMenu';
 import FeaturedImage from './FeaturedImage';
 import ContentWrapper from './ContentWrapper';
 import Projects from './Projects';
+import Footer from './Footer/Footer';
 
 export {
   Posts,
@@ -18,4 +19,5 @@ export {
   ContentWrapper,
   LoadMore,
   Projects,
+  Footer,
 };
