@@ -2,7 +2,7 @@ import { getNextStaticProps } from '@faustjs/next';
 import Head from 'next/head';
 import React from 'react';
 import { client } from 'client';
-import { Posts, Header, LoadMore } from 'components';
+import { Posts, Header, LoadMore, Footer } from 'components';
 import appConfig from 'app.config';
 import usePagination from 'hooks/usePagination';
 
@@ -42,6 +42,8 @@ export default function Page() {
           fetchMore={fetchMore}
         />
       </main>
+
+      <Footer />
     </>
   );
 }

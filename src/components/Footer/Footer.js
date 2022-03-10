@@ -8,6 +8,7 @@ import {
   FaTwitter,
   FaYoutube,
 } from 'react-icons/fa';
+import NavigationMenu from 'components/NavigationMenu';
 
 /**
  * @type {import('client/schema.generated').MenuLocationEnum}
@@ -90,10 +91,10 @@ export default function Footer() {
           </div>
         )}
 
-        {/* <NavigationMenu
+        <NavigationMenu
           className={styles.nav}
           menuLocation={FOOTER_MENU_LOCATION}
-        /> */}
+        />
 
         <div className={styles.copyright}>
           &copy; {new Date().getFullYear()} Blueprint Media &#183; Powered By{' '}

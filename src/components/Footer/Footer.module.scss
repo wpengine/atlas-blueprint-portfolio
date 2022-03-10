@@ -81,14 +81,24 @@
 
     ul {
         display: inline-flex;
+        flex-direction: column;
+        text-align: center;
         list-style: none;
         padding: 0;
         margin: 0;
+
+        @media (min-width: $breakpoint-small) {
+            flex-direction: row;
+        }
     }
 
     li {
         margin: 0;
-        margin-right: 3rem;
+        margin-right: 0;
+
+        @media(min-width: $breakpoint-small) {
+            margin-right: 3rem;
+        }
 
         &:last-child { 
             margin-right: 0;
