@@ -3,28 +3,26 @@ import Link from 'next/link';
 import { Heading, FeaturedImage } from 'components';
 import styles from './Projects.module.scss';
 
-function Projects({
-                    projects,
-                    id,
-                    emptyText = 'No projects found.'
-                  }) {
+function Projects({ projects, id, emptyText = 'No projects found.' }) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
       {projects?.map((project) => {
         return (
           <div
-            className='row'
+            className="row"
             key={project.id ?? ''}
-            id={`project-${project.id}`}>
-            <div className={styles['projects-list']}>
+            id={`project-${project.id}`}
+          >
+            <div className={styles['list-item']}>
               <FeaturedImage
                 image={project?.featuredImage?.node?.sourceUrl()}
                 alt={project?.featuredImage?.node?.altText}
+                width={400}
                 layout="fixed"
               />
-              <div className="column column-50">
-                <Heading level='h3'>
+              <div className={styles['list-item-content']}>
+                <Heading level="h3">
                   <Link href={project.uri ?? '#'}>
                     <a>{project.title()}</a>
                   </Link>

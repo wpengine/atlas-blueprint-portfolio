@@ -1,4 +1,13 @@
-.projects-list {
+@import "styles/Variables";
+
+.list-item {
   display: flex;
   align-items: center;
+  margin-bottom: 2rem;
+}
+
+.list-item-content {
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
 }
