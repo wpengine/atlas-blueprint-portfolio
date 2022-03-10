@@ -12,7 +12,7 @@ export default function Header({title, image, date, author}) {
     return (
         <header className={ styles['header'] }>
             <div className="container" >
-                <div className={ styles['header__bar'] }>
+                <div className={ styles['bar'] }>
                     <div className={ styles['logo'] }>
                         <Link href="/">
                             <a>
@@ -35,10 +35,10 @@ export default function Header({title, image, date, author}) {
                 </div>
 
                 { hasText && (
-                    <div className={ styles['header__text'] } >
-                        { !! title && <Heading className={ styles['header__title']}>{title}</Heading> }
+                    <div className={ styles['text'] } >
+                        { !! title && <Heading className={ styles['title']}>{title}</Heading> }
                         <PostInfo
-                            className={styles['header__byline']}
+                            className={styles['byline']}
                             author={author}
                             date={date}
                         />
@@ -47,7 +47,7 @@ export default function Header({title, image, date, author}) {
             </div>
 
             { image && (
-                <div className={ styles['header__image'] } >
+                <div className={ styles['image'] } >
                     <div className="container" >
                         <FeaturedImage
                             className={styles['featured-image']}

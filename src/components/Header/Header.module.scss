@@ -6,7 +6,7 @@
     background-color: var(--color-primary);
 }
 
-.header__bar {
+.bar {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -47,29 +47,29 @@
     }
 }
 
-.header__text,
-.header__image {
+.text,
+.image {
     margin: auto;
     text-align: center;
 }
 
-.header__text {
+.text {
     width: 100%;
     max-width: 82rem;
     padding: 8.25rem 0;
 }
 
-.header__title {
+.title {
     line-height: 1.25;
 }
 
-.header__byline {
+.byline {
     font-weight: $font-weight-bold;
     font-size: 1.2rem;
     text-transform: uppercase;
 }
 
-.header__image {
+.image {
     display: block;
     position: relative;
 
