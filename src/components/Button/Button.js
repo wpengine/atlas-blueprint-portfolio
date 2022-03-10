@@ -83,7 +83,7 @@ export default function Button({ href, type, className, children }) {
 
   return (
     <NextLinkWrapper href={href}>
-      <a href={href} className={buttonClassName}>
+      <a role="button" href={href} className={buttonClassName}>
         {children}
       </a>
     </NextLinkWrapper>
