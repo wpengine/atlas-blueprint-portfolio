@@ -8,16 +8,10 @@
  * @example - @include theme-aware('background', 'color-background');
  * @returns - background: #FFF;
  */
-@mixin themify($isModule: false, $themes: $themes) {
+@mixin themify( $themes: $themes ) {
   @each $theme, $map in $themes {
 
-    $selector: '.theme-#{"" + $theme}';
-
-    @if $isModule {
-      $selector: ':global(#{"" + $selector})';
-    }
-
-    #{"" + $selector} & {
+    .theme-#{"" + $theme} & {
       $theme-map: () !global;
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), '#{$key}');
