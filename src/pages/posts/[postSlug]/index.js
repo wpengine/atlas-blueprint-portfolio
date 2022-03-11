@@ -1,6 +1,6 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import { client } from 'client';
-import { ContentWrapper, Header } from 'components';
+import { ContentWrapper, Footer, Header, Main } from 'components';
 import Head from 'next/head';
 
 export function PostComponent({ post }) {
@@ -21,9 +21,11 @@ export function PostComponent({ post }) {
         image={post?.featuredImage?.node}
       />
 
-      <main className="container">
+      <Main className="container">
         <ContentWrapper content={post?.content()} />
-      </main>
+      </Main>
+
+      <Footer />
     </>
   );
 }

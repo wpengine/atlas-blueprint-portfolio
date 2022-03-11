@@ -1,7 +1,7 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import Head from 'next/head';
 import { client } from 'client';
-import { Header, ContentWrapper } from 'components';
+import { Header, ContentWrapper, Footer, Main } from 'components';
 
 export function PageComponent({ page }) {
   const { useQuery } = client;
@@ -15,9 +15,12 @@ export function PageComponent({ page }) {
         </title>
       </Head>
       <Header title={page?.title()} />
-      <main className="container">
+
+      <Main className="container">
         <ContentWrapper content={page?.content()} />
-      </main>
+      </Main>
+
+      <Footer />
     </>
   );
 }

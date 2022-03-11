@@ -7,6 +7,8 @@ import NavigationMenu from './NavigationMenu';
 import FeaturedImage from './FeaturedImage';
 import ContentWrapper from './ContentWrapper';
 import Projects from './Projects';
+import Footer from './Footer/Footer';
+import Main from './Main/Main';
 
 export {
   Posts,
@@ -18,4 +20,6 @@ export {
   ContentWrapper,
   LoadMore,
   Projects,
+  Footer,
+  Main,
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { client } from 'client';
 import Head from 'next/head';
+import { Footer, Header, Main } from 'components';
 
 export default function Page() {
   const { useQuery } = client;
@@ -13,7 +14,12 @@ export default function Page() {
           {generalSettings?.title} - {generalSettings?.description}
         </title>
       </Head>
-      <main className="content">404 Page</main>
+
+      <Header title="404: Not Found" />
+
+      <Main className="content">404 Page</Main>
+
+      <Footer />
     </>
   );
 }
