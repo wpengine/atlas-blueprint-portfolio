@@ -8,7 +8,7 @@ import {
   FaTwitter,
   FaYoutube,
 } from 'react-icons/fa';
-import NavigationMenu from 'components/NavigationMenu';
+import { NavigationMenu } from 'components';
 
 /**
  * @type {import('client/schema.generated').MenuLocationEnum}
@@ -25,10 +25,10 @@ export default function Footer() {
               {appConfig.socialLinks?.twitterUrl && (
                 <li>
                   <a
-                    className={styles['social-icon']}
+                    className={styles['social-icon-link']}
                     href={appConfig.socialLinks.twitterUrl}
                   >
-                    <FaTwitter />
+                    <FaTwitter className={styles['social-icon']} />
                   </a>
                 </li>
               )}
@@ -36,10 +36,10 @@ export default function Footer() {
               {appConfig.socialLinks?.facebookUrl && (
                 <li>
                   <a
-                    className={styles['social-icon']}
+                    className={styles['social-icon-link']}
                     href={appConfig.socialLinks.facebookUrl}
                   >
-                    <FaFacebookF />
+                    <FaFacebookF className={styles['social-icon']} />
                   </a>
                 </li>
               )}
@@ -47,10 +47,10 @@ export default function Footer() {
               {appConfig.socialLinks?.instagramUrl && (
                 <li>
                   <a
-                    className={styles['social-icon']}
+                    className={styles['social-icon-link']}
                     href={appConfig.socialLinks.instagramUrl}
                   >
-                    <FaInstagram />
+                    <FaInstagram className={styles['social-icon']} />
                   </a>
                 </li>
               )}
@@ -58,10 +58,10 @@ export default function Footer() {
               {appConfig.socialLinks?.youtubeUrl && (
                 <li>
                   <a
-                    className={styles['social-icon']}
+                    className={styles['social-icon-link']}
                     href={appConfig.socialLinks.youtubeUrl}
                   >
-                    <FaYoutube />
+                    <FaYoutube className={styles['social-icon']} />
                   </a>
                 </li>
               )}
@@ -69,10 +69,10 @@ export default function Footer() {
               {appConfig.socialLinks?.githubUrl && (
                 <li>
                   <a
-                    className={styles['social-icon']}
+                    className={styles['social-icon-link']}
                     href={appConfig.socialLinks.githubUrl}
                   >
-                    <FaGithub />
+                    <FaGithub className={styles['social-icon']} />
                   </a>
                 </li>
               )}
@@ -80,10 +80,10 @@ export default function Footer() {
               {appConfig.socialLinks?.linkedinUrl && (
                 <li>
                   <a
-                    className={styles['social-icon']}
+                    className={styles['social-icon-link']}
                     href={appConfig.socialLinks.linkedinUrl}
                   >
-                    <FaLinkedinIn />
+                    <FaLinkedinIn className={styles['social-icon']} />
                   </a>
                 </li>
               )}

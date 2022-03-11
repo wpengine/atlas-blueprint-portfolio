@@ -17,12 +17,6 @@
     }
 }
 
-.wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .social-links {
     display: flex;
     justify-content: center;
@@ -42,32 +36,36 @@
             margin-right: 0;
         }
     }
-}
 
-.social-icon {
-    display: flex;
-    width: 4rem;
-    height: 4rem;
-    padding: 1rem;
-    border: 1px solid var(--color-white);
-    border-radius: 99rem;
-    vertical-align: middle;
-    font-size: 2rem;
-    justify-content: center;
-    align-items: center;
-    transition: color 0.1s ease-in-out,
-        background-color 0.1s ease-in-out;
- 
-    svg {
+    .social-icon-link {
+        display: flex;
+        width: 4rem;
+        height: 4rem;
+        padding: 1rem;
+        border: 1px solid var(--color-white);
+        border-radius: 99rem;
         vertical-align: middle;
-    }
+        font-size: 2rem;
+        justify-content: center;
+        align-items: center;
+        color: var(--color-white);
+        background-color: transparent;
+        transition: background-color 0.5s ease-in-out;
 
-    &:hover, &:focus {
-        color: var(--color-primary);
-        background-color: var(--color-white);
 
-        svg {
+        .social-icon {
+            color: var(--color-white);
+            vertical-align: middle;
+            transition: color 0.5s ease-in-out;
+        }
+    
+        &:hover, &:focus {
             color: var(--color-primary);
+            background-color: var(--color-white);
+
+            .social-icon {
+                color: var(--color-primary);
+            }
         }
     }
 }
@@ -76,7 +74,6 @@
     display: flex;
     justify-content: center;
     margin-bottom: 3rem;
-    display: flex;
     margin-right: auto;
     font-size: 1.8rem;
 
@@ -95,13 +92,15 @@
 
     li {
         margin: 0;
-        margin-right: 0;
+        margin-bottom: 1rem;
 
         @media(min-width: $breakpoint-small) {
             margin-right: 3rem;
+            margin-bottom: 0;
         }
 
         &:last-child { 
+            margin-bottom: 0;
             margin-right: 0;
         }
 
