@@ -22,7 +22,7 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
               />
               <div className={styles['list-item-content']}>
                 <Heading level="h3">
-                  <Link href={project.uri ?? '#'}>
+                  <Link href={`projects/${project.databaseId}` ?? '#'}>
                     <a>{project.title()}</a>
                   </Link>
                 </Heading>
