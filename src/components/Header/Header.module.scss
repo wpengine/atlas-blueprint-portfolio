@@ -11,6 +11,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 3rem 0;
+  gap: 2rem;
 }
 
 .logo {
@@ -18,13 +19,52 @@
   height: auto;
 }
 
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 1.2rem;
+  background-color: transparent;
+  color: var(--color-white);
+  border: 0.1rem solid var(--color-white);
+  transition: color 0.3s ease, background-color 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+  }
+
+  @media (min-width: $breakpoint-small) {
+    display: none;
+  }
+}
+
 .primary-navigation {
+  display: none;
+  width: 100%;
+
+  &.show {
+    display: block;
+  }
+
+  @media (min-width: $breakpoint-small) {
+    display: block;
+    width: auto;
+  }
+
   :global(.menu) {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     list-style: none;
     text-transform: uppercase;
     font-size: 1.4rem;
     margin: 0;
+
+    @media (min-width: $breakpoint-small) {
+      flex-direction: row;
+    }
 
     li {
       margin: 0 0.5rem;
