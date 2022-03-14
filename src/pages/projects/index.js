@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { client } from 'client';
-import appConfig from '../../app.config';
+import appConfig from 'app.config';
 import usePagination from 'hooks/usePagination';
 import { Footer, Header, LoadMore, Main, Projects } from 'components';
 import { getNextStaticProps } from '@faustjs/next';
