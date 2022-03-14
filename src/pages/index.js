@@ -26,17 +26,11 @@ export default function Page() {
       categoryName: 'uncategorized',
     },
   });
-  const { data, fetchMore, isLoading } = usePagination(
-    (query, args) => {
-      const { nodes, pageInfo } = query.posts(args);
-      return {
-        nodes: Array.from(nodes),
-        pageInfo,
-      };
-    },
-    { nodes: posts?.nodes, pageInfo: posts?.pageInfo }
-  );
   const testimonials = useQuery().testimonials();
+  const banner = {
+    sourceUrl: () => '/static/banner.png',
+    mediaDetails: { width: 1200, height: 600 },
+  };
 
   return (
     <>
@@ -45,10 +39,27 @@ export default function Page() {
           {generalSettings?.title} - {generalSettings?.description}
         </title>
       </Head>
-      <Header title="Home Page" />
+      <Header image={banner} />
 
-      <Main className="container">
-        <section style={{ padding: '0 3rem' }}>
+      <Main className="home container">
+        <section className="hero text-center">
+          <Heading className="heading" level="h1">
+            Welcome to your Blueprint
+          </Heading>
+          <p className="description">
+            Achieve unprecedented performance with modern frameworks and the
+            world's #1 open source CMS in one powerful headless platform.{' '}
+          </p>
+          <div className="actions">
+            <Button type="secondary" href="#">
+              GET STARTED
+            </Button>
+            <Button type="primary" href="#">
+              LEARN MORE
+            </Button>
+          </div>
+        </section>
+        <section className="cta">
           <CTA
             Button={() => (
               <Button href="#">
@@ -62,7 +73,7 @@ export default function Page() {
             </span>
           </CTA>
         </section>
-        <section>
+        <section className="posts">
           <Heading className="text-center" level="h2">
             Latest Posts
           </Heading>
@@ -72,7 +83,7 @@ export default function Page() {
             id="posts-list"
           />
         </section>
-        <section style={{ padding: '0 3rem' }}>
+        <section className="cta">
           <CTA
             Button={() => (
               <Button href="#">
@@ -86,7 +97,7 @@ export default function Page() {
             </span>
           </CTA>
         </section>
-        <section className="text-center" style={{ padding: '0 3rem' }}>
+        <section className="testimonials text-center">
           <Heading level="h2">Testimonials</Heading>
           <Heading level="h6" className="font-weight-normal">
             Here are just a few of the nice things our customers have to say.
