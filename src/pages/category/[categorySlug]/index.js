@@ -1,10 +1,11 @@
+import React from 'react';
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { client } from 'client';
 import { Posts, Heading, LoadMore, Footer, Main, Header } from 'components';
 import appConfig from 'app.config';
-import React from 'react';
+import usePagination from 'hooks/usePagination';
 
 export default function Page() {
   const { useQuery, usePosts, useCategory } = client;

@@ -6,7 +6,6 @@ import { FaArrowRight } from 'react-icons/fa';
 import {
   Posts,
   Header,
-  LoadMore,
   Footer,
   Main,
   Button,
@@ -14,21 +13,21 @@ import {
   CTA,
   Testimonials,
 } from 'components';
-import appConfig from 'app.config';
-import usePagination from 'hooks/usePagination';
+
+const postsPerPage = 3
 
 export default function Page() {
   const { useQuery, usePosts } = client;
   const generalSettings = useQuery().generalSettings;
   const posts = usePosts({
-    first: appConfig.homePagePostsCount,
+    first: postsPerPage,
     where: {
       categoryName: 'uncategorized',
     },
   });
   const testimonials = useQuery().testimonials();
   const banner = {
-    sourceUrl: () => '/static/banner.png',
+    sourceUrl: '/static/banner.png',
     mediaDetails: { width: 1200, height: 600 },
   };
 
@@ -99,9 +98,7 @@ export default function Page() {
         </section>
         <section className="testimonials text-center">
           <Heading level="h2">Testimonials</Heading>
-          <Heading level="h6" className="font-weight-normal">
-            Here are just a few of the nice things our customers have to say.
-          </Heading>
+          <p>Here are just a few of the nice things our customers have to say.</p>
           <Testimonials testimonials={testimonials?.nodes} />
         </section>
       </Main>

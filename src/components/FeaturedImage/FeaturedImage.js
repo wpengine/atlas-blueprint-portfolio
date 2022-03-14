@@ -2,7 +2,12 @@ import Image from 'next/image';
 import styles from './FeaturedImage.module.scss';
 
 export default function FeaturedImage({ className, image, ...props }) {
-  const src = image?.sourceUrl();
+  let src;
+  if (image?.sourceUrl instanceof Function) {
+    src = image?.sourceUrl();
+  } else {
+    src = image?.sourceUrl;
+  }
   const { altText } = image || '';
   const { width, height } = image?.mediaDetails || {};
 

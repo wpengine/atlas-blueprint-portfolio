@@ -40,7 +40,6 @@ export default function Page() {
           fetchMore={fetchMore}
         />
       </Main>
-
       <Footer />
     </>
   );

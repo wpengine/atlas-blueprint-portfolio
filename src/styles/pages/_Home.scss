@@ -1,9 +1,10 @@
-// Pages Module
-// ––––––––––––––––––––––––––––––––––––––––––––––––––
-
 .home {
-  > section:not(.posts) {
-    padding: 0 3rem;
+  > section {
+    margin-bottom: 8rem;
+
+    &:not(.posts) {
+      padding: 0 3rem;
+    }
   }
 
   .hero {
