@@ -26,6 +26,6 @@
     &:hover, &:focus {
         border-color: var(--color-black);
         background-color: var(--color-black);
-        color: #fff !important; // TODO: Remove important declaration when mixins are removed.
+        color: #fff;
     }
 }

@@ -1,14 +1,35 @@
-.post-info {
+@import "styles/Variables";
+.info {
   font-size: 1.2rem;
   line-height: 1.5rem;
   text-transform: uppercase;
 }
 
-.post-header {
+.item {
+  text-align: center;
+  display: flex;
+  max-width: 33.33%;
+  flex-basis: 33.33%;
+  justify-content: center;
+  margin-bottom: 6rem;
+
+  @media (max-width: $breakpoint-medium) {
+    max-width: 50%;
+    flex-basis: 50%;
+  }
+
+  @media (max-width: $breakpoint-small) {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}
+
+.header {
   margin-bottom: 2rem;
 }
 
-.post__featured-image {
-  margin-bottom: 2rem;
+.image {
+  border: 20px solid var(--color-white);
+  margin-bottom: 3rem;
   height: auto;
 }

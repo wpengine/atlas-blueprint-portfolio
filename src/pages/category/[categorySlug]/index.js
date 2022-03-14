@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { client } from 'client';
 import { Posts, Heading, LoadMore, Footer, Main, Header } from 'components';
 import appConfig from 'app.config';
-import usePagination from 'hooks/usePagination';
 import React from 'react';
 
 export default function Page() {
@@ -20,18 +19,29 @@ export default function Page() {
     },
   });
 
+  const { data, fetchMore, isLoading } = usePagination(
+    (query, args) => {
+      const { nodes, pageInfo } = query.posts(args);
+      return {
+        nodes: Array.from(nodes),
+        pageInfo,
+      };
+    },
+    { nodes: posts?.nodes, pageInfo: posts?.pageInfo }
+  );
   return (
     <>
       <Head>
         <title>Posts - {generalSettings?.title}</title>
       </Head>
 
-      <Header title={`${category?.name} Posts`} />
+      <Header title={`Category: ${category?.name}`} />
 
       <Main className="container">
         <Heading level="h2">Category: {category?.name}</Heading>
         <Posts posts={data.nodes} />
         <LoadMore
+          className="text-center"
           pageInfo={data.pageInfo}
           isLoading={isLoading}
           fetchMore={fetchMore}
