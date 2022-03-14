@@ -26,9 +26,10 @@ export default function Page() {
     },
   });
   const testimonials = useQuery().testimonials();
-  const banner = {
+  const mainBanner = {
     sourceUrl: '/static/banner.png',
     mediaDetails: { width: 1200, height: 600 },
+    altText: 'Portfolio Banner'
   };
 
   return (
@@ -38,7 +39,7 @@ export default function Page() {
           {generalSettings?.title} - {generalSettings?.description}
         </title>
       </Head>
-      <Header image={banner} />
+      <Header image={mainBanner} />
 
       <Main className="home container">
         <section className="hero text-center">
