@@ -4,7 +4,7 @@ This repository contains a starter Blueprint to get you up and running quickly o
 
 ## Status of code
 
-Please note that while this repository is public it is not yet complete. It is not recommended that you use this site, as it is, on a production website as it will continue to built out to a stable state throughout the second quarter of 2022.
+Please note that while this repository is public it is not yet complete. It is not recommended that you use this site, as it is, on a production website as it will continue to be built out to a stable state throughout the second quarter of 2022.
 
 ## For more information
 
