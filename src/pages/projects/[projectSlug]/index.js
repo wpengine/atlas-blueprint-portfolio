@@ -1,4 +1,4 @@
-import { getNextStaticProps, is404 } from '@faustjs/next';
+import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
 import { Header, Footer, ProjectHeader, ContentWrapper, Main } from 'components';
 import Head from 'next/head';
