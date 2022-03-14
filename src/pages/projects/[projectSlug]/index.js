@@ -19,7 +19,6 @@ export function ProjectComponent({ project }) {
 
       <ProjectHeader
         image={project?.featuredImage?.node}
-        alt={project?.featuredImage?.node?.altText}
         summary={project?.summary}
         title={project?.title()}
       />
