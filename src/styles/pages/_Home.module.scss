@@ -6,20 +6,19 @@
       padding: 0 3rem;
     }
   }
+}
 
-  .hero {
-    .heading {
-      margin-bottom: 1rem;
-    }
-    .description {
-      max-width: 50%;
-      margin: 0 auto 2rem;
-    }
+.heading {
+  margin-bottom: 1rem;
+}
 
-    .actions {
-      a[role=button] {
-        margin: 0.5rem;
-      }
-    }
+.description {
+  max-width: 50%;
+  margin: 0 auto 2rem;
+}
+
+.actions {
+  a[role=button] {
+    margin: 0.5rem;
   }
 }

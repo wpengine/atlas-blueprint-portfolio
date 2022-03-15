@@ -44,14 +44,14 @@ export default function Page() {
 
       <Main className={[styles.home, 'container'].join(' ')}>
         <section className="hero text-center">
-          <Heading className="heading" level="h1">
+          <Heading className={styles.heading} level="h1">
             Welcome to your Blueprint
           </Heading>
-          <p className="description">
+          <p className={styles.description}>
             Achieve unprecedented performance with modern frameworks and the
             world's #1 open source CMS in one powerful headless platform.{' '}
           </p>
-          <div className="actions">
+          <div className={styles.actions}>
             <Button type="secondary" href="#">
               GET STARTED
             </Button>
