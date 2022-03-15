@@ -1,4 +1,5 @@
-import { FaSearch } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaBars, FaSearch } from 'react-icons/fa';
 import { FeaturedImage, Heading, NavigationMenu, PostInfo } from 'components';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,13 +10,20 @@ const PRIMARY_MENU_LOCATION = 'PRIMARY';
 export default function Header({ title, image, date, author }) {
   const hasText = title || date || author;
 
+  const [isNavShown, setIsNavShown] = useState(false);
+
+  const navClasses = [
+    styles['primary-navigation'],
+    isNavShown ? styles['show'] : undefined,
+  ];
+
   return (
     <header className={styles['header']}>
       <div className="container">
         <div className={styles['bar']}>
           <div className={styles['logo']}>
             <Link href="/">
-              <a>
+              <a title="Home">
                 <Image
                   src="/logo.png"
                   width={400}
@@ -26,8 +34,19 @@ export default function Header({ title, image, date, author }) {
               </a>
             </Link>
           </div>
+          <button
+            type="button"
+            className={styles['nav-toggle']}
+            onClick={() => setIsNavShown(!isNavShown)}
+            aria-label="Toggle navigation"
+            aria-controls={styles['primary-navigation']}
+            aria-expanded={isNavShown}
+          >
+            <FaBars />
+          </button>
           <NavigationMenu
-            className={styles['primary-navigation']}
+            id={styles['primary-navigation']}
+            className={navClasses.join(' ')}
             menuLocation={PRIMARY_MENU_LOCATION}
           >
             <li>
