@@ -15,7 +15,7 @@ import {
 } from 'components';
 import styles from 'styles/pages/_Home.module.scss';
 
-const postsPerPage = 3
+const postsPerPage = 3;
 
 export default function Page() {
   const { useQuery, usePosts } = client;
@@ -30,7 +30,7 @@ export default function Page() {
   const mainBanner = {
     sourceUrl: '/static/banner.jpeg',
     mediaDetails: { width: 1200, height: 600 },
-    altText: 'Portfolio Banner'
+    altText: 'Portfolio Banner',
   };
 
   return (
@@ -100,7 +100,9 @@ export default function Page() {
         </section>
         <section className="testimonials text-center">
           <Heading level="h2">Testimonials</Heading>
-          <p>Here are just a few of the nice things our customers have to say.</p>
+          <p>
+            Here are just a few of the nice things our customers have to say.
+          </p>
           <Testimonials testimonials={testimonials?.nodes} />
         </section>
       </Main>

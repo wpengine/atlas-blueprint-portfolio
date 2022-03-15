@@ -27,5 +27,5 @@ export {
   Main,
   Button,
   CTA,
-  Testimonials
+  Testimonials,
 };

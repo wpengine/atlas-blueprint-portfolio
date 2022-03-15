@@ -1,9 +1,9 @@
 const appConfig = {
   postsPerPage: 9,
   themeColor: 'blue',
- /**
- * @type {[key: 'twitterUrl' | 'facebookUrl' | 'instagramUrl' | 'youtubeUrl' | 'githubUrl' | 'linkedinUrl']: string}
- */
+  /**
+   * @type {[key: 'twitterUrl' | 'facebookUrl' | 'instagramUrl' | 'youtubeUrl' | 'githubUrl' | 'linkedinUrl']: string}
+   */
   socialLinks: {
     twitterUrl: 'https://twitter.com/wpengine',
     facebookUrl: 'https://www.facebook.com/wpengine',
