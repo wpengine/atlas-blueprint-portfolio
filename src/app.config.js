@@ -1,5 +1,9 @@
 const appConfig = {
   postsPerPage: 9,
+  /**
+   * Displays a default Featured Image when a Post does not have one
+   */
+  archiveDisplayFeaturedImage: true,
   themeColor: 'blue',
   /**
    * @type {[key: 'twitterUrl' | 'facebookUrl' | 'instagramUrl' | 'youtubeUrl' | 'githubUrl' | 'linkedinUrl']: string}

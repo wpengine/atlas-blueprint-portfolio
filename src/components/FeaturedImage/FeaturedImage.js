@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import styles from './FeaturedImage.module.scss';
+import appConfig from '../../app.config';
+import DefaultImage from './DefaultImage';
 
 export default function FeaturedImage({ className, image, ...props }) {
   let src;
@@ -23,5 +25,7 @@ export default function FeaturedImage({ className, image, ...props }) {
         {...props}
       />
     </figure>
+  ) : appConfig.archiveDisplayFeaturedImage ? (
+    <DefaultImage className={className} />
   ) : null;
 }
