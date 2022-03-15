@@ -5,7 +5,7 @@
   text-transform: uppercase;
 }
 
-.item {
+.container {
   text-align: center;
   display: flex;
   max-width: 33.33%;
@@ -24,12 +24,18 @@
   }
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   margin-bottom: 2rem;
+  padding: 0 2rem;
 }
 
 .image {
-  border: 20px solid var(--color-white);
+  min-width: 340px;
   margin-bottom: 3rem;
   height: auto;
 }

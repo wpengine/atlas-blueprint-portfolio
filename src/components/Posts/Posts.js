@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import Link from 'next/link';
 import { Heading, FeaturedImage, PostInfo } from 'components';
@@ -14,11 +12,11 @@ function Posts({ posts, intro, id }) {
         {posts?.map((post) => {
           return (
             <div
-              className={styles.item}
+              className={styles.container}
               key={post.id ?? ''}
               id={`post-${post.id}`}
             >
-              <div>
+              <div className={styles.card}>
                 <FeaturedImage
                   className={styles.image}
                   image={post?.featuredImage?.node}
