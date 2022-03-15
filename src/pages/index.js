@@ -13,6 +13,7 @@ import {
   CTA,
   Testimonials,
 } from 'components';
+import styles from 'styles/pages/_Home.module.scss';
 
 const postsPerPage = 3
 
@@ -41,7 +42,7 @@ export default function Page() {
       </Head>
       <Header image={mainBanner} />
 
-      <Main className="home container">
+      <Main className={[styles.home, 'container'].join(' ')}>
         <section className="hero text-center">
           <Heading className="heading" level="h1">
             Welcome to your Blueprint
