@@ -44,12 +44,14 @@ export default function Page({id}) {
 
 export async function getStaticProps(context) {
   const { projectSlug } = context?.params;
+
   return getNextStaticProps(context, {
     Page,
     client,
     props: {
       id: projectSlug
-    }
+    },
+    notFound: await notFoundCpt(projectSlug, 'project')
   });
 }
 
@@ -58,4 +60,23 @@ export function getStaticPaths() {
     paths: [],
     fallback: 'blocking',
   };
+}
+
+/**
+ * Checks if a post is available given a custom post type.
+ * Temporary until Faust's is404() is adjusted to account for custom post types.
+ * @param {string} slug The slug of the custom post type.
+ * @param {string} customPostType The custom
+ * @returns {bool}
+ */
+async function notFoundCpt(slug, customPostType) {
+  const project = await client.client.inlineResolved(() => {
+    return client.client.query
+      [customPostType]({
+        id: slug,
+        idType: 'SLUG'
+      });
+  });
+
+  return project === null;
 }
