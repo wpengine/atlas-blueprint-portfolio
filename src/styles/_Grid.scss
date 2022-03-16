@@ -12,6 +12,14 @@
   width: 100%;
 }
 
+.container-small {
+  margin: 0 auto;
+  max-width: 60rem;
+  padding: 0 2rem;
+  position: relative;
+  width: 100%;
+}
+
 .content {
   max-width: $grid-max-width;
   margin: 0 auto;

@@ -6,7 +6,7 @@ const PUBLISH_DATE_FORMAT = { year: 'numeric', month: 'long', day: 'numeric' };
  * @param {string} date A date string.
  * @returns Formatted date or null if date is invalid.
  */
-function getFormattedDate(date) {
+export function getFormattedDate(date) {
   let formattedDate = new Date(date);
 
   if (isNaN(formattedDate.valueOf())) {

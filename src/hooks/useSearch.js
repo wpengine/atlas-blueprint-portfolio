@@ -8,13 +8,12 @@ import { uniqBy } from './usePagination';
 export default function useSearch() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
-  const [debouncedSearchQuery] = useDebounce(searchQuery, 1000);
+  const [debouncedSearchQuery] = useDebounce(searchQuery, 500);
   const [searchResults, setSearchResults] = useState(null);
   const [pageInfo, setPageInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   async function fetchResults(searchQuery, endCursor = undefined) {
-    setIsLoading(true);
     const data = await client.client.resolved(() => {
       const { nodes, pageInfo } = client.client.query.contentNodes({
         first: 5,
@@ -28,18 +27,19 @@ export default function useSearch() {
       };
     });
 
-    setIsLoading(false);
-
     return data;
   }
 
   const fetchInitialResults = useCallback(async () => {
     clearResults();
+    setIsLoading(true);
 
     const res = await fetchResults(debouncedSearchQuery);
 
     setSearchResults(res?.nodes);
     setPageInfo(res?.pageInfo);
+
+    setIsLoading(false);
   }, [debouncedSearchQuery]);
 
   function clearResults() {
@@ -58,10 +58,10 @@ export default function useSearch() {
   }
 
   useEffect(() => {
-    if (router.isReady && router.query.q) {
-      setSearchQuery(router.query.q);
+    if (searchQuery !== '' && searchResults === null) {
+      setIsLoading(true);
     }
-  }, [router.isReady, router.query.q]);
+  }, [searchQuery, searchResults]);
 
   useEffect(() => {
     if (!router.isReady) {
@@ -75,7 +75,13 @@ export default function useSearch() {
     }
 
     fetchInitialResults(debouncedSearchQuery);
-  }, [debouncedSearchQuery, fetchInitialResults]);
+  }, [router.isReady, debouncedSearchQuery, fetchInitialResults]);
 
-  return { searchQuery, setSearchQuery, searchResults, loadMore, isLoading };
+  return {
+    searchQuery,
+    setSearchQuery,
+    searchResults,
+    loadMore,
+    isLoading,
+  };
 }

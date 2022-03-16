@@ -13,15 +13,23 @@ export default function Page() {
   const generalSettings = useQuery().generalSettings;
   const { searchQuery, setSearchQuery, searchResults, loadMore, isLoading } =
     useSearch();
+
+  console.log('isLoading', isLoading);
   return (
     <>
       <Head>
         <title>Search - {generalSettings?.description}</title>
       </Head>
 
-      <Header />
+      <Header
+        title={
+          searchQuery && searchResults?.length
+            ? `Showing ${searchResults.length} results for "${searchQuery}"`
+            : `Search`
+        }
+      />
 
-      <Main className="container">
+      <Main className="container-small">
         <>
           <SearchInput
             value={searchQuery}
