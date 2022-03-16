@@ -66,7 +66,7 @@ export function getStaticPaths() {
  * Checks if a post is available given a custom post type.
  * Temporary until Faust's is404() is adjusted to account for custom post types.
  * @param {string} slug The slug of the custom post type.
- * @param {string} customPostType The custom
+ * @param {string} customPostType The WordPress custom post type.
  * @returns {bool}
  */
 async function is404Cpt(slug, customPostType) {
