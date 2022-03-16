@@ -70,7 +70,7 @@ export function getStaticPaths() {
  * @returns {bool}
  */
 async function is404Cpt(slug, customPostType) {
-  const project = await client.client.inlineResolved(() => {
+  const customPostTypePost = await client.client.inlineResolved(() => {
     return client.client.query
       [customPostType]({
         id: slug,
@@ -78,5 +78,5 @@ async function is404Cpt(slug, customPostType) {
       });
   });
 
-  return project === null;
+  return customPostTypePost === null;
 }
