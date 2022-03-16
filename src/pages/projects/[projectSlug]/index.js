@@ -51,7 +51,7 @@ export async function getStaticProps(context) {
     props: {
       id: projectSlug
     },
-    notFound: await notFoundCpt(projectSlug, 'project')
+    notFound: await is404Cpt(projectSlug, 'project')
   });
 }
 
@@ -69,7 +69,7 @@ export function getStaticPaths() {
  * @param {string} customPostType The custom
  * @returns {bool}
  */
-async function notFoundCpt(slug, customPostType) {
+async function is404Cpt(slug, customPostType) {
   const project = await client.client.inlineResolved(() => {
     return client.client.query
       [customPostType]({
