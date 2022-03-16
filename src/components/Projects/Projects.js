@@ -16,11 +16,11 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
           >
             <div className={styles['list-item']}>
               <FeaturedImage
-                className={styles['image']}
+                className={styles.image}
                 image={project?.featuredImage?.node}
                 alt={project?.featuredImage?.node?.altText}
               />
-              <div className={styles['list-item-content']}>
+              <div className={styles.content}>
                 <Heading level="h3">
                   {/*
                     Hardcoded CPT slug to be removed once ACM supports the

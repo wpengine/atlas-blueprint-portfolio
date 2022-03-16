@@ -14,7 +14,7 @@ export function PageComponent({ page }) {
           {page?.title()} - {generalSettings?.title}
         </title>
       </Head>
-      <Header title={page?.title()} />
+      <Header title={page?.title()} image={page?.featuredImage?.node} />
 
       <Main className="container">
         <ContentWrapper content={page?.content()} />

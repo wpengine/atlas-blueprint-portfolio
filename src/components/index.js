@@ -10,6 +10,9 @@ import ProjectHeader from './ProjectHeader';
 import Projects from './Projects';
 import Footer from './Footer/Footer';
 import Main from './Main/Main';
+import Button from './Button';
+import CTA from './CTA';
+import Testimonials from './Testimonials';
 
 export {
   Posts,
@@ -24,4 +27,7 @@ export {
   Projects,
   Footer,
   Main,
+  Button,
+  CTA,
+  Testimonials,
 };
