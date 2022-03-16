@@ -1,5 +1,4 @@
 @import "Variables";
-@import "Mixins";
 
 // Typography Module
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -52,15 +51,6 @@ p {
 
 // Links
 a {
-  @include themify {
-    color: themed( 'color-primary' );
-  }
+  color: var(--color-primary);
   text-decoration: none;
-}
-
-a:focus,
-a:hover {
-  @include themify {
-    color: lighten(themed( 'color-primary' ), 15);
-  }
 }

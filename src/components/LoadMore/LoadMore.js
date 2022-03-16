@@ -10,8 +10,9 @@ export default function LoadMore({
 }) {
   if (pageInfo?.hasNextPage && pageInfo?.endCursor) {
     return (
-      <section className={[className, styles.loadMore].join(' ')}>
+      <section className={className}>
         <button
+          className={styles.button}
           disabled={isLoading}
           onClick={() => {
             fetchMore({
@@ -20,7 +21,7 @@ export default function LoadMore({
             });
           }}
         >
-          Load more Posts
+          LOAD MORE
         </button>
       </section>
     );
