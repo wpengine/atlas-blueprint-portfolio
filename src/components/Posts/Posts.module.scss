@@ -1,14 +1,41 @@
-.post-info {
+@import "styles/Variables";
+.info {
   font-size: 1.2rem;
   line-height: 1.5rem;
   text-transform: uppercase;
 }
 
-.post-header {
-  margin-bottom: 2rem;
+.container {
+  text-align: center;
+  display: flex;
+  max-width: 33.33%;
+  flex-basis: 33.33%;
+  justify-content: center;
+  margin-bottom: 4rem;
+
+  @media (max-width: $breakpoint-medium) {
+    max-width: 50%;
+    flex-basis: 50%;
+  }
+
+  @media (max-width: $breakpoint-small) {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
 }
 
-.post__featured-image {
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
   margin-bottom: 2rem;
+  padding: 0 2rem;
+}
+
+.image {
+  min-width: 340px;
+  margin-bottom: 3rem;
   height: auto;
 }

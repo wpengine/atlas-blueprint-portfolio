@@ -23,6 +23,7 @@ export default function Testimonials({ testimonials }) {
 
         <Carousel
           showIndicators={false}
+          showThumbs={false}
           renderArrowPrev={(clickHandler) => (
             <FaChevronCircleLeft
               className={styles.arrow}

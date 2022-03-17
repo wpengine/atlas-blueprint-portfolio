@@ -12,24 +12,25 @@ function Posts({ posts, intro, id }) {
         {posts?.map((post) => {
           return (
             <div
-              className="column column-33 text-center"
+              className={styles.container}
               key={post.id ?? ''}
               id={`post-${post.id}`}
             >
-              <div>
+              <div className={styles.card}>
                 <FeaturedImage
-                  className={styles['post__featured-image']}
+                  className={styles.image}
                   image={post?.featuredImage?.node}
+                  alt={post?.featuredImage?.node?.altText}
                   width={340}
                   height={340}
                 />
-                <Heading level="h4" className={styles['post-header']}>
+                <Heading level="h4" className={styles.header}>
                   <Link href={post.uri ?? '#'}>
                     <a>{post.title()}</a>
                   </Link>
                 </Heading>
                 <PostInfo
-                  className={styles['post-info']}
+                  className={styles.info}
                   author={post?.author?.node?.name}
                   date={post?.date}
                 />

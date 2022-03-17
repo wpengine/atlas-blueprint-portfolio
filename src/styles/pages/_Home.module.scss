@@ -1,0 +1,24 @@
+.home {
+  > section {
+    margin-bottom: 8rem;
+
+    &:not(.posts) {
+      padding: 0 3rem;
+    }
+  }
+}
+
+.heading {
+  margin-bottom: 1rem;
+}
+
+.description {
+  max-width: 50%;
+  margin: 0 auto 2rem;
+}
+
+.actions {
+  a[role=button] {
+    margin: 0.5rem;
+  }
+}

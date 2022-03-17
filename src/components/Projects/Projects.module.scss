@@ -10,11 +10,11 @@
   min-width: 40rem;
 
   @media (max-width: $breakpoint-small) {
-    min-width: 20rem;
+    min-width: 30rem;
   }
 }
 
-.list-item-content {
+.content {
   max-width: $container-max-width;
   margin-left: auto;
   margin-right: auto;

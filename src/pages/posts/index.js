@@ -32,14 +32,14 @@ export default function Page() {
       <Header title="Latest Posts" />
 
       <Main className="container">
-        <Posts posts={data?.nodes} readMoreText={'Read More'} id="posts-list" />
+        <Posts posts={data?.nodes} readMoreText="Read More" id="posts-list" />
         <LoadMore
+          className="text-center"
           pageInfo={data.pageInfo}
           isLoading={isLoading}
           fetchMore={fetchMore}
         />
       </Main>
-
       <Footer />
     </>
   );

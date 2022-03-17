@@ -3,7 +3,6 @@
 // Grid Module
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
-// .container is main centered wrapper with a max width of 112.0rem (1120px)
 .container {
   margin: 0 auto;
   max-width: $grid-max-width;
@@ -192,7 +191,7 @@
 
 @media (min-width: 102.5rem) {
   .container {
-    max-width: 144rem;
+    max-width: 120rem;
   }
 };
 
