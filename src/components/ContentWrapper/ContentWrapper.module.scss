@@ -5,6 +5,16 @@
   margin: 0 auto;
 
   :global {
+
+    * {
+      max-width: 100%;
+    }
+
+    figure {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
     h1, h2, h3, h4, h5, h6 {
       margin: 4.8rem 0;
     }
