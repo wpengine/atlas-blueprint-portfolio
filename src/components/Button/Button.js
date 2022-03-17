@@ -5,7 +5,7 @@ import styles from './Button.module.scss';
  * Render the Button component.
  *
  * @param {Props} props The props object.
- * @param {string} props.href Required: The href attribute.
+ * @param {string} props.href The href attribute. If provided the button will be an <a> element.
  * @param {primary|secondary} props.type The type of the button
  * @param {string} props.className An optional className to be added to the button
  * @return {React.ReactElement} The Button component.

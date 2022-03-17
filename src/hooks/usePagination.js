@@ -2,7 +2,7 @@ import React from 'react';
 import { client } from 'client';
 import appConfig from 'app.config';
 
-export const uniqBy = (arr, pred) => {
+const uniqBy = (arr, pred) => {
   const cb = typeof pred === 'function' ? pred : (o) => o[pred];
 
   return [

@@ -12,6 +12,7 @@ import Main from './Main/Main';
 import Button from './Button';
 import CTA from './CTA';
 import Testimonials from './Testimonials';
+import FormatDate from './FormatDate';
 
 export {
   Posts,
@@ -28,4 +29,5 @@ export {
   Button,
   CTA,
   Testimonials,
+  FormatDate,
 };

@@ -1,3 +1,4 @@
+import FormatDate from 'components/FormatDate';
 import NextLinkWrapper from 'components/NextLinkWrapper';
 import { getFormattedDate } from 'components/PostInfo';
 import { FaSearch } from 'react-icons/fa';
@@ -39,7 +40,9 @@ export default function SearchResults({ searchResults, isLoading }) {
             </a>
           </NextLinkWrapper>
           <div className={styles.meta}>
-            <span className={styles.date}>{getFormattedDate(node?.date)}</span>
+            <span className={styles.date}>
+              <FormatDate date={node?.date} />
+            </span>
           </div>
           <div
             className={styles.excerpt}
