@@ -1,14 +1,17 @@
-import React from 'react';
-import Head from 'next/head';
-import { client } from 'client';
-import appConfig from '../app.config';
-import { Footer, Header, LoadMore, Main, Projects } from 'components';
 import { getNextStaticProps } from '@faustjs/next';
-import SearchInput from 'components/SearchInput/SearchInput';
+import { client } from 'client';
+import {
+  Button,
+  Footer,
+  Header,
+  Main,
+  SearchInput,
+  SearchRecommendations,
+  SearchResults,
+} from 'components';
 import useSearch from 'hooks/useSearch';
-import SearchResults from 'components/SearchResults/SearchResults';
-import SearchRecommendations from 'components/SearchRecommendations/SearchRecommendations';
-import Button from 'components/Button/Button';
+import Head from 'next/head';
+import React from 'react';
 import styles from 'styles/pages/_Search.module.scss';
 
 export default function Page() {
@@ -49,7 +52,7 @@ export default function Page() {
         <>
           <SearchResults searchResults={searchResults} isLoading={isLoading} />
 
-          {searchResults?.length > 0 && pageInfo?.hasNextPage && (
+          {searchResults?.length && pageInfo?.hasNextPage && (
             <div className={styles['load-more']}>
               <Button onClick={() => loadMore()}>Load more</Button>
             </div>

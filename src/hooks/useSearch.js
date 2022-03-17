@@ -1,22 +1,49 @@
-import { useRouter } from 'next/router';
-import { getFields, getArrayFields, prepass, selectFields } from 'gqty';
+import appConfig from 'app.config';
+import { client } from 'client';
+import { getArrayFields, getFields, prepass } from 'gqty';
 import { useCallback, useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
-import { client } from 'client';
 import { uniqBy } from './usePagination';
 
+const searchInputDebounceMs = 500;
+
+/**
+ * useSearch hook enables a user to perform search functionality from their WordPress site
+ * with proper debouncing of the search input, and pagination via the `loadMore` function.
+ *
+ * @returns {{searchQuery: string, setSearchQuery: (newValue) => void, searchResults: object[] | null, loadMore: () => void, isLoading: boolean, pageInfo: object;}} Result object
+ */
 export default function useSearch() {
-  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
-  const [debouncedSearchQuery] = useDebounce(searchQuery, 500);
+  const [debouncedSearchQuery] = useDebounce(
+    searchQuery,
+    searchInputDebounceMs
+  );
   const [searchResults, setSearchResults] = useState(null);
   const [pageInfo, setPageInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  /**
+   * Fetch results based on the search query and cursor if we are paginating.
+   * @param {string} searchQuery The user inputted search query
+   * @param {string | undefined} endCursor The end cursor if we are paginating
+   * @returns
+   */
   async function fetchResults(searchQuery, endCursor = undefined) {
+    /**
+     * Do a prepass request for the search result metadata so we can make a
+     * proper subsequent request for the title and content based on the content
+     * type.
+     *
+     * typically this can be done with the ... on NodeWithTitle interface, but there is
+     * currently a bug.
+     *
+     * @see https://gqty.dev/docs/client/helper-functions#prepass
+     * @see https://github.com/gqty-dev/gqty/issues/733
+     */
     const metadata = await client.client.resolved(() => {
       const { nodes, pageInfo } = client.client.query.contentNodes({
-        first: 5,
+        first: appConfig?.postsPerPage,
         after: endCursor,
         where: { search: searchQuery },
       });
@@ -26,6 +53,10 @@ export default function useSearch() {
       return { nodes, pageInfo };
     });
 
+    /**
+     * Make a prepass request for the title and excerpt from the previously
+     * fetched metadata.
+     */
     const metadataWithContent = await client.client.resolved(() => {
       metadata?.nodes?.map((node) =>
         prepass(
@@ -52,6 +83,10 @@ export default function useSearch() {
     return metadataWithContent;
   }
 
+  /**
+   * Fetch initial results. This can happen either upon first search. Or after
+   * a search query has been deleted and the user types a new search query.
+   */
   const fetchInitialResults = useCallback(async () => {
     setIsLoading(true);
     clearResults();
@@ -68,6 +103,9 @@ export default function useSearch() {
     setSearchResults(null);
   }
 
+  /**
+   * Load more search results via the pageInfo `endCursor` and `hasNextPage`
+   */
   async function loadMore() {
     if (!pageInfo?.hasNextPage || !pageInfo?.endCursor) {
       return;
@@ -83,23 +121,30 @@ export default function useSearch() {
     setIsLoading(false);
   }
 
+  /**
+   * Upon user input, display the loading screen for perceived performance,
+   * even though we will not start fetching data until the debounce timeout.
+   */
   useEffect(() => {
     if (searchQuery !== '' && searchResults === null) {
       setIsLoading(true);
     }
   }, [searchQuery, searchResults]);
 
+  /**
+   * When the search query input has been cleared, clear the results.
+   */
   useEffect(() => {
     if (searchQuery === '') {
       clearResults();
     }
   }, [searchQuery]);
 
+  /**
+   * Fetch the initial results once the user has entered a search query and
+   * the debounce timeout has been reached.
+   */
   useEffect(() => {
-    if (!router.isReady) {
-      return;
-    }
-
     if (debouncedSearchQuery === '') {
       clearResults();
 
@@ -107,7 +152,7 @@ export default function useSearch() {
     }
 
     fetchInitialResults(debouncedSearchQuery);
-  }, [router.isReady, debouncedSearchQuery, fetchInitialResults]);
+  }, [debouncedSearchQuery, fetchInitialResults]);
 
   return {
     searchQuery,
