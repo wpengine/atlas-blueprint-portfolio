@@ -1,0 +1,10 @@
+.recommendations {
+    a {
+        color: var(--color-black);
+
+        &:hover, &:focus {
+            color: var(--color-black);
+            text-decoration: underline;
+        }
+    }
+}

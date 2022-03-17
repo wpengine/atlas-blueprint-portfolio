@@ -14,7 +14,7 @@ export default function useSearch() {
   const [isLoading, setIsLoading] = useState(false);
 
   async function fetchResults(searchQuery, endCursor = undefined) {
-    const data = await client.client.resolved(() => {
+    const metadata = await client.client.resolved(() => {
       const { nodes, pageInfo } = client.client.query.contentNodes({
         first: 5,
         after: endCursor,
@@ -26,14 +26,18 @@ export default function useSearch() {
       return { nodes, pageInfo };
     });
 
-    const dataWithTitle = await client.client.resolved(() => {
-      data?.nodes?.map((node) =>
-        prepass(node, `$on.${node?.__typename}.title`)
+    const metadataWithContent = await client.client.resolved(() => {
+      metadata?.nodes?.map((node) =>
+        prepass(
+          node,
+          `$on.${node?.__typename}.title`,
+          `$on.${node?.__typename}.excerpt`
+        )
       );
 
       return {
         nodes: getArrayFields(
-          data?.nodes,
+          metadata?.nodes,
           'databaseId',
           'id',
           'uri',
@@ -41,16 +45,16 @@ export default function useSearch() {
           '__typename',
           '$on'
         ),
-        pageInfo: getFields(data?.pageInfo),
+        pageInfo: getFields(metadata?.pageInfo),
       };
     });
 
-    return dataWithTitle;
+    return metadataWithContent;
   }
 
   const fetchInitialResults = useCallback(async () => {
-    clearResults();
     setIsLoading(true);
+    clearResults();
 
     const res = await fetchResults(debouncedSearchQuery);
 
@@ -69,10 +73,14 @@ export default function useSearch() {
       return;
     }
 
+    setIsLoading(true);
+
     const res = await fetchResults(debouncedSearchQuery, pageInfo?.endCursor);
 
     setSearchResults((prev) => uniqBy([...prev, ...res?.nodes], (v) => v.id));
     setPageInfo(res?.pageInfo);
+
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -80,6 +88,12 @@ export default function useSearch() {
       setIsLoading(true);
     }
   }, [searchQuery, searchResults]);
+
+  useEffect(() => {
+    if (searchQuery === '') {
+      clearResults();
+    }
+  }, [searchQuery]);
 
   useEffect(() => {
     if (!router.isReady) {

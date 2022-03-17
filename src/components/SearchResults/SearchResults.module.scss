@@ -1,74 +1,88 @@
 @import 'styles/variables';
 
 .result {
-    display: block;
-    margin-bottom: 6rem;
+  display: block;
+  margin-bottom: 6rem;
 }
 
 .title {
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-    color: var(--color-black);
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: var(--color-black);
 }
 
 .meta {
-    font-size: small;
-    margin-bottom: 2rem;
+  font-size: small;
+  margin-bottom: 2rem;
 }
 
 .excerpt {
-
 }
 
-@keyframes SearchResultLoadingAnimation{
-    0%{
-        background-position: -500px 0
-    }
-    100%{
-        background-position: 500px 0
-    }
+@keyframes SearchResultLoadingAnimation {
+  0% {
+    background-position: -500px 0;
+  }
+  100% {
+    background-position: 500px 0;
+  }
 }
 .loader-bg {
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-name: SearchResultLoadingAnimation;
-    animation-timing-function: linear;
-    background: #f6f7f8;
-    background: linear-gradient(to right, #eee 8%, #ddd 18%, #eee 33%);
-    background-size: 1000px 104px;
-    height: 338px;
-    position: relative;
-    overflow: hidden;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: SearchResultLoadingAnimation;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eee 8%, #ddd 18%, #eee 33%);
+  background-size: 1000px 104px;
+  height: 338px;
+  position: relative;
+  overflow: hidden;
 }
 
 .loading-result {
-    margin-bottom: 6rem;
+  margin-bottom: 6rem;
 }
 
 .loading-result-title {
-    @extend .loader-bg;
+  @extend .loader-bg;
 
-    width: 70%;
-    background-color: #ddd;
-    height: 4rem;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
+  width: 70%;
+  background-color: #ddd;
+  height: 4rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .loading-result-meta {
-    @extend .loader-bg;
-    width: 20%;
-    background-color: #ddd;
-    height: 2rem;
-    border-radius: 0.5rem;
-    margin-bottom: 2rem;
+  @extend .loader-bg;
+  width: 20%;
+  background-color: #ddd;
+  height: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .loading-result-excerpt {
-    @extend .loader-bg;
-    width: 100%;
-    background-color: #ddd;
-    height: 14rem;
-    border-radius: 0.5rem;
+  @extend .loader-bg;
+  width: 100%;
+  background-color: #ddd;
+  height: 14rem;
+  border-radius: 0.5rem;
+}
+
+.no-results {
+  text-align: center;
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+  color: #777; // @todo: Define this color in theme styles
+}
+
+.no-results-icon {
+  font-size: 6rem;
+}
+
+.no-results-text {
+    font-size: 3rem;
 }

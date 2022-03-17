@@ -1,5 +1,6 @@
 import NextLinkWrapper from 'components/NextLinkWrapper';
 import { getFormattedDate } from 'components/PostInfo';
+import { FaSearch } from 'react-icons/fa';
 import styles from './SearchResults.module.scss';
 
 export function LoadingSearchResult() {
@@ -13,12 +14,17 @@ export function LoadingSearchResult() {
 }
 
 export default function SearchResults({ searchResults, isLoading }) {
-  if (!searchResults) {
+  if (!isLoading && searchResults === null) {
     return null;
   }
 
-  if (!searchResults.length) {
-    return <>No results</>;
+  if (!isLoading && !searchResults?.length) {
+    return (
+      <div className={styles['no-results']}>
+        <FaSearch className={styles['no-results-icon']} />
+        <div className={styles['no-results-text']}>No results</div>
+      </div>
+    );
   }
 
   return (
@@ -35,16 +41,16 @@ export default function SearchResults({ searchResults, isLoading }) {
           <div className={styles.meta}>
             <span className={styles.date}>{getFormattedDate(node?.date)}</span>
           </div>
-          <div className={styles.excerpt}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            elementum tincidunt sem quis bibendum. Integer leo urna, ullamcorper
-            pretium tortor et, venenatis bibendum metus. Vestibulum
-            pellentesque, erat quis varius iaculis, nisl mauris porta ipsum.
-          </div>
+          <div
+            className={styles.excerpt}
+            dangerouslySetInnerHTML={{
+              __html: node?.$on?.[node?.__typename]?.excerpt?.(),
+            }}
+          ></div>
         </div>
       ))}
 
-      {isLoading && (
+      {isLoading === true && (
         <>
           <LoadingSearchResult />
           <LoadingSearchResult />

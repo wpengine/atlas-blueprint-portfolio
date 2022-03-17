@@ -7,6 +7,7 @@ import { getNextStaticProps } from '@faustjs/next';
 import SearchInput from 'components/SearchInput/SearchInput';
 import useSearch from 'hooks/useSearch';
 import SearchResults from 'components/SearchResults/SearchResults';
+import SearchRecommendations from 'components/SearchRecommendations/SearchRecommendations';
 
 export default function Page() {
   const { useQuery } = client;
@@ -29,8 +30,8 @@ export default function Page() {
 
       <Header
         title={
-          searchQuery && searchResults?.length
-            ? `Showing ${searchResults.length} results for "${searchQuery}"`
+          searchQuery && !isLoading
+            ? `Showing results for "${searchQuery}"`
             : `Search`
         }
       />
@@ -47,6 +48,8 @@ export default function Page() {
           {searchResults?.length > 0 && pageInfo?.hasNextPage && (
             <button onClick={() => loadMore()}>Load more</button>
           )}
+
+          {!isLoading && searchResults === null && <SearchRecommendations />}
         </>
       </Main>
 
