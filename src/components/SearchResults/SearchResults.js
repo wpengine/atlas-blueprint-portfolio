@@ -17,13 +17,19 @@ export default function SearchResults({ searchResults, isLoading }) {
     return null;
   }
 
+  if (!searchResults.length) {
+    return <>No results</>;
+  }
+
   return (
     <>
-      {searchResults.map((node) => (
+      {searchResults?.map((node) => (
         <div key={node?.databaseId} className={styles.result}>
           <NextLinkWrapper href={node?.uri}>
             <a>
-              <h2 className={styles.title}>{node?.uri}</h2>
+              <h2 className={styles.title}>
+                {node?.$on?.[node?.__typename].title()}
+              </h2>
             </a>
           </NextLinkWrapper>
           <div className={styles.meta}>

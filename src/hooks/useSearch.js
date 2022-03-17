@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { getFields, getArrayFields } from 'gqty';
+import { getFields, getArrayFields, prepass, selectFields } from 'gqty';
 import { useCallback, useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import { client } from 'client';
@@ -21,13 +21,31 @@ export default function useSearch() {
         where: { search: searchQuery },
       });
 
+      prepass(nodes, 'databaseId', 'id', 'uri', 'date', '__typename');
+
+      return { nodes, pageInfo };
+    });
+
+    const dataWithTitle = await client.client.resolved(() => {
+      data?.nodes?.map((node) =>
+        prepass(node, `$on.${node?.__typename}.title`)
+      );
+
       return {
-        nodes: getArrayFields(nodes),
-        pageInfo: getFields(pageInfo),
+        nodes: getArrayFields(
+          data?.nodes,
+          'databaseId',
+          'id',
+          'uri',
+          'date',
+          '__typename',
+          '$on'
+        ),
+        pageInfo: getFields(data?.pageInfo),
       };
     });
 
-    return data;
+    return dataWithTitle;
   }
 
   const fetchInitialResults = useCallback(async () => {
@@ -83,5 +101,6 @@ export default function useSearch() {
     searchResults,
     loadMore,
     isLoading,
+    pageInfo,
   };
 }

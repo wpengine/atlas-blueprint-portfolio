@@ -11,8 +11,14 @@ import SearchResults from 'components/SearchResults/SearchResults';
 export default function Page() {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
-  const { searchQuery, setSearchQuery, searchResults, loadMore, isLoading } =
-    useSearch();
+  const {
+    searchQuery,
+    setSearchQuery,
+    searchResults,
+    loadMore,
+    isLoading,
+    pageInfo,
+  } = useSearch();
 
   console.log('isLoading', isLoading);
   return (
@@ -38,7 +44,7 @@ export default function Page() {
 
           <SearchResults searchResults={searchResults} isLoading={isLoading} />
 
-          {searchResults?.length && (
+          {searchResults?.length > 0 && pageInfo?.hasNextPage && (
             <button onClick={() => loadMore()}>Load more</button>
           )}
         </>
