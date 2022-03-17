@@ -89,6 +89,7 @@ export default function useSearch() {
    */
   const fetchInitialResults = useCallback(async () => {
     setIsLoading(true);
+
     clearResults();
 
     const res = await fetchResults(debouncedSearchQuery);

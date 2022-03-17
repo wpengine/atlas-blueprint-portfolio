@@ -16,6 +16,7 @@ import FormatDate from './FormatDate';
 import SearchInput from './SearchInput';
 import SearchResults from './SearchResults';
 import SearchRecommendations from './SearchRecommendations';
+import NextLinkWrapper from './NextLinkWrapper';
 
 export {
   Posts,
@@ -36,4 +37,5 @@ export {
   SearchInput,
   SearchResults,
   SearchRecommendations,
+  NextLinkWrapper,
 };
