@@ -34,7 +34,7 @@ export default function SearchResults({ searchResults, isLoading }) {
           <NextLinkWrapper href={node?.uri}>
             <a>
               <h2 className={styles.title}>
-                {node?.$on?.[node?.__typename].title()}
+                {node?.$on?.[node?.__typename].title?.()}
               </h2>
             </a>
           </NextLinkWrapper>

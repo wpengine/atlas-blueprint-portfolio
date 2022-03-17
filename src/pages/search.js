@@ -8,6 +8,7 @@ import SearchInput from 'components/SearchInput/SearchInput';
 import useSearch from 'hooks/useSearch';
 import SearchResults from 'components/SearchResults/SearchResults';
 import SearchRecommendations from 'components/SearchRecommendations/SearchRecommendations';
+import Button from 'components/Button/Button';
 
 export default function Page() {
   const { useQuery } = client;
@@ -21,7 +22,6 @@ export default function Page() {
     pageInfo,
   } = useSearch();
 
-  console.log('isLoading', isLoading);
   return (
     <>
       <Head>
@@ -46,7 +46,7 @@ export default function Page() {
           <SearchResults searchResults={searchResults} isLoading={isLoading} />
 
           {searchResults?.length > 0 && pageInfo?.hasNextPage && (
-            <button onClick={() => loadMore()}>Load more</button>
+            <Button onClick={() => loadMore()}>Load more</Button>
           )}
 
           {!isLoading && searchResults === null && <SearchRecommendations />}
