@@ -6,6 +6,7 @@ import LoadMore from './LoadMore';
 import NavigationMenu from './NavigationMenu';
 import FeaturedImage from './FeaturedImage';
 import ContentWrapper from './ContentWrapper';
+import TaxonomyTerms from './TaxonomyTerms';
 import Projects from './Projects';
 import Footer from './Footer/Footer';
 import Main from './Main/Main';
@@ -22,6 +23,7 @@ export {
   FeaturedImage,
   ContentWrapper,
   LoadMore,
+  TaxonomyTerms,
   Projects,
   Footer,
   Main,
