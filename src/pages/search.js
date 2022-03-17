@@ -9,6 +9,7 @@ import useSearch from 'hooks/useSearch';
 import SearchResults from 'components/SearchResults/SearchResults';
 import SearchRecommendations from 'components/SearchRecommendations/SearchRecommendations';
 import Button from 'components/Button/Button';
+import styles from 'styles/pages/_Search.module.scss';
 
 export default function Page() {
   const { useQuery } = client;
@@ -28,25 +29,30 @@ export default function Page() {
         <title>Search - {generalSettings?.description}</title>
       </Head>
 
-      <Header
-        title={
-          searchQuery && !isLoading
-            ? `Showing results for "${searchQuery}"`
-            : `Search`
-        }
-      />
+      <Header className={styles['search-header']} />
 
-      <Main className="container-small">
-        <>
+      <div className={styles['search-header-pane']}>
+        <div className="container-small">
+          <h2 className={styles['search-header-text']}>
+            {searchQuery && !isLoading
+              ? `Showing results for "${searchQuery}"`
+              : `Search`}
+          </h2>
           <SearchInput
             value={searchQuery}
             onChange={(newValue) => setSearchQuery(newValue)}
           />
+        </div>
+      </div>
 
+      <Main className="container-small">
+        <>
           <SearchResults searchResults={searchResults} isLoading={isLoading} />
 
           {searchResults?.length > 0 && pageInfo?.hasNextPage && (
-            <Button onClick={() => loadMore()}>Load more</Button>
+            <div className={styles['load-more']}>
+              <Button onClick={() => loadMore()}>Load more</Button>
+            </div>
           )}
 
           {!isLoading && searchResults === null && <SearchRecommendations />}
