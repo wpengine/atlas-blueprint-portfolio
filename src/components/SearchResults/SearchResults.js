@@ -1,9 +1,13 @@
-import FormatDate from 'components/FormatDate';
-import NextLinkWrapper from 'components/NextLinkWrapper';
-import { getFormattedDate } from 'components/PostInfo';
+import { FormatDate, NextLinkWrapper } from 'components';
 import { FaSearch } from 'react-icons/fa';
 import styles from './SearchResults.module.scss';
 
+/**
+ * A component that mimics a search result in a loading state for better
+ * perceived performance.
+ *
+ * @returns {React.ReactElement} The LoadingSearchResults component.
+ */
 export function LoadingSearchResult() {
   return (
     <div className={styles['loading-result']}>
@@ -14,11 +18,21 @@ export function LoadingSearchResult() {
   );
 }
 
+/**
+ * Renders the search results list.
+ *
+ * @param {Props} props The props object.
+ * @param {object[]} props.searchResults The search results list.
+ * @param {boolean} props.isLoading Whether the search results are loading.
+ * @returns {React.ReactElement} The SearchResults component.
+ */
 export default function SearchResults({ searchResults, isLoading }) {
+  // If there are no results, or are loading, return null.
   if (!isLoading && searchResults === null) {
     return null;
   }
 
+  // If there are no results, return a message.
   if (!isLoading && !searchResults?.length) {
     return (
       <div className={styles['no-results']}>
@@ -40,9 +54,9 @@ export default function SearchResults({ searchResults, isLoading }) {
             </a>
           </NextLinkWrapper>
           <div className={styles.meta}>
-            <span className={styles.date}>
+            <time className={styles.date} dateTime={node?.date}>
               <FormatDate date={node?.date} />
-            </span>
+            </time>
           </div>
           <div
             className={styles.excerpt}

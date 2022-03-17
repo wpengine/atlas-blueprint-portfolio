@@ -4,6 +4,11 @@ import { client } from 'client';
 
 const recommendedPostsLimit = 5;
 
+/**
+ * Render the SearchRecommendations component.
+ *
+ * @returns {React.ReactElement} The SearchRecommendations component.
+ */
 export default function SearchRecommendations() {
   const { useQuery } = client;
   const recentPostNodes = useQuery().posts({
