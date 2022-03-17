@@ -25,11 +25,11 @@ export default function Page() {
         <div className="content">
           <h1>All Categories</h1>
           <ul>
-            {categories?.nodes?.map(({ id, name }) => {
+            {categories?.nodes?.map(({ id, name, uri }) => {
               return (
                 <li key={id}>
                   {
-                    <Link href={`category/${name}`}>
+                    <Link href={uri ?? '#'}>
                       <a>{name}</a>
                     </Link>
                   }
