@@ -1,4 +1,5 @@
 @import 'styles/variables';
+$color-grey: #777;
 
 .result {
   display: block;
@@ -20,7 +21,7 @@
   text-align: center;
   margin-top: 8rem;
   margin-bottom: 8rem;
-  color: #777; // @todo: Define this color in theme styles
+  color: $color-grey;
 }
 
 .no-results-icon {
