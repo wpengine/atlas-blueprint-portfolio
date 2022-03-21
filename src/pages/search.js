@@ -35,7 +35,7 @@ export default function Page() {
       <Header className={styles['search-header']} />
 
       <div className={styles['search-header-pane']}>
-        <div className="container-small">
+        <div className="container small">
           <h2 className={styles['search-header-text']}>
             {searchQuery && !isLoading
               ? `Showing results for "${searchQuery}"`
@@ -48,7 +48,7 @@ export default function Page() {
         </div>
       </div>
 
-      <Main className="container-small">
+      <Main className="container small">
         <>
           <SearchResults searchResults={searchResults} isLoading={isLoading} />
 
