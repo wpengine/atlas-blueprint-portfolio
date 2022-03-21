@@ -1,3 +1,11 @@
 {
-  "extends": ["next", "prettier"]
+  "extends": ["next", "eslint:recommended", "plugin:import/recommended", "prettier"],
+  "rules": {
+    "import/no-unresolved": 0,
+    "import/no-relative-parent-imports": 2
+  },
+  "env": {
+    "es6": true
+  },
+  "ignorePatterns": ["schema.generated.*"]
 }

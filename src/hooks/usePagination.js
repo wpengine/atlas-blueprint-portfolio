@@ -65,6 +65,7 @@ export default function usePagination(
         .then((data) => {
           setData(function (prev) {
             return {
+              // eslint-disable-next-line no-unsafe-optional-chaining
               nodes: uniqBy([...prev.nodes, ...data?.nodes], (v) => v.id),
               pageInfo: data?.pageInfo,
             };

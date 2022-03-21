@@ -1,4 +1,4 @@
-import appConfig from '../../app.config';
+import appConfig from 'app.config';
 import React from 'react';
 import styles from './LoadMore.module.scss';
 
