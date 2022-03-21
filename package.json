@@ -10,7 +10,8 @@
     "clean": "rimraf .next node_modules",
     "generate": "gqty generate",
     "wpe-build": "next build",
-    "format": "prettier --write 'src/**/*.{js,jsx,md,mdx}'"
+    "format": "prettier --write 'src/**/*.{js,jsx,md,mdx}'",
+    "format:check": "prettier --check 'src/**/*.{js,jsx,md,mdx}'"
   },
   "dependencies": {
     "@faustjs/core": "^0.15.2",
