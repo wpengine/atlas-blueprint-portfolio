@@ -3,7 +3,7 @@ import { client } from 'client';
 import { getArrayFields, getFields, prepass } from 'gqty';
 import { useCallback, useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
-import { uniqBy } from './usePagination';
+import { uniqBy } from 'utils';
 
 const searchInputDebounceMs = 500;
 
