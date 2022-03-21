@@ -48,6 +48,12 @@ export default function useSearch() {
         where: { search: searchQuery },
       });
 
+      /**
+       * Explicitly define the fields we want GQty to return in this query, as
+       * we have to make a subsequent request for the title and content.
+       *
+       * @see https://gqty.dev/docs/client/helper-functions#prepass
+       */
       prepass(nodes, 'databaseId', 'id', 'uri', 'date', '__typename');
 
       return { nodes, pageInfo };
