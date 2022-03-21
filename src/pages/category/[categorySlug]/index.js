@@ -39,7 +39,6 @@ export default function Page() {
       <Header title={`Category: ${category?.name}`} />
 
       <Main className="container">
-        <Heading level="h2">Category: {category?.name}</Heading>
         <Posts posts={data.nodes} />
         <LoadMore
           className="text-center"
