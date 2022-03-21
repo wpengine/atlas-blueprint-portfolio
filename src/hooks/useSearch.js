@@ -22,6 +22,7 @@ export default function useSearch() {
   const [searchResults, setSearchResults] = useState(null);
   const [pageInfo, setPageInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   /**
    * Fetch results based on the search query and cursor if we are paginating.
@@ -29,65 +30,79 @@ export default function useSearch() {
    * @param {string | undefined} endCursor The end cursor if we are paginating
    * @returns
    */
-  async function fetchResults(searchQuery, endCursor = undefined) {
-    /**
-     * Do a prepass request for the search result metadata so we can make a
-     * proper subsequent request for the title and content based on the content
-     * type.
-     *
-     * typically this can be done with the ... on NodeWithTitle interface, but there is
-     * currently a bug.
-     *
-     * @see https://gqty.dev/docs/client/helper-functions#prepass
-     * @see https://github.com/gqty-dev/gqty/issues/733
-     */
-    const metadata = await client.client.resolved(() => {
-      const { nodes, pageInfo } = client.client.query.contentNodes({
-        first: appConfig?.postsPerPage,
-        after: endCursor,
-        where: { search: searchQuery },
-      });
+  const fetchResults = useCallback(
+    async (searchQuery, endCursor = undefined) => {
+      try {
+        /**
+         * Do a prepass request for the search result metadata so we can make a
+         * proper subsequent request for the title and content based on the content
+         * type.
+         *
+         * typically this can be done with the ... on NodeWithTitle interface, but there is
+         * currently a bug.
+         *
+         * @see https://gqty.dev/docs/client/helper-functions#prepass
+         * @see https://github.com/gqty-dev/gqty/issues/733
+         */
+        const metadata = await client.client.resolved(() => {
+          const { nodes, pageInfo } = client.client.query.contentNodes({
+            first: appConfig?.postsPerPage,
+            after: endCursor,
+            where: { search: searchQuery },
+          });
 
-      /**
-       * Explicitly define the fields we want GQty to return in this query, as
-       * we have to make a subsequent request for the title and content.
-       *
-       * @see https://gqty.dev/docs/client/helper-functions#prepass
-       */
-      prepass(nodes, 'databaseId', 'id', 'uri', 'date', '__typename');
+          /**
+           * Explicitly define the fields we want GQty to return in this query, as
+           * we have to make a subsequent request for the title and content.
+           *
+           * @see https://gqty.dev/docs/client/helper-functions#prepass
+           */
+          prepass(nodes, 'databaseId', 'id', 'uri', 'date', '__typename');
 
-      return { nodes, pageInfo };
-    });
+          return { nodes, pageInfo };
+        });
 
-    /**
-     * Make a prepass request for the title and excerpt from the previously
-     * fetched metadata.
-     */
-    const metadataWithContent = await client.client.resolved(() => {
-      metadata?.nodes?.map((node) =>
-        prepass(
-          node,
-          `$on.${node?.__typename}.title`,
-          `$on.${node?.__typename}.excerpt`
-        )
-      );
+        /**
+         * Make a prepass request for the title and excerpt from the previously
+         * fetched metadata.
+         */
+        const metadataWithContent = await client.client.resolved(() => {
+          metadata?.nodes?.map((node) =>
+            prepass(
+              node,
+              `$on.${node?.__typename}.title`,
+              `$on.${node?.__typename}.excerpt`
+            )
+          );
 
-      return {
-        nodes: getArrayFields(
-          metadata?.nodes,
-          'databaseId',
-          'id',
-          'uri',
-          'date',
-          '__typename',
-          '$on'
-        ),
-        pageInfo: getFields(metadata?.pageInfo),
-      };
-    });
+          return {
+            nodes: getArrayFields(
+              metadata?.nodes,
+              'databaseId',
+              'id',
+              'uri',
+              'date',
+              '__typename',
+              '$on'
+            ),
+            pageInfo: getFields(metadata?.pageInfo),
+          };
+        });
 
-    return metadataWithContent;
-  }
+        return metadataWithContent;
+      } catch (error) {
+        if (process.env.NODE_ENV === 'development') {
+          console.log(error);
+        }
+
+        setError(error);
+        clearResults();
+
+        return;
+      }
+    },
+    []
+  );
 
   /**
    * Fetch initial results. This can happen either upon first search. Or after
@@ -104,10 +119,11 @@ export default function useSearch() {
     setPageInfo(res?.pageInfo);
 
     setIsLoading(false);
-  }, [debouncedSearchQuery]);
+  }, [debouncedSearchQuery, fetchResults]);
 
   function clearResults() {
     setSearchResults(null);
+    setPageInfo(null);
   }
 
   /**
@@ -168,5 +184,6 @@ export default function useSearch() {
     loadMore,
     isLoading,
     pageInfo,
+    error,
   };
 }

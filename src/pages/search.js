@@ -24,6 +24,7 @@ export default function Page() {
     loadMore,
     isLoading,
     pageInfo,
+    error,
   } = useSearch();
 
   return (
@@ -50,6 +51,12 @@ export default function Page() {
 
       <Main className="container small">
         <>
+          {error && (
+            <div className="alert-error">
+              An error has occurred. Please refresh and try again.
+            </div>
+          )}
+
           <SearchResults searchResults={searchResults} isLoading={isLoading} />
 
           {pageInfo?.hasNextPage && (

@@ -69,14 +69,10 @@ hr {
   flex-direction: column;
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+.alert-error {
+  background-color: #fff5f5;
+  border: 1px solid #fed6d6;
+  border-radius: 0.25rem;
+  color: #c53030;
+  padding: 1rem;
 }
