@@ -52,7 +52,7 @@ export default function Page() {
         <>
           <SearchResults searchResults={searchResults} isLoading={isLoading} />
 
-          {searchResults?.length && pageInfo?.hasNextPage && (
+          {pageInfo?.hasNextPage && (
             <div className={styles['load-more']}>
               <Button onClick={() => loadMore()}>Load more</Button>
             </div>
