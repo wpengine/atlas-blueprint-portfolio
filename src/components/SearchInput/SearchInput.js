@@ -10,7 +10,7 @@ import styles from './SearchInput.module.scss';
  * @param {(newValue: string) => void} props.onChange The search input onChange handler
  * @returns {React.ReactElement} The SearchInput component.
  */
-export default function SearchInput({ value, onChange }) {
+export default function SearchInput({ value, onChange, ...props }) {
   const input = useRef();
 
   // Clear and focus the input on initial render
@@ -32,11 +32,16 @@ export default function SearchInput({ value, onChange }) {
         name="search"
         className={styles.input}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => {
+          if (onChange) {
+            onChange(e.target.value);
+          }
+        }}
         autoFocus
         onFocus={(e) => e.target.select()}
         type="text"
         placeholder="Start typing..."
+        {...props}
       />
     </div>
   );

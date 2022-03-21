@@ -45,7 +45,7 @@ export default function SearchResults({ searchResults, isLoading }) {
   return (
     <>
       {searchResults?.map((node) => (
-        <div key={node?.databaseId} className={styles.result}>
+        <div key={node?.databaseId ?? ''} className={styles.result}>
           <NextLinkWrapper href={node?.uri}>
             <a>
               <h2 className={styles.title}>
@@ -59,7 +59,6 @@ export default function SearchResults({ searchResults, isLoading }) {
             </time>
           </div>
           <div
-            className={styles.excerpt}
             dangerouslySetInnerHTML={{
               __html: node?.$on?.[node?.__typename]?.excerpt?.(),
             }}
