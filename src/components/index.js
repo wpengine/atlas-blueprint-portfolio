@@ -17,6 +17,7 @@ import SearchInput from './SearchInput';
 import SearchResults from './SearchResults';
 import SearchRecommendations from './SearchRecommendations';
 import NextLinkWrapper from './NextLinkWrapper';
+import LoadingSearchResult from './LoadingSearchResult';
 
 export {
   Posts,
@@ -38,4 +39,5 @@ export {
   SearchResults,
   SearchRecommendations,
   NextLinkWrapper,
+  LoadingSearchResult,
 };
