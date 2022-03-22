@@ -44,7 +44,7 @@ export default function Page() {
 
       <Main className={[styles.home, 'container'].join(' ')}>
         <section className="hero text-center">
-          <Heading className={styles['hero-heading']} level="h1">
+          <Heading className={styles.heading} level="h1">
             Welcome to your Blueprint
           </Heading>
           <p className={styles.description}>
@@ -74,8 +74,8 @@ export default function Page() {
             </span>
           </CTA>
         </section>
-        <section className="posts">
-          <Heading className={styles['section-heading']} level="h2">
+        <section className={styles.posts}>
+          <Heading className={styles.heading} level="h2">
             Latest Posts
           </Heading>
           <Posts posts={posts?.nodes} id="posts-list" />

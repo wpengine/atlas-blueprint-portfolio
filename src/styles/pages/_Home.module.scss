@@ -2,13 +2,12 @@
   > section {
     margin-bottom: 8rem;
   }
-.hero-heading {
-  margin-bottom: 1rem;
 }
 
-.section-heading {
-  text-align: center;
+.heading {
   font-size: 4.8rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .description {
@@ -20,4 +19,8 @@
   a[role=button] {
     margin: 0.5rem;
   }
+}
+
+.posts .heading {
+  margin-bottom: 4rem;
 }
