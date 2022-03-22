@@ -8,7 +8,7 @@ function Posts({ posts, intro, id }) {
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
       {intro && <p>{intro}</p>}
-      <div className="row row-wrap">
+      <div className={styles['post-list']}>
         {posts?.map((post) => {
           return (
             <div
