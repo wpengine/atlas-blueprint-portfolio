@@ -1,5 +1,17 @@
 @import 'styles/Variables';
 
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  column-gap: 2rem;
+  row-gap: 4rem;
+  margin-bottom: 6rem;
+
+  @media (min-width: $breakpoint-small) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .info {
   font-size: 1.2rem;
   line-height: 1.5rem;
@@ -7,25 +19,14 @@
 }
 
 .container {
-  text-align: center;
+  width: 100%;
   display: flex;
-  max-width: 33.33%;
-  flex-basis: 33.33%;
+  text-align: center;
   justify-content: center;
-  margin-bottom: 4rem;
-
-  @media (max-width: $breakpoint-medium) {
-    max-width: 50%;
-    flex-basis: 50%;
-  }
-
-  @media (max-width: $breakpoint-small) {
-    max-width: 100%;
-    flex-basis: 100%;
-  }
 }
 
 .card {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -36,7 +37,15 @@
 }
 
 .image {
-  min-width: 340px;
-  margin-bottom: 3rem;
+  width: 100%;
+  margin: 0;
   height: auto;
+}
+
+.image-holder {
+  margin-bottom: 3rem;
+
+  @media (min-width: $breakpoint-small) {
+    aspect-ratio: 1 / 1;
+  }
 }

@@ -8,7 +8,7 @@ function Posts({ posts, intro, id }) {
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
       {intro && <p>{intro}</p>}
-      <div className="row row-wrap">
+      <div className={styles['post-list']}>
         {posts?.map((post) => {
           return (
             <div
@@ -17,14 +17,20 @@ function Posts({ posts, intro, id }) {
               id={`post-${post.id}`}
             >
               <div className={styles.card}>
-                <FeaturedImage
-                  className={styles.image}
-                  image={post?.featuredImage?.node}
-                  width={340}
-                  height={340}
-                />
+                <Link href={post?.uri ?? '#'}>
+                  <a className={styles[`image-holder`]} tabIndex="-1">
+                    <FeaturedImage
+                      className={styles.image}
+                      image={post?.featuredImage?.node}
+                      alt={post?.featuredImage?.node?.altText}
+                      width={340}
+                      height={340}
+                    />
+                  </a>
+                </Link>
+
                 <Heading level="h4" className={styles.header}>
-                  <Link href={post.uri ?? '#'}>
+                  <Link href={post?.uri ?? '#'}>
                     <a>{post.title()}</a>
                   </Link>
                 </Heading>
