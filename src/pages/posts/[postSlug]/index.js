@@ -1,6 +1,12 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import { client } from 'client';
-import { ContentWrapper, Footer, Header, Main, TaxonomyTerms } from 'components';
+import {
+  ContentWrapper,
+  Footer,
+  Header,
+  Main,
+  TaxonomyTerms,
+} from 'components';
 import Head from 'next/head';
 
 export function PostComponent({ post }) {
