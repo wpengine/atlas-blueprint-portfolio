@@ -8,10 +8,6 @@
   margin-bottom: 6rem;
 
   @media (min-width: $breakpoint-small) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: $breakpoint-medium) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -43,11 +39,12 @@
 .image {
   width: 100%;
   margin: 0;
-  margin-bottom: 3rem;
   height: auto;
 }
 
 .image-holder {
+  margin-bottom: 3rem;
+
   @media (min-width: $breakpoint-small) {
     aspect-ratio: 1 / 1;
   }
