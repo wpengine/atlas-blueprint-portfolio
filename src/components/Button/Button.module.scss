@@ -1,31 +1,32 @@
-@import 'styles/variables';
+@import 'styles/Variables';
 
 .button {
-    display: inline-flex;
-    align-items: center;
-    border: 1px solid transparent;
-    background-color: transparent;
-    text-transform: uppercase;
-    padding: 1.75rem 5rem;
-    font-size: 1.25rem;
-    appearance: none;
-    font-weight: $font-weight-bold;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid transparent;
+  background-color: transparent;
+  text-transform: uppercase;
+  padding: 1.75rem 5rem;
+  font-size: 1.25rem;
+  appearance: none;
+  font-weight: $font-weight-bold;
 
-    &.button-primary {
-        color: var(--color-black);
-        border-color: var(--color-black);
-        background-color: var(--color-white);
-    }
+  &.button-primary {
+    color: var(--color-black);
+    border-color: var(--color-black);
+    background-color: var(--color-white);
+  }
 
-    &.button-secondary {
-        color: var(--color-white);
-        border-color: var(--color-primary);
-        background-color: var(--color-primary);
-    }
+  &.button-secondary {
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+  }
 
-    &:hover, &:focus {
-        border-color: var(--color-black);
-        background-color: var(--color-black);
-        color: var(--color-white);
-    }
+  &:hover,
+  &:focus {
+    border-color: var(--color-black);
+    background-color: var(--color-black);
+    color: var(--color-white);
+  }
 }
