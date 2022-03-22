@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { client } from 'client';
-import appConfig from '../app.config';
+import appConfig from 'app.config';
 import usePagination from 'hooks/usePagination';
 import { Footer, Header, LoadMore, Main, Projects } from 'components';
 import { getNextStaticProps } from '@faustjs/next';
@@ -12,6 +12,7 @@ export default function Page() {
   const projects = useQuery().projects({
     first: appConfig.postsPerPage,
   });
+
   const { data, fetchMore, isLoading } = usePagination(
     (query, args) => {
       const { nodes, pageInfo } = query.projects(args);

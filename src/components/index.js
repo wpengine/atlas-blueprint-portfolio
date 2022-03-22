@@ -6,13 +6,14 @@ import LoadMore from './LoadMore';
 import NavigationMenu from './NavigationMenu';
 import FeaturedImage from './FeaturedImage';
 import ContentWrapper from './ContentWrapper';
-import TaxonomyTerms from './TaxonomyTerms';
+import ProjectHeader from './ProjectHeader';
 import Projects from './Projects';
 import Footer from './Footer/Footer';
 import Main from './Main/Main';
 import Button from './Button';
 import CTA from './CTA';
 import Testimonials from './Testimonials';
+import TaxonomyTerms from './TaxonomyTerms';
 
 export {
   Posts,
@@ -24,6 +25,7 @@ export {
   ContentWrapper,
   LoadMore,
   TaxonomyTerms,
+  ProjectHeader,
   Projects,
   Footer,
   Main,
