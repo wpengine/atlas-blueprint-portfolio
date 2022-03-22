@@ -7,8 +7,8 @@
   align-items: stretch;
   justify-content: space-between;
   background-color: var(--color-primary);
-  padding: 4rem;
-  border: 1.5rem solid #fff;
+  padding: 6rem;
+  border: 2rem solid #fff;
   color: #fff;
   filter: $filter-drop-shadow;
 
@@ -21,6 +21,7 @@
 .content {
     width: 100%;
     margin-bottom: 2rem;
+  font-size: 1.9rem;
 
     @media (min-width: $breakpoint-small) {
         width: 60%;
