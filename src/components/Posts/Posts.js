@@ -18,7 +18,7 @@ function Posts({ posts, intro, id }) {
             >
               <div className={styles.card}>
                 <Link href={post?.uri ?? '#'}>
-                  <a className={styles[`image-holder`]} tabindex="-1">
+                  <a className={styles[`image-holder`]} tabIndex="-1">
                     <FeaturedImage
                       className={styles.image}
                       image={post?.featuredImage?.node}
