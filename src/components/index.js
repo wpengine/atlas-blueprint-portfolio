@@ -13,6 +13,7 @@ import Main from './Main/Main';
 import Button from './Button';
 import CTA from './CTA';
 import Testimonials from './Testimonials';
+import TaxonomyTerms from './TaxonomyTerms';
 
 export {
   Posts,
@@ -23,6 +24,7 @@ export {
   FeaturedImage,
   ContentWrapper,
   LoadMore,
+  TaxonomyTerms,
   ProjectHeader,
   Projects,
   Footer,

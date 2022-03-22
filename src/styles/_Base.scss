@@ -56,6 +56,10 @@ ul {
   list-style: circle inside;
 }
 
+dt {
+  font-weight: $font-weight-extra-bold;
+}
+
 // Dividers
 hr {
   border: 0;
