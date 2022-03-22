@@ -22,6 +22,7 @@ export default function FeaturedImage({ className, image, ...props }) {
         alt={altText}
         objectFit="contain"
         layout="responsive"
+        priority
         {...props}
       />
     </figure>
