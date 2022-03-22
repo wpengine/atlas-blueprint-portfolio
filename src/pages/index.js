@@ -78,11 +78,7 @@ export default function Page() {
           <Heading className="text-center" level="h2">
             Latest Posts
           </Heading>
-          <Posts
-            posts={posts?.nodes}
-            readMoreText={'Read More'}
-            id="posts-list"
-          />
+          <Posts posts={posts?.nodes} id="posts-list" />
         </section>
         <section className="cta">
           <CTA
