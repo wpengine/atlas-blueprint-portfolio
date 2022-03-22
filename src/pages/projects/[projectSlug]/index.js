@@ -1,6 +1,12 @@
 import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
-import { Header, Footer, ProjectHeader, ContentWrapper, Main } from 'components';
+import {
+  Header,
+  Footer,
+  ProjectHeader,
+  ContentWrapper,
+  Main,
+} from 'components';
 import Head from 'next/head';
 
 export function ProjectComponent({ project }) {
@@ -32,11 +38,11 @@ export function ProjectComponent({ project }) {
   );
 }
 
-export default function Page({id}) {
+export default function Page({ id }) {
   const { useQuery } = client;
   const project = useQuery().project({
     id,
-    idType: 'SLUG'
+    idType: 'SLUG',
   });
 
   return <ProjectComponent project={project} />;
@@ -49,9 +55,9 @@ export async function getStaticProps(context) {
     Page,
     client,
     props: {
-      id: projectSlug
+      id: projectSlug,
     },
-    notFound: await is404Cpt(projectSlug, 'project')
+    notFound: await is404Cpt(projectSlug, 'project'),
   });
 }
 
@@ -71,11 +77,10 @@ export function getStaticPaths() {
  */
 async function is404Cpt(slug, customPostType) {
   const customPostTypePost = await client.client.inlineResolved(() => {
-    return client.client.query
-      [customPostType]({
-        id: slug,
-        idType: 'SLUG'
-      });
+    return client.client.query[customPostType]({
+      id: slug,
+      idType: 'SLUG',
+    });
   });
 
   return customPostTypePost === null;
