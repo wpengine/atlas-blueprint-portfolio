@@ -22,7 +22,12 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
               />
               <div className={styles.content}>
                 <Heading level="h3">
-                  <Link href={project.uri ?? '#'}>
+                  {/*
+                    Hardcoded CPT slug to be removed once ACM supports the
+                    `with_front` register_post_type() option.
+                    https://github.com/wpengine/atlas-content-modeler/discussions/457
+                  */}
+                  <Link href={`projects/${project.slug}` ?? '#'}>
                     <a>{project.title()}</a>
                   </Link>
                 </Heading>

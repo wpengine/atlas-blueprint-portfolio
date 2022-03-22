@@ -50,13 +50,13 @@
         align-items: center;
         color: var(--color-white);
         background-color: transparent;
-        transition: background-color 0.5s ease-in-out;
+        transition: background-color 0.1s ease-in-out;
 
 
         .social-icon {
             color: var(--color-white);
             vertical-align: middle;
-            transition: color 0.5s ease-in-out;
+            transition: color 0.1s ease-in-out;
         }
     
         &:hover, &:focus {
