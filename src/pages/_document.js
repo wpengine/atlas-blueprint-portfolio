@@ -16,7 +16,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="theme-blue">
+        <body>
           <Main />
           <NextScript />
         </body>

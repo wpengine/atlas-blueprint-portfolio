@@ -6,6 +6,7 @@ import {
   ProjectHeader,
   ContentWrapper,
   Main,
+  SEO,
 } from 'components';
 import Head from 'next/head';
 
@@ -15,11 +16,10 @@ export function ProjectComponent({ project }) {
 
   return (
     <>
-      <Head>
-        <title>
-          {project?.title()} - {generalSettings?.title}
-        </title>
-      </Head>
+      <SEO
+        title={`${project?.title()} - ${generalSettings?.title}`}
+        imageUrl={project?.featuredImage?.node?.sourceUrl?.()}
+      />
 
       <Header title={project?.title()} />
 

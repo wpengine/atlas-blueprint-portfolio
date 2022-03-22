@@ -1,5 +1,4 @@
 import { getNextStaticProps } from '@faustjs/next';
-import Head from 'next/head';
 import React from 'react';
 import { client } from 'client';
 import { FaArrowRight } from 'react-icons/fa';
@@ -12,6 +11,7 @@ import {
   Heading,
   CTA,
   Testimonials,
+  SEO,
 } from 'components';
 import styles from 'styles/pages/_Home.module.scss';
 
@@ -35,11 +35,11 @@ export default function Page() {
 
   return (
     <>
-      <Head>
-        <title>
-          {generalSettings?.title} - {generalSettings?.description}
-        </title>
-      </Head>
+      <SEO
+        title={`${generalSettings?.title} - ${generalSettings?.description}`}
+        imageUrl={mainBanner?.sourceUrl}
+      />
+
       <Header image={mainBanner} />
 
       <Main className={[styles.home, 'container'].join(' ')}>
