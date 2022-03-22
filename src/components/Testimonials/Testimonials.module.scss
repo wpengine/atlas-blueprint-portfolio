@@ -7,6 +7,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      .slide {
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 }
