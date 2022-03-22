@@ -74,7 +74,7 @@ export default function Header({ title, image, date, author }) {
       {image && (
         <div className={styles['image']}>
           <div className="container">
-            <FeaturedImage className={styles['featured-image']} image={image} />
+            <FeaturedImage className={styles['featured-image']} image={image} priority />
           </div>
         </div>
       )}
