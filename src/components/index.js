@@ -19,6 +19,7 @@ import SearchResults from './SearchResults';
 import SearchRecommendations from './SearchRecommendations';
 import NextLinkWrapper from './NextLinkWrapper';
 import LoadingSearchResult from './LoadingSearchResult';
+import TaxonomyTerms from './TaxonomyTerms';
 
 export {
   Posts,
@@ -29,6 +30,7 @@ export {
   FeaturedImage,
   ContentWrapper,
   LoadMore,
+  TaxonomyTerms,
   ProjectHeader,
   Projects,
   Footer,

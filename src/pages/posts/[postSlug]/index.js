@@ -1,11 +1,18 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import { client } from 'client';
-import { ContentWrapper, Footer, Header, Main } from 'components';
+import {
+  ContentWrapper,
+  Footer,
+  Header,
+  Main,
+  TaxonomyTerms,
+} from 'components';
 import Head from 'next/head';
 
 export function PostComponent({ post }) {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
+
   return (
     <>
       <Head>
@@ -22,7 +29,10 @@ export function PostComponent({ post }) {
       />
 
       <Main className="container">
-        <ContentWrapper content={post?.content()} />
+        <ContentWrapper content={post?.content()}>
+          <TaxonomyTerms post={post} taxonomy={'categories'} />
+          <TaxonomyTerms post={post} taxonomy={'tags'} />
+        </ContentWrapper>
       </Main>
 
       <Footer />
