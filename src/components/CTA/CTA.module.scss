@@ -10,9 +10,7 @@
   padding: 4rem;
   border: 1.5rem solid #fff;
   color: #fff;
-  box-shadow: #000 0px 0px 0px 0px,
-    #000 0px 0px 0px 0px,
-    rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  filter: $filter-drop-shadow;
 
     @media (min-width: $breakpoint-small) {
         flex-direction: row;
