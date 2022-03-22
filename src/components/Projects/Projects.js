@@ -18,7 +18,6 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
               <FeaturedImage
                 className={styles.image}
                 image={project?.featuredImage?.node}
-                alt={project?.featuredImage?.node?.altText}
               />
               <div className={styles.content}>
                 <Heading level="h3">
