@@ -7,6 +7,10 @@ export default function TaxonomyTerms({ post, taxonomy }) {
     return uri && <Link href={uri}>{name}</Link>;
   });
 
+  if (0 === termLinks.length) {
+    return null;
+  }
+
   return (
     <div>
       <span className={styles['taxonomy']}>{taxonomy}:</span>
