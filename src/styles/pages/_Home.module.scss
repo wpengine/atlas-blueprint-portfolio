@@ -11,7 +11,8 @@
 }
 
 .description {
-  max-width: 50%;
+  max-width: 55%;
+  font-size: 1.8rem;
   margin: 0 auto 2rem;
 }
 
@@ -23,4 +24,12 @@
 
 .posts .heading {
   margin-bottom: 4rem;
+}
+
+.testimonials {
+  text-align: center;
+
+  .description {
+    margin-bottom: 6rem;
+  }
 }
