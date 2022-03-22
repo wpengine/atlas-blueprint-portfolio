@@ -14,7 +14,8 @@
 
   color: var(--color-black);
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: var(--color-black);
     background-color: var(--color-black);
     color: #fff;
