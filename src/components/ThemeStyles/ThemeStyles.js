@@ -4,7 +4,7 @@ const themes = {
   blue: {
     '--color-black': '#000',
     '--color-primary': '#000066',
-    '---color-secondary': '#cccccc',
+    '--color-secondary': '#cccccc',
     '--color-tertiary': '#eeeeee',
     '--color-white': '#ffffff',
   },
@@ -32,7 +32,7 @@ export default function ThemeStyles() {
       :root {
         --color-black: ${themes[themeColor]['--color-black']};
         --color-primary: ${themes[themeColor]['--color-primary']};
-        ---color-secondary: ${themes[themeColor]['---color-secondary']};
+        --color-secondary: ${themes[themeColor]['--color-secondary']};
         --color-tertiary: ${themes[themeColor]['--color-tertiary']};
         --color-white: ${themes[themeColor]['--color-white']};
       }

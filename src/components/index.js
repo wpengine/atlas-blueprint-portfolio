@@ -7,6 +7,7 @@ import LoadMore from './LoadMore';
 import NavigationMenu from './NavigationMenu';
 import FeaturedImage from './FeaturedImage';
 import ContentWrapper from './ContentWrapper';
+import ProjectHeader from './ProjectHeader';
 import Projects from './Projects';
 import Main from './Main';
 import Button from './Button';
@@ -18,6 +19,7 @@ import SearchResults from './SearchResults';
 import SearchRecommendations from './SearchRecommendations';
 import NextLinkWrapper from './NextLinkWrapper';
 import LoadingSearchResult from './LoadingSearchResult';
+import TaxonomyTerms from './TaxonomyTerms';
 
 export {
   Posts,
@@ -28,6 +30,8 @@ export {
   FeaturedImage,
   ContentWrapper,
   LoadMore,
+  TaxonomyTerms,
+  ProjectHeader,
   Projects,
   Footer,
   Main,
