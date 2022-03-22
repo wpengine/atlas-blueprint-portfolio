@@ -32,8 +32,13 @@
 }
 
 .header {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding: 0 2rem;
+
+  a:hover,
+  a:focus {
+    color: var(--color-primary);
+  }
 }
 
 .image {
