@@ -18,4 +18,11 @@
 
 .load-more {
   text-align: center;
+
+  button {
+    &:focus {
+      background-color: inherit;
+      color: inherit;
+    }
+  }
 }
