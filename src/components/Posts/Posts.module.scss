@@ -1,4 +1,5 @@
 @import "styles/Variables";
+
 .info {
   font-size: 1.2rem;
   line-height: 1.5rem;
@@ -25,6 +26,7 @@
 }
 
 .card {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -38,4 +40,10 @@
   min-width: 340px;
   margin-bottom: 3rem;
   height: auto;
+}
+
+.image-holder {
+  @media (min-width: $breakpoint-small) {
+    aspect-ratio: 1 / 1;
+  }
 }

@@ -20,7 +20,7 @@ export default function FeaturedImage({ className, image, ...props }) {
         width={width}
         height={height}
         alt={altText}
-        objectFit="contain"
+        objectFit="cover"
         layout="responsive"
         {...props}
       />

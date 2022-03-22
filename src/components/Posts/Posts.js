@@ -17,13 +17,15 @@ function Posts({ posts, intro, id }) {
               id={`post-${post.id}`}
             >
               <div className={styles.card}>
-                <FeaturedImage
-                  className={styles.image}
-                  image={post?.featuredImage?.node}
-                  alt={post?.featuredImage?.node?.altText}
-                  width={340}
-                  height={340}
-                />
+                <div className={styles[`image-holder`]}>
+                  <FeaturedImage
+                    className={styles.image}
+                    image={post?.featuredImage?.node}
+                    alt={post?.featuredImage?.node?.altText}
+                    width={340}
+                    height={340}
+                  />
+                </div>
                 <Heading level="h4" className={styles.header}>
                   <Link href={post.uri ?? '#'}>
                     <a>{post.title()}</a>
