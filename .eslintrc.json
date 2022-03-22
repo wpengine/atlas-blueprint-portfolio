@@ -2,7 +2,8 @@
   "extends": ["next", "eslint:recommended", "plugin:import/recommended", "prettier"],
   "rules": {
     "import/no-unresolved": 0,
-    "import/no-relative-parent-imports": 2
+    "import/no-relative-parent-imports": 2,
+    "import/order": ["error", {"newlines-between": "always"}]
   },
   "env": {
     "es6": true

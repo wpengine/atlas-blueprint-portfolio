@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Heading, FeaturedImage } from 'components';
+
 import styles from './Projects.module.scss';
 
 function Projects({ projects, id, emptyText = 'No projects found.' }) {

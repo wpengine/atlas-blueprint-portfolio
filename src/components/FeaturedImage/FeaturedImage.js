@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import styles from './FeaturedImage.module.scss';
 import appConfig from 'app.config';
+
+import styles from './FeaturedImage.module.scss';
 import DefaultImage from './DefaultImage';
 
 export default function FeaturedImage({ className, image, ...props }) {
