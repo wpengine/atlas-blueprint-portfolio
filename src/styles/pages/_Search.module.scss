@@ -1,0 +1,21 @@
+.search-header {
+  margin-bottom: 0;
+}
+
+.search-header-text {
+  text-align: center;
+  color: var(--color-white);
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.search-header-pane {
+  background-color: var(--color-primary);
+  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  margin-top: -2px; // Just in case there is any whitespace between elements.
+}
+
+.load-more {
+  text-align: center;
+}

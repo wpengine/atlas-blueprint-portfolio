@@ -1,6 +1,7 @@
 @import 'styles/Variables';
 
 .button {
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   border: 1px solid transparent;
@@ -23,10 +24,14 @@
     background-color: var(--color-primary);
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     border-color: var(--color-black);
     background-color: var(--color-black);
     color: var(--color-white);
+  }
+
+  &:focus {
+    outline: 1px dotted;
+    outline: 1px auto -webkit-focus-ring-color;
   }
 }

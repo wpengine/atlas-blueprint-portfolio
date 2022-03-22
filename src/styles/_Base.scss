@@ -72,3 +72,11 @@ hr {
   min-height: 100vh;
   flex-direction: column;
 }
+
+.alert-error {
+  background-color: #fff5f5;
+  border: 1px solid #fed6d6;
+  border-radius: 0.25rem;
+  color: #c53030;
+  padding: 1rem;
+}

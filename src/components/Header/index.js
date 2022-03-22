@@ -7,18 +7,19 @@ import styles from './Header.module.scss';
 
 const PRIMARY_MENU_LOCATION = 'PRIMARY';
 
-export default function Header({ title, image, date, author }) {
+export default function Header({ title, image, date, author, className }) {
   const hasText = title || date || author;
 
   const [isNavShown, setIsNavShown] = useState(false);
 
+  const headerClasses = [styles.header, className].join(' ');
   const navClasses = [
     styles['primary-navigation'],
     isNavShown ? styles['show'] : undefined,
   ];
 
   return (
-    <header className={styles['header']}>
+    <header className={headerClasses}>
       <div className="container">
         <div className={styles['bar']}>
           <div className={styles['logo']}>
