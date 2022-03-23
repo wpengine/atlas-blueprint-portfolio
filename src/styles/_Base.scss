@@ -1,4 +1,4 @@
-@import "Variables";
+@import 'Variables';
 
 // Base Module
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -7,7 +7,7 @@
 *,
 *:after,
 *:before {
-  box-sizing: inherit
+  box-sizing: inherit;
 }
 
 // The base font-size is set at 62.5% for having the convenience
@@ -21,7 +21,7 @@ body {
   font-family: $font-family;
   font-size: 1.6em;
   font-weight: $font-weight-normal;
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
   line-height: 1.6;
 }
 
@@ -30,8 +30,8 @@ img {
 }
 
 video {
-  width: 100%    !important;
-  height: auto   !important;
+  width: 100% !important;
+  height: auto !important;
 }
 
 // Lists
@@ -46,7 +46,7 @@ ul {
   ol,
   ul {
     font-size: 90%;
-    margin: 1.5rem 0 1.5rem 3.0rem;
+    margin: 1.5rem 0 1.5rem 3rem;
   }
 }
 ol {
@@ -63,8 +63,8 @@ dt {
 // Dividers
 hr {
   border: 0;
-  border-top: .1rem solid var(--color-primary);
-  margin: 3.0rem 0;
+  border-top: 0.1rem solid var(--color-primary);
+  margin: 3rem 0;
 }
 
 #__next {

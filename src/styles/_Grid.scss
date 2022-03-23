@@ -1,4 +1,4 @@
-@import "Variables";
+@import 'Variables';
 
 // Grid Module
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -6,7 +6,7 @@
 .container {
   margin: 0 auto;
   max-width: $grid-max-width;
-  padding: 0 2.0rem;
+  padding: 0 2rem;
   position: relative;
   width: 100%;
 
@@ -184,29 +184,29 @@
   .container {
     max-width: 120rem;
   }
-};
+}
 
 @media (max-width: 102.4rem) {
   .container {
     max-width: 102.4rem;
   }
-};
+}
 
 @media (max-width: 76.8rem) {
   .container {
     max-width: 76.8rem;
   }
-};
+}
 
-@media (min-width: 40.0rem) {
+@media (min-width: 40rem) {
   .row {
     flex-direction: row;
-    margin-left: -1.0rem;
-    width: calc(100% + 2.0rem);
+    margin-left: -1rem;
+    width: calc(100% + 2rem);
   }
 
   .column {
     margin-bottom: inherit;
-    padding: 0 1.0rem;
+    padding: 0 1rem;
   }
-};
+} ;
