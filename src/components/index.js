@@ -21,6 +21,7 @@ import NextLinkWrapper from './NextLinkWrapper';
 import LoadingSearchResult from './LoadingSearchResult';
 import TaxonomyTerms from './TaxonomyTerms';
 import SEO from './SEO';
+import SkipNavigationLink from './SkipNavigationLink';
 
 export {
   Posts,
@@ -46,4 +47,5 @@ export {
   NextLinkWrapper,
   LoadingSearchResult,
   SEO,
+  SkipNavigationLink,
 };

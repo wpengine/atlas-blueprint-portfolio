@@ -33,4 +33,12 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+
+  &:focus {
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: auto;
+    clip: auto;
+  }
 }

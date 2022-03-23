@@ -1,4 +1,5 @@
 import styles from './Main.module.scss';
+import * as SELECTOR from 'constants/selectors';
 
 /**
  * Render the Main component.
@@ -8,9 +9,14 @@ import styles from './Main.module.scss';
  * @param {React.ReactElement} props.children The children to be rendered.
  * @returns {React.ReactElement} The Main component.
  */
-export default function Main({ children, className }) {
+export default function Main({ children, className, ...props }) {
   return (
-    <main className={[styles.main, className || undefined].join(' ')}>
+    <main
+      id={SELECTOR.MAIN_CONTENT_ID}
+      tabIndex="-1"
+      className={[styles.main, className || undefined].join(' ')}
+      {...props}
+    >
       {children}
     </main>
   );

@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { FaBars, FaSearch } from 'react-icons/fa';
-import { FeaturedImage, Heading, NavigationMenu, PostInfo } from 'components';
+import {
+  FeaturedImage,
+  Heading,
+  NavigationMenu,
+  PostInfo,
+  SkipNavigationLink,
+} from 'components';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -21,6 +27,7 @@ export default function Header({ title, image, date, author, className }) {
 
   return (
     <header className={headerClasses}>
+      <SkipNavigationLink />
       <div className="container">
         <div className={styles['bar']}>
           <div className={styles['logo']}>
