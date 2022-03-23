@@ -138,7 +138,7 @@ export default function useSearch() {
 
     const res = await fetchResults(debouncedSearchQuery, pageInfo?.endCursor);
 
-    setSearchResults((prev) => uniqBy([...prev, ...res?.nodes], (v) => v.id));
+    setSearchResults((prev) => uniqBy([...prev, ...res.nodes], (v) => v.id));
     setPageInfo(res?.pageInfo);
 
     setIsLoading(false);
