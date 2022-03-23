@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
+
 import styles from './SearchInput.module.scss';
 
 /**
