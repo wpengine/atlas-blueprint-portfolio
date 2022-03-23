@@ -15,7 +15,7 @@ export default function Main({ children, className, ...props }) {
     <main
       id={SELECTOR.MAIN_CONTENT_ID}
       tabIndex="-1"
-      className={[styles.main, className || undefined].join(' ')}
+      className={[styles.main, className].join(' ')}
       {...props}
     >
       {children}
