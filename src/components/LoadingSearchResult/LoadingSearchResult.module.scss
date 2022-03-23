@@ -16,7 +16,12 @@ $loading-search-result-bg: #ddd;
   animation-name: SearchResultLoadingAnimation;
   animation-timing-function: linear;
   background: #f6f7f8;
-  background: linear-gradient(to right, #eee 8%, $loading-search-result-bg 18%, #eee 33%);
+  background: linear-gradient(
+    to right,
+    #eee 8%,
+    $loading-search-result-bg 18%,
+    #eee 33%
+  );
   background-size: 1000px 104px;
   height: 338px;
   position: relative;
