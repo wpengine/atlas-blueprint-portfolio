@@ -5,9 +5,9 @@ import {
   Footer,
   Header,
   Main,
+  SEO,
   TaxonomyTerms,
 } from 'components';
-import Head from 'next/head';
 
 export function PostComponent({ post }) {
   const { useQuery } = client;
@@ -15,11 +15,10 @@ export function PostComponent({ post }) {
 
   return (
     <>
-      <Head>
-        <title>
-          {post?.title()} - {generalSettings?.title}
-        </title>
-      </Head>
+      <SEO
+        title={`${post?.title()} - ${generalSettings?.title}`}
+        imageUrl={post?.featuredImage?.node?.sourceUrl?.()}
+      />
 
       <Header
         title={post?.title()}

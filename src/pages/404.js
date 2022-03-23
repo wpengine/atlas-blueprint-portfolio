@@ -1,7 +1,6 @@
 import React from 'react';
 import { client } from 'client';
-import Head from 'next/head';
-import { Footer, Header, Main } from 'components';
+import { Footer, Header, Main, SEO } from 'components';
 
 export default function Page() {
   const { useQuery } = client;
@@ -9,11 +8,9 @@ export default function Page() {
 
   return (
     <>
-      <Head>
-        <title>
-          {generalSettings?.title} - {generalSettings?.description}
-        </title>
-      </Head>
+      <SEO
+        title={`${generalSettings?.title} - ${generalSettings?.description}`}
+      />
 
       <Header title="404: Not Found" />
 

@@ -6,6 +6,7 @@ import {
   ProjectHeader,
   ContentWrapper,
   Main,
+  SEO,
 } from 'components';
 import Head from 'next/head';
 
@@ -15,11 +16,10 @@ export function ProjectComponent({ project }) {
 
   return (
     <>
-      <Head>
-        <title>
-          {project?.title()} - {generalSettings?.title}
-        </title>
-      </Head>
+      <SEO
+        title={`${project?.title()} - ${generalSettings?.title}`}
+        imageUrl={project?.featuredImage?.node?.sourceUrl?.()}
+      />
 
       <Header title={project?.title()} />
 
@@ -49,7 +49,7 @@ export default function Page({ id }) {
 }
 
 export async function getStaticProps(context) {
-  const { projectSlug } = context?.params;
+  const projectSlug = context?.params?.projectSlug;
 
   return getNextStaticProps(context, {
     Page,

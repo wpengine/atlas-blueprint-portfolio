@@ -3,6 +3,7 @@ import { FaBars, FaSearch } from 'react-icons/fa';
 import { FeaturedImage, Heading, NavigationMenu, PostInfo } from 'components';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import styles from './Header.module.scss';
 
 const PRIMARY_MENU_LOCATION = 'PRIMARY';
@@ -75,7 +76,11 @@ export default function Header({ title, image, date, author, className }) {
       {image && (
         <div className={styles['image']}>
           <div className="container">
-            <FeaturedImage className={styles['featured-image']} image={image} />
+            <FeaturedImage
+              className={styles['featured-image']}
+              image={image}
+              priority
+            />
           </div>
         </div>
       )}
