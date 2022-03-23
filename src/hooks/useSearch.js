@@ -138,8 +138,7 @@ export default function useSearch() {
 
     const res = await fetchResults(debouncedSearchQuery, pageInfo?.endCursor);
 
-    // eslint-disable-next-line no-unsafe-optional-chaining
-    setSearchResults((prev) => uniqBy([...prev, ...res?.nodes], (v) => v.id));
+    setSearchResults((prev) => uniqBy([...prev, ...res.nodes], (v) => v.id));
     setPageInfo(res?.pageInfo);
 
     setIsLoading(false);
