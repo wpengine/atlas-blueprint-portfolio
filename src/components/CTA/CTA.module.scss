@@ -20,7 +20,7 @@
 
 .content {
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   font-size: 1.9rem;
 
     @media (min-width: $breakpoint-small) {
@@ -31,7 +31,7 @@
 
 .action {
     width: 100%;
-    text-align: center;
+    text-align: left;
 
     @media (min-width: $breakpoint-small) {
         width: 40%;
