@@ -1,9 +1,8 @@
 import React from 'react';
-import Head from 'next/head';
 import { client } from 'client';
 import appConfig from 'app.config';
 import usePagination from 'hooks/usePagination';
-import { Footer, Header, LoadMore, Main, Projects } from 'components';
+import { Footer, Header, LoadMore, Main, Projects, SEO } from 'components';
 import { getNextStaticProps } from '@faustjs/next';
 
 export default function Page() {
@@ -26,11 +25,7 @@ export default function Page() {
 
   return (
     <>
-      <Head>
-        <title>
-          {generalSettings?.title} - {generalSettings?.description}
-        </title>
-      </Head>
+      <SEO title={`Portfolio - ${generalSettings?.description}`} />
 
       <Header title="Portfolio" />
 

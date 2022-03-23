@@ -8,9 +8,9 @@ import {
   SearchInput,
   SearchRecommendations,
   SearchResults,
+  SEO,
 } from 'components';
 import useSearch from 'hooks/useSearch';
-import Head from 'next/head';
 import React from 'react';
 import styles from 'styles/pages/_Search.module.scss';
 
@@ -29,9 +29,7 @@ export default function Page() {
 
   return (
     <>
-      <Head>
-        <title>Search - {generalSettings?.description}</title>
-      </Head>
+      <SEO title={`Search - ${generalSettings?.description}`} />
 
       <Header className={styles['search-header']} />
 

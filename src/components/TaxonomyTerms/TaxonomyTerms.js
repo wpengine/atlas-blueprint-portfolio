@@ -5,7 +5,7 @@ import styles from './TaxonomyTerms.module.scss';
 export default function TaxonomyTerms({ post, taxonomy }) {
   const termLinks = post?.[taxonomy]?.()?.edges.map((edge, index) => {
     // eslint-disable-next-line no-unsafe-optional-chaining
-    const { name, uri } = edge?.node;
+    const { name, uri } = edge.node;
     return (
       uri && (
         <Link key={index} href={uri}>
