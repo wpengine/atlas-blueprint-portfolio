@@ -1,5 +1,4 @@
 import appConfig from 'app.config';
-import styles from './Footer.module.scss';
 import {
   FaFacebookF,
   FaGithub,
@@ -9,6 +8,8 @@ import {
   FaYoutube,
 } from 'react-icons/fa';
 import { NavigationMenu } from 'components';
+
+import styles from './Footer.module.scss';
 
 /**
  * @type {import('client/schema.generated').MenuLocationEnum}

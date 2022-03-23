@@ -4,7 +4,7 @@ import { client } from 'client';
 import Head from 'next/head';
 import { Posts, Header, LoadMore, Footer, Main } from 'components';
 import usePagination from 'hooks/usePagination';
-import appConfig from '../../app.config';
+import appConfig from 'app.config';
 
 export default function Page() {
   const { useQuery, usePosts } = client;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Heading, FeaturedImage, PostInfo } from 'components';
+
 import styles from './Posts.module.scss';
 
 function Posts({ posts, intro, id }) {
