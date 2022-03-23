@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import styles from './SearchRecommendations.module.scss';
 import { client } from 'client';
+
+import styles from './SearchRecommendations.module.scss';
 
 const recommendedPostsLimit = 5;
 

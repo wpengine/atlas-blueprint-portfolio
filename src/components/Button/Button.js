@@ -1,4 +1,5 @@
 import NextLinkWrapper from 'components/NextLinkWrapper/NextLinkWrapper';
+
 import styles from './Button.module.scss';
 
 /**

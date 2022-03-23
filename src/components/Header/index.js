@@ -3,6 +3,7 @@ import { FaBars, FaSearch } from 'react-icons/fa';
 import { FeaturedImage, Heading, NavigationMenu, PostInfo } from 'components';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import styles from './Header.module.scss';
 
 const PRIMARY_MENU_LOCATION = 'PRIMARY';

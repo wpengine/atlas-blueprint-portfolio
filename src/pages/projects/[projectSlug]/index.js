@@ -49,7 +49,7 @@ export default function Page({ id }) {
 }
 
 export async function getStaticProps(context) {
-  const { projectSlug } = context?.params;
+  const projectSlug = context?.params?.projectSlug;
 
   return getNextStaticProps(context, {
     Page,

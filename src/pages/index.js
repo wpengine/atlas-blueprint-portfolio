@@ -74,8 +74,8 @@ export default function Page() {
             </span>
           </CTA>
         </section>
-        <section className="posts">
-          <Heading className="text-center" level="h2">
+        <section className={styles.posts}>
+          <Heading className={styles.heading} level="h2">
             Latest Posts
           </Heading>
           <Posts posts={posts?.nodes} id="posts-list" />
@@ -94,9 +94,11 @@ export default function Page() {
             </span>
           </CTA>
         </section>
-        <section className="testimonials text-center">
-          <Heading level="h2">Testimonials</Heading>
-          <p>
+        <section className={styles.testimonials}>
+          <Heading className={styles.heading} level="h2">
+            Testimonials
+          </Heading>
+          <p className={styles.description}>
             Here are just a few of the nice things our customers have to say.
           </p>
           <Testimonials testimonials={testimonials?.nodes} />

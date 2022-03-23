@@ -3,7 +3,7 @@ import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
 import { Posts, Header, LoadMore, Footer, Main, SEO } from 'components';
 import usePagination from 'hooks/usePagination';
-import appConfig from '../../app.config';
+import appConfig from 'app.config';
 
 export default function Page() {
   const { useQuery, usePosts } = client;
