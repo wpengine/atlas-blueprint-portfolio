@@ -1,22 +1,7 @@
 import React from 'react';
 import { client } from 'client';
 import appConfig from 'app.config';
-
-const uniqBy = (arr, pred) => {
-  const cb = typeof pred === 'function' ? pred : (o) => o[pred];
-
-  return [
-    ...arr
-      .reduce((map, item) => {
-        const key = item === null || item === undefined ? item : cb(item);
-
-        map.has(key) || map.set(key, item);
-
-        return map;
-      }, new Map())
-      .values(),
-  ];
-};
+import { uniqBy } from 'utils';
 
 /**
  * usePagination hook is focused on performing paginated queries using a custom query function.
@@ -65,6 +50,7 @@ export default function usePagination(
         .then((data) => {
           setData(function (prev) {
             return {
+              // eslint-disable-next-line no-unsafe-optional-chaining
               nodes: uniqBy([...prev.nodes, ...data?.nodes], (v) => v.id),
               pageInfo: data?.pageInfo,
             };

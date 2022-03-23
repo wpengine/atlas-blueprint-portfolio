@@ -49,3 +49,10 @@ The post/page author's name.
 
 Type: `String`
 Required: No
+
+### className
+
+An additional class name to be applied to the `<Header>` component.
+
+Type: `String`
+Required: No

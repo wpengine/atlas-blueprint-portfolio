@@ -1,3 +1,5 @@
+@import 'styles/Variables';
+
 .container {
     display: flex;
     flex-direction: column;
@@ -7,13 +9,13 @@
 }
 
 .content {
-    font-size: 1.75rem;
+    font-size: 2.4rem;
     font-style: italic;
     margin-bottom: 2rem;
 }
 
 .author {
     text-transform: uppercase;
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1.4rem;
+    font-weight: $font-weight-extra-bold;
 }

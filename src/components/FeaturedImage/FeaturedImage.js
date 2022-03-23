@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import appConfig from 'app.config';
+
 import styles from './FeaturedImage.module.scss';
-import appConfig from '../../app.config';
 import DefaultImage from './DefaultImage';
 
 export default function FeaturedImage({ className, image, ...props }) {
@@ -20,7 +21,7 @@ export default function FeaturedImage({ className, image, ...props }) {
         width={width}
         height={height}
         alt={altText}
-        objectFit="contain"
+        objectFit="cover"
         layout="responsive"
         {...props}
       />

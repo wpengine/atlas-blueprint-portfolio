@@ -1,5 +1,6 @@
 import React from 'react';
 import { FeaturedImage, Heading } from 'components';
+
 import styles from './ProjectHeader.module.scss';
 
 function ProjectHeader({ image, title, summary }) {

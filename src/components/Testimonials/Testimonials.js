@@ -5,6 +5,7 @@ import {
   FaQuoteRight,
 } from 'react-icons/fa';
 import { Carousel } from 'react-responsive-carousel';
+
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styles from './Testimonials.module.scss';
 
