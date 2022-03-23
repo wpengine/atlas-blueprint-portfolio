@@ -1,7 +1,6 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
-import Head from 'next/head';
 import { client } from 'client';
-import { Header, ContentWrapper, Footer, Main } from 'components';
+import { Header, ContentWrapper, Footer, Main, SEO } from 'components';
 
 export function PageComponent({ page }) {
   const { useQuery } = client;
@@ -9,11 +8,11 @@ export function PageComponent({ page }) {
 
   return (
     <>
-      <Head>
-        <title>
-          {page?.title()} - {generalSettings?.title}
-        </title>
-      </Head>
+      <SEO
+        title={`${page?.title()} - ${generalSettings?.title}`}
+        imageUrl={page?.featuredImage?.node?.sourceUrl?.()}
+      />
+
       <Header title={page?.title()} image={page?.featuredImage?.node} />
 
       <Main className="container">

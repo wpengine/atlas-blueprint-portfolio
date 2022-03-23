@@ -1,8 +1,7 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
-import Head from 'next/head';
 import Link from 'next/link';
 import { client } from 'client';
-import { Footer, Header, Main } from 'components';
+import { Footer, Header, Main, SEO } from 'components';
 
 export default function Page() {
   const { useQuery } = client;
@@ -15,9 +14,7 @@ export default function Page() {
 
   return (
     <>
-      <Head>
-        <title>All Categories - {generalSettings?.title}</title>
-      </Head>
+      <SEO title={`All Categories - ${generalSettings?.title}`} />
 
       <Header title="All Categories" />
 

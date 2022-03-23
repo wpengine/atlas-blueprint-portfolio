@@ -20,6 +20,7 @@ import SearchRecommendations from './SearchRecommendations';
 import NextLinkWrapper from './NextLinkWrapper';
 import LoadingSearchResult from './LoadingSearchResult';
 import TaxonomyTerms from './TaxonomyTerms';
+import SEO from './SEO';
 
 export {
   Posts,
@@ -44,4 +45,5 @@ export {
   SearchRecommendations,
   NextLinkWrapper,
   LoadingSearchResult,
+  SEO,
 };
