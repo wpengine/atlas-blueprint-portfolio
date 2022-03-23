@@ -1,5 +1,6 @@
-import styles from './FeaturedImage.module.scss';
 import Image from 'next/image';
+
+import styles from './FeaturedImage.module.scss';
 
 function DefaultImage({ className }) {
   const src = '/static/placeholder.png';

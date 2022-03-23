@@ -7,6 +7,9 @@ const nextConfig = {
   sassOptions: {
     "includePaths": [ "node_modules" ]
   },
+  eslint: {
+    dirs: ['src'],
+  },
   images: {
     domains: [WP_HOST]
   }

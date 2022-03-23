@@ -3,7 +3,7 @@ import { getNextStaticProps, is404 } from '@faustjs/next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { client } from 'client';
-import { Posts, Heading, LoadMore, Footer, Main, Header } from 'components';
+import { Posts, LoadMore, Footer, Main, Header } from 'components';
 import appConfig from 'app.config';
 import usePagination from 'hooks/usePagination';
 

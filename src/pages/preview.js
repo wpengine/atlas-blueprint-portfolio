@@ -1,4 +1,5 @@
 import { client } from 'client';
+
 import { PostComponent } from './posts/[postSlug]';
 import { PageComponent } from './[...pageUri]';
 

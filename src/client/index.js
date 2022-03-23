@@ -1,4 +1,5 @@
 import { getClient } from '@faustjs/next';
+
 import { generatedSchema, scalarsEnumsHash } from './schema.generated';
 
 export const client = getClient({
