@@ -1,5 +1,6 @@
-import styles from './SkipNavigationLink.module.scss';
 import * as SELECTOR from 'constants/selectors';
+
+import styles from './SkipNavigationLink.module.scss';
 
 export default function SkipNavigationLink() {
   return (

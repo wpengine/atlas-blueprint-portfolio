@@ -1,5 +1,6 @@
-import styles from './Main.module.scss';
 import * as SELECTOR from 'constants/selectors';
+
+import styles from './Main.module.scss';
 
 /**
  * Render the Main component.
