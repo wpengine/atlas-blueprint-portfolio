@@ -4,6 +4,7 @@ import { getArrayFields, getFields, prepass } from 'gqty';
 import { useCallback, useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import { uniqBy } from 'utils';
+import { useRouter } from 'next/router';
 
 const searchInputDebounceMs = 500;
 
@@ -23,6 +24,7 @@ export default function useSearch() {
   const [pageInfo, setPageInfo] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const router = useRouter();
 
   /**
    * Fetch results based on the search query and cursor if we are paginating.
@@ -143,6 +145,17 @@ export default function useSearch() {
 
     setIsLoading(false);
   }
+
+  /**
+   * Populate the search input with the searchQuery url param if it exists.
+   */
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    if (router.query.searchQuery) {
+      setSearchQuery(router.query.searchQuery);
+    }
+  }, [router]);
 
   /**
    * Upon user input, display the loading screen for perceived performance,
