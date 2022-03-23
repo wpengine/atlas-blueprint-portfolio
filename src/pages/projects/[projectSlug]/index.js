@@ -8,7 +8,6 @@ import {
   Main,
   SEO,
 } from 'components';
-import Head from 'next/head';
 
 export function ProjectComponent({ project }) {
   const { useQuery } = client;
