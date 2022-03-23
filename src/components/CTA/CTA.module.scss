@@ -1,4 +1,4 @@
-@import "styles/Variables";
+@import 'styles/Variables';
 
 .cta {
   width: 100%;
@@ -12,29 +12,29 @@
   color: #fff;
   filter: $filter-drop-shadow;
 
-    @media (min-width: $breakpoint-small) {
-        flex-direction: row;
-        align-items: center;
-    }
+  @media (min-width: $breakpoint-small) {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .content {
-    width: 100%;
-    margin-bottom: 3rem;
+  width: 100%;
+  margin-bottom: 3rem;
   font-size: 1.9rem;
 
-    @media (min-width: $breakpoint-small) {
-        width: 60%;
-        margin-bottom: 0;
-    }
+  @media (min-width: $breakpoint-small) {
+    width: 60%;
+    margin-bottom: 0;
+  }
 }
 
 .action {
-    width: 100%;
-    text-align: left;
+  width: 100%;
+  text-align: left;
 
-    @media (min-width: $breakpoint-small) {
-        width: 40%;
-        text-align: right;
-    }
+  @media (min-width: $breakpoint-small) {
+    width: 40%;
+    text-align: right;
+  }
 }
