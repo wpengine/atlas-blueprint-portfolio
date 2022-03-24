@@ -1,7 +1,8 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import Link from 'next/link';
 import { client } from 'client';
-import { Footer, Header, EntryHeader, Main, SEO } from 'components';
+import { Footer, Header, Main, SEO } from 'components';
+import { pageTitle } from 'utils';
 
 export default function Page() {
   const { useQuery } = client;
@@ -14,29 +15,32 @@ export default function Page() {
 
   return (
     <>
-      <SEO title={`All Categories - ${generalSettings?.title}`} />
+      <SEO
+        title={pageTitle(
+          generalSettings,
+          'All Categories',
+          generalSettings?.title
+        )}
+      />
 
-      <Header />
+      <Header title="All Categories" />
 
-      <Main>
-        <EntryHeader title="All Categories" />
-        <div className="container">
-          <div className="content">
-            <h1>All Categories</h1>
-            <ul>
-              {categories?.nodes?.map(({ id, name, uri }) => {
-                return (
-                  <li key={id}>
-                    {
-                      <Link href={uri ?? '#'}>
-                        <a>{name}</a>
-                      </Link>
-                    }
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+      <Main className="container">
+        <div className="content">
+          <h1>All Categories</h1>
+          <ul>
+            {categories?.nodes?.map(({ id, name, uri }) => {
+              return (
+                <li key={id}>
+                  {
+                    <Link href={uri ?? '#'}>
+                      <a>{name}</a>
+                    </Link>
+                  }
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </Main>
 
