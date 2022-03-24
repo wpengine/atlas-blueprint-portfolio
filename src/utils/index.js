@@ -1,3 +1,3 @@
-import { uniqBy } from './uniqBy';
+import uniqBy from './uniqBy';
 
 export { uniqBy };

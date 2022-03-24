@@ -1,4 +1,4 @@
-export const uniqBy = (arr, pred) => {
+const uniqBy = (arr, pred) => {
   const cb = typeof pred === 'function' ? pred : (o) => o[pred];
 
   return [
