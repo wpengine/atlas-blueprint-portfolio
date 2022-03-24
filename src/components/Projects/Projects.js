@@ -27,7 +27,7 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
                     `with_front` register_post_type() option.
                     https://github.com/wpengine/atlas-content-modeler/discussions/457
                   */}
-                  <Link href={`projects/${project.slug}` ?? '#'}>
+                  <Link href={`/projects/${project.slug}` ?? '#'}>
                     <a>{project.title()}</a>
                   </Link>
                 </Heading>
