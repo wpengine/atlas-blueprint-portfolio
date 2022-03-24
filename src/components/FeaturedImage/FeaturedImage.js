@@ -1,10 +1,8 @@
 import Image from 'next/image';
-import appConfig from 'app.config';
 
 import styles from './FeaturedImage.module.scss';
-import DefaultImage from './DefaultImage';
 
-export default function FeaturedImage({ className, image, ...props }) {
+export default function FeaturedImage({ className, image, width, height, ...props }) {
   let src;
   if (image?.sourceUrl instanceof Function) {
     src = image?.sourceUrl();
@@ -12,7 +10,9 @@ export default function FeaturedImage({ className, image, ...props }) {
     src = image?.sourceUrl;
   }
   const { altText } = image || '';
-  const { width, height } = image?.mediaDetails || {};
+
+  width = width ? width : image?.mediaDetails?.width;
+  height = height ? height : image?.mediaDetails?.height;
 
   return src && width && height ? (
     <figure className={[styles['featured-image'], className].join(' ')}>
@@ -26,7 +26,5 @@ export default function FeaturedImage({ className, image, ...props }) {
         {...props}
       />
     </figure>
-  ) : appConfig.archiveDisplayFeaturedImage ? (
-    <DefaultImage className={className} {...props} />
   ) : null;
 }
