@@ -8,7 +8,7 @@ import {
   Main,
   SEO,
 } from 'components';
-import EntryHeader from 'components/EntryHeader/EntryHeader';
+import EntryHeader from 'components/EntryHeader';
 
 export function PageComponent({ page }) {
   const { useQuery } = client;
