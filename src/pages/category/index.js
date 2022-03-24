@@ -15,7 +15,13 @@ export default function Page() {
 
   return (
     <>
-      <SEO title={pageTitle(generalSettings, 'All Categories', generalSettings?.title)} />
+      <SEO
+        title={pageTitle(
+          generalSettings,
+          'All Categories',
+          generalSettings?.title
+        )}
+      />
 
       <Header title="All Categories" />
 

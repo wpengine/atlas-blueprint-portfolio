@@ -14,9 +14,7 @@ export default function Page() {
 
   return (
     <>
-      <SEO
-        title={pageTitle(generalSettings)}
-      />
+      <SEO title={pageTitle(generalSettings)} />
 
       <Header title="Not found, error 404" />
 

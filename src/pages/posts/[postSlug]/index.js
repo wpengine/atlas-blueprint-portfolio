@@ -17,7 +17,11 @@ export function PostComponent({ post }) {
   return (
     <>
       <SEO
-        title={pageTitle(generalSettings, post?.title(), generalSettings?.title)}
+        title={pageTitle(
+          generalSettings,
+          post?.title(),
+          generalSettings?.title
+        )}
         imageUrl={post?.featuredImage?.node?.sourceUrl?.()}
       />
 

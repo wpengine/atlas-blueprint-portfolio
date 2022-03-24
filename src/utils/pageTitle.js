@@ -5,9 +5,15 @@
  * @param descriptionOverride An optional description to be used instead of the general settings Description
  * @returns {string}
  */
-function pageTitle(generalSettings, titleOverride = null, descriptionOverride = null) {
+function pageTitle(
+  generalSettings,
+  titleOverride = null,
+  descriptionOverride = null
+) {
   const title = titleOverride ? titleOverride : generalSettings?.title;
-  const description = descriptionOverride ? descriptionOverride : generalSettings?.description;
+  const description = descriptionOverride
+    ? descriptionOverride
+    : generalSettings?.description;
 
   if (!title && !description) {
     return '';

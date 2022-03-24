@@ -32,7 +32,9 @@ export default function Page() {
   );
   return (
     <>
-      <SEO title={pageTitle(generalSettings, 'Posts', generalSettings?.title)} />
+      <SEO
+        title={pageTitle(generalSettings, 'Posts', generalSettings?.title)}
+      />
 
       <Header title={`Category: ${category?.name}`} />
 

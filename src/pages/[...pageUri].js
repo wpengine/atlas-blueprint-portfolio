@@ -10,7 +10,11 @@ export function PageComponent({ page }) {
   return (
     <>
       <SEO
-        title={pageTitle(generalSettings, page?.title(), generalSettings?.title)}
+        title={pageTitle(
+          generalSettings,
+          page?.title(),
+          generalSettings?.title
+        )}
         imageUrl={page?.featuredImage?.node?.sourceUrl?.()}
       />
 

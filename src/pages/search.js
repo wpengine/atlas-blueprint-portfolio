@@ -30,7 +30,7 @@ export default function Page() {
 
   return (
     <>
-      <SEO title={pageTitle(generalSettings, 'Search')}/>
+      <SEO title={pageTitle(generalSettings, 'Search')} />
 
       <Header className={styles['search-header']} />
 
