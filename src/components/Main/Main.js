@@ -1,4 +1,4 @@
-import * as SELECTOR from 'constants/selectors';
+import * as SELECTORS from 'constants/selectors';
 
 import styles from './Main.module.scss';
 
@@ -13,7 +13,7 @@ import styles from './Main.module.scss';
 export default function Main({ children, className, ...props }) {
   return (
     <main
-      id={SELECTOR.MAIN_CONTENT_ID}
+      id={SELECTORS.MAIN_CONTENT_ID}
       tabIndex="-1"
       className={[styles.main, className].join(' ')}
       {...props}
