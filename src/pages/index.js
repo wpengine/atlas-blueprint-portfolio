@@ -52,10 +52,10 @@ export default function Page() {
             world&apos;s #1 open source CMS in one powerful headless platform.{' '}
           </p>
           <div className={styles.actions}>
-            <Button type="secondary" href="#">
+            <Button styleType="secondary" href="#">
               GET STARTED
             </Button>
-            <Button type="primary" href="#">
+            <Button styleType="primary" href="#">
               LEARN MORE
             </Button>
           </div>
