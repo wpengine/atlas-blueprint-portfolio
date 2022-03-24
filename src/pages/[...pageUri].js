@@ -1,6 +1,13 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import { client } from 'client';
-import { Header, ContentWrapper, Footer, EntryHeader, Main, SEO } from 'components';
+import {
+  Header,
+  ContentWrapper,
+  Footer,
+  EntryHeader,
+  Main,
+  SEO,
+} from 'components';
 import EntryHeader from 'components/EntryHeader/EntryHeader';
 
 export function PageComponent({ page }) {
@@ -18,7 +25,7 @@ export function PageComponent({ page }) {
 
       <Main>
         <EntryHeader title={page?.title()} image={page?.featuredImage?.node} />
-        <div className='container'>
+        <div className="container">
           <ContentWrapper content={page?.content()} />
         </div>
       </Main>

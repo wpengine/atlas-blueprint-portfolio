@@ -45,7 +45,7 @@ export default function Page() {
 
       <Main className={styles.home}>
         <EntryHeader image={mainBanner} />
-        <div className='container'>
+        <div className="container">
           <section className="hero text-center">
             <Heading className={styles.heading} level="h1">
               Welcome to your Blueprint
@@ -72,8 +72,8 @@ export default function Page() {
               )}
             >
               <span>
-                Learn about Core Web Vitals and how Atlas can help you reach your
-                most demanding speed and user experience requirements.
+                Learn about Core Web Vitals and how Atlas can help you reach
+                your most demanding speed and user experience requirements.
               </span>
             </CTA>
           </section>
@@ -92,8 +92,8 @@ export default function Page() {
               )}
             >
               <span>
-                Learn about Core Web Vitals and how Atlas can help you reach your
-                most demanding speed and user experience requirements.
+                Learn about Core Web Vitals and how Atlas can help you reach
+                your most demanding speed and user experience requirements.
               </span>
             </CTA>
           </section>

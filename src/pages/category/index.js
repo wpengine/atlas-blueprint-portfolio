@@ -20,7 +20,7 @@ export default function Page() {
 
       <Main>
         <EntryHeader title="All Categories" />
-        <div className='container'>
+        <div className="container">
           <div className="content">
             <h1>All Categories</h1>
             <ul>

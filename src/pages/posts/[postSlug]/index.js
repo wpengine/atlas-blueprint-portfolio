@@ -30,7 +30,7 @@ export function PostComponent({ post }) {
           author={post?.author?.node?.name}
           image={post?.featuredImage?.node}
         />
-        <div className='container'>
+        <div className="container">
           <ContentWrapper content={post?.content()}>
             <TaxonomyTerms post={post} taxonomy={'categories'} />
             <TaxonomyTerms post={post} taxonomy={'tags'} />

@@ -30,7 +30,7 @@ export function ProjectComponent({ project }) {
           summary={project?.summary}
           title={project?.title()}
         />
-        <div className='container'>
+        <div className="container">
           <ContentWrapper content={project?.contentArea} />
         </div>
       </Main>

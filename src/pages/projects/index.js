@@ -2,7 +2,15 @@ import React from 'react';
 import { client } from 'client';
 import appConfig from 'app.config';
 import usePagination from 'hooks/usePagination';
-import { Footer, Header, EntryHeader, LoadMore, Main, Projects, SEO } from 'components';
+import {
+  Footer,
+  Header,
+  EntryHeader,
+  LoadMore,
+  Main,
+  Projects,
+  SEO,
+} from 'components';
 import { getNextStaticProps } from '@faustjs/next';
 
 export default function Page() {
@@ -31,7 +39,7 @@ export default function Page() {
 
       <Main>
         <EntryHeader title="Portfolio" />
-        <div className='container'>
+        <div className="container">
           <Projects projects={data.nodes} id="portfolio-list" />
           <LoadMore
             pageInfo={data.pageInfo}
