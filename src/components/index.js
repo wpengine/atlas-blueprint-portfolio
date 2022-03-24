@@ -1,51 +1,53 @@
-import Posts from './Posts';
-import PostInfo from './PostInfo';
-import Header from './Header';
-import Footer from './Footer';
-import Heading from './Heading';
-import LoadMore from './LoadMore';
-import NavigationMenu from './NavigationMenu';
-import FeaturedImage from './FeaturedImage';
+import Button from './Button';
 import ContentWrapper from './ContentWrapper';
+import CTA from './CTA';
+import EntryHeader from './EntryHeader';
+import FeaturedImage from './FeaturedImage';
+import Footer from './Footer';
+import FormatDate from './FormatDate';
+import Header from './Header';
+import Heading from './Heading';
+import LoadingSearchResult from './LoadingSearchResult';
+import LoadMore from './LoadMore';
+import Main from './Main';
+import NavigationMenu from './NavigationMenu';
+import NextLinkWrapper from './NextLinkWrapper';
+import PostInfo from './PostInfo';
+import Posts from './Posts';
 import ProjectHeader from './ProjectHeader';
 import Projects from './Projects';
-import Main from './Main';
-import Button from './Button';
-import CTA from './CTA';
-import Testimonials from './Testimonials';
-import FormatDate from './FormatDate';
 import SearchInput from './SearchInput';
-import SearchResults from './SearchResults';
 import SearchRecommendations from './SearchRecommendations';
-import NextLinkWrapper from './NextLinkWrapper';
-import LoadingSearchResult from './LoadingSearchResult';
-import TaxonomyTerms from './TaxonomyTerms';
+import SearchResults from './SearchResults';
 import SEO from './SEO';
 import SkipNavigationLink from './SkipNavigationLink';
+import TaxonomyTerms from './TaxonomyTerms';
+import Testimonials from './Testimonials';
 
 export {
-  Posts,
-  PostInfo,
+  Button,
+  ContentWrapper,
+  CTA,
+  EntryHeader,
+  FeaturedImage,
+  Footer,
+  FormatDate,
   Header,
   Heading,
-  NavigationMenu,
-  FeaturedImage,
-  ContentWrapper,
+  LoadingSearchResult,
   LoadMore,
-  TaxonomyTerms,
+  Main,
+  NavigationMenu,
+  NextLinkWrapper,
+  PostInfo,
+  Posts,
   ProjectHeader,
   Projects,
-  Footer,
-  Main,
-  Button,
-  CTA,
-  Testimonials,
-  FormatDate,
   SearchInput,
-  SearchResults,
   SearchRecommendations,
-  NextLinkWrapper,
-  LoadingSearchResult,
+  SearchResults,
   SEO,
   SkipNavigationLink,
+  TaxonomyTerms,
+  Testimonials,
 };

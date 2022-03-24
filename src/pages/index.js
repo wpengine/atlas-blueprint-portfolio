@@ -6,6 +6,7 @@ import {
   Posts,
   Header,
   Footer,
+  EntryHeader,
   Main,
   Button,
   Heading,
@@ -40,69 +41,72 @@ export default function Page() {
         imageUrl={mainBanner?.sourceUrl}
       />
 
-      <Header image={mainBanner} />
+      <Header />
 
-      <Main className={[styles.home, 'container'].join(' ')}>
-        <section className="hero text-center">
-          <Heading className={styles.heading} level="h1">
-            Welcome to your Blueprint
-          </Heading>
-          <p className={styles.description}>
-            Achieve unprecedented performance with modern frameworks and the
-            world&apos;s #1 open source CMS in one powerful headless platform.{' '}
-          </p>
-          <div className={styles.actions}>
-            <Button styleType="secondary" href="#">
-              GET STARTED
-            </Button>
-            <Button styleType="primary" href="#">
-              LEARN MORE
-            </Button>
-          </div>
-        </section>
-        <section className="cta">
-          <CTA
-            Button={() => (
-              <Button href="#">
-                Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
+      <Main className={styles.home}>
+        <EntryHeader image={mainBanner} />
+        <div className='container'>
+          <section className="hero text-center">
+            <Heading className={styles.heading} level="h1">
+              Welcome to your Blueprint
+            </Heading>
+            <p className={styles.description}>
+              Achieve unprecedented performance with modern frameworks and the
+              world&apos;s #1 open source CMS in one powerful headless platform.{' '}
+            </p>
+            <div className={styles.actions}>
+              <Button styleType="secondary" href="#">
+                GET STARTED
               </Button>
-            )}
-          >
-            <span>
-              Learn about Core Web Vitals and how Atlas can help you reach your
-              most demanding speed and user experience requirements.
-            </span>
-          </CTA>
-        </section>
-        <section className={styles.posts}>
-          <Heading className={styles.heading} level="h2">
-            Latest Posts
-          </Heading>
-          <Posts posts={posts?.nodes} id="posts-list" />
-        </section>
-        <section className="cta">
-          <CTA
-            Button={() => (
-              <Button href="#">
-                Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
+              <Button styleType="primary" href="#">
+                LEARN MORE
               </Button>
-            )}
-          >
-            <span>
-              Learn about Core Web Vitals and how Atlas can help you reach your
-              most demanding speed and user experience requirements.
-            </span>
-          </CTA>
-        </section>
-        <section className={styles.testimonials}>
-          <Heading className={styles.heading} level="h2">
-            Testimonials
-          </Heading>
-          <p className={styles.description}>
-            Here are just a few of the nice things our customers have to say.
-          </p>
-          <Testimonials testimonials={testimonials?.nodes} />
-        </section>
+            </div>
+          </section>
+          <section className="cta">
+            <CTA
+              Button={() => (
+                <Button href="#">
+                  Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
+                </Button>
+              )}
+            >
+              <span>
+                Learn about Core Web Vitals and how Atlas can help you reach your
+                most demanding speed and user experience requirements.
+              </span>
+            </CTA>
+          </section>
+          <section className={styles.posts}>
+            <Heading className={styles.heading} level="h2">
+              Latest Posts
+            </Heading>
+            <Posts posts={posts?.nodes} id="posts-list" />
+          </section>
+          <section className="cta">
+            <CTA
+              Button={() => (
+                <Button href="#">
+                  Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
+                </Button>
+              )}
+            >
+              <span>
+                Learn about Core Web Vitals and how Atlas can help you reach your
+                most demanding speed and user experience requirements.
+              </span>
+            </CTA>
+          </section>
+          <section className={styles.testimonials}>
+            <Heading className={styles.heading} level="h2">
+              Testimonials
+            </Heading>
+            <p className={styles.description}>
+              Here are just a few of the nice things our customers have to say.
+            </p>
+            <Testimonials testimonials={testimonials?.nodes} />
+          </section>
+        </div>
       </Main>
 
       <Footer />

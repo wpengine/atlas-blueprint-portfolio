@@ -1,7 +1,7 @@
 import React from 'react';
 import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
-import { Posts, Header, LoadMore, Footer, Main, SEO } from 'components';
+import { Posts, Header, LoadMore, EntryHeader, Footer, Main, SEO } from 'components';
 import usePagination from 'hooks/usePagination';
 import appConfig from 'app.config';
 
@@ -26,17 +26,21 @@ export default function Page() {
     <>
       <SEO title={`All Posts - ${generalSettings?.description}`} />
 
-      <Header title="Latest Posts" />
+      <Header />
 
-      <Main className="container">
-        <Posts posts={data?.nodes} readMoreText="Read More" id="posts-list" />
-        <LoadMore
-          className="text-center"
-          pageInfo={data.pageInfo}
-          isLoading={isLoading}
-          fetchMore={fetchMore}
-        />
+      <Main>
+        <EntryHeader title="Latest Posts" />
+        <div className='container'>
+          <Posts posts={data?.nodes} readMoreText="Read More" id="posts-list" />
+          <LoadMore
+            className="text-center"
+            pageInfo={data.pageInfo}
+            isLoading={isLoading}
+            fetchMore={fetchMore}
+          />
+        </div>
       </Main>
+
       <Footer />
     </>
   );

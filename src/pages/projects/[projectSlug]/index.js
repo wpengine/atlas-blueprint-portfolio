@@ -2,6 +2,7 @@ import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
 import {
   Header,
+  EntryHeader,
   Footer,
   ProjectHeader,
   ContentWrapper,
@@ -20,16 +21,18 @@ export function ProjectComponent({ project }) {
         imageUrl={project?.featuredImage?.node?.sourceUrl?.()}
       />
 
-      <Header title={project?.title()} />
+      <Header />
 
-      <ProjectHeader
-        image={project?.featuredImage?.node}
-        summary={project?.summary}
-        title={project?.title()}
-      />
-
-      <Main className="container">
-        <ContentWrapper content={project?.contentArea} />
+      <Main>
+        <EntryHeader title={project?.title()} />
+        <ProjectHeader
+          image={project?.featuredImage?.node}
+          summary={project?.summary}
+          title={project?.title()}
+        />
+        <div className='container'>
+          <ContentWrapper content={project?.contentArea} />
+        </div>
       </Main>
 
       <Footer />

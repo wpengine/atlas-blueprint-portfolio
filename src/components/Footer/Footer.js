@@ -8,13 +8,9 @@ import {
   FaYoutube,
 } from 'react-icons/fa';
 import { NavigationMenu } from 'components';
+import * as MENUS from 'constants/menus';
 
 import styles from './Footer.module.scss';
-
-/**
- * @type {import('client/schema.generated').MenuLocationEnum}
- */
-const FOOTER_MENU_LOCATION = 'FOOTER';
 
 export default function Footer() {
   return (
@@ -112,7 +108,7 @@ export default function Footer() {
 
         <NavigationMenu
           className={styles.nav}
-          menuLocation={FOOTER_MENU_LOCATION}
+          menuLocation={MENUS.FOOTER_LOCATION}
         />
 
         <div className={styles.copyright}>

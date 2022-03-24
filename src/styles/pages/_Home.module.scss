@@ -1,8 +1,10 @@
 @import 'styles/Variables';
 
 .home {
-  > section {
-    margin-bottom: 8rem;
+  :global {
+    section {
+      margin-bottom: 8rem;
+    }
   }
 }
 
