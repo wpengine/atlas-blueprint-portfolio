@@ -2,25 +2,14 @@ import React from 'react';
 import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
 import { Posts, Header, LoadMore, Footer, Main, SEO } from 'components';
-import usePagination from 'hooks/usePagination';
-import appConfig from 'app.config';
 import { pageTitle } from 'utils';
+import usePostPagination from 'hooks/usePostPagination';
 
 export default function Page() {
-  const { useQuery, usePosts } = client;
-  const posts = usePosts({
-    first: appConfig.postsPerPage,
-  });
+  const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
-  const { data, fetchMore, isLoading } = usePagination(
-    (query, args) => {
-      const { nodes, pageInfo } = query.posts(args);
-      return {
-        nodes: Array.from(nodes),
-        pageInfo,
-      };
-    },
-    { nodes: posts?.nodes, pageInfo: posts?.pageInfo }
+  const { data, fetchMore, isLoading } = usePostPagination((query, queryArgs) =>
+    query.posts(queryArgs)
   );
 
   return (
@@ -33,7 +22,8 @@ export default function Page() {
         <Posts posts={data?.nodes} readMoreText="Read More" id="posts-list" />
         <LoadMore
           className="text-center"
-          pageInfo={data.pageInfo}
+          hasNextPage={data?.hasNextPage}
+          endCursor={data?.endCursor}
           isLoading={isLoading}
           fetchMore={fetchMore}
         />

@@ -9,7 +9,7 @@ import { useRef } from 'react';
  *
  * @see https://gqty.dev/docs/client/helper-functions#prepass
  */
-export const defaultPrepassItems = [
+export const defaultPostPrepassItems = [
   'databaseId',
   'id',
   '__typename',
@@ -22,6 +22,12 @@ export const defaultPrepassItems = [
   'date',
   'uri',
   'title',
+  'slug',
+];
+
+export const defaultProjectPrepassItems = [
+  ...defaultPostPrepassItems,
+  'summary',
 ];
 
 /**
@@ -30,19 +36,11 @@ export const defaultPrepassItems = [
  * as provide a mechanism to fetch more.
  *
  * @param {(query, queryArgs) => Function} queryFn The query function to get your `nodes` and `pageInfo`.'
- * @param {object|undefined} initialQueryArgs Optional: The initial query args used to fetch the initial post.
  * @param {array|undefined} prepassItems Optional: An array of items to pass to the `prepass()` GQty helper function.
  * @returns
  */
-export default function usePostPagination(
-  queryFn,
-  initialQueryArgs,
-  prepassItems
-) {
+export default function usePostPagination(queryFn, prepassItems) {
   const queryFnRef = useRef(queryFn);
-  const initialArgs = initialQueryArgs ?? {
-    first: appConfig?.postsPerPage,
-  };
 
   /**
    * Use the `usePaginatedQuery` from GQty to fetch the initial posts and
@@ -62,7 +60,7 @@ export default function usePostPagination(
        * If there was user defined prepassItems use them.
        * Otherwise, use the defaults.
        */
-      let prepassList = prepassItems ?? defaultPrepassItems;
+      let prepassList = prepassItems ?? defaultPostPrepassItems;
 
       /**
        * Do a prepass for the data requirements we need so all data
@@ -82,7 +80,9 @@ export default function usePostPagination(
       /**
        * Required, only used for the first fetch
        */
-      initialArgs,
+      initialArgs: {
+        first: appConfig?.postsPerPage,
+      },
       /**
        * Optional merge function
        */
