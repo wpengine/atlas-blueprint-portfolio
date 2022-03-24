@@ -1,0 +1,27 @@
+/**
+ * Returns a title for the current page
+ * @param generalSettings
+ * @param titleOverride An optional title to be used instead of the general settings Title
+ * @param descriptionOverride An optional description to be used instead of the general settings Description
+ * @returns {string}
+ */
+function pageTitle(
+  generalSettings,
+  titleOverride = null,
+  descriptionOverride = null
+) {
+  const title = titleOverride ? titleOverride : generalSettings?.title;
+  const description = descriptionOverride
+    ? descriptionOverride
+    : generalSettings?.description;
+
+  if (!title && !description) {
+    return '';
+  }
+  if (title && description) {
+    return `${title} - ${description}`;
+  }
+  return [title, description].join('').trim();
+}
+
+export default pageTitle;

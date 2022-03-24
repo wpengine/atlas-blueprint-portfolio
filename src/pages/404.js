@@ -3,6 +3,7 @@ import { client } from 'client';
 import { Button, Footer, Header, Main, SEO } from 'components';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { pageTitle } from 'utils';
 import styles from 'styles/pages/_404.module.scss';
 
 export default function Page() {
@@ -13,9 +14,7 @@ export default function Page() {
 
   return (
     <>
-      <SEO
-        title={`${generalSettings?.title} - ${generalSettings?.description}`}
-      />
+      <SEO title={pageTitle(generalSettings)} />
 
       <Header title="Not found, error 404" />
 

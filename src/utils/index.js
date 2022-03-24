@@ -1,3 +1,4 @@
 import uniqBy from './uniqBy';
+import pageTitle from './pageTitle';
 
-export { uniqBy };
+export { uniqBy, pageTitle };
