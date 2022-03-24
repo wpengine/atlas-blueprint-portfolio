@@ -1,3 +1,5 @@
+import * as MENUS from 'constants/menus';
+
 import appConfig from 'app.config';
 import {
   FaFacebookF,
@@ -8,7 +10,6 @@ import {
   FaYoutube,
 } from 'react-icons/fa';
 import { NavigationMenu } from 'components';
-import * as MENUS from 'constants/menus';
 
 import styles from './Footer.module.scss';
 
