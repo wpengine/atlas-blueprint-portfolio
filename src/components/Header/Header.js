@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaBars, FaSearch } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
+
 import { NavigationMenu, SkipNavigationLink } from 'components';
 import * as MENUS from 'constants/menus';
 
