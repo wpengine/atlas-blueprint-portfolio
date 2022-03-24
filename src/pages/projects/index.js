@@ -2,7 +2,15 @@ import React from 'react';
 import { client } from 'client';
 import appConfig from 'app.config';
 import usePagination from 'hooks/usePagination';
-import { Footer, Header, LoadMore, Main, Projects, SEO } from 'components';
+import {
+  Footer,
+  Header,
+  EntryHeader,
+  LoadMore,
+  Main,
+  Projects,
+  SEO,
+} from 'components';
 import { getNextStaticProps } from '@faustjs/next';
 import { pageTitle } from 'utils';
 
@@ -28,16 +36,19 @@ export default function Page() {
     <>
       <SEO title={pageTitle(generalSettings, 'Portfolio')} />
 
-      <Header title="Portfolio" />
+      <Header />
 
-      <Main className="container">
-        <Projects projects={data.nodes} id="portfolio-list" />
-        <LoadMore
-          pageInfo={data.pageInfo}
-          isLoading={isLoading}
-          fetchMore={fetchMore}
-          className="text-center"
-        />
+      <Main>
+        <EntryHeader title="Portfolio" />
+        <div className="container">
+          <Projects projects={data.nodes} id="portfolio-list" />
+          <LoadMore
+            pageInfo={data.pageInfo}
+            isLoading={isLoading}
+            fetchMore={fetchMore}
+            className="text-center"
+          />
+        </div>
       </Main>
 
       <Footer />

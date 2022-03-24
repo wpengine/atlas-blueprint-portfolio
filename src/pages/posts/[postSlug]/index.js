@@ -4,6 +4,7 @@ import {
   ContentWrapper,
   Footer,
   Header,
+  EntryHeader,
   Main,
   SEO,
   TaxonomyTerms,
@@ -25,18 +26,21 @@ export function PostComponent({ post }) {
         imageUrl={post?.featuredImage?.node?.sourceUrl?.()}
       />
 
-      <Header
-        title={post?.title()}
-        date={post?.date}
-        author={post?.author?.node?.name}
-        image={post?.featuredImage?.node}
-      />
+      <Header />
 
-      <Main className="container">
-        <ContentWrapper content={post?.content()}>
-          <TaxonomyTerms post={post} taxonomy={'categories'} />
-          <TaxonomyTerms post={post} taxonomy={'tags'} />
-        </ContentWrapper>
+      <Main>
+        <EntryHeader
+          title={post?.title()}
+          date={post?.date}
+          author={post?.author?.node?.name}
+          image={post?.featuredImage?.node}
+        />
+        <div className="container">
+          <ContentWrapper content={post?.content()}>
+            <TaxonomyTerms post={post} taxonomy={'categories'} />
+            <TaxonomyTerms post={post} taxonomy={'tags'} />
+          </ContentWrapper>
+        </div>
       </Main>
 
       <Footer />

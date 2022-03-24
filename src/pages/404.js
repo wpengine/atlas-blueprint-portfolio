@@ -1,6 +1,6 @@
 import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
-import { Button, Footer, Header, Main, SEO } from 'components';
+import { Button, Footer, Header, EntryHeader, Main, SEO } from 'components';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { pageTitle } from 'utils';
@@ -16,9 +16,10 @@ export default function Page() {
     <>
       <SEO title={pageTitle(generalSettings)} />
 
-      <Header title="Not found, error 404" />
+      <Header />
 
-      <Main className="content">
+      <Main>
+        <EntryHeader title="Not found, error 404" />
         <div className="container small">
           <p className="text-center">
             Oops, the page you are looking for does not exist or is no longer
