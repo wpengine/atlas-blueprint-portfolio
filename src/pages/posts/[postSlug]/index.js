@@ -8,6 +8,7 @@ import {
   SEO,
   TaxonomyTerms,
 } from 'components';
+import { pageTitle } from 'utils';
 
 export function PostComponent({ post }) {
   const { useQuery } = client;
@@ -16,7 +17,7 @@ export function PostComponent({ post }) {
   return (
     <>
       <SEO
-        title={`${post?.title()} - ${generalSettings?.title}`}
+        title={pageTitle(generalSettings, post?.title(), generalSettings?.title)}
         imageUrl={post?.featuredImage?.node?.sourceUrl?.()}
       />
 

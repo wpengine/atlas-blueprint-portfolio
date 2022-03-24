@@ -4,6 +4,7 @@ import appConfig from 'app.config';
 import usePagination from 'hooks/usePagination';
 import { Footer, Header, LoadMore, Main, Projects, SEO } from 'components';
 import { getNextStaticProps } from '@faustjs/next';
+import { pageTitle } from 'utils';
 
 export default function Page() {
   const { useQuery } = client;
@@ -25,7 +26,7 @@ export default function Page() {
 
   return (
     <>
-      <SEO title={`Portfolio - ${generalSettings?.description}`} />
+      <SEO title={pageTitle(generalSettings, 'Portfolio')} />
 
       <Header title="Portfolio" />
 

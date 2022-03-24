@@ -5,6 +5,7 @@ import { client } from 'client';
 import { Posts, LoadMore, Footer, Main, Header, SEO } from 'components';
 import appConfig from 'app.config';
 import usePagination from 'hooks/usePagination';
+import { pageTitle } from 'utils';
 
 export default function Page() {
   const { useQuery, usePosts, useCategory } = client;
@@ -31,7 +32,7 @@ export default function Page() {
   );
   return (
     <>
-      <SEO title={`Posts - ${generalSettings?.title}`} />
+      <SEO title={pageTitle(generalSettings, 'Posts', generalSettings?.title)} />
 
       <Header title={`Category: ${category?.name}`} />
 

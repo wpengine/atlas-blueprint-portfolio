@@ -13,6 +13,7 @@ import {
 import useSearch from 'hooks/useSearch';
 import React from 'react';
 import styles from 'styles/pages/_Search.module.scss';
+import { pageTitle } from 'utils';
 
 export default function Page() {
   const { useQuery } = client;
@@ -29,7 +30,7 @@ export default function Page() {
 
   return (
     <>
-      <SEO title={`Search - ${generalSettings?.description}`} />
+      <SEO title={pageTitle(generalSettings, 'Search')}/>
 
       <Header className={styles['search-header']} />
 

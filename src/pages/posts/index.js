@@ -4,6 +4,7 @@ import { client } from 'client';
 import { Posts, Header, LoadMore, Footer, Main, SEO } from 'components';
 import usePagination from 'hooks/usePagination';
 import appConfig from 'app.config';
+import { pageTitle } from 'utils';
 
 export default function Page() {
   const { useQuery, usePosts } = client;
@@ -24,7 +25,7 @@ export default function Page() {
 
   return (
     <>
-      <SEO title={`All Posts - ${generalSettings?.description}`} />
+      <SEO title={pageTitle(generalSettings)} />
 
       <Header title="Latest Posts" />
 
