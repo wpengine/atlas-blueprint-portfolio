@@ -27,6 +27,6 @@ export default function FeaturedImage({ className, image, ...props }) {
       />
     </figure>
   ) : appConfig.archiveDisplayFeaturedImage ? (
-    <DefaultImage className={className} />
+    <DefaultImage className={className} {...props} />
   ) : null;
 }

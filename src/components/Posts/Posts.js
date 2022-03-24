@@ -23,7 +23,6 @@ function Posts({ posts, intro, id }) {
                     <FeaturedImage
                       className={styles.image}
                       image={post?.featuredImage?.node}
-                      alt={post?.featuredImage?.node?.altText}
                       width={340}
                       height={340}
                     />
