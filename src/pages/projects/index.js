@@ -3,14 +3,14 @@ import { client } from 'client';
 import { Footer, Header, LoadMore, Main, Projects, SEO } from 'components';
 import { getNextStaticProps } from '@faustjs/next';
 import { pageTitle } from 'utils';
-import usePostPagination, {
+import useNodePagination, {
   defaultProjectPrepassItems,
-} from 'hooks/usePostPagination';
+} from 'hooks/useNodePagination';
 
 export default function Page() {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
-  const { data, fetchMore, isLoading } = usePostPagination(
+  const { data, fetchMore, isLoading } = useNodePagination(
     (query, queryArgs) => query.projects(queryArgs),
     defaultProjectPrepassItems
   );

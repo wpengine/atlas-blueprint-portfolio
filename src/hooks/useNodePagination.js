@@ -31,7 +31,7 @@ export const defaultProjectPrepassItems = [
 ];
 
 /**
- * The `usePostPagination` hook is an abstraction of the `usePaginatedQuery` from GQty that enables
+ * The `useNodePagination` hook is an abstraction of the `usePaginatedQuery` from GQty that enables
  * you to specify a query to get nodes and page info, and will fetch those initial items, as well
  * as provide a mechanism to fetch more.
  *
@@ -39,7 +39,7 @@ export const defaultProjectPrepassItems = [
  * @param {array|undefined} prepassItems Optional: An array of items to pass to the `prepass()` GQty helper function.
  * @returns
  */
-export default function usePostPagination(queryFn, prepassItems) {
+export default function useNodePagination(queryFn, prepassItems) {
   const queryFnRef = useRef(queryFn);
 
   /**

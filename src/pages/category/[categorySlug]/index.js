@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { client } from 'client';
 import { Posts, LoadMore, Footer, Main, Header, SEO } from 'components';
 import { pageTitle } from 'utils';
-import usePostPagination from 'hooks/usePostPagination';
+import useNodePagination from 'hooks/useNodePagination';
 
 export default function Page() {
   const { useQuery, useCategory } = client;
@@ -13,7 +13,7 @@ export default function Page() {
   const generalSettings = useQuery().generalSettings;
   const category = useCategory();
 
-  const { data, fetchMore, isLoading } = usePostPagination(
+  const { data, fetchMore, isLoading } = useNodePagination(
     (query, queryArgs) => {
       return query.posts({
         ...queryArgs,

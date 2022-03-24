@@ -3,12 +3,12 @@ import { getNextStaticProps } from '@faustjs/next';
 import { client } from 'client';
 import { Posts, Header, LoadMore, Footer, Main, SEO } from 'components';
 import { pageTitle } from 'utils';
-import usePostPagination from 'hooks/usePostPagination';
+import useNodePagination from 'hooks/useNodePagination';
 
 export default function Page() {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
-  const { data, fetchMore, isLoading } = usePostPagination((query, queryArgs) =>
+  const { data, fetchMore, isLoading } = useNodePagination((query, queryArgs) =>
     query.posts(queryArgs)
   );
 
