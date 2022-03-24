@@ -11,9 +11,7 @@ The site logo is pulled from `/public/logo.png`.
 ```jsx
 import { Header } from 'components';
 
-const MyHeader = () => (
-  <Header />
-);
+const MyHeader = () => <Header />;
 ```
 
 ## Props
