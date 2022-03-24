@@ -1,9 +1,13 @@
 @import 'styles/Variables';
 
 .entry-header {
-  margin-bottom: 10rem;
+  margin-bottom: 2rem;
   color: var(--color-white);
   background-color: var(--color-primary);
+
+  @media (min-width: $breakpoint-small) {
+    margin-bottom: 10rem;
+  }
 }
 
 .text,
