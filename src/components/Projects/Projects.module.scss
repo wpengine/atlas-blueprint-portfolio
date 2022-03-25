@@ -2,15 +2,28 @@
 
 .list-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 6rem;
+
+  @media (min-width: $breakpoint-small) {
+    flex-direction: row;
+  }
 }
 
 .image {
-  min-width: 40rem;
+  width: 100%;
 
-  @media (max-width: $breakpoint-small) {
+  @media (min-width: $breakpoint-small) {
+    width: auto;
+  }
+
+  @media (min-width: $breakpoint-small) {
     min-width: 30rem;
+  }
+
+  @media (min-width: $breakpoint-medium) {
+    min-width: 40rem;
   }
 }
 
