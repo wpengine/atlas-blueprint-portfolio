@@ -40,7 +40,7 @@ export default function Page() {
       <Main>
         <EntryHeader title="Latest Posts" />
         <div className="container">
-          <Posts posts={data?.nodes} readMoreText="Read More" id="posts-list" />
+          <Posts posts={data?.nodes} id="posts-list" />
           <LoadMore
             className="text-center"
             pageInfo={data.pageInfo}
