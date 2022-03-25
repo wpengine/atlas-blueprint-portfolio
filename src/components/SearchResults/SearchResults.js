@@ -1,4 +1,5 @@
-import { FormatDate, LoadingSearchResult, NextLinkWrapper } from 'components';
+import Link from 'next/link';
+import { FormatDate, LoadingSearchResult } from 'components';
 import { FaSearch } from 'react-icons/fa';
 
 import styles from './SearchResults.module.scss';
@@ -31,13 +32,13 @@ export default function SearchResults({ searchResults, isLoading }) {
     <>
       {searchResults?.map((node) => (
         <div key={node?.databaseId ?? ''} className={styles.result}>
-          <NextLinkWrapper href={node?.uri}>
+          <Link href={node?.uri}>
             <a>
               <h2 className={styles.title}>
                 {node?.$on?.[node?.__typename].title?.()}
               </h2>
             </a>
-          </NextLinkWrapper>
+          </Link>
           <div className={styles.meta}>
             <time className={styles.date} dateTime={node?.date}>
               <FormatDate date={node?.date} />

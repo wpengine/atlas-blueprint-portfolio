@@ -11,7 +11,6 @@ import LoadingSearchResult from './LoadingSearchResult';
 import LoadMore from './LoadMore';
 import Main from './Main';
 import NavigationMenu from './NavigationMenu';
-import NextLinkWrapper from './NextLinkWrapper';
 import PostInfo from './PostInfo';
 import Posts from './Posts';
 import ProjectHeader from './ProjectHeader';
@@ -38,7 +37,6 @@ export {
   LoadMore,
   Main,
   NavigationMenu,
-  NextLinkWrapper,
   PostInfo,
   Posts,
   ProjectHeader,

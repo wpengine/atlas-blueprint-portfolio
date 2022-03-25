@@ -1,4 +1,4 @@
-import NextLinkWrapper from 'components/NextLinkWrapper/NextLinkWrapper';
+import Link from 'next/link';
 
 import styles from './Button.module.scss';
 
@@ -38,11 +38,11 @@ export default function Button({
 
   if (href) {
     return (
-      <NextLinkWrapper href={href}>
+      <Link href={href}>
         <a role="button" href={href} className={buttonClassName} {...props}>
           {children}
         </a>
-      </NextLinkWrapper>
+      </Link>
     );
   }
 
