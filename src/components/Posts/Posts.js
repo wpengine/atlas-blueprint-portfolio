@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Heading, FeaturedImage, PostInfo } from 'components';
+import appConfig from 'app.config';
 
 import styles from './Posts.module.scss';
 
@@ -11,6 +12,15 @@ function Posts({ posts, intro, id }) {
       {intro && <p>{intro}</p>}
       <div className={styles['post-list']}>
         {posts?.map((post) => {
+          let image = post?.featuredImage?.node;
+
+          if (!image && appConfig.archiveDisplayFeaturedImage) {
+            image = {
+              sourceUrl: '/static/banner.jpeg',
+              altText: 'Downtown Austin, Texas skyline',
+            };
+          }
+
           return (
             <div
               className={styles.container}
@@ -22,7 +32,7 @@ function Posts({ posts, intro, id }) {
                   <a className={styles[`image-holder`]} tabIndex="-1">
                     <FeaturedImage
                       className={styles.image}
-                      image={post?.featuredImage?.node}
+                      image={image}
                       width={340}
                       height={340}
                     />

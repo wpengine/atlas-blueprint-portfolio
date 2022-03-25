@@ -1,7 +1,7 @@
 import { getNextStaticProps, is404 } from '@faustjs/next';
 import Link from 'next/link';
 import { client } from 'client';
-import { Footer, Header, Main, SEO } from 'components';
+import { Footer, Header, EntryHeader, Main, SEO } from 'components';
 import { pageTitle } from 'utils';
 
 export default function Page() {
@@ -23,24 +23,27 @@ export default function Page() {
         )}
       />
 
-      <Header title="All Categories" />
+      <Header />
 
-      <Main className="container">
-        <div className="content">
-          <h1>All Categories</h1>
-          <ul>
-            {categories?.nodes?.map(({ id, name, uri }) => {
-              return (
-                <li key={id}>
-                  {
-                    <Link href={uri ?? '#'}>
-                      <a>{name}</a>
-                    </Link>
-                  }
-                </li>
-              );
-            })}
-          </ul>
+      <Main>
+        <EntryHeader title="All Categories" />
+        <div className="container">
+          <div className="content">
+            <h1>All Categories</h1>
+            <ul>
+              {categories?.nodes?.map(({ id, name, uri }) => {
+                return (
+                  <li key={id}>
+                    {
+                      <Link href={uri ?? '#'}>
+                        <a>{name}</a>
+                      </Link>
+                    }
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
       </Main>
 

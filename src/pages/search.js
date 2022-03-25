@@ -32,24 +32,23 @@ export default function Page() {
     <>
       <SEO title={pageTitle(generalSettings, 'Search')} />
 
-      <Header className={styles['search-header']} />
+      <Header />
 
-      <div className={styles['search-header-pane']}>
-        <div className="container small">
-          <h2 className={styles['search-header-text']}>
-            {searchQuery && !isLoading
-              ? `Showing results for "${searchQuery}"`
-              : `Search`}
-          </h2>
-          <SearchInput
-            value={searchQuery}
-            onChange={(newValue) => setSearchQuery(newValue)}
-          />
+      <Main>
+        <div className={styles['search-header-pane']}>
+          <div className="container small">
+            <h2 className={styles['search-header-text']}>
+              {searchQuery && !isLoading
+                ? `Showing results for "${searchQuery}"`
+                : `Search`}
+            </h2>
+            <SearchInput
+              value={searchQuery}
+              onChange={(newValue) => setSearchQuery(newValue)}
+            />
+          </div>
         </div>
-      </div>
-
-      <Main className="container small">
-        <>
+        <div className="container small">
           {error && (
             <div className="alert-error">
               An error has occurred. Please refresh and try again.
@@ -65,7 +64,7 @@ export default function Page() {
           )}
 
           {!isLoading && searchResults === null && <SearchRecommendations />}
-        </>
+        </div>
       </Main>
 
       <Footer />

@@ -1,3 +1,5 @@
+import * as MENUS from 'constants/menus';
+
 import appConfig from 'app.config';
 import {
   FaFacebookF,
@@ -11,11 +13,6 @@ import { NavigationMenu } from 'components';
 
 import styles from './Footer.module.scss';
 
-/**
- * @type {import('client/schema.generated').MenuLocationEnum}
- */
-const FOOTER_MENU_LOCATION = 'FOOTER';
-
 export default function Footer() {
   return (
     <footer className={styles.footer}>
@@ -26,6 +23,8 @@ export default function Footer() {
               {appConfig.socialLinks?.twitterUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.twitterUrl}
                   >
@@ -40,6 +39,8 @@ export default function Footer() {
               {appConfig.socialLinks?.facebookUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.facebookUrl}
                   >
@@ -54,6 +55,8 @@ export default function Footer() {
               {appConfig.socialLinks?.instagramUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.instagramUrl}
                   >
@@ -68,6 +71,8 @@ export default function Footer() {
               {appConfig.socialLinks?.youtubeUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.youtubeUrl}
                   >
@@ -82,6 +87,8 @@ export default function Footer() {
               {appConfig.socialLinks?.githubUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.githubUrl}
                   >
@@ -96,6 +103,8 @@ export default function Footer() {
               {appConfig.socialLinks?.linkedinUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.linkedinUrl}
                   >
@@ -112,7 +121,7 @@ export default function Footer() {
 
         <NavigationMenu
           className={styles.nav}
-          menuLocation={FOOTER_MENU_LOCATION}
+          menuLocation={MENUS.FOOTER_LOCATION}
         />
 
         <div className={styles.copyright}>
