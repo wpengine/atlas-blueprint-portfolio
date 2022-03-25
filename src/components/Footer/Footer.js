@@ -23,6 +23,8 @@ export default function Footer() {
               {appConfig.socialLinks?.twitterUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.twitterUrl}
                   >
@@ -37,6 +39,8 @@ export default function Footer() {
               {appConfig.socialLinks?.facebookUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.facebookUrl}
                   >
@@ -51,6 +55,8 @@ export default function Footer() {
               {appConfig.socialLinks?.instagramUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.instagramUrl}
                   >
@@ -65,6 +71,8 @@ export default function Footer() {
               {appConfig.socialLinks?.youtubeUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.youtubeUrl}
                   >
@@ -79,6 +87,8 @@ export default function Footer() {
               {appConfig.socialLinks?.githubUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.githubUrl}
                   >
@@ -93,6 +103,8 @@ export default function Footer() {
               {appConfig.socialLinks?.linkedinUrl && (
                 <li>
                   <a
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={styles['social-icon-link']}
                     href={appConfig.socialLinks.linkedinUrl}
                   >
