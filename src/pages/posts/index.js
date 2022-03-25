@@ -13,11 +13,36 @@ import {
 import { pageTitle } from 'utils';
 import useNodePagination from 'hooks/useNodePagination';
 
+/**
+ * Prepass fields for post nodes. This lists all the pieces of data we need
+ * for each project node. Running the following through `prepass` ensures that
+ * all of the data is there when we need it, and no cascading requests happen.
+ *
+ * @see https://gqty.dev/docs/client/helper-functions#prepass
+ */
+const POST_NODES_PREPASS_FIELDS = [
+  'databaseId',
+  'id',
+  '__typename',
+  'featuredImage.*',
+  'featuredImage.node.altText',
+  'featuredImage.node.mediaDetails.width',
+  'featuredImage.node.mediaDetails.height',
+  'featuredImage.node.sourceUrl',
+  'author.node.name',
+  'date',
+  'uri',
+  'title',
+  'slug',
+  'summary',
+];
+
 export default function Page() {
   const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
-  const { data, fetchMore, isLoading } = useNodePagination((query, queryArgs) =>
-    query.posts(queryArgs)
+  const { data, fetchMore, isLoading } = useNodePagination(
+    (query, queryArgs) => query.posts(queryArgs),
+    POST_NODES_PREPASS_FIELDS
   );
 
   return (

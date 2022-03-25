@@ -3,34 +3,6 @@ import { client } from 'client';
 import { useRef } from 'react';
 
 /**
- * Default prepass items for posts. This lists all the pieces of data we need
- * for each post node. Running the following through `prepass` ensures that
- * all of the data is there when we need it, and no cascading requests happen.
- *
- * @see https://gqty.dev/docs/client/helper-functions#prepass
- */
-export const defaultPostPrepassItems = [
-  'databaseId',
-  'id',
-  '__typename',
-  'featuredImage.*',
-  'featuredImage.node.altText',
-  'featuredImage.node.mediaDetails.width',
-  'featuredImage.node.mediaDetails.height',
-  'featuredImage.node.sourceUrl',
-  'author.node.name',
-  'date',
-  'uri',
-  'title',
-  'slug',
-];
-
-export const defaultProjectPrepassItems = [
-  ...defaultPostPrepassItems,
-  'summary',
-];
-
-/**
  * The `useNodePagination` hook is an abstraction of the `usePaginatedQuery` from GQty that enables
  * you to specify a query to get nodes and page info, and will fetch those initial items, as well
  * as provide a mechanism to fetch more.
@@ -57,18 +29,14 @@ export default function useNodePagination(queryFn, prepassItems) {
       const res = queryFnRef.current(query, input);
 
       /**
-       * If there was user defined prepassItems use them.
-       * Otherwise, use the defaults.
-       */
-      let prepassList = prepassItems ?? defaultPostPrepassItems;
-
-      /**
-       * Do a prepass for the data requirements we need so all data
-       * will be fetched in one request and no chance for cascading.
+       * If prepassItems is defined, do a prepass for the data requirements
+       * we want so all data will be fetched in one request.
        *
        * @see https://gqty.dev/docs/client/helper-functions#prepass
        */
-      prepass(res?.nodes, ...prepassList);
+      if (prepassItems) {
+        prepass(res?.nodes, ...prepassItems);
+      }
 
       return {
         nodes: res?.nodes,
