@@ -2,6 +2,7 @@ import { client } from 'client';
 
 import { PostComponent } from './posts/[postSlug]';
 import { PageComponent } from './[...pageUri]';
+import { ProjectComponent } from './projects/[projectSlug]';
 
 export default function Preview() {
   const isLoading = client.useIsLoading();
@@ -23,6 +24,10 @@ export default function Preview() {
     case 'Post': {
       const post = node;
       return <PostComponent post={post} />;
+    }
+    case 'Project': {
+      const project = node;
+      return <ProjectComponent project={project} />;
     }
     // Add custom post types here as needed
     default: {
