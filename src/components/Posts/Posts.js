@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { Heading, FeaturedImage, PostInfo } from 'components';
 import appConfig from 'app.config';
@@ -6,12 +6,26 @@ import appConfig from 'app.config';
 import styles from './Posts.module.scss';
 
 function Posts({ posts, intro, id }) {
+  const linksRef = useRef([]);
+
+  useEffect(() => {
+    function focusIndex() {
+      const partialSetLength = posts.length % appConfig.postsPerPage;
+      const delta = partialSetLength === 0 ? appConfig.postsPerPage : partialSetLength;
+      const focusIndex = posts.length - delta;
+
+      return focusIndex;
+    }
+
+    linksRef.current[focusIndex()].focus();
+  }, [posts]);
+
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
       {intro && <p>{intro}</p>}
       <div className={styles['post-list']}>
-        {posts?.map((post) => {
+        {posts?.map((post, index) => {
           let image = post?.featuredImage?.node;
 
           if (!image && appConfig.archiveDisplayFeaturedImage) {
@@ -41,7 +55,7 @@ function Posts({ posts, intro, id }) {
 
                 <Heading level="h4" className={styles.header}>
                   <Link href={post?.uri ?? '#'}>
-                    <a>{post.title()}</a>
+                    <a ref={(el) => linksRef.current[index] = el}>{post.title()}</a>
                   </Link>
                 </Heading>
                 <PostInfo
