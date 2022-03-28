@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { Heading, FeaturedImage, PostInfo } from 'components';
 import appConfig from 'app.config';
@@ -11,7 +11,8 @@ function Posts({ posts, intro, id }) {
   useEffect(() => {
     function focusIndex() {
       const partialSetLength = posts.length % appConfig.postsPerPage;
-      const delta = partialSetLength === 0 ? appConfig.postsPerPage : partialSetLength;
+      const delta =
+        partialSetLength === 0 ? appConfig.postsPerPage : partialSetLength;
       const focusIndex = posts.length - delta;
 
       return focusIndex;
@@ -55,7 +56,9 @@ function Posts({ posts, intro, id }) {
 
                 <Heading level="h4" className={styles.header}>
                   <Link href={post?.uri ?? '#'}>
-                    <a ref={(el) => linksRef.current[index] = el}>{post.title()}</a>
+                    <a ref={(el) => (linksRef.current[index] = el)}>
+                      {post.title()}
+                    </a>
                   </Link>
                 </Heading>
                 <PostInfo
