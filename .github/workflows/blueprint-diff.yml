@@ -8,9 +8,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - run: wget https://github.com/wpengine/atlas-blueprint-portfolio/raw/main/acm-blueprint.zip -O /tmp/acm-blueprint-origin.zip
-      - run: unzip /tmp/acm-blueprint-origin.zip
-      - run: unzip ./acm-blueprint.zip -d /tmp/acm-blueprint
-      - run: diff --recursive -y --new-file /tmp/acm-blueprint/ /tmp/acm-blueprint-origin/ > /tmp/diff-output.txt
-      - run: echo ::set-output name=diff::$(cat /tmp/diff-output.txt)
-      - run: exit 0
+      - run: |
+          wget https://github.com/wpengine/atlas-blueprint-portfolio/raw/main/acm-blueprint.zip -O /tmp/acm-blueprint-origin.zip
+          unzip /tmp/acm-blueprint-origin.zip
+          unzip ./acm-blueprint.zip -d /tmp/acm-blueprint
+
+          diff --recursive -y --new-file /tmp/acm-blueprint/ /tmp/acm-blueprint-origin/ || true > /tmp/diff-output.txt
+
+          echo ::set-output name=diff::$(cat /tmp/diff-output.txt)
