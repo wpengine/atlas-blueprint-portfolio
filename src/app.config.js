@@ -1,3 +1,6 @@
+/**
+ * Global application config file
+ */
 const appConfig = {
   postsPerPage: 9,
   /**

@@ -1,3 +1,9 @@
+/**
+ * Simply utility function for removing duplicate items from an array based on a key.
+ * @param {*} arr The list to deduplicate
+ * @param {*} pred The predicate to use for deriving the key
+ * @returns The list with the duplicate items removed
+ */
 const uniqBy = (arr, pred) => {
   const cb = typeof pred === 'function' ? pred : (o) => o[pred];
 
