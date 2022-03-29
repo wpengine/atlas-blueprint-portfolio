@@ -33,3 +33,10 @@ An optional class name for the `ContentWrapper`
 
 Type: `String`
 Required: No
+
+### children
+
+elements to be used as children of the `ContentWrapper`.
+
+Type: `Element`
+Required: No

@@ -20,3 +20,10 @@ The button component to be rendered
 
 Type: `() => React.ReactElement`
 Required: No
+
+### children
+
+elements to be used as children of the `Button`.
+
+Type: `Element`
+Required: No

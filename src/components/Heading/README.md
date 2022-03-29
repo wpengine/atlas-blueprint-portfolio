@@ -29,3 +29,10 @@ An additional class name to be applied to the `<Heading>` component.
 
 Type: `String`
 Required: No
+
+### children
+
+elements to be used as children of the `Heading`.
+
+Type: `Element`
+Required: No
