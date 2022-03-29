@@ -14,8 +14,8 @@ import { NavigationMenu } from 'components';
 import styles from './Footer.module.scss';
 
 /**
- * A Blueprint Footer component
- * @returns
+ * The Blueprint's Footer component
+ * @return {React.ReactElement} The Footer component.
  */
 export default function Footer() {
   return (

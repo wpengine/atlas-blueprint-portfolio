@@ -1,7 +1,10 @@
 import * as SELECTORS from 'constants/selectors';
 
 import styles from './SkipNavigationLink.module.scss';
-
+/**
+ * Renders a hidden link for skip navigation.
+ * @returns {React.ReactElement} The SkipNavigationLink component
+ */
 export default function SkipNavigationLink() {
   return (
     <a

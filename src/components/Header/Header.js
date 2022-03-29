@@ -7,7 +7,12 @@ import Link from 'next/link';
 import { NavigationMenu, SkipNavigationLink } from 'components';
 
 import styles from './Header.module.scss';
-
+/**
+ * A Header component
+ * @param {Props} props The props object.
+ * @param {string} props.className An optional className to be added to the container.
+ * @return {React.ReactElement} The FeaturedImage component.
+ */
 export default function Header({ className }) {
   const [isNavShown, setIsNavShown] = useState(false);
 

@@ -2,7 +2,16 @@ import appConfig from 'app.config';
 import React from 'react';
 
 import styles from './LoadMore.module.scss';
-
+/**
+ * LoadMore shows a Button that can be clicked to load more results in a paginated post list.
+ * @param {Props} props The props object.
+ * @param {boolean} props.hasNextPage Flag to use if there are more results to load.
+ * @param {string} props.endCursor The next pagination cursor string.
+ * @param {string} props.isLoading Flag that indicates whether the pagination is loading.
+ * @param {string} props.fetchMore Callback function to trigger the next pagination request.
+ * @param {string} props.className An optional className to be added to the container.
+ * @return {React.ReactElement} The LoadMore component.
+ */
 export default function LoadMore({
   hasNextPage,
   endCursor,
