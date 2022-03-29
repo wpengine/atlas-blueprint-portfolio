@@ -17,7 +17,3 @@ jobs:
         run: |
           diff -ry --suppress-common-lines /tmp/acm-blueprint-origin/ /tmp/acm-blueprint/ || true > /tmp/diff-output.txt
           cat /tmp/diff-output.txt
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: Blueprints Diff
-      #     path: /tmp/diff-output.txt
