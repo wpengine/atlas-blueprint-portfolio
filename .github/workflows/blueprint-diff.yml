@@ -8,21 +8,16 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      # - name: Check for changes in `acm-blueprint.zip`
-      #   run: |
-      #     echo ::set-output name=has-blueprint-export-changes::$(git diff --exit-code acm-blueprint.zip)
-
-      #     echo steps.id.outputs.has-blueprint-export-changes
-      - name: Create diff
+      - name: Setup
         run: |
           wget https://github.com/wpengine/atlas-blueprint-portfolio/raw/main/acm-blueprint.zip -O /tmp/acm-blueprint-origin.zip
           unzip -j /tmp/acm-blueprint-origin.zip -d /tmp/acm-blueprint-origin
           unzip -j ./acm-blueprint.zip -d /tmp/acm-blueprint
-
-          diff -ry --suppress-common-lines /tmp/acm-blueprint/ /tmp/acm-blueprint-origin/ || true > /tmp/diff-output.txt
-
+      - name: Create Diff
+        run: |
+          diff -ry --suppress-common-lines /tmp/acm-blueprint-origin/ /tmp/acm-blueprint/ || true > /tmp/diff-output.txt
           cat /tmp/diff-output.txt
-      - uses: actions/upload-artifact@v3
-        with:
-          name: Blueprints Diff
-          path: /tmp/diff-output.txt
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: Blueprints Diff
+      #     path: /tmp/diff-output.txt
