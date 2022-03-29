@@ -1,14 +1,5 @@
 # `TaxonomyTerms`
 
-/\*\*
-
-- Renders a list of taxonomy terms and term links for a given post
-- @param {Props} props The props object.
-- @param {Post} props.post The Post GraphQL Node.
-- @param {string} props.taxonomy The taxonomy type.
-- @returns {React.ReactElement} The TaxonomyTerms component
-  \*/
-
 Renders a list of taxonomy terms and term links for a given post.
 
 ## Usage
