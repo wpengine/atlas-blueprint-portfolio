@@ -13,6 +13,10 @@ import { NavigationMenu } from 'components';
 
 import styles from './Footer.module.scss';
 
+/**
+ * A Blueprint Footer component
+ * @returns
+ */
 export default function Footer() {
   return (
     <footer className={styles.footer}>
