@@ -10,7 +10,7 @@ jobs:
           node-version: '16'
       - name: Check for changes
         id: check-for-export-changes
-        run: echo ::set-output name=check::$(git diff HEAD^ HEAD --exit-code acm-blueprint.zip)
+        run: echo ::set-output name=check::$(git diff --name-only main --exit-code acm-blueprint.zip)
       - name: Setup
         if: steps.check-for-export-changes.outputs.check != 0
         run: |
