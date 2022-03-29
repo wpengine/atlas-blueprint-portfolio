@@ -22,11 +22,11 @@ jobs:
       - name: Create Diff
         if: steps.check-for-export-changes.outputs.check != 0
         run: |
-          diff -ry --suppress-common-lines /tmp/acm-blueprint-origin/ /tmp/acm-blueprint/ || true > /tmp/diff-output.txt
-          cat /tmp/diff-output.txt
+          diff -ry --suppress-common-lines /tmp/acm-blueprint-origin/ /tmp/acm-blueprint/ || true > diff-output.txt
+          cat diff-output.txt
       - name: Create artifact
         uses: actions/upload-artifact@v3
         if: steps.check-for-export-changes.outputs.check != 0
         with:
           name: blueprint-export-diff
-          path: /tmp/diff-output.txt
+          path: diff-output.txt
