@@ -1,9 +1,9 @@
 /**
  * Returns a title for the current page
- * @param generalSettings
- * @param titleOverride An optional title to be used instead of the general settings Title
- * @param descriptionOverride An optional description to be used instead of the general settings Description
- * @returns {string}
+ * @param {GeneralSettings} generalSettings The  general settings node.
+ * @param {string} titleOverride An optional title to be used instead of the general settings Title.
+ * @param {string} descriptionOverride An optional description to be used instead of the general settings Description.
+ * @returns {string} The page Title.
  */
 function pageTitle(
   generalSettings,

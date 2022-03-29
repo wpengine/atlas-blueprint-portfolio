@@ -1,7 +1,7 @@
 /**
  * Simply utility function for removing duplicate items from an array based on a key.
- * @param {*} arr The list to deduplicate
- * @param {*} pred The predicate to use for deriving the key
+ * @param {any[]} arr The array of items to deduplicate
+ * @param {(any) => any} pred The predicate to use for deriving the key
  * @returns The list with the duplicate items removed
  */
 const uniqBy = (arr, pred) => {
