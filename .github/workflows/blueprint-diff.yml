@@ -19,7 +19,7 @@ jobs:
           unzip -j /tmp/acm-blueprint-origin.zip -d /tmp/acm-blueprint-origin
           unzip -j ./acm-blueprint.zip -d /tmp/acm-blueprint
 
-          diff -ry /tmp/acm-blueprint/ /tmp/acm-blueprint-origin/ || true > /tmp/diff-output.txt
+          diff -ry --suppress-common-lines /tmp/acm-blueprint/ /tmp/acm-blueprint-origin/ || true > /tmp/diff-output.txt
 
           cat /tmp/diff-output.txt
       - uses: actions/upload-artifact@v3
