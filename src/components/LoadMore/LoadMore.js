@@ -10,6 +10,7 @@ import styles from './LoadMore.module.scss';
  * @param {string} props.isLoading Flag that indicates whether the pagination is loading.
  * @param {string} props.fetchMore Callback function to trigger the next pagination request.
  * @param {string} props.className An optional className to be added to the container.
+ *
  * @return {React.ReactElement} The LoadMore component.
  */
 export default function LoadMore({
