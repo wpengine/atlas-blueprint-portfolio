@@ -1,5 +1,5 @@
 /**
- * Simply utility function for removing duplicate items from an array based on a key.
+ * Simple utility function for removing duplicate items from an array based on a key.
  * @param {any[]} arr The array of items to deduplicate
  * @param {(any) => any} pred The predicate to use for deriving the key
  * @returns The list with the duplicate items removed
