@@ -14,6 +14,8 @@ jobs:
 
           unzip ./acm-blueprint.zip -d /tmp/acm-blueprint
 
-          echo ::set-output name=version::$(diff --recursive -y --new-file /tmp/acm-blueprint/ /tmp/acm-blueprint-origin/)
+          diff --recursive -y --new-file /tmp/acm-blueprint/ /tmp/acm-blueprint-origin/ > /tmp/diff-output.txt
+
+          echo ::set-output name=diff::$(cat /tmp/diff-output.txt)
 
           exit 0
