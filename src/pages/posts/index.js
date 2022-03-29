@@ -10,25 +10,39 @@ import {
   Main,
   SEO,
 } from 'components';
-import usePagination from 'hooks/usePagination';
-import appConfig from 'app.config';
 import { pageTitle } from 'utils';
+import useNodePagination from 'hooks/useNodePagination';
+
+/**
+ * Prepass fields for post nodes. This lists all the pieces of data we need
+ * for each project node. Running the following through `prepass` ensures that
+ * all of the data is there when we need it, and no cascading requests happen.
+ *
+ * @see https://gqty.dev/docs/client/helper-functions#prepass
+ */
+const POST_NODES_PREPASS_FIELDS = [
+  'databaseId',
+  'id',
+  '__typename',
+  'featuredImage.*',
+  'featuredImage.node.altText',
+  'featuredImage.node.mediaDetails.width',
+  'featuredImage.node.mediaDetails.height',
+  'featuredImage.node.sourceUrl',
+  'author.node.name',
+  'date',
+  'uri',
+  'title',
+  'slug',
+  'summary',
+];
 
 export default function Page() {
-  const { useQuery, usePosts } = client;
-  const posts = usePosts({
-    first: appConfig.postsPerPage,
-  });
+  const { useQuery } = client;
   const generalSettings = useQuery().generalSettings;
-  const { data, fetchMore, isLoading } = usePagination(
-    (query, args) => {
-      const { nodes, pageInfo } = query.posts(args);
-      return {
-        nodes: Array.from(nodes),
-        pageInfo,
-      };
-    },
-    { nodes: posts?.nodes, pageInfo: posts?.pageInfo }
+  const { data, fetchMore, isLoading } = useNodePagination(
+    (query, queryArgs) => query.posts(queryArgs),
+    POST_NODES_PREPASS_FIELDS
   );
 
   return (
@@ -40,10 +54,11 @@ export default function Page() {
       <Main>
         <EntryHeader title="Latest Posts" />
         <div className="container">
-          <Posts posts={data?.nodes} readMoreText="Read More" id="posts-list" />
+          <Posts posts={data?.nodes} id="posts-list" />
           <LoadMore
             className="text-center"
-            pageInfo={data.pageInfo}
+            hasNextPage={data?.hasNextPage}
+            endCursor={data?.endCursor}
             isLoading={isLoading}
             fetchMore={fetchMore}
           />

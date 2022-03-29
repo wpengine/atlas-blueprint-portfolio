@@ -3,6 +3,7 @@
 .content {
   max-width: $grid-max-width;
   margin: 0 auto;
+  line-height: 1.6875;
 
   :global {
     * {
@@ -28,8 +29,14 @@
     }
 
     a {
-      color: var(--color-black);
+      color: var(--color-secondary);
       text-decoration: underline;
+
+      &:hover,
+      &:focus {
+        color: var(--color-secondary);
+        text-decoration: none;
+      }
     }
 
     li {
@@ -106,7 +113,7 @@
     }
 
     thead th {
-      border-bottom: 1px solid var(--color-secondary);
+      border-bottom: 1px solid var(--color-tertiary);
       padding-bottom: 0.5em;
     }
 
@@ -116,7 +123,7 @@
     }
 
     tr {
-      border-bottom: 1px solid var(--color-secondary);
+      border-bottom: 1px solid var(--color-tertiary);
     }
 
     td {

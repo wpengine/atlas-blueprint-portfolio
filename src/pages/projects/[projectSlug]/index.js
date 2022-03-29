@@ -9,6 +9,7 @@ import {
   Main,
   SEO,
 } from 'components';
+import { is404Cpt } from 'utils';
 
 export function ProjectComponent({ project }) {
   const { useQuery } = client;
@@ -68,22 +69,4 @@ export function getStaticPaths() {
     paths: [],
     fallback: 'blocking',
   };
-}
-
-/**
- * Checks if a post is available given a custom post type.
- * Temporary until Faust's is404() is adjusted to account for custom post types.
- * @param {string} slug The slug of the custom post type.
- * @param {string} customPostType The WordPress custom post type.
- * @returns {bool}
- */
-async function is404Cpt(slug, customPostType) {
-  const customPostTypePost = await client.client.inlineResolved(() => {
-    return client.client.query[customPostType]({
-      id: slug,
-      idType: 'SLUG',
-    });
-  });
-
-  return customPostTypePost === null;
 }

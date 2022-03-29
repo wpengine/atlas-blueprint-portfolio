@@ -4,12 +4,13 @@ import React from 'react';
 import styles from './LoadMore.module.scss';
 
 export default function LoadMore({
-  pageInfo,
+  hasNextPage,
+  endCursor,
   isLoading,
   fetchMore,
   className,
 }) {
-  if (pageInfo?.hasNextPage && pageInfo?.endCursor) {
+  if (hasNextPage && endCursor) {
     return (
       <section className={className}>
         <button
@@ -18,7 +19,7 @@ export default function LoadMore({
           onClick={() => {
             fetchMore({
               first: appConfig.postsPerPage,
-              after: pageInfo?.endCursor,
+              after: endCursor,
             });
           }}
         >
