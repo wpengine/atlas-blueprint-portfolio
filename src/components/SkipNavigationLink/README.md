@@ -14,4 +14,4 @@ const MySkipNavigationLink = () => <SkipNavigationLink />;
 
 ## Props
 
-The `SkipNavigationLink` component does not have any props
+The `SkipNavigationLink` component does not accept any props
