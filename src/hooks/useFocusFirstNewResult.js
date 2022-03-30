@@ -9,24 +9,25 @@ import { useRef, useEffect, useState } from 'react';
  * @returns {{firstNewResultRef: HTMLDivElement, firstNewResultIndex: number}} Result object
  */
 export default function useFocusFirstNewResult(posts) {
-    const firstNewResultRef = useRef();
-    const [firstNewResultIndex, setFirstnewResultIndex] = useState(0);
+  const firstNewResultRef = useRef();
+  const [firstNewResultIndex, setFirstnewResultIndex] = useState(0);
 
-    useEffect(() => {
-        const isPaginated = posts.length > appConfig.postsPerPage;
+  useEffect(() => {
+    const isPaginated = posts.length > appConfig.postsPerPage;
 
-        if (isPaginated) {
-            firstNewResultRef.current?.focus();
+    if (isPaginated) {
+      firstNewResultRef.current?.focus();
 
-            setFirstnewResultIndex(() => {
-                const partialSetLength = posts.length % appConfig.postsPerPage;
-                const delta = partialSetLength === 0 ? appConfig.postsPerPage : partialSetLength;
-                const focusIndex = posts.length - delta;
+      setFirstnewResultIndex(() => {
+        const partialSetLength = posts.length % appConfig.postsPerPage;
+        const delta =
+          partialSetLength === 0 ? appConfig.postsPerPage : partialSetLength;
+        const focusIndex = posts.length - delta;
 
-                return focusIndex;
-            });
-        }
-    }, [posts, firstNewResultIndex]);
+        return focusIndex;
+      });
+    }
+  }, [posts, firstNewResultIndex]);
 
-    return { firstNewResultRef, firstNewResultIndex };
+  return { firstNewResultRef, firstNewResultIndex };
 }

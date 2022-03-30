@@ -7,7 +7,8 @@ import useFocusFirstNewResult from 'hooks/useFocusFirstNewResult';
 import styles from './Posts.module.scss';
 
 function Posts({ posts, intro, id }) {
-  const { firstNewResultRef, firstNewResultIndex } = useFocusFirstNewResult(posts);
+  const { firstNewResultRef, firstNewResultIndex } =
+    useFocusFirstNewResult(posts);
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading

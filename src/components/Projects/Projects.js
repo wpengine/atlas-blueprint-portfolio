@@ -6,7 +6,8 @@ import useFocusFirstNewResult from 'hooks/useFocusFirstNewResult';
 import styles from './Projects.module.scss';
 
 function Projects({ projects, id, emptyText = 'No projects found.' }) {
-  const { firstNewResultRef, firstNewResultIndex } = useFocusFirstNewResult(projects);
+  const { firstNewResultRef, firstNewResultIndex } =
+    useFocusFirstNewResult(projects);
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
@@ -28,7 +29,9 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
               <div className={styles.content}>
                 <Heading level="h3">
                   <Link href={project?.uri ?? '#'}>
-                    <a ref={isFirstNewResult ? firstNewResultRef : null}>{project.title()}</a>
+                    <a ref={isFirstNewResult ? firstNewResultRef : null}>
+                      {project.title()}
+                    </a>
                   </Link>
                 </Heading>
                 <div>{project.summary}</div>
