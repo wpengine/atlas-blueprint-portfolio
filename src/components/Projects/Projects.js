@@ -1,19 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { Heading, FeaturedImage } from 'components';
-import useFocusFirstNewResult from 'hooks/useFocusFirstNewResult';
 
 import styles from './Projects.module.scss';
 
 function Projects({ projects, id, emptyText = 'No projects found.' }) {
-  const { firstNewResultRef, firstNewResultIndex } = useFocusFirstNewResult(projects);
-
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
-      {projects?.map((project, i) => {
-        const isFirstNewResult = i === firstNewResultIndex;
-
+      {projects?.map((project) => {
         return (
           <div
             className="row"
@@ -27,13 +22,8 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
               />
               <div className={styles.content}>
                 <Heading level="h3">
-                  {/*
-                    Hardcoded CPT slug to be removed once ACM supports the
-                    `with_front` register_post_type() option.
-                    https://github.com/wpengine/atlas-content-modeler/discussions/457
-                  */}
-                  <Link href={`/projects/${project.slug}` ?? '#'}>
-                    <a ref={isFirstNewResult ? firstNewResultRef : null}>{project.title()}</a>
+                  <Link href={project?.uri ?? '#'}>
+                    <a>{project.title()}</a>
                   </Link>
                 </Heading>
                 <div>{project.summary}</div>

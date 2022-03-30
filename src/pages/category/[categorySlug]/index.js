@@ -41,7 +41,7 @@ export default function Page() {
       <Main>
         <EntryHeader title={`Category: ${category?.name}`} />
         <div className="container">
-          <Posts posts={data.nodes} />
+          <Posts posts={data?.nodes} />
           <LoadMore
             className="text-center"
             hasNextPage={data?.hasNextPage}
