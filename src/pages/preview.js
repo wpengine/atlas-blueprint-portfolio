@@ -2,7 +2,7 @@ import { client } from 'client';
 
 import { PostComponent } from './posts/[postSlug]';
 import { PageComponent } from './[...pageUri]';
-import { ProjectComponent } from './projects/[projectSlug]';
+import { ProjectComponent } from './project/[projectSlug]';
 
 export default function Preview() {
   const isLoading = client.useIsLoading();
