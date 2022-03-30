@@ -1,14 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
 import { Heading, FeaturedImage } from 'components';
+import useFocusFirstNewResult from 'hooks/useFocusFirstNewResult';
 
 import styles from './Projects.module.scss';
 
 function Projects({ projects, id, emptyText = 'No projects found.' }) {
+  const { firstNewResultRef, firstNewResultIndex } = useFocusFirstNewResult(projects);
+
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
-      {projects?.map((project) => {
+      {projects?.map((project, i) => {
+        const isFirstNewResult = i === firstNewResultIndex;
+
         return (
           <div
             className="row"
@@ -28,7 +33,7 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
                     https://github.com/wpengine/atlas-content-modeler/discussions/457
                   */}
                   <Link href={`/projects/${project.slug}` ?? '#'}>
-                    <a>{project.title()}</a>
+                    <a ref={isFirstNewResult ? firstNewResultRef : null}>{project.title()}</a>
                   </Link>
                 </Heading>
                 <div>{project.summary}</div>

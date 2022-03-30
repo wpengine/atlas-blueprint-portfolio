@@ -1,32 +1,21 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Heading, FeaturedImage, PostInfo } from 'components';
 import appConfig from 'app.config';
+import useFocusFirstNewResult from 'hooks/useFocusFirstNewResult';
 
 import styles from './Posts.module.scss';
 
 function Posts({ posts, intro, id }) {
-  const linksRef = useRef([]);
-
-  useEffect(() => {
-    function focusIndex() {
-      const partialSetLength = posts.length % appConfig.postsPerPage;
-      const delta =
-        partialSetLength === 0 ? appConfig.postsPerPage : partialSetLength;
-      const focusIndex = posts.length - delta;
-
-      return focusIndex;
-    }
-
-    linksRef.current[focusIndex()].focus();
-  }, [posts]);
+  const { firstNewResultRef, firstNewResultIndex } = useFocusFirstNewResult(posts);
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
       {intro && <p>{intro}</p>}
       <div className={styles['post-list']}>
-        {posts?.map((post, index) => {
+        {posts?.map((post, i) => {
+          const isFirstNewResult = i === firstNewResultIndex;
           let image = post?.featuredImage?.node;
 
           if (!image && appConfig.archiveDisplayFeaturedImage) {
@@ -56,7 +45,7 @@ function Posts({ posts, intro, id }) {
 
                 <Heading level="h4" className={styles.header}>
                   <Link href={post?.uri ?? '#'}>
-                    <a ref={(el) => (linksRef.current[index] = el)}>
+                    <a ref={isFirstNewResult ? firstNewResultRef : null}>
                       {post.title()}
                     </a>
                   </Link>
