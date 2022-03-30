@@ -1,6 +1,6 @@
 # `ContentWrapper`
 
-Renders a basic .
+Renders styled post content. Includes styles for core WordPress classes such as handling image alignment.
 
 The ContentWrapper component uses an `article` element as a base.
 
