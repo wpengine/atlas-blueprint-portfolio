@@ -5,13 +5,19 @@
 
 .container {
   margin: 0 auto;
-  max-width: $grid-max-width;
+  max-width: $container-max-width;
   padding: 0 2rem;
   position: relative;
   width: 100%;
 
   &.small {
-    max-width: $container-max-width-sm;
+    max-width: $content-max-width;
+  }
+}
+
+@media (min-width: $breakpoint-medium) {
+  .container {
+    width: percentage(10/12);
   }
 }
 
@@ -177,24 +183,6 @@
     .column-center {
       align-self: center;
     }
-  }
-}
-
-@media (min-width: 102.5rem) {
-  .container {
-    max-width: 120rem;
-  }
-}
-
-@media (max-width: 102.4rem) {
-  .container {
-    max-width: 102.4rem;
-  }
-}
-
-@media (max-width: 76.8rem) {
-  .container {
-    max-width: 76.8rem;
   }
 }
 
