@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Heading, FeaturedImage, PostInfo } from 'components';
 import appConfig from 'app.config';
+import useFocusFirstNewResult from 'hooks/useFocusFirstNewResult';
 
 import styles from './Posts.module.scss';
 
@@ -14,12 +15,16 @@ import styles from './Posts.module.scss';
  * @returns {React.ReactElement} The Projects component
  */
 function Posts({ posts, intro, id }) {
+  const { firstNewResultRef, firstNewResultIndex } =
+    useFocusFirstNewResult(posts);
+
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
       {intro && <p>{intro}</p>}
       <div className={styles['post-list']}>
-        {posts?.map((post) => {
+        {posts?.map((post, i) => {
+          const isFirstNewResult = i === firstNewResultIndex;
           let image = post?.featuredImage?.node;
 
           if (!image && appConfig.archiveDisplayFeaturedImage) {
@@ -49,7 +54,9 @@ function Posts({ posts, intro, id }) {
 
                 <Heading level="h4" className={styles.header}>
                   <Link href={post?.uri ?? '#'}>
-                    <a>{post.title()}</a>
+                    <a ref={isFirstNewResult ? firstNewResultRef : null}>
+                      {post.title()}
+                    </a>
                   </Link>
                 </Heading>
                 <PostInfo
