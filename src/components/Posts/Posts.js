@@ -5,6 +5,14 @@ import appConfig from 'app.config';
 
 import styles from './Posts.module.scss';
 
+/**
+ * Renders a list of Post items
+ * @param {Props} props The props object.
+ * @param {Post[]} props.posts The array of post items.
+ * @param {string} props.id The unique id for this component.
+ * @param {string} props.intro Message to show as an introduction text.
+ * @returns {React.ReactElement} The Projects component
+ */
 function Posts({ posts, intro, id }) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
