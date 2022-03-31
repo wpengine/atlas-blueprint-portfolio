@@ -17,7 +17,7 @@
 
 @media (min-width: $breakpoint-medium) {
   .container {
-    width: (10/12) * 100%;
+    width: percentage(10/12);
   }
 }
 
