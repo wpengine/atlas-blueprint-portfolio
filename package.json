@@ -17,7 +17,7 @@
     "@faustjs/core": "^0.15.2",
     "@faustjs/next": "^0.15.3",
     "gqty": "^2.2.0",
-    "next": "^12.1.0",
+    "next": "12.1.0",
     "normalize.css": "^8.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -30,7 +30,6 @@
     "@gqty/cli": "^3.1.0",
     "@wordpress/base-styles": "^4.1.1",
     "@wordpress/block-library": "^7.0.0",
-    "cz-conventional-changelog": "^3.0.1",
     "dotenv-flow": "^3.2.0",
     "eslint": "8.9.0",
     "eslint-config-next": "12.0.10",
@@ -43,10 +42,5 @@
   "engines": {
     "node": ">=14.0.0",
     "npm": ">=6.0.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
