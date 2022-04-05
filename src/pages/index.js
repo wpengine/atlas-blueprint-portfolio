@@ -56,10 +56,10 @@ export default function Page() {
               world&apos;s #1 open source CMS in one powerful headless platform.{' '}
             </p>
             <div className={styles.actions}>
-              <Button styleType="secondary" href="#">
+              <Button styleType="secondary" href="/contact-us">
                 GET STARTED
               </Button>
-              <Button styleType="primary" href="#">
+              <Button styleType="primary" href="/about">
                 LEARN MORE
               </Button>
             </div>
@@ -67,7 +67,7 @@ export default function Page() {
           <section className="cta">
             <CTA
               Button={() => (
-                <Button href="#">
+                <Button href="/posts">
                   Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
                 </Button>
               )}
@@ -87,7 +87,7 @@ export default function Page() {
           <section className="cta">
             <CTA
               Button={() => (
-                <Button href="#">
+                <Button href="/posts">
                   Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
                 </Button>
               )}
