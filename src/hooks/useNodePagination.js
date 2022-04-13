@@ -55,7 +55,7 @@ export default function useNodePagination(queryFn, prepassItems) {
        * Optional merge function
        */
       merge({ data: { existing, incoming }, uniqBy }) {
-        if (existing) {
+        if (existing?.nodes && incoming?.nodes) {
           return {
             ...incoming,
             // If using 'cache-and-network', you have to use `uniqBy`
