@@ -13,7 +13,7 @@ export default function useFocusFirstNewResult(posts) {
   const [firstNewResultIndex, setFirstnewResultIndex] = useState(0);
 
   useEffect(() => {
-    const isPaginated = posts.length > appConfig.postsPerPage;
+    const isPaginated = posts && posts.length > appConfig.postsPerPage;
 
     if (isPaginated) {
       firstNewResultRef.current?.focus();
