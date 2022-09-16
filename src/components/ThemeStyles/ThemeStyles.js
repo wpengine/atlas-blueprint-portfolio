@@ -28,6 +28,7 @@ export default function ThemeStyles() {
   const themeColor = appConfig?.themeColor ?? 'blue';
 
   return (
+    // eslint-disable-next-line react/no-unknown-property
     <style jsx global>{`
       :root {
         --color-black: ${themes[themeColor]['--color-black']};
