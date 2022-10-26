@@ -10,6 +10,7 @@ import {
   ContentWrapper,
   FeaturedImage,
   SEO,
+  TaxonomyTerms,
 } from 'components';
 import { pageTitle } from 'utilities';
 import { BlogInfoFragment } from 'fragments/GeneralSettings';
@@ -51,7 +52,10 @@ export default function Component(props) {
             author={author?.node?.name}
           />
           <div className="container">
-            <ContentWrapper content={content} />
+            <ContentWrapper content={content}>
+            <TaxonomyTerms post={props.data.post} taxonomy={'categories'} />
+            <TaxonomyTerms post={props.data.post} taxonomy={'tags'} />
+            </ContentWrapper>
           </div>
         </>
       </Main>
@@ -77,6 +81,22 @@ Component.query = gql`
       author {
         node {
           name
+        }
+      }
+      tags {
+        edges {
+          node {
+            name
+            uri
+          }
+        }
+      }
+      categories {
+        edges {
+          node {
+            name
+            uri
+          }
         }
       }
       ...FeaturedImageFragment

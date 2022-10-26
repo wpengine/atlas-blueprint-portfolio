@@ -1,0 +1,25 @@
+@import 'styles/Variables';
+
+.taxonomy {
+  font-weight: $font-weight-extra-bold;
+  text-transform: uppercase;
+  margin-right: 0.8rem;
+}
+
+.term-links {
+  :global {
+    a {
+      position: relative;
+    }
+
+    a + a {
+      margin-left: 1rem;
+
+      &::before {
+        content: ', ';
+        position: absolute;
+        left: -1rem;
+      }
+    }
+  }
+}
