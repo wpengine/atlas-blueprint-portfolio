@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import appConfig from 'app.config.js';
 import {
   FaFacebookF,
   FaGithub,
@@ -8,6 +7,7 @@ import {
   FaTwitter,
   FaYoutube,
 } from 'react-icons/fa';
+import appConfig from 'app.config.js';
 
 import { NavigationMenu } from '../';
 

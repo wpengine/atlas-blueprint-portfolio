@@ -1,17 +1,18 @@
+import * as MENUS from 'constants/menus';
+
 import { gql } from '@apollo/client';
-import * as MENUS from '../constants/menus';
-import { BlogInfoFragment } from '../fragments/GeneralSettings';
 import {
   Header,
   Footer,
   Main,
-  Container,
   EntryHeader,
   NavigationMenu,
   ContentWrapper,
   FeaturedImage,
   SEO,
-} from '../components';
+} from 'components';
+import { pageTitle } from 'utilities';
+import { BlogInfoFragment } from 'fragments/GeneralSettings';
 
 export default function Component(props) {
   // Loading state for previews
@@ -28,7 +29,11 @@ export default function Component(props) {
   return (
     <>
       <SEO
-        title={siteTitle}
+        title={pageTitle(
+          props?.data?.generalSettings,
+          title,
+          props?.data?.generalSettings?.title
+        )}
         description={siteDescription}
         imageUrl={featuredImage?.node?.sourceUrl}
       />
@@ -45,9 +50,9 @@ export default function Component(props) {
             date={date}
             author={author?.node?.name}
           />
-          <Container>
+          <div className="container">
             <ContentWrapper content={content} />
-          </Container>
+          </div>
         </>
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />
