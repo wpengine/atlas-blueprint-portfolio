@@ -9,6 +9,7 @@ import Header from './Header';
 import Main from './Main';
 import NavigationMenu from './NavigationMenu/NavigationMenu';
 import PostInfo from './PostInfo/PostInfo';
+import Posts from './Posts';
 import SEO from './SEO';
 import Footer from './Footer';
 import TaxonomyTerms from './TaxonomyTerms';
@@ -26,6 +27,7 @@ export {
   Main,
   NavigationMenu,
   PostInfo,
+  Posts,
   SEO,
   Footer,
   TaxonomyTerms,

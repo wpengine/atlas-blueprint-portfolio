@@ -1,0 +1,56 @@
+@import 'styles/Variables';
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  column-gap: 5rem;
+  row-gap: 6rem;
+  margin-bottom: 6rem;
+
+  @media (min-width: $breakpoint-small) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.info {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 1rem;
+  padding: 0 2rem;
+
+  a:hover,
+  a:focus {
+    color: var(--color-primary);
+  }
+}
+
+.image {
+  width: 100%;
+  margin: 0;
+  height: auto;
+}
+
+.image-holder {
+  margin-bottom: 3rem;
+
+  @media (min-width: $breakpoint-small) {
+    aspect-ratio: 1 / 1;
+  }
+}

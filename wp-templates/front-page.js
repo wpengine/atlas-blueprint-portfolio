@@ -1,9 +1,8 @@
+import * as MENUS from 'constants/menus';
+
 import { useQuery, gql } from '@apollo/client';
 import { FaArrowRight } from 'react-icons/fa';
 import styles from 'styles/pages/_Home.module.scss';
-
-import * as MENUS from '../constants/menus';
-import { BlogInfoFragment } from '../fragments/GeneralSettings';
 import {
   EntryHeader,
   Main,
@@ -14,13 +13,21 @@ import {
   SEO,
   Header,
   Footer,
-} from '../components';
+  Posts,
+} from 'components';
+import { BlogInfoFragment } from 'fragments/GeneralSettings';
+
+const postsPerPage = 3;
 
 
 export default function Component() {
-  const { data } = useQuery(Component.query, {
+  const { data, loading } = useQuery(Component.query, {
     variables: Component.variables(),
   });
+  if (loading) {
+    return null;
+  }
+
   const { title: siteTitle, description: siteDescription } =
     data?.generalSettings;
   const primaryMenu = data?.headerMenuItems?.nodes ?? [];
@@ -79,6 +86,7 @@ export default function Component() {
             <Heading className={styles.heading} level="h2">
               Latest Posts
             </Heading>
+            <Posts posts={data.posts?.nodes} id="posts-list" />
           </section>
           <section className="cta">
             <CTA
@@ -113,16 +121,28 @@ Component.variables = () => {
   return {
     headerLocation: MENUS.PRIMARY_LOCATION,
     footerLocation: MENUS.FOOTER_LOCATION,
+    first: postsPerPage,
+    where: {
+      categoryName: 'uncategorized',
+    },
   };
 };
 
 Component.query = gql`
   ${BlogInfoFragment}
   ${NavigationMenu.fragments.entry}
+  ${Posts.fragments.entry}
   query GetPageData(
     $headerLocation: MenuLocationEnum
-    $footerLocation: MenuLocationEnum
+    $footerLocation: MenuLocationEnum,
+    $first: Int,
+    $where: RootQueryToPostConnectionWhereArgs
   ) {
+    posts(first: $first, where: $where) {
+      nodes {
+        ...PostsItemFragment
+      }
+    }
     generalSettings {
       ...BlogInfoFragment
     }
