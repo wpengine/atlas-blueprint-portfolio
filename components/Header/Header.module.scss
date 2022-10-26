@@ -1,72 +1,88 @@
-@import 'styles/breakpoints';
+@import 'styles/Variables';
 
-.component {
-	color: var(--wpe--header--color);
-	background-color: var(--wpe--header--background-color);
-	position: relative;
-	z-index: 2; // Pull dropdown menus to the foreground to sit above <Main />.
+.header {
+  color: var(--color-white);
+  background-color: var(--color-primary);
 }
 
-.navbar {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	padding: 3rem 0;
-	gap: 1rem;
+.bar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 3rem 0;
+  gap: 2rem;
 }
 
-.brand {
-	font-weight: var(--wpe--font-weight--bold);
-	font-size: 1.6rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.title {
-	text-decoration: none;
-}
-
-.description {
-	margin: .3rem 0 0 0;
-	font-size: 0.8rem;
-	opacity: 0.9;
+.logo {
+  width: 200px;
+  height: auto;
 }
 
 .nav-toggle {
-	align-items: center;
-	background-color: transparent;
-	border: 0.1rem solid var(--wpe--color--white);
-	color: var(--wpe--color--black);
-	cursor: pointer;
-	display: flex;
-	margin: 0;
-	padding: 0.5rem 1rem;
-	transition: all 0.2s ease-in;
-	user-select: none;
-	font-size: 2rem;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 1.2rem;
+  background-color: transparent;
+  color: var(--color-white);
+  border: 0.1rem solid var(--color-white);
+  transition: color 0.3s ease, background-color 0.3s ease;
 
-	&:hover,
-	&:focus {
-		background-color: var(--wpe--color--white);
-		color: var(--wpe--color--black);
-	}
+  &:hover,
+  &:focus {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+  }
 
-	@media (min-width: $breakpoint-small) {
-		display: none !important;
-	}
+  @media (min-width: $breakpoint-small) {
+    display: none;
+  }
 }
 
 .primary-navigation {
-	display: none;
-	width: 100%;
+  display: none;
+  width: 100%;
 
-	&.show {
-		display: block;
-	}
+  &.show {
+    display: block;
+  }
 
-	@media (min-width: $breakpoint-small) {
-		display: block;
-		width: auto;
-	}
+  @media (min-width: $breakpoint-small) {
+    display: block;
+    width: auto;
+  }
+
+  :global(.menu) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    margin: 0;
+
+    @media (min-width: $breakpoint-small) {
+      flex-direction: row;
+    }
+
+    li {
+      margin: 0 0.5rem;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      padding: 1rem;
+      font-weight: $font-weight-bold;
+      color: var(--color-white);
+
+      &:hover,
+      &:focus {
+        border: 1px solid var(--color-white);
+        color: var(--color-white);
+        padding: 0.9rem;
+      }
+    }
+  }
 }

@@ -1,15 +1,31 @@
-export { Container } from './Container';
-export { ContentWrapper } from './ContentWrapper';
-export { EntryHeader } from './EntryHeader';
-export { FeaturedImage } from './FeaturedImage';
-export { Footer } from './Footer';
-export { FormatDate } from './FormatDate';
-export { Header } from './Header';
-export { Heading } from './Heading';
-export { Main } from './Main';
-export { NavigationMenu } from './NavigationMenu';
-export { PostInfo } from './PostInfo';
-export { SkipNavigationLink } from './SkipNavigationLink';
-export { Hero } from './Hero';
-export { Post } from './Post';
-export { SEO } from './SEO';
+import Button from './Button';
+import ContentWrapper from './ContentWrapper';
+import CTA from './CTA';
+import EntryHeader from './EntryHeader';
+import FeaturedImage from './FeaturedImage';
+import FormatDate from './FormatDate';
+import Heading from './Heading';
+import Header from './Header';
+import Main from './Main';
+import NavigationMenu from './NavigationMenu/NavigationMenu';
+import PostInfo from './PostInfo/PostInfo';
+import SEO from './SEO';
+import Footer from './Footer';
+import SkipNavigationLink from './SkipNavigationLink';
+
+export {
+  Button,
+  ContentWrapper,
+  CTA,
+  EntryHeader,
+  FeaturedImage,
+  FormatDate,
+  Heading,
+  Header,
+  Main,
+  NavigationMenu,
+  PostInfo,
+  SEO,
+  Footer,
+  SkipNavigationLink,
+};

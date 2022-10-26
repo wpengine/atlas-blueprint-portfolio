@@ -1,1 +1,3 @@
-export { default as NavigationMenu } from './NavigationMenu';
+import NavigationMenu from './NavigationMenu';
+
+export default NavigationMenu;

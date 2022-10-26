@@ -1,1 +1,3 @@
-export { default as FormatDate } from './FormatDate';
+import FormatDate from './FormatDate';
+
+export default FormatDate;

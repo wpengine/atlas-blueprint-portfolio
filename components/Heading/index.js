@@ -1,1 +1,3 @@
-export { default as Heading } from './Heading';
+import Heading from './Heading';
+
+export default Heading;

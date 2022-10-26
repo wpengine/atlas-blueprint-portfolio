@@ -1,1 +1,3 @@
-export { default as SkipNavigationLink } from './SkipNavigationLink';
+import SkipNavigationLink from './SkipNavigationLink';
+
+export default SkipNavigationLink;

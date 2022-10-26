@@ -1,22 +1,18 @@
-const { withFaust } = require('@faustjs/next');
-const WP_HOST = new URL(process.env.NEXT_PUBLIC_WORDPRESS_URL).hostname;
+const { withFaust, getWpHostname } = require('@faustwp/core');
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+/**
+ * @type {import('next').NextConfig}
+ **/
+module.exports = withFaust({
   reactStrictMode: true,
   sassOptions: {
     includePaths: ['node_modules'],
   },
-  eslint: {
-    dirs: ['src'],
-  },
   images: {
-    domains: [WP_HOST],
+    domains: [getWpHostname()],
   },
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',
   },
-};
-
-module.exports = withFaust(nextConfig);
+});

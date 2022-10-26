@@ -1,49 +1,32 @@
-import classNames from 'classnames/bind';
 import { gql } from '@apollo/client';
 import Link from 'next/link';
-import flatListToHierarchical from '../../utilities/flatListToHierarchical';
-import styles from './NavigationMenu.module.scss';
-import stylesFromWP from './NavigationMenuClassesFromWP.module.scss';
 
-let cx = classNames.bind(styles);
-let cxFromWp = classNames.bind(stylesFromWP);
-
-export default function NavigationMenu({ menuItems, className }) {
+export default function NavigationMenu({ menuItems, className, children }) {
   if (!menuItems) {
     return null;
   }
 
-  // Based on https://www.wpgraphql.com/docs/menus/#hierarchical-data
-  const hierarchicalMenuItems = flatListToHierarchical(menuItems);
-
-  function renderMenu(items) {
-    return (
-      <ul className={cx('menu')}>
-        {items.map((item) => {
-          const { id, path, label, children, cssClasses } = item;
-
-          // @TODO - Remove guard clause after ghost menu items are no longer appended to array.
-          if (!item.hasOwnProperty('__typename')) {
-            return null;
-          }
-
-          return (
-            <li key={id} className={cxFromWp(cssClasses)}>
-              <Link href={path ?? ''}>{label ?? ''}</Link>
-              {children.length ? renderMenu(children, true) : null}
-            </li>
-          );
-        })}
-      </ul>
-    );
+  if (!menuItems) {
+    return null;
   }
 
   return (
     <nav
-      className={cx(['component', className])}
+      className={className}
       role="navigation"
-      aria-label={`${menuItems[0]?.menu?.node?.name} menu`}>
-      {renderMenu(hierarchicalMenuItems)}
+      aria-label={`${menuItems[0]?.menu.node.name} menu`}
+    >
+      <ul className="menu">
+        {menuItems.map((item) => {
+          const { id, path, label } = item;
+          return (
+            <li key={id ?? ''}>
+              <Link href={path ?? ''}>{label ?? ''}</Link>
+            </li>
+          );
+        })}
+        {children}
+      </ul>
     </nav>
   );
 }

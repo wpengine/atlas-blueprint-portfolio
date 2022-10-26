@@ -1,47 +1,120 @@
 import { useQuery, gql } from '@apollo/client';
+import { FaArrowRight } from 'react-icons/fa';
+import styles from 'styles/pages/_Home.module.scss';
+
 import * as MENUS from '../constants/menus';
 import { BlogInfoFragment } from '../fragments/GeneralSettings';
 import {
+  EntryHeader,
+  Main,
+  Button,
+  Heading,
+  CTA,
+  NavigationMenu,
+  SEO,
   Header,
   Footer,
-  Main,
-  Container,
-  NavigationMenu,
-  Hero,
-  SEO,
 } from '../components';
+
 
 export default function Component() {
   const { data } = useQuery(Component.query, {
     variables: Component.variables(),
   });
-
   const { title: siteTitle, description: siteDescription } =
     data?.generalSettings;
   const primaryMenu = data?.headerMenuItems?.nodes ?? [];
   const footerMenu = data?.footerMenuItems?.nodes ?? [];
 
+  const mainBanner = {
+    sourceUrl: '/static/banner.jpeg',
+    mediaDetails: { width: 1200, height: 600 },
+    altText: 'Portfolio Banner',
+  };
   return (
     <>
       <SEO title={siteTitle} description={siteDescription} />
+
       <Header
         title={siteTitle}
         description={siteDescription}
         menuItems={primaryMenu}
       />
-      <Main>
-        <Container>
-          <Hero title={'Front Page'} />
-          <div className="text-center">
-            <p>This page is utilizing the "front-page" WordPress template.</p>
-            <code>./wp-templates/front-page.js</code>
-          </div>
-        </Container>
+
+      <Main className={styles.home}>
+        <EntryHeader image={mainBanner} />
+        <div className="container">
+          <section className="hero text-center">
+            <Heading className={styles.heading} level="h1">
+              Welcome to your Blueprint
+            </Heading>
+            <p className={styles.description}>
+              Achieve unprecedented performance with modern frameworks and the
+              world&apos;s #1 open source CMS in one powerful headless platform.{' '}
+            </p>
+            <div className={styles.actions}>
+              <Button styleType="secondary" href="/contact-us">
+                GET STARTED
+              </Button>
+              <Button styleType="primary" href="/about">
+                LEARN MORE
+              </Button>
+            </div>
+          </section>
+          <section className="cta">
+            <CTA
+              Button={() => (
+                <Button href="/posts">
+                  Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
+                </Button>
+              )}
+            >
+              <span>
+                Learn about Core Web Vitals and how Atlas can help you reach
+                your most demanding speed and user experience requirements.
+              </span>
+            </CTA>
+          </section>
+          <section className={styles.posts}>
+            <Heading className={styles.heading} level="h2">
+              Latest Posts
+            </Heading>
+          </section>
+          <section className="cta">
+            <CTA
+              Button={() => (
+                <Button href="/posts">
+                  Get Started <FaArrowRight style={{ marginLeft: `1rem` }} />
+                </Button>
+              )}
+            >
+              <span>
+                Learn about Core Web Vitals and how Atlas can help you reach
+                your most demanding speed and user experience requirements.
+              </span>
+            </CTA>
+          </section>
+          <section className={styles.testimonials}>
+            <Heading className={styles.heading} level="h2">
+              Testimonials
+            </Heading>
+            <p className={styles.description}>
+              Here are just a few of the nice things our customers have to say.
+            </p>
+          </section>
+        </div>
       </Main>
-      <Footer title={siteTitle} menuItems={footerMenu} />
+      <Footer menuItems={footerMenu} />
     </>
   );
 }
+
+Component.variables = () => {
+  return {
+    headerLocation: MENUS.PRIMARY_LOCATION,
+    footerLocation: MENUS.FOOTER_LOCATION,
+  };
+};
 
 Component.query = gql`
   ${BlogInfoFragment}
@@ -65,10 +138,3 @@ Component.query = gql`
     }
   }
 `;
-
-Component.variables = () => {
-  return {
-    headerLocation: MENUS.PRIMARY_LOCATION,
-    footerLocation: MENUS.FOOTER_LOCATION,
-  };
-};

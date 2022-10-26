@@ -1,1 +1,3 @@
-export { default as PostInfo } from './PostInfo';
+import PostInfo from './PostInfo';
+
+export default PostInfo;
