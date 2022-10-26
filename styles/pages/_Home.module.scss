@@ -1,0 +1,43 @@
+@import 'styles/Variables';
+
+.home {
+  section {
+    margin-bottom: 8rem;
+  }
+}
+
+.heading {
+  font-size: 4.8rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.description {
+  max-width: 100%;
+  font-size: 1.8rem;
+  margin: 0 auto 2rem;
+  padding: 0 1.5rem;
+
+  @media (min-width: $breakpoint-small) {
+    max-width: 60%;
+  }
+}
+
+.actions {
+  a[role='button'] {
+    margin: 0.5rem;
+  }
+}
+
+.posts .heading {
+  margin-bottom: 4rem;
+}
+
+.testimonials {
+  text-align: center;
+
+  .description {
+    margin-bottom: 6rem;
+  }
+}

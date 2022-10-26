@@ -1,0 +1,82 @@
+@import 'Variables';
+
+// Base Module
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// Set box-sizing globally to handle padding and border widths
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+// The base font-size is set at 62.5% for having the convenience
+// of sizing rems in a way that is similar to using px: 1.6rem = 16px
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $font-family;
+  font-size: 1.6em;
+  font-weight: $font-weight-normal;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+}
+
+video {
+  width: 100% !important;
+  height: auto !important;
+}
+
+// Lists
+dl,
+ol,
+ul {
+  list-style: none;
+  margin-top: 0;
+  padding-left: 0;
+
+  dl,
+  ol,
+  ul {
+    font-size: 90%;
+    margin: 1.5rem 0 1.5rem 3rem;
+  }
+}
+ol {
+  list-style: decimal inside;
+}
+ul {
+  list-style: circle inside;
+}
+
+dt {
+  font-weight: $font-weight-extra-bold;
+}
+
+// Dividers
+hr {
+  border: 0;
+  border-top: 0.1rem solid var(--color-primary);
+  margin: 3rem 0;
+}
+
+#__next {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.alert-error {
+  background-color: #fff5f5;
+  border: 1px solid #fed6d6;
+  border-radius: 0.25rem;
+  color: #c53030;
+  padding: 1rem;
+}

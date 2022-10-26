@@ -1,0 +1,44 @@
+// Utility Module
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// Clear a float with .clearfix
+.clearfix {
+  &:after {
+    clear: both;
+    content: ' ';
+    display: table;
+  }
+}
+
+// Float either direction
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+
+  &:focus {
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: auto;
+    clip: auto;
+  }
+}
