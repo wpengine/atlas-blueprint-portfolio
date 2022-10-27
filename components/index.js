@@ -13,6 +13,8 @@ import Posts from './Posts';
 import SEO from './SEO';
 import Footer from './Footer';
 import TaxonomyTerms from './TaxonomyTerms';
+import Testimonials from './Testimonials';
+import TestimonialItem from './TestimonialItem';
 import SkipNavigationLink from './SkipNavigationLink';
 
 export {
@@ -31,5 +33,7 @@ export {
   SEO,
   Footer,
   TaxonomyTerms,
+  Testimonials,
+  TestimonialItem,
   SkipNavigationLink,
 };

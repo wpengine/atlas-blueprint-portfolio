@@ -3,7 +3,7 @@ import className from 'classnames/bind';
 import { FeaturedImage, Heading, PostInfo } from '../';
 
 import styles from './EntryHeader.module.scss';
-let cx = className.bind(styles);
+const cx = className.bind(styles);
 /**
  * A Page or Post entry header component
  * @param {Props} props The props object.
