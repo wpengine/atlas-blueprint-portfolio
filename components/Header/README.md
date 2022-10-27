@@ -31,4 +31,3 @@ The menu items to render as part of the footer menu list.
 
 Type: `MenuItem[]`
 Required: No
-

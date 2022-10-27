@@ -7,7 +7,7 @@ Renders a general Blueprint Footer component.
 ```jsx
 import { Footer } from 'components';
 
-const MyFooter = () => <Footer menuItems={menuItems}/>;
+const MyFooter = () => <Footer menuItems={menuItems} />;
 ```
 
 ## Props
