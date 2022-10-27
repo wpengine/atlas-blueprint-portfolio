@@ -7,9 +7,16 @@ Renders a general Blueprint Footer component.
 ```jsx
 import { Footer } from 'components';
 
-const MyFooter = () => <Footer />;
+const MyFooter = () => <Footer menuItems={menuItems}/>;
 ```
 
 ## Props
 
-The `Footer` component does not accept any props:
+The `Footer` component accepts the following props:
+
+### menuItems
+
+The menu items to render as part of the footer menu list.
+
+Type: `MenuItem[]`
+Required: No

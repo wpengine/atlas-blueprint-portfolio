@@ -24,3 +24,11 @@ An additional class name to be applied to the `<Header>` component.
 
 Type: `String`
 Required: No
+
+### menuItems
+
+The menu items to render as part of the footer menu list.
+
+Type: `MenuItem[]`
+Required: No
+
