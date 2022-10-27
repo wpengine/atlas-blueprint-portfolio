@@ -15,7 +15,6 @@ import styles from './Footer.module.scss';
 
 let cx = classNames.bind(styles);
 
-
 /**
  * The Blueprint's Footer component
  * @return {React.ReactElement} The Footer component.
@@ -35,10 +34,7 @@ export default function Footer({ menuItems }) {
                     className={cx('social-icon-link')}
                     href={appConfig.socialLinks.twitterUrl}
                   >
-                    <FaTwitter
-                      title="Twitter"
-                      className={cx('social-icon')}
-                    />
+                    <FaTwitter title="Twitter" className={cx('social-icon')} />
                   </a>
                 </li>
               )}
@@ -83,10 +79,7 @@ export default function Footer({ menuItems }) {
                     className={cx('social-icon-link')}
                     href={appConfig.socialLinks.youtubeUrl}
                   >
-                    <FaYoutube
-                      title="YouTube"
-                      className={cx('social-icon')}
-                    />
+                    <FaYoutube title="YouTube" className={cx('social-icon')} />
                   </a>
                 </li>
               )}
@@ -99,10 +92,7 @@ export default function Footer({ menuItems }) {
                     className={cx('social-icon-link')}
                     href={appConfig.socialLinks.githubUrl}
                   >
-                    <FaGithub
-                      title="GitHub"
-                      className={cx('social-icon')}
-                    />
+                    <FaGithub title="GitHub" className={cx('social-icon')} />
                   </a>
                 </li>
               )}
@@ -126,10 +116,7 @@ export default function Footer({ menuItems }) {
           </div>
         )}
 
-        <NavigationMenu
-          className={cx('nav')}
-          menuItems={menuItems}
-        />
+        <NavigationMenu className={cx('nav')} menuItems={menuItems} />
 
         <div className={cx('copyright')}>
           &copy; {new Date().getFullYear()} Blueprint Media &#183; Powered By{' '}

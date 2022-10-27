@@ -19,7 +19,6 @@ import { BlogInfoFragment } from 'fragments/GeneralSettings';
 
 const postsPerPage = 3;
 
-
 export default function Component() {
   const { data, loading } = useQuery(Component.query, {
     variables: Component.variables(),
@@ -134,8 +133,8 @@ Component.query = gql`
   ${Posts.fragments.entry}
   query GetPageData(
     $headerLocation: MenuLocationEnum
-    $footerLocation: MenuLocationEnum,
-    $first: Int,
+    $footerLocation: MenuLocationEnum
+    $first: Int
     $where: RootQueryToPostConnectionWhereArgs
   ) {
     posts(first: $first, where: $where) {

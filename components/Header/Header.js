@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import { FaBars, FaSearch } from 'react-icons/fa';
@@ -21,7 +20,7 @@ export default function Header({ className, menuItems }) {
   const headerClasses = cx('header', className);
   const navClasses = cx(
     'primary-navigation',
-    isNavShown ? cx('show') : undefined,
+    isNavShown ? cx('show') : undefined
   );
 
   return (

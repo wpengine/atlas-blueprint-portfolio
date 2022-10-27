@@ -9,7 +9,7 @@ export default function FormatDate({ date }) {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-    hour12: false
+    hour12: false,
   };
 
   return <>{formattedDate.toLocaleDateString('en-US', timeformat)}</>;

@@ -10,8 +10,8 @@
     "lint": "faust lint",
     "clean": "rimraf .next node_modules",
     "wpe-build": "faust build",
-    "format": "prettier --write 'src/**/*.{js,jsx,md,mdx,css,scss}'",
-    "format:check": "prettier --check 'src/**/*.{js,jsx,md,mdx,css,scss}'"
+    "format": "prettier --write './**/*.{js,jsx,md,mdx,css,scss}'",
+    "format:check": "prettier --check './**/*.{js,jsx,md,mdx,css,scss}'"
   },
   "dependencies": {
     "@faustwp/cli": "0.1.2",

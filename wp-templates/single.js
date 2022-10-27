@@ -53,8 +53,8 @@ export default function Component(props) {
           />
           <div className="container">
             <ContentWrapper content={content}>
-            <TaxonomyTerms post={props.data.post} taxonomy={'categories'} />
-            <TaxonomyTerms post={props.data.post} taxonomy={'tags'} />
+              <TaxonomyTerms post={props.data.post} taxonomy={'categories'} />
+              <TaxonomyTerms post={props.data.post} taxonomy={'tags'} />
             </ContentWrapper>
           </div>
         </>
