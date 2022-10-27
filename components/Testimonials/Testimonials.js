@@ -66,8 +66,8 @@ export default function Testimonials({ testimonials }) {
 Testimonials.fragments = {
   entry: gql`
     fragment TestimonialsFragment on Testimonial {
-    testimonialContent
+      testimonialContent
       testimonialAuthor
     }
-    `,
+  `,
 };
