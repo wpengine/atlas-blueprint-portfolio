@@ -1,15 +1,16 @@
 import { gql } from '@apollo/client';
+import { pageTitle } from 'utilities';
+
 import * as MENUS from '../constants/menus';
 import { BlogInfoFragment } from '../fragments/GeneralSettings';
 import {
   Header,
   Footer,
   Main,
-  Container,
+  Posts,
   EntryHeader,
   NavigationMenu,
   FeaturedImage,
-  Post,
   SEO,
 } from '../components';
 
@@ -19,10 +20,18 @@ export default function Component(props) {
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
   const { name, posts } = props.data.nodeByUri;
+  const postList = posts.edges.map((el) => el.node);
 
   return (
     <>
-      <SEO title={siteTitle} description={siteDescription} />
+      <SEO
+        title={pageTitle(
+          props?.data?.generalSettings,
+          `Tag: ${name}`,
+          siteTitle
+        )}
+        description={siteDescription}
+      />
       <Header
         title={siteTitle}
         description={siteDescription}
@@ -31,18 +40,9 @@ export default function Component(props) {
       <Main>
         <>
           <EntryHeader title={`Tag: ${name}`} />
-          <Container>
-            {posts.edges.map((post) => (
-              <Post
-                title={post.node.title}
-                content={post.node.content}
-                date={post.node.date}
-                author={post.node.author?.node.name}
-                uri={post.node.uri}
-                featuredImage={post.node.featuredImage?.node}
-              />
-            ))}
-          </Container>
+          <div className="container">
+            <Posts posts={postList} />
+          </div>
         </>
       </Main>
       <Footer title={siteTitle} menuItems={footerMenu} />
