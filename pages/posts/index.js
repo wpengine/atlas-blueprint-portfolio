@@ -26,7 +26,7 @@ export default function Page() {
 
   return (
     <>
-      <SEO title={pageTitle(data?.generalSettings, 'Portfolio')} />
+      <SEO title={pageTitle(data?.generalSettings)} />
 
       <Header menuItems={primaryMenu} />
 
