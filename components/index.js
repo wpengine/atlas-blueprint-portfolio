@@ -10,6 +10,8 @@ import Main from './Main';
 import NavigationMenu from './NavigationMenu/NavigationMenu';
 import PostInfo from './PostInfo/PostInfo';
 import Posts from './Posts';
+import Projects from './Projects';
+import ProjectHeader from './ProjectHeader';
 import SEO from './SEO';
 import Footer from './Footer';
 import TaxonomyTerms from './TaxonomyTerms';
@@ -30,6 +32,8 @@ export {
   NavigationMenu,
   PostInfo,
   Posts,
+  Projects,
+  ProjectHeader,
   SEO,
   Footer,
   TaxonomyTerms,

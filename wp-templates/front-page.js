@@ -123,9 +123,6 @@ Component.variables = () => {
     headerLocation: MENUS.PRIMARY_LOCATION,
     footerLocation: MENUS.FOOTER_LOCATION,
     first: postsPerPage,
-    where: {
-      categoryName: 'uncategorized',
-    },
   };
 };
 
@@ -138,9 +135,8 @@ Component.query = gql`
     $headerLocation: MenuLocationEnum
     $footerLocation: MenuLocationEnum
     $first: Int
-    $where: RootQueryToPostConnectionWhereArgs
   ) {
-    posts(first: $first, where: $where) {
+    posts(first: $first) {
       nodes {
         ...PostsItemFragment
       }
