@@ -10,6 +10,7 @@ import {
   SearchInput,
   SearchResults,
   SEO,
+  SearchRecommendations,
 } from 'components';
 import { BlogInfoFragment } from 'fragments/GeneralSettings';
 import { useState } from 'react';
@@ -17,12 +18,18 @@ import { GetSearchResults } from 'queries/GetSearchResults';
 import styles from 'styles/pages/_Search.module.scss';
 import appConfig from 'app.config';
 
-export default function Page(props) {
-  const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings ?? {};
-  const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
-
+export default function Page() {
   const [searchQuery, setSearchQuery] = useState('');
+
+  const { data: pageData } = useQuery(Page.query, {
+    variables: Page.variables(),
+  });
+
+  const { title: siteTitle, description: siteDescription } =
+    pageData.generalSettings;
+  const primaryMenu = pageData.headerMenuItems.nodes ?? [];
+  const recentPosts = pageData.posts.nodes;
+  const categories = pageData.categories.nodes;
 
   const {
     data: searchResultsData,
@@ -38,8 +45,6 @@ export default function Page(props) {
     skip: searchQuery === '',
     fetchPolicy: 'network-only',
   });
-
-  console.log('search results data', searchResultsData);
 
   return (
     <>
@@ -100,6 +105,13 @@ export default function Page(props) {
               </Button>
             </div>
           )}
+
+          {!searchResultsLoading && searchResultsData === undefined && (
+            <SearchRecommendations
+              recentPosts={recentPosts}
+              categories={categories}
+            />
+          )}
         </div>
       </Main>
     </>
@@ -131,6 +143,22 @@ Page.query = gql`
     footerMenuItems: menuItems(where: { location: $footerLocation }) {
       nodes {
         ...NavigationMenuItemFragment
+      }
+    }
+    # Recent Posts
+    posts(first: 5) {
+      nodes {
+        databaseId
+        uri
+        title
+      }
+    }
+    # Post Categories
+    categories {
+      nodes {
+        databaseId
+        uri
+        name
       }
     }
   }

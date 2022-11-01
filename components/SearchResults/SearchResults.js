@@ -14,7 +14,7 @@ import styles from './SearchResults.module.scss';
  */
 export default function SearchResults({ searchResults, isLoading }) {
   // If there are no results, or are loading, return null.
-  if (!isLoading && searchResults === null) {
+  if (!isLoading && searchResults === undefined) {
     return null;
   }
 

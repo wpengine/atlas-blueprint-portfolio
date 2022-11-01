@@ -17,6 +17,7 @@ import SkipNavigationLink from './SkipNavigationLink';
 import SearchInput from './SearchInput';
 import SearchResults from './SearchResults';
 import LoadingSearchResult from './LoadingSearchResult';
+import SearchRecommendations from './SearchRecommendations';
 
 export {
   Button,
@@ -37,5 +38,6 @@ export {
   SkipNavigationLink,
   SearchInput,
   SearchResults,
+  SearchRecommendations,
   LoadingSearchResult,
 };
