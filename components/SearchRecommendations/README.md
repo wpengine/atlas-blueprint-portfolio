@@ -9,9 +9,23 @@ Internally it uses the GQty client to display the latests posts and categories.
 ```jsx
 import { SearchRecommendations } from 'components';
 
-const MySearchRecommendations = () => <SearchRecommendations />;
+const MySearchRecommendations = () => (
+  <SearchRecommendations recentPosts={recentPosts} categories={categories} />
+);
 ```
 
 ## Props
 
-The `SearchRecommendations` component does not accept any props
+### recentPosts
+
+An array of recent posts from WordPress
+
+Type: `Array`
+Required: Yes
+
+### categories
+
+An array of categories from WordPress
+
+Type: `Array`
+Required: Yes

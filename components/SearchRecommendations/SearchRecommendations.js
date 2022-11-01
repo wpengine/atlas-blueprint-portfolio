@@ -5,6 +5,10 @@ import styles from './SearchRecommendations.module.scss';
 /**
  * Render the SearchRecommendations component.
  *
+ * @param {Props} props The props object.
+ * @param {Array} props.recentPosts Array of recent posts from WordPress
+ * @param {Array} props.categories Array of categories from WordPress
+ *
  * @returns {React.ReactElement} The SearchRecommendations component.
  */
 export default function SearchRecommendations({ recentPosts, categories }) {
