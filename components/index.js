@@ -14,6 +14,9 @@ import SEO from './SEO';
 import Footer from './Footer';
 import TaxonomyTerms from './TaxonomyTerms';
 import SkipNavigationLink from './SkipNavigationLink';
+import SearchInput from './SearchInput';
+import SearchResults from './SearchResults';
+import LoadingSearchResult from './LoadingSearchResult';
 
 export {
   Button,
@@ -32,4 +35,7 @@ export {
   Footer,
   TaxonomyTerms,
   SkipNavigationLink,
+  SearchInput,
+  SearchResults,
+  LoadingSearchResult,
 };
