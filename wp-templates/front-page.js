@@ -14,6 +14,7 @@ import {
   Header,
   Footer,
   Posts,
+  Testimonials,
 } from 'components';
 import { BlogInfoFragment } from 'fragments/GeneralSettings';
 
@@ -108,6 +109,7 @@ export default function Component() {
             <p className={styles.description}>
               Here are just a few of the nice things our customers have to say.
             </p>
+            <Testimonials testimonials={data?.testimonials?.nodes} />
           </section>
         </div>
       </Main>
@@ -121,9 +123,6 @@ Component.variables = () => {
     headerLocation: MENUS.PRIMARY_LOCATION,
     footerLocation: MENUS.FOOTER_LOCATION,
     first: postsPerPage,
-    where: {
-      categoryName: 'uncategorized',
-    },
   };
 };
 
@@ -131,15 +130,20 @@ Component.query = gql`
   ${BlogInfoFragment}
   ${NavigationMenu.fragments.entry}
   ${Posts.fragments.entry}
+  ${Testimonials.fragments.entry}
   query GetPageData(
     $headerLocation: MenuLocationEnum
     $footerLocation: MenuLocationEnum
     $first: Int
-    $where: RootQueryToPostConnectionWhereArgs
   ) {
-    posts(first: $first, where: $where) {
+    posts(first: $first) {
       nodes {
         ...PostsItemFragment
+      }
+    }
+    testimonials {
+      nodes {
+        ...TestimonialsFragment
       }
     }
     generalSettings {

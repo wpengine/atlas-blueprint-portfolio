@@ -2,7 +2,7 @@ import className from 'classnames/bind';
 
 import styles from './ContentWrapper.module.scss';
 
-let cx = className.bind(styles);
+const cx = className.bind(styles);
 
 /**
  * A basic Container Wrapper component
