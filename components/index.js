@@ -6,6 +6,7 @@ import FeaturedImage from './FeaturedImage';
 import FormatDate from './FormatDate';
 import Heading from './Heading';
 import Header from './Header';
+import LoadMore from './LoadMore';
 import Main from './Main';
 import NavigationMenu from './NavigationMenu/NavigationMenu';
 import PostInfo from './PostInfo/PostInfo';
@@ -28,6 +29,7 @@ export {
   FormatDate,
   Heading,
   Header,
+  LoadMore,
   Main,
   NavigationMenu,
   PostInfo,

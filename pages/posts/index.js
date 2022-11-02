@@ -7,6 +7,7 @@ import {
   Footer,
   Header,
   EntryHeader,
+  LoadMore,
   Main,
   Posts,
   SEO,
@@ -15,9 +16,10 @@ import {
 import { getNextStaticProps } from '@faustwp/core';
 import { pageTitle } from 'utilities';
 import { BlogInfoFragment } from 'fragments/GeneralSettings';
+import appConfig from 'app.config';
 
 export default function Page() {
-  const { data } = useQuery(Page.query, {
+  const { data, loading, fetchMore } = useQuery(Page.query, {
     variables: Page.variables(),
   });
   const { title: siteTitle } = data?.generalSettings;
@@ -34,6 +36,13 @@ export default function Page() {
         <EntryHeader title="Latest Posts" />
         <div className="container">
           <Posts posts={data?.posts?.nodes} id="posts-list" />
+          <LoadMore
+            className="text-center"
+            hasNextPage={data?.posts?.pageInfo?.hasNextPage}
+            endCursor={data?.posts?.pageInfo?.endCursor}
+            isLoading={loading}
+            fetchMore={fetchMore}
+          />
         </div>
       </Main>
 
@@ -48,13 +57,20 @@ Page.query = gql`
   ${FeaturedImage.fragments.entry}
   ${Posts.fragments.entry}
   query GetPostsPage(
-    $first: Int
-    $headerLocation: MenuLocationEnum
-    $footerLocation: MenuLocationEnum
+    $first: Int!,
+    $after: String,
+    $headerLocation: MenuLocationEnum,
+    $footerLocation: MenuLocationEnum,
   ) {
-    posts(first: $first) {
+    posts(first: $first, after: $after) {
       nodes {
         ...PostsItemFragment
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
       }
     }
     generalSettings {
@@ -75,7 +91,8 @@ Page.query = gql`
 
 Page.variables = () => {
   return {
-    first: 12,
+    first: appConfig.postsPerPage,
+    after: '',
     headerLocation: MENUS.PRIMARY_LOCATION,
     footerLocation: MENUS.FOOTER_LOCATION,
   };
