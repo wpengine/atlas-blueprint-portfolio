@@ -57,10 +57,10 @@ Page.query = gql`
   ${FeaturedImage.fragments.entry}
   ${Posts.fragments.entry}
   query GetPostsPage(
-    $first: Int!,
-    $after: String,
-    $headerLocation: MenuLocationEnum,
-    $footerLocation: MenuLocationEnum,
+    $first: Int!
+    $after: String
+    $headerLocation: MenuLocationEnum
+    $footerLocation: MenuLocationEnum
   ) {
     posts(first: $first, after: $after) {
       nodes {
