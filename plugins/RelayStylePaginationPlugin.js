@@ -6,16 +6,16 @@ export class RelayStylePaginationPlugin {
   apply(hooks) {
     hooks.addFilter(
       'apolloClientInMemoryCacheOptions',
-      'RelayStylePagination',
-      (data) => {
+      'faust',
+      (options) => {
         return {
-          ...data,
+          ...options,
           typePolicies: {
-            ...data.typePolicies,
+            ...options.typePolicies,
             RootQuery: {
-              ...data.typePolicies.RootQuery,
+              ...options.typePolicies.RootQuery,
               fields: {
-                ...data.typePolicies.RootQuery.fields,
+                ...options.typePolicies.RootQuery.fields,
                 posts: relayStylePagination(),
               },
             },

@@ -4,7 +4,7 @@ export class ProjectTemplatePlugin {
   apply(hooks) {
     hooks.addFilter(
       'possibleTemplatesList',
-      'ProjectTemplate',
+      'faust',
       (templates, data) => {
         if (data?.seedNode?.__typename === 'Project') {
           return Array.from(new Set(['project', ...templates]));
