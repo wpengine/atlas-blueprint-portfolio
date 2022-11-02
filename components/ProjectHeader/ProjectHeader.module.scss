@@ -1,0 +1,15 @@
+@import 'styles/Variables';
+
+.header {
+  margin-bottom: 5rem;
+}
+
+.column {
+  flex: 1 1 auto;
+  width: 100%;
+  margin-left: 0;
+
+  @media (max-width: $breakpoint-extra-small) {
+    margin-left: revert;
+  }
+}

@@ -1,0 +1,21 @@
+@import 'styles/Variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content {
+  font-size: 2.4rem;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.author {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: $font-weight-extra-bold;
+}

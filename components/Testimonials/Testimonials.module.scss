@@ -1,0 +1,33 @@
+.container {
+  text-align: center;
+
+  // Used to override react-responsive-carousel styles
+  :global {
+    .carousel.carousel-slider {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .slide {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.arrow {
+  cursor: pointer;
+  font-size: 2.75rem;
+}
+
+.quote-icon {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.slide-content {
+  p:only-child {
+    margin-bottom: 0;
+  }
+}
