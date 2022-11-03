@@ -89,9 +89,6 @@ export default function Page() {
             <div className={styles['load-more']}>
               <Button
                 onClick={() => {
-                  console.log(
-                    searchResultsData?.contentNodes?.pageInfo?.endCursor
-                  );
 
                   fetchMoreSearchResults({
                     variables: {
