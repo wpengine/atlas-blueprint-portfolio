@@ -28,7 +28,7 @@ export default function Component(props) {
 
   const { title: siteTitle, description: siteDescription } =
     data?.generalSettings;
-  const primaryMenu =data?.headerMenuItems?.nodes ?? [];
+  const primaryMenu = data?.headerMenuItems?.nodes ?? [];
   const footerMenu = data?.footerMenuItems?.nodes ?? [];
   const { name, posts } = data.nodeByUri;
   const postList = posts.edges.map((el) => el.node);
