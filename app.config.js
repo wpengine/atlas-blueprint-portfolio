@@ -3,8 +3,8 @@
  */
 const appConfig = {
   postsPerPage: 9,
-  projectsPerPage: 5,
   postsAboveTheFold: 6,
+  projectsPerPage: 5,
   projectsAboveTheFold: 3,
   /**
    * Displays a default Featured Image when a Post does not have one
