@@ -44,8 +44,8 @@ export default function Page() {
           <Projects projects={projectList} id="project-list" />
           <LoadMore
             className="text-center"
-            hasNextPage={data?.projects?.pageInfo?.hasNextPage}
-            endCursor={data?.projects?.pageInfo?.endCursor}
+            hasNextPage={data.projects.pageInfo.hasNextPage}
+            endCursor={data.projects.pageInfo.endCursor}
             isLoading={loading}
             fetchMore={fetchMore}
           />
@@ -64,7 +64,7 @@ Page.query = gql`
   ${Projects.fragments.entry}
   query GetProjectsPage(
     $first: Int!
-    $after: String
+    $after: String!
     $headerLocation: MenuLocationEnum
     $footerLocation: MenuLocationEnum
   ) {
@@ -73,6 +73,12 @@ Page.query = gql`
         node {
           ...ProjectsFragment
         }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
       }
     }
     generalSettings {
@@ -93,7 +99,7 @@ Page.query = gql`
 
 Page.variables = () => {
   return {
-    first: appConfig.postsPerPage,
+    first: appConfig.projectsPerPage,
     after: '',
     headerLocation: MENUS.PRIMARY_LOCATION,
     footerLocation: MENUS.FOOTER_LOCATION,
