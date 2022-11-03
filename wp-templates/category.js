@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import { pageTitle } from 'utilities';
 
 import * as MENUS from '../constants/menus';
@@ -6,6 +6,7 @@ import { BlogInfoFragment } from '../fragments/GeneralSettings';
 import {
   Header,
   Footer,
+  LoadMore,
   Main,
   EntryHeader,
   NavigationMenu,
@@ -13,13 +14,23 @@ import {
   FeaturedImage,
   SEO,
 } from '../components';
+import appConfig from 'app.config';
 
 export default function Component(props) {
+  const { uri } = props.__SEED_NODE__;
+  const { data, loading, fetchMore } = useQuery(Component.query, {
+    variables: Component.variables({ uri }),
+  });
+
+  if (loading) {
+    return <></>;
+  }
+
   const { title: siteTitle, description: siteDescription } =
-    props?.data?.generalSettings;
-  const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { name, posts } = props.data.nodeByUri;
+    data?.generalSettings;
+  const primaryMenu =data?.headerMenuItems?.nodes ?? [];
+  const footerMenu = data?.footerMenuItems?.nodes ?? [];
+  const { name, posts } = data.nodeByUri;
   const postList = posts.edges.map((el) => el.node);
 
   return (
@@ -42,6 +53,13 @@ export default function Component(props) {
           <EntryHeader title={`Category: ${name}`} />
           <div className="container">
             <Posts posts={postList} />
+            <LoadMore
+              className="text-center"
+              hasNextPage={posts.pageInfo.hasNextPage}
+              endCursor={posts.pageInfo.endCursor}
+              isLoading={loading}
+              fetchMore={fetchMore}
+            />
           </div>
         </>
       </Main>
@@ -56,13 +74,15 @@ Component.query = gql`
   ${FeaturedImage.fragments.entry}
   query GetCategoryPage(
     $uri: String!
+    $first: Int!
+    $after: String!
     $headerLocation: MenuLocationEnum
     $footerLocation: MenuLocationEnum
   ) {
     nodeByUri(uri: $uri) {
       ... on Category {
         name
-        posts {
+        posts(first: $first, after: $after) {
           edges {
             node {
               id
@@ -77,6 +97,12 @@ Component.query = gql`
                 }
               }
             }
+          }
+          pageInfo {
+            hasNextPage
+            hasPreviousPage
+            startCursor
+            endCursor
           }
         }
       }
@@ -100,6 +126,8 @@ Component.query = gql`
 Component.variables = ({ uri }) => {
   return {
     uri,
+    first: appConfig.postsPerPage,
+    after: '',
     headerLocation: MENUS.PRIMARY_LOCATION,
     footerLocation: MENUS.FOOTER_LOCATION,
   };
