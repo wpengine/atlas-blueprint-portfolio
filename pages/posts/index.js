@@ -22,9 +22,15 @@ export default function Page() {
   const { data, loading, fetchMore } = useQuery(Page.query, {
     variables: Page.variables(),
   });
+
+  if (loading) {
+    return <></>;
+  }
+
   const { title: siteTitle } = data?.generalSettings;
   const primaryMenu = data?.headerMenuItems?.nodes ?? [];
   const footerMenu = data?.footerMenuItems?.nodes ?? [];
+  const postList = data.posts.edges.map((el) => el.node);
 
   return (
     <>
@@ -35,7 +41,7 @@ export default function Page() {
       <Main>
         <EntryHeader title="Latest Posts" />
         <div className="container">
-          <Posts posts={data?.posts?.nodes} id="posts-list" />
+          <Posts posts={postList} id="posts-list" />
           <LoadMore
             className="text-center"
             hasNextPage={data?.posts?.pageInfo?.hasNextPage}
@@ -63,8 +69,10 @@ Page.query = gql`
     $footerLocation: MenuLocationEnum
   ) {
     posts(first: $first, after: $after) {
-      nodes {
-        ...PostsItemFragment
+      edges {
+        node {
+          ...PostsItemFragment
+        }
       }
       pageInfo {
         hasNextPage
