@@ -14,6 +14,7 @@ export class RelayStylePaginationPlugin {
             fields: {
               ...options.typePolicies.RootQuery.fields,
               posts: relayStylePagination(),
+              projects: relayStylePagination(),
             },
           },
         },
