@@ -31,6 +31,13 @@ Whether there are more results to load.
 Type: `Boolean`
 Required: No
 
+### endCursor
+
+The next pagination cursor string.
+
+Type: `String`
+Required: No
+
 ### isLoading
 
 Whether the pagination results are loading.
