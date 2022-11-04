@@ -1,6 +1,8 @@
 import { setConfig } from '@faustwp/core';
-import templates from './wp-templates';
+import { RelayStylePaginationPlugin } from 'plugins/RelayStylePaginationPlugin';
+
 import possibleTypes from './possibleTypes.json';
+import templates from './wp-templates';
 
 class ProjectTemplatePlugin {
   constructor() {}
@@ -24,6 +26,9 @@ class ProjectTemplatePlugin {
  **/
 export default setConfig({
   templates,
-  experimentalPlugins: [new ProjectTemplatePlugin()],
+  experimentalPlugins: [
+    new ProjectTemplatePlugin(),
+    new RelayStylePaginationPlugin(),
+  ],
   possibleTypes,
 });
