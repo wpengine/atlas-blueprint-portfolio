@@ -14,11 +14,11 @@
     "format:check": "prettier --check './**/*.{js,jsx,md,mdx,css,scss}'"
   },
   "dependencies": {
+    "@apollo/client": "3.7.0",
     "@faustwp/cli": "0.1.2",
     "@faustwp/core": "0.1.2",
-    "@apollo/client": "3.7.0",
-    "graphql": "^16.6.0",
     "classnames": "^2.3.1",
+    "graphql": "^16.6.0",
     "next": "12.2.4",
     "normalize.css": "^8.0.1",
     "react": "17.0.2",

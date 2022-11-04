@@ -19,6 +19,10 @@ import TaxonomyTerms from './TaxonomyTerms';
 import Testimonials from './Testimonials';
 import TestimonialItem from './TestimonialItem';
 import SkipNavigationLink from './SkipNavigationLink';
+import SearchInput from './SearchInput';
+import SearchResults from './SearchResults';
+import LoadingSearchResult from './LoadingSearchResult';
+import SearchRecommendations from './SearchRecommendations';
 
 export {
   Button,
@@ -42,4 +46,8 @@ export {
   Testimonials,
   TestimonialItem,
   SkipNavigationLink,
+  SearchInput,
+  SearchResults,
+  SearchRecommendations,
+  LoadingSearchResult,
 };

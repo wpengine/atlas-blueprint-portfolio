@@ -1,0 +1,34 @@
+@import 'styles/Variables';
+
+$color-grey: #777;
+
+.result {
+  display: block;
+  margin-bottom: 6rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: var(--color-black);
+}
+
+.meta {
+  font-size: small;
+  margin-bottom: 2rem;
+}
+
+.no-results {
+  text-align: center;
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+  color: $color-grey;
+}
+
+.no-results-icon {
+  font-size: 6rem;
+}
+
+.no-results-text {
+  font-size: 3rem;
+}
