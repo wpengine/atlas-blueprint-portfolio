@@ -19,13 +19,7 @@ import appConfig from 'app.config';
 export default function Component(props) {
   const { uri } = props.__SEED_NODE__;
   const { data, loading, fetchMore } = useQuery(Component.query, {
-    variables: {
-      uri,
-      first: appConfig.postsPerPage,
-      after: '',
-      headerLocation: MENUS.PRIMARY_LOCATION,
-      footerLocation: MENUS.FOOTER_LOCATION,
-    },
+    variables: Component.variables({ uri }),
   });
 
   if (loading) {
@@ -130,6 +124,7 @@ Component.query = gql`
 `;
 
 Component.variables = ({ uri }) => {
+  console.log('VARIABLES');
   return {
     uri,
     first: appConfig.postsPerPage,
