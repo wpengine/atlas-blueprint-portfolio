@@ -89,7 +89,6 @@ export default function Page() {
             <div className={styles['load-more']}>
               <Button
                 onClick={() => {
-
                   fetchMoreSearchResults({
                     variables: {
                       after:
