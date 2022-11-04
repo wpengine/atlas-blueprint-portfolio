@@ -17,7 +17,7 @@ import {
 import appConfig from 'app.config';
 
 export default function Component(props) {
-  const { uri } = props.__SEED_NODE__;
+  const { uri } = props.data.nodeByUri;
   const { data, loading, fetchMore } = useQuery(Component.query, {
     variables: Component.variables({ uri }),
   });
@@ -33,11 +33,12 @@ export default function Component(props) {
   const { name, posts } = data.nodeByUri;
   const postList = posts.edges.map((el) => el.node);
 
+
   return (
     <>
       <SEO
         title={pageTitle(
-          props?.data?.generalSettings,
+          data?.generalSettings,
           `Tag: ${name}`,
           siteTitle
         )}
@@ -81,6 +82,8 @@ Component.query = gql`
   ) {
     nodeByUri(uri: $uri) {
       ... on Tag {
+        id
+        uri
         name
         posts(first: $first, after: $after) {
           edges {
@@ -124,7 +127,7 @@ Component.query = gql`
 `;
 
 Component.variables = ({ uri }) => {
-  console.log('VARIABLES');
+  console.log('FIRE - Component.variables');
   return {
     uri,
     first: appConfig.postsPerPage,

@@ -17,7 +17,7 @@ import {
 import appConfig from 'app.config';
 
 export default function Component(props) {
-  const { uri } = props.__SEED_NODE__;
+  const { uri } = props.data.nodeByUri;
   const { data, loading, fetchMore } = useQuery(Component.query, {
     variables: Component.variables({ uri }),
   });
@@ -81,6 +81,8 @@ Component.query = gql`
   ) {
     nodeByUri(uri: $uri) {
       ... on Category {
+        id
+        uri
         name
         posts(first: $first, after: $after) {
           edges {
