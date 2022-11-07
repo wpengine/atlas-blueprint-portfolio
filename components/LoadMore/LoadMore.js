@@ -33,7 +33,7 @@ export default function LoadMore({
             });
           }}
         >
-          LOAD MORE
+          Load More
         </button>
       </section>
     );

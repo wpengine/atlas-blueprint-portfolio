@@ -28,8 +28,6 @@ export default function SearchResults({ searchResults, isLoading }) {
     );
   }
 
-  console.log(searchResults);
-
   return (
     <>
       {searchResults?.map((node) => (

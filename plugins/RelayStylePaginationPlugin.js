@@ -15,10 +15,23 @@ export class RelayStylePaginationPlugin {
               ...options.typePolicies.RootQuery.fields,
               posts: relayStylePagination(),
               projects: relayStylePagination(),
-              tags: relayStylePagination(),
-              categories: relayStylePagination(),
             },
           },
+          ContentType: {
+            fields: {
+              contentNodes: relayStylePagination(),
+            }
+          },
+          Category: {
+            fields: {
+              contentNodes: relayStylePagination(),
+            }
+          },
+          Tag: {
+            fields: {
+              contentNodes: relayStylePagination(),
+            }
+          }
         },
       };
     });
