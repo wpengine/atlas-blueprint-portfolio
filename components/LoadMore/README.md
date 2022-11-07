@@ -18,7 +18,7 @@ const MyLoadMore = () => (
 
 - @param {boolean} props.hasNextPage Flag to use if there are more results to load.
 - @param {string} props.endCursor The next pagination cursor string.
-- @param {string} props.isLoading Flag that indicates whether the pagination is loading.
+- @param {boolean} props.isLoading Flag that indicates whether the pagination is loading.
 - @param {string} props.fetchMore Callback function to trigger the next pagination request.
 - @param {string} props.className An optional className to be added to the container.
 
