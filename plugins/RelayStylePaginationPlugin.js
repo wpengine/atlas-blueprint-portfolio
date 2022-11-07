@@ -20,18 +20,18 @@ export class RelayStylePaginationPlugin {
           ContentType: {
             fields: {
               contentNodes: relayStylePagination(),
-            }
+            },
           },
           Category: {
             fields: {
               contentNodes: relayStylePagination(),
-            }
+            },
           },
           Tag: {
             fields: {
               contentNodes: relayStylePagination(),
-            }
-          }
+            },
+          },
         },
       };
     });

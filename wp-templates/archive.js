@@ -82,7 +82,7 @@ Archive.query = gql`
       __typename
       id
       uri
-      ...on ContentType {
+      ... on ContentType {
         name
         description
         label
@@ -90,16 +90,16 @@ Archive.query = gql`
           edges {
             node {
               id
-              ...on NodeWithTitle {
+              ... on NodeWithTitle {
                 title
               }
-              ...on NodeWithContentEditor {
+              ... on NodeWithContentEditor {
                 content
               }
               date
               uri
               ...FeaturedImageFragment
-              ...on NodeWithAuthor {
+              ... on NodeWithAuthor {
                 author {
                   node {
                     name
@@ -116,10 +116,10 @@ Archive.query = gql`
           }
         }
       }
-      ...on TermNode {
+      ... on TermNode {
         name
         description
-        ...on Category {
+        ... on Category {
           contentNodes(first: $first, after: $after) {
             edges {
               node {
@@ -133,7 +133,7 @@ Archive.query = gql`
                 date
                 uri
                 ...FeaturedImageFragment
-                ...on NodeWithAuthor {
+                ... on NodeWithAuthor {
                   author {
                     node {
                       name
@@ -150,21 +150,21 @@ Archive.query = gql`
             }
           }
         }
-        ...on Tag {
+        ... on Tag {
           contentNodes(first: $first, after: $after) {
             edges {
               node {
                 id
-                ...on NodeWithTitle {
+                ... on NodeWithTitle {
                   title
                 }
-                ...on NodeWithContentEditor {
+                ... on NodeWithContentEditor {
                   content
                 }
                 date
                 uri
                 ...FeaturedImageFragment
-                ...on NodeWithAuthor {
+                ... on NodeWithAuthor {
                   author {
                     node {
                       name
