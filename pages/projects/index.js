@@ -7,6 +7,7 @@ import {
   Footer,
   Header,
   EntryHeader,
+  LoadMore,
   Main,
   Projects,
   SEO,
@@ -15,25 +16,39 @@ import {
 import { getNextStaticProps } from '@faustwp/core';
 import { pageTitle } from 'utilities';
 import { BlogInfoFragment } from 'fragments/GeneralSettings';
+import appConfig from 'app.config';
 
 export default function Page() {
-  const { data } = useQuery(Page.query, {
+  const { data, loading, fetchMore } = useQuery(Page.query, {
     variables: Page.variables(),
   });
+
+  if (loading) {
+    return <></>;
+  }
+
   const { title: siteTitle } = data?.generalSettings;
   const primaryMenu = data?.headerMenuItems?.nodes ?? [];
   const footerMenu = data?.footerMenuItems?.nodes ?? [];
+  const projectList = data.projects.edges.map((el) => el.node);
 
   return (
     <>
-      <SEO title={pageTitle(data?.generalSettings, 'Portfolio')} />
+      <SEO title={pageTitle(data?.generalSettings, 'Projects')} />
 
       <Header menuItems={primaryMenu} />
 
       <Main>
-        <EntryHeader title="Portfolio" />
+        <EntryHeader title="Projects" />
         <div className="container">
-          <Projects projects={data?.projects?.nodes} id="portfolio-list" />
+          <Projects projects={projectList} id="project-list" />
+          <LoadMore
+            className="text-center"
+            hasNextPage={data.projects.pageInfo.hasNextPage}
+            endCursor={data.projects.pageInfo.endCursor}
+            isLoading={loading}
+            fetchMore={fetchMore}
+          />
         </div>
       </Main>
 
@@ -48,13 +63,22 @@ Page.query = gql`
   ${FeaturedImage.fragments.entry}
   ${Projects.fragments.entry}
   query GetProjectsPage(
-    $first: Int
+    $first: Int!
+    $after: String!
     $headerLocation: MenuLocationEnum
     $footerLocation: MenuLocationEnum
   ) {
-    projects(first: $first) {
-      nodes {
-        ...ProjectsFragment
+    projects(first: $first, after: $after) {
+      edges {
+        node {
+          ...ProjectsFragment
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
       }
     }
     generalSettings {
@@ -75,7 +99,8 @@ Page.query = gql`
 
 Page.variables = () => {
   return {
-    first: 12,
+    first: appConfig.projectsPerPage,
+    after: '',
     headerLocation: MENUS.PRIMARY_LOCATION,
     footerLocation: MENUS.FOOTER_LOCATION,
   };

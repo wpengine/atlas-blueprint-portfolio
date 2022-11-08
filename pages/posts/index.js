@@ -7,6 +7,7 @@ import {
   Footer,
   Header,
   EntryHeader,
+  LoadMore,
   Main,
   Posts,
   SEO,
@@ -15,14 +16,21 @@ import {
 import { getNextStaticProps } from '@faustwp/core';
 import { pageTitle } from 'utilities';
 import { BlogInfoFragment } from 'fragments/GeneralSettings';
+import appConfig from 'app.config';
 
 export default function Page() {
-  const { data } = useQuery(Page.query, {
+  const { data, loading, fetchMore } = useQuery(Page.query, {
     variables: Page.variables(),
   });
+
+  if (loading) {
+    return <></>;
+  }
+
   const { title: siteTitle } = data?.generalSettings;
   const primaryMenu = data?.headerMenuItems?.nodes ?? [];
   const footerMenu = data?.footerMenuItems?.nodes ?? [];
+  const postList = data.posts.edges.map((el) => el.node);
 
   return (
     <>
@@ -33,7 +41,14 @@ export default function Page() {
       <Main>
         <EntryHeader title="Latest Posts" />
         <div className="container">
-          <Posts posts={data?.posts?.nodes} id="posts-list" />
+          <Posts posts={postList} id="post-list" />
+          <LoadMore
+            className="text-center"
+            hasNextPage={data?.posts?.pageInfo?.hasNextPage}
+            endCursor={data?.posts?.pageInfo?.endCursor}
+            isLoading={loading}
+            fetchMore={fetchMore}
+          />
         </div>
       </Main>
 
@@ -48,13 +63,22 @@ Page.query = gql`
   ${FeaturedImage.fragments.entry}
   ${Posts.fragments.entry}
   query GetPostsPage(
-    $first: Int
+    $first: Int!
+    $after: String
     $headerLocation: MenuLocationEnum
     $footerLocation: MenuLocationEnum
   ) {
-    posts(first: $first) {
-      nodes {
-        ...PostsItemFragment
+    posts(first: $first, after: $after) {
+      edges {
+        node {
+          ...PostsItemFragment
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
       }
     }
     generalSettings {
@@ -75,7 +99,8 @@ Page.query = gql`
 
 Page.variables = () => {
   return {
-    first: 12,
+    first: appConfig.postsPerPage,
+    after: '',
     headerLocation: MENUS.PRIMARY_LOCATION,
     footerLocation: MENUS.FOOTER_LOCATION,
   };

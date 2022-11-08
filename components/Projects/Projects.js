@@ -4,9 +4,11 @@ import Link from 'next/link';
 import { Heading, FeaturedImage } from 'components';
 import className from 'classnames/bind';
 import useFocusFirstNewResult from 'hooks/useFocusFirstNewResult';
+import appConfig from 'app.config';
 
 import styles from './Projects.module.scss';
 const cx = className.bind(styles);
+
 /**
  * Renders a list of Project items
  * @param {Props} props The props object.
@@ -35,6 +37,7 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
               <FeaturedImage
                 className={cx('image')}
                 image={project?.featuredImage?.node}
+                priority={i < appConfig.projectsAboveTheFold}
               />
               <div className={cx('content')}>
                 <Heading level="h3">
