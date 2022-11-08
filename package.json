@@ -1,36 +1,35 @@
 {
   "name": "@faustjs/atlas-blueprint-portfolio",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "faust dev",
-    "build": "faust build",
-    "generate": "faust generatePossibleTypes",
-    "start": "faust start",
-    "lint": "faust lint",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "clean": "rimraf .next node_modules",
-    "wpe-build": "faust build",
-    "format": "prettier --write './**/*.{js,jsx,md,mdx,css,scss}'",
-    "format:check": "prettier --check './**/*.{js,jsx,md,mdx,css,scss}'"
+    "generate": "gqty generate",
+    "wpe-build": "next build",
+    "format": "prettier --write 'src/**/*.{js,jsx,md,mdx,css,scss}'",
+    "format:check": "prettier --check 'src/**/*.{js,jsx,md,mdx,css,scss}'"
   },
   "dependencies": {
-    "@apollo/client": "3.7.0",
-    "@faustwp/cli": "0.1.2",
-    "@faustwp/core": "0.1.2",
-    "classnames": "^2.3.1",
-    "graphql": "^16.6.0",
+    "@faustjs/core": "^0.15.2",
+    "@faustjs/next": "^0.15.3",
+    "gqty": "^2.2.0",
     "next": "12.2.4",
     "normalize.css": "^8.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-icons": "4.6.0",
-    "react-responsive-carousel": "3.2.23",
-    "sharp": "^0.31.1",
-    "use-debounce": "8.0.4"
+    "react-icons": "^4.3.1",
+    "react-responsive-carousel": "^3.2.23",
+    "sharp": "^0.30.5",
+    "use-debounce": "^7.0.1"
   },
   "devDependencies": {
-    "@wordpress/base-styles": "^4.7.0",
-    "@wordpress/block-library": "^7.13.0",
+    "@gqty/cli": "^3.1.0",
+    "@wordpress/base-styles": "^4.1.1",
+    "@wordpress/block-library": "^7.0.0",
     "dotenv-flow": "^3.2.0",
     "eslint": "8.9.0",
     "eslint-config-next": "12.0.10",
@@ -38,7 +37,7 @@
     "eslint-plugin-import": "^2.25.4",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
-    "sass": "^1.54.9"
+    "sass": "^1.49.8"
   },
   "engines": {
     "node": ">=14.0.0",
