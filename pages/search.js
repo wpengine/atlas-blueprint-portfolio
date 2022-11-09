@@ -28,7 +28,6 @@ export default function Page() {
   const { title: siteTitle, description: siteDescription } =
     pageData.generalSettings;
   const primaryMenu = pageData.headerMenuItems.nodes ?? [];
-  const recentPosts = pageData.posts.nodes;
   const categories = pageData.categories.nodes;
 
   const {
@@ -103,10 +102,7 @@ export default function Page() {
           )}
 
           {!searchResultsLoading && searchResultsData === undefined && (
-            <SearchRecommendations
-              recentPosts={recentPosts}
-              categories={categories}
-            />
+            <SearchRecommendations categories={categories} />
           )}
         </div>
       </Main>
@@ -141,15 +137,6 @@ Page.query = gql`
         ...NavigationMenuItemFragment
       }
     }
-    # Recent Posts
-    posts(first: 5) {
-      nodes {
-        databaseId
-        uri
-        title
-      }
-    }
-    # Post Categories
     categories {
       nodes {
         databaseId
