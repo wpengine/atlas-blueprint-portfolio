@@ -37,6 +37,7 @@ export default function Header({ className, menuItems }) {
                   height={80}
                   alt="Blueprint media logo"
                   layout="responsive"
+                  unoptimized={true}
                 />
               </a>
             </Link>

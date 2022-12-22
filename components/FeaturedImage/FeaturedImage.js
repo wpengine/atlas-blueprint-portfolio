@@ -38,6 +38,7 @@ export default function FeaturedImage({
         alt={altText}
         objectFit="cover"
         layout="responsive"
+        unoptimized={true}
         {...props}
       />
     </figure>
