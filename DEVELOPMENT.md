@@ -14,5 +14,6 @@ This will import the ACM Blueprint export into your WordPress database. Make any
 ### Exporting
 
 1. Before exporting, make sure you have deleted any of the initial content that gets created upon a WordPress install (e.g. "Sample Page", "Hello World", any comments, etc.)
-2. From the WP CLI, run `wp acm blueprint export --open --wp-options=category_base,permalink_structure,nav_menu_options,theme_mods_twentytwentytwo,current_theme,stylesheet --post-types=nav_menu_item,post,page,testimonial,project`. This will export the site into the appropriate ACM Blueprint .zip, and also open the location where the .zip was saved. It will also export the Navigational Menus and the CPTs from the ACM models.
-3. Replace the existing `acm-blueprint.zip` in the repo with the newly exported `acm-blueprint.zip` and make a PR with the changes.
+2. Switch to the Twenty Twenty-Two theme: `wp theme activate twentytwentytwo`.
+3. From the WP CLI, run `wp acm blueprint export --open --wp-options=category_base,permalink_structure,nav_menu_options,theme_mods_twentytwentytwo,current_theme,stylesheet --post-types=nav_menu_item,post,page,testimonial,project`. This will export the site into the appropriate ACM Blueprint .zip, and also open the location where the .zip was saved. It will also export the Navigational Menus and the CPTs from the ACM models.
+4. Replace the existing `acm-blueprint.zip` in the repo with the newly exported `acm-blueprint.zip` and make a PR with the changes.
