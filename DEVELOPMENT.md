@@ -5,7 +5,7 @@
 ### Importing
 
 1. Create a fresh site in Local or use the FakerPress plugin to wipe your current WordPress database to a fresh install.
-2. Install and activate Atlas Content Modeler. With WP CLI: `wp install --activate atlas-content-modeler`
+2. Install and activate Atlas Content Modeler and Faust. With WP CLI: `wp install --activate atlas-content-modeler faustwp`
 3. Run `wp acm reset --yes --all` to remove default published WordPress posts and pages.
 4. Run `wp acm blueprint import https://github.com/wpengine/atlas-blueprint-portfolio/raw/main/acm-blueprint.zip`
 
