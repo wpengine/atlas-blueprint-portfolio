@@ -1,5 +1,6 @@
 import * as MENUS from 'constants/menus';
 
+import { WordPressBlocksViewer } from '@faustwp/blocks';
 import { gql } from '@apollo/client';
 import {
   Header,
@@ -15,6 +16,31 @@ import {
 import { pageTitle } from 'utilities';
 import { BlogInfoFragment } from 'fragments/GeneralSettings';
 
+import flatListToHierarchical from '../utilities/flatListToHierarchical';
+import components from '../wp-blocks';
+
+
+function fragmentData(blocks) {
+  const entries = Object.keys(blocks).map(key => {
+    return blocks[key]?.fragments?.entry ? blocks[key]?.fragments?.entry : null;
+  }).filter(Boolean);
+  const blockKeys = Object.keys(components).map(key => {
+    return components[key]?.fragments?.key ? components[key]?.fragments?.key : null;
+  }).filter(Boolean);
+  return {
+    entries: entries.map(fragment => `${getGqlString(fragment)}\n`).join('\n'),
+    keys: blockKeys.map(key => `...${key}\n`).join('\n')
+  }
+}
+
+function normalize(string) {
+  return string.replace(/[\s,]+/g, ' ').trim();
+}
+
+function getGqlString(doc) {
+  return doc.loc && normalize(doc.loc.source.body);
+}
+
 export default function Component(props) {
   // Loading state for previews
   if (props.loading) {
@@ -25,7 +51,8 @@ export default function Component(props) {
     props?.data?.generalSettings;
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { title, content, featuredImage, date, author } = props.data.post;
+  const { title, content, featuredImage, date, author, contentBlocks } = props.data.post;
+  const blocks = flatListToHierarchical(contentBlocks);
 
   return (
     <>
@@ -52,7 +79,9 @@ export default function Component(props) {
             author={author?.node?.name}
           />
           <div className="container">
-            <ContentWrapper content={content}>
+            <ContentWrapper>
+              <p>Hello world</p>
+              <WordPressBlocksViewer contentBlocks={blocks}/>
               <TaxonomyTerms post={props.data.post} taxonomy={'categories'} />
               <TaxonomyTerms post={props.data.post} taxonomy={'tags'} />
             </ContentWrapper>
@@ -68,6 +97,7 @@ Component.query = gql`
   ${BlogInfoFragment}
   ${NavigationMenu.fragments.entry}
   ${FeaturedImage.fragments.entry}
+  ${fragmentData(components).entries}
   query GetPost(
     $databaseId: ID!
     $headerLocation: MenuLocationEnum
@@ -100,6 +130,13 @@ Component.query = gql`
         }
       }
       ...FeaturedImageFragment
+      contentBlocks(flat: true) {
+        __typename
+        renderedHtml
+        id: nodeId
+        parentId
+        ${fragmentData(components).keys}
+      }
     }
     generalSettings {
       ...BlogInfoFragment
