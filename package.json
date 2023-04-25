@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@apollo/client": "3.7.0",
-    "@faustwp/cli": "0.2.2",
+    "@faustwp/cli": "0.2.10",
     "@faustwp/core": "0.2.11",
     "classnames": "^2.3.1",
     "graphql": "^16.6.0",
