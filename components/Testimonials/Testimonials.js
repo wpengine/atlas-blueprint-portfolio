@@ -46,13 +46,13 @@ export default function Testimonials({ testimonials }) {
         >
           {testimonials.map((testimonial, index) => (
             <TestimonialItem
-              author={testimonial?.testimonialAuthor}
+              author={testimonial?.testimonialFields?.testimonialAuthor}
               key={index}
             >
               <div
                 className={cx('slide-content')}
                 dangerouslySetInnerHTML={{
-                  __html: testimonial?.testimonialContent,
+                  __html: testimonial?.testimonialFields?.testimonialContent,
                 }}
               />
             </TestimonialItem>
@@ -66,8 +66,10 @@ export default function Testimonials({ testimonials }) {
 Testimonials.fragments = {
   entry: gql`
     fragment TestimonialsFragment on Testimonial {
-      testimonialContent
-      testimonialAuthor
+      testimonialFields {
+        testimonialContent
+        testimonialAuthor
+      }
     }
   `,
 };

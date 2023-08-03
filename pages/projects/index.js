@@ -30,8 +30,7 @@ export default function Page() {
   const { title: siteTitle } = data?.generalSettings;
   const primaryMenu = data?.headerMenuItems?.nodes ?? [];
   const footerMenu = data?.footerMenuItems?.nodes ?? [];
-  const projectList = data.projects.edges.map((el) => el.node);
-
+  const projectList = data.projects.nodes;
   return (
     <>
       <SEO title={pageTitle(data?.generalSettings, 'Projects')} />
@@ -69,10 +68,8 @@ Page.query = gql`
     $footerLocation: MenuLocationEnum
   ) {
     projects(first: $first, after: $after) {
-      edges {
-        node {
-          ...ProjectsFragment
-        }
+      nodes {
+        ...ProjectsFragment
       }
       pageInfo {
         hasNextPage
