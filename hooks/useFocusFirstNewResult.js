@@ -10,7 +10,7 @@ import { useRef, useEffect, useState } from 'react';
  */
 export default function useFocusFirstNewResult(posts) {
   const firstNewResultRef = useRef();
-  const [firstNewResultIndex, setFirstnewResultIndex] = useState(0);
+  const [firstNewResultIndex, setFirstNewResultIndex] = useState(0);
 
   useEffect(() => {
     const isPaginated = posts && posts.length > appConfig.postsPerPage;
