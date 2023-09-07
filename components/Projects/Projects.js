@@ -24,7 +24,7 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <section {...(id && { id })}>
-      {projects?.map((project, i) => {
+      {projects.map((project, i) => {
         const isFirstNewResult = i === firstNewResultIndex;
 
         return (
@@ -43,11 +43,11 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
                 <Heading level="h3">
                   <Link href={project?.uri ?? '#'}>
                     <a ref={isFirstNewResult ? firstNewResultRef : null}>
-                      {project.title}
+                      {project.projectFields.title}
                     </a>
                   </Link>
                 </Heading>
-                <div>{project.summary}</div>
+                <div>{project.projectFields.summary}</div>
               </div>
             </div>
           </div>
@@ -62,9 +62,12 @@ Projects.fragments = {
   entry: gql`
     fragment ProjectsFragment on Project {
       id
-      title
-      summary
       uri
+      projectFields {
+        title: projectTitle
+        summary
+        contentArea
+      }
       ...FeaturedImageFragment
     }
   `,

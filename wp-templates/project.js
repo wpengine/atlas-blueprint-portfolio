@@ -22,7 +22,8 @@ export default function Component(props) {
   const { title: siteTitle } = props?.data?.generalSettings;
   const primaryMenu = props?.data?.headerMenuItems?.nodes ?? [];
   const footerMenu = props?.data?.footerMenuItems?.nodes ?? [];
-  const { title, summary, featuredImage, contentArea } = props.data.project;
+  const { featuredImage } = props.data.project;
+  const { title, summary, contentArea } = props.data.project.projectFields;
   return (
     <>
       <SEO
@@ -60,9 +61,11 @@ Component.query = gql`
     $asPreview: Boolean = false
   ) {
     project(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
-      title: projectTitle
-      summary
-      contentArea
+      projectFields {
+        title: projectTitle
+        summary
+        contentArea
+      }
       ...FeaturedImageFragment
     }
     generalSettings {
