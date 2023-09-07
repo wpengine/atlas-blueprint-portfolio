@@ -30,7 +30,7 @@ export default function Page() {
   const { title: siteTitle } = data?.generalSettings;
   const primaryMenu = data?.headerMenuItems?.nodes ?? [];
   const footerMenu = data?.footerMenuItems?.nodes ?? [];
-  const projectList = data.projects.nodes;
+  const projectList = data?.projects?.nodes ?? [];
   return (
     <>
       <SEO title={pageTitle(data?.generalSettings, 'Projects')} />
