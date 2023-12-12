@@ -18,7 +18,7 @@
     "@faustwp/cli": "^1.0.0",
     "@faustwp/core": "^1.0.0",
     "classnames": "^2.3.1",
-    "graphql": "^16.6.0",
+    "graphql": "^16.8.1",
     "next": "12.2.4",
     "normalize.css": "^8.0.1",
     "react": "17.0.2",
