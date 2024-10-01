@@ -77,7 +77,7 @@ export default function Component() {
               )}
             >
               <span>
-                Learn about Core Web Vitals and how Atlas can help you reach
+                Learn about Core Web Vitals and how Headless Platform can help you reach
                 your most demanding speed and user experience requirements.
               </span>
             </CTA>
@@ -97,7 +97,7 @@ export default function Component() {
               )}
             >
               <span>
-                Learn about Core Web Vitals and how Atlas can help you reach
+                Learn about Core Web Vitals and how Headless Platform can help you reach
                 your most demanding speed and user experience requirements.
               </span>
             </CTA>
