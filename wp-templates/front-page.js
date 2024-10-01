@@ -77,8 +77,9 @@ export default function Component() {
               )}
             >
               <span>
-                Learn about Core Web Vitals and how Headless Platform can help you reach
-                your most demanding speed and user experience requirements.
+                Learn about Core Web Vitals and how Headless Platform can help
+                you reach your most demanding speed and user experience
+                requirements.
               </span>
             </CTA>
           </section>
