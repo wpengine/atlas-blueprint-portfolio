@@ -9,7 +9,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
-          node-version: '16'
+          node-version: '18'
       - name: Check for changes
         id: check-for-export-changes
         run: echo ::set-output name=check::$(git diff --name-only origin/main --exit-code -- acm-blueprint.zip)
