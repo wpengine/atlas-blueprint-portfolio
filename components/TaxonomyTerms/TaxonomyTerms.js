@@ -15,7 +15,7 @@ export default function TaxonomyTerms({ post, taxonomy }) {
     const { name, uri } = edge.node;
     return (
       uri && (
-        <Link key={index} href={uri}>
+        <Link legacyBehavior key={index} href={uri}>
           {name}
         </Link>
       )
