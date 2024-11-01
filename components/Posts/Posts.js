@@ -44,7 +44,7 @@ function Posts({ posts, intro, id }) {
               id={`post-${post.id}`}
             >
               <div className={cx('card')}>
-                <Link href={post?.uri ?? '#'}>
+                <Link legacyBehavior href={post?.uri ?? '#'}>
                   <a className={cx('image-holder')} tabIndex="-1">
                     <FeaturedImage
                       className={cx('image')}
@@ -57,7 +57,7 @@ function Posts({ posts, intro, id }) {
                 </Link>
 
                 <Heading level="h4" className={cx('header')}>
-                  <Link href={post?.uri ?? '#'}>
+                  <Link legacyBehavior href={post?.uri ?? '#'}>
                     <a ref={isFirstNewResult ? firstNewResultRef : null}>
                       {post.title}
                     </a>

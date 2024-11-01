@@ -29,7 +29,7 @@ export default function Header({ className, menuItems }) {
       <div className="container">
         <div className={cx('bar')}>
           <div className={cx('logo')}>
-            <Link href="/">
+            <Link legacyBehavior href="/">
               <a title="Home">
                 <Image
                   src="/logo.png"
@@ -57,7 +57,7 @@ export default function Header({ className, menuItems }) {
             menuItems={menuItems}
           >
             <li>
-              <Link href="/search">
+              <Link legacyBehavior href="/search">
                 <a>
                   <FaSearch title="Search" role="img" />
                 </a>

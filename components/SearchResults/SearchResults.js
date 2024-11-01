@@ -32,7 +32,7 @@ export default function SearchResults({ searchResults, isLoading }) {
     <>
       {searchResults?.map((node) => (
         <div key={node.databaseId} className={styles.result}>
-          <Link href={node.uri}>
+          <Link legacyBehavior href={node.uri}>
             <a>
               <h2 className={styles.title}>{node.title}</h2>
             </a>
