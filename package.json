@@ -27,7 +27,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "4.6.0",
     "react-responsive-carousel": "3.2.23",
-    "sharp": "^0.32.6",
+    "sharp": "^0.33.5",
     "use-debounce": "8.0.4"
   },
   "devDependencies": {
