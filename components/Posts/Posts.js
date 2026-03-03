@@ -44,7 +44,12 @@ function Posts({ posts, intro, id }) {
               id={`post-${post.id}`}
             >
               <div className={cx('card')}>
-                <Link href={post?.uri ?? '#'} passHref className={cx('image-holder')} tabIndex="-1">
+                <Link
+                  href={post?.uri ?? '#'}
+                  passHref
+                  className={cx('image-holder')}
+                  tabIndex="-1"
+                >
                   <FeaturedImage
                     className={cx('image')}
                     image={image}
@@ -55,7 +60,7 @@ function Posts({ posts, intro, id }) {
                 </Link>
 
                 <Heading level="h4" className={cx('header')}>
-                  <Link 
+                  <Link
                     href={post?.uri ?? '#'}
                     ref={isFirstNewResult ? firstNewResultRef : null}
                   >
