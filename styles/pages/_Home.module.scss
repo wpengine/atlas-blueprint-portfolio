@@ -1,4 +1,4 @@
-@import 'styles/Variables';
+@use 'styles/Variables';
 
 .home {
   section {
@@ -19,7 +19,7 @@
   margin: 0 auto 2rem;
   padding: 0 1.5rem;
 
-  @media (min-width: $breakpoint-small) {
+  @media (min-width: Variables.$breakpoint-small) {
     max-width: 60%;
   }
 }

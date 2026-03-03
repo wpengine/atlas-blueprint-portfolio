@@ -1,4 +1,4 @@
-@import 'styles/Variables';
+@use 'styles/Variables';
 
 .form {
   display: flex;
@@ -18,7 +18,7 @@
   padding: 1rem;
   border: 1px solid var(--color-black);
 
-  @media (min-width: $breakpoint-small) {
+  @media (min-width: Variables.$breakpoint-small) {
     width: 80%;
   }
 

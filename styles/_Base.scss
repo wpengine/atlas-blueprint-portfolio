@@ -1,4 +1,4 @@
-@import 'Variables';
+@use 'Variables';
 
 // Base Module
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -18,9 +18,9 @@ html {
 }
 
 body {
-  font-family: $font-family;
+  font-family: Variables.$font-family;
   font-size: 1.6em;
-  font-weight: $font-weight-normal;
+  font-weight: Variables.$font-weight-normal;
   letter-spacing: 0.01em;
   line-height: 1.6;
 }
@@ -57,7 +57,7 @@ ul {
 }
 
 dt {
-  font-weight: $font-weight-extra-bold;
+  font-weight: Variables.$font-weight-extra-bold;
 }
 
 // Dividers

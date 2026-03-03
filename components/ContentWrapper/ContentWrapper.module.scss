@@ -1,133 +1,131 @@
-@import 'styles/Variables';
+@use 'styles/Variables';
 
 .content {
-  max-width: $content-max-width;
+  max-width: Variables.$content-max-width;
   margin: 0 auto;
   line-height: 1.6875;
 
-  :global {
-    * {
-      max-width: 100%;
-    }
+  :global(*) {
+    max-width: 100%;
+  }
 
-    figure {
-      margin-left: 0;
-      margin-right: 0;
-    }
+  :global(figure) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      margin: 4.8rem 0;
-    }
+  :global(h1),
+  :global(h2),
+  :global(h3),
+  :global(h4),
+  :global(h5),
+  :global(h6) {
+    margin: 4.8rem 0;
+  }
 
-    strong {
-      font-weight: 700;
-    }
+  :global(strong) {
+    font-weight: 700;
+  }
 
-    a {
+  :global(a) {
+    color: var(--color-secondary);
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
       color: var(--color-secondary);
-      text-decoration: underline;
-
-      &:hover,
-      &:focus {
-        color: var(--color-secondary);
-        text-decoration: none;
-      }
+      text-decoration: none;
     }
+  }
 
-    li {
-      font-size: 1.6rem;
-    }
+  :global(li) {
+    font-size: 1.6rem;
+  }
 
-    img {
+  :global(img) {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+
+  :global(.alignleft) {
+    display: inline;
+    float: left;
+    margin-right: 1.5em;
+  }
+
+  :global(.alignright) {
+    display: inline;
+    float: right;
+    margin-left: 1.5em;
+  }
+
+  :global(.aligncenter) {
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :global(code),
+  :global(pre) {
+    color: var(--color-white);
+    background: var(--color-black);
+  }
+
+  :global(code) {
+    padding: 0.25rem 0.5rem;
+  }
+
+  :global(pre) {
+    max-width: 100%;
+    overflow: auto;
+    padding: 1rem;
+  }
+
+  :global(blockquote) {
+    border-top: 1px solid var(--color-black);
+    border-bottom: 1px solid var(--color-black);
+    font-style: italic;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 4rem 1rem 4rem;
+    text-align: center;
+
+    &::before {
+      content: '"';
       display: block;
-      height: auto;
-      max-width: 100%;
+      font-size: 6rem;
+      line-height: 0;
+      margin: 2rem 0;
     }
 
-    .alignleft {
-      display: inline;
-      float: left;
-      margin-right: 1.5em;
+    > *:last-child {
+      margin-bottom: 0;
     }
+  }
 
-    .alignright {
-      display: inline;
-      float: right;
-      margin-left: 1.5em;
-    }
+  :global(table) {
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-    .aligncenter {
-      clear: both;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  :global(thead th) {
+    border-bottom: 1px solid var(--color-tertiary);
+    padding-bottom: 0.5em;
+  }
 
-    code,
-    pre {
-      color: var(--color-white);
-      background: var(--color-black);
-    }
+  :global(th) {
+    padding: 0.4rem 0;
+    text-align: left;
+  }
 
-    code {
-      padding: 0.25rem 0.5rem;
-    }
+  :global(tr) {
+    border-bottom: 1px solid var(--color-tertiary);
+  }
 
-    pre {
-      max-width: 100%;
-      overflow: auto;
-      padding: 1rem;
-    }
-
-    blockquote {
-      border-top: 1px solid var(--color-black);
-      border-bottom: 1px solid var(--color-black);
-      font-style: italic;
-      margin-top: 0;
-      margin-left: 0;
-      margin-right: 0;
-      padding: 4rem 1rem 4rem;
-      text-align: center;
-
-      &::before {
-        content: '”';
-        display: block;
-        font-size: 6rem;
-        line-height: 0;
-        margin: 2rem 0;
-      }
-
-      > *:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    thead th {
-      border-bottom: 1px solid var(--color-tertiary);
-      padding-bottom: 0.5em;
-    }
-
-    th {
-      padding: 0.4rem 0;
-      text-align: left;
-    }
-
-    tr {
-      border-bottom: 1px solid var(--color-tertiary);
-    }
-
-    td {
-      padding: 0.4em;
-    }
+  :global(td) {
+    padding: 0.4em;
   }
 }

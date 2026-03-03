@@ -1,4 +1,4 @@
-@import 'styles/Variables';
+@use 'styles/Variables';
 
 .header {
   margin-bottom: 5rem;
@@ -9,7 +9,7 @@
   width: 100%;
   margin-left: 0;
 
-  @media (max-width: $breakpoint-extra-small) {
+  @media (max-width: Variables.$breakpoint-extra-small) {
     margin-left: revert;
   }
 }

@@ -36,8 +36,7 @@ export default function FeaturedImage({
         width={width}
         height={height}
         alt={altText}
-        objectFit="cover"
-        layout="responsive"
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         {...props}
       />
     </figure>

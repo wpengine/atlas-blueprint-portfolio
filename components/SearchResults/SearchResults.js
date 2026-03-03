@@ -32,10 +32,8 @@ export default function SearchResults({ searchResults, isLoading }) {
     <>
       {searchResults?.map((node) => (
         <div key={node.databaseId} className={styles.result}>
-          <Link legacyBehavior href={node.uri}>
-            <a>
-              <h2 className={styles.title}>{node.title}</h2>
-            </a>
+          <Link passHref href={node.uri}>
+            <h2 className={styles.title}>{node.title}</h2>
           </Link>
           <div className={styles.meta}>
             <time className={styles.date} dateTime={node.date}>

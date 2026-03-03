@@ -7,9 +7,15 @@ module.exports = withFaust({
   reactStrictMode: true,
   sassOptions: {
     includePaths: ['node_modules'],
+    quietDeps: true,
+    silenceDeprecations: ['import', 'global-builtin'],
   },
   images: {
-    domains: [getWpHostname()],
+    remotePatterns: [
+      {
+        hostname: getWpHostname(),
+      },
+    ],
   },
   i18n: {
     locales: ['en'],

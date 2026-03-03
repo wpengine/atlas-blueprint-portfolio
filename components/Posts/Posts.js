@@ -44,23 +44,27 @@ function Posts({ posts, intro, id }) {
               id={`post-${post.id}`}
             >
               <div className={cx('card')}>
-                <Link legacyBehavior href={post?.uri ?? '#'}>
-                  <a className={cx('image-holder')} tabIndex="-1">
-                    <FeaturedImage
-                      className={cx('image')}
-                      image={image}
-                      width={340}
-                      height={340}
-                      priority={i < appConfig.postsAboveTheFold}
-                    />
-                  </a>
+                <Link
+                  href={post?.uri ?? '#'}
+                  passHref
+                  className={cx('image-holder')}
+                  tabIndex="-1"
+                >
+                  <FeaturedImage
+                    className={cx('image')}
+                    image={image}
+                    width={340}
+                    height={340}
+                    priority={i < appConfig.postsAboveTheFold}
+                  />
                 </Link>
 
                 <Heading level="h4" className={cx('header')}>
-                  <Link legacyBehavior href={post?.uri ?? '#'}>
-                    <a ref={isFirstNewResult ? firstNewResultRef : null}>
-                      {post.title}
-                    </a>
+                  <Link
+                    href={post?.uri ?? '#'}
+                    ref={isFirstNewResult ? firstNewResultRef : null}
+                  >
+                    {post.title}
                   </Link>
                 </Heading>
                 <PostInfo
