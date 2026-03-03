@@ -1,4 +1,4 @@
-@import 'styles/Variables';
+@use 'styles/Variables';
 
 .header {
   color: var(--color-white);
@@ -34,7 +34,7 @@
     color: var(--color-primary);
   }
 
-  @media (min-width: $breakpoint-small) {
+  @media (min-width: Variables.$breakpoint-small) {
     display: none;
   }
 }
@@ -47,7 +47,7 @@
     display: block;
   }
 
-  @media (min-width: $breakpoint-small) {
+  @media (min-width: Variables.$breakpoint-small) {
     display: block;
     width: auto;
   }
@@ -61,7 +61,7 @@
     font-size: 1.4rem;
     margin: 0;
 
-    @media (min-width: $breakpoint-small) {
+    @media (min-width: Variables.$breakpoint-small) {
       flex-direction: row;
     }
 
@@ -74,7 +74,7 @@
       align-items: center;
       height: 100%;
       padding: 1rem;
-      font-weight: $font-weight-bold;
+      font-weight: Variables.$font-weight-bold;
       color: var(--color-white);
 
       &:hover,

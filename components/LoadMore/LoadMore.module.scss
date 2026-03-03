@@ -1,4 +1,4 @@
-@import 'styles/Variables';
+@use 'styles/Variables';
 
 .button {
   cursor: pointer;
@@ -10,7 +10,7 @@
   padding: 1.75rem 5rem;
   font-size: 1.25rem;
   appearance: none;
-  font-weight: $font-weight-bold;
+  font-weight: Variables.$font-weight-bold;
 
   color: var(--color-black);
 

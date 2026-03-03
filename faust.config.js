@@ -8,7 +8,7 @@ import templates from './wp-templates';
  * @type {import('@faustwp/core').FaustConfig}
  **/
 export default setConfig({
-  experimentalPlugins: [
+  plugins: [
     new ProjectTemplatePlugin(),
     new RelayStylePaginationPlugin(),
   ],

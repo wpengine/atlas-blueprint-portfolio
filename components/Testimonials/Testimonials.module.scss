@@ -2,16 +2,14 @@
   text-align: center;
 
   // Used to override react-responsive-carousel styles
-  :global {
-    .carousel.carousel-slider {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+  :global(.carousel.carousel-slider) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-      .slide {
-        display: flex;
-        justify-content: center;
-      }
+    :global(.slide) {
+      display: flex;
+      justify-content: center;
     }
   }
 }

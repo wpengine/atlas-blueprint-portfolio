@@ -41,10 +41,11 @@ function Projects({ projects, id, emptyText = 'No projects found.' }) {
               />
               <div className={cx('content')}>
                 <Heading level="h3">
-                  <Link legacyBehavior href={project?.uri ?? '#'}>
-                    <a ref={isFirstNewResult ? firstNewResultRef : null}>
-                      {project.projectFields.title}
-                    </a>
+                  <Link 
+                    href={project?.uri ?? '#'}
+                    ref={isFirstNewResult ? firstNewResultRef : null}
+                  >
+                    {project.projectFields.title}
                   </Link>
                 </Heading>
                 <div>{project.projectFields.summary}</div>

@@ -1,4 +1,4 @@
-@import 'styles/Variables';
+@use 'styles/Variables';
 
 .footer {
   position: relative;
@@ -86,7 +86,7 @@
     padding: 0;
     margin: 0;
 
-    @media (min-width: $breakpoint-small) {
+    @media (min-width: Variables.$breakpoint-small) {
       flex-direction: row;
     }
   }
@@ -95,7 +95,7 @@
     margin: 0;
     margin-bottom: 1rem;
 
-    @media (min-width: $breakpoint-small) {
+    @media (min-width: Variables.$breakpoint-small) {
       margin-right: 3rem;
       margin-bottom: 0;
     }

@@ -1,6 +1,8 @@
 // Gutenburg Module
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 
+// WordPress packages still use @import internally, so we need to use @import
+// to maintain compatibility until WordPress migrates to @use/@forward
 @import '@wordpress/base-styles/mixins';
 @import '@wordpress/base-styles/colors.native';
 @import '@wordpress/base-styles/default-custom-properties';

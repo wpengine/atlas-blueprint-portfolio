@@ -29,16 +29,14 @@ export default function Header({ className, menuItems }) {
       <div className="container">
         <div className={cx('bar')}>
           <div className={cx('logo')}>
-            <Link legacyBehavior href="/">
-              <a title="Home">
-                <Image
-                  src="/logo.png"
-                  width={400}
-                  height={80}
-                  alt="Blueprint media logo"
-                  layout="responsive"
-                />
-              </a>
+            <Link href="/" passHref title="Home">
+              <Image
+                src="/logo.png"
+                width={400}
+                height={80}
+                alt="Blueprint media logo"
+                style={{ width: '100%', height: 'auto' }}
+              />
             </Link>
           </div>
           <button
@@ -57,10 +55,8 @@ export default function Header({ className, menuItems }) {
             menuItems={menuItems}
           >
             <li>
-              <Link legacyBehavior href="/search">
-                <a>
-                  <FaSearch title="Search" role="img" />
-                </a>
+              <Link href="/search">
+                <FaSearch title="Search" role="img" />
               </Link>
             </li>
           </NavigationMenu>

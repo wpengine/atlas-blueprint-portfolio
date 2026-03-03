@@ -1,11 +1,11 @@
-@import 'styles/Variables';
+@use 'styles/Variables';
 
 .entry-header {
   margin-bottom: 2rem;
   color: var(--color-white);
   background-color: var(--color-primary);
 
-  @media (min-width: $breakpoint-small) {
+  @media (min-width: Variables.$breakpoint-small) {
     margin-bottom: 10rem;
   }
 }
@@ -27,7 +27,7 @@
 }
 
 .byline {
-  font-weight: $font-weight-bold;
+  font-weight: Variables.$font-weight-bold;
   font-size: 1.2rem;
   text-transform: uppercase;
 }

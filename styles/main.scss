@@ -2,10 +2,12 @@
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 @use 'sass:math';
 
-@import 'Variables';
-@import 'Base';
-@import 'Spacing';
-@import 'Typography';
-@import 'Grid';
-@import 'Utility';
+@use 'Variables';
+@use 'Base';
+@use 'Spacing';
+@use 'Typography';
+@use 'Grid';
+@use 'Utility';
+
+// Use @import for Gutenberg styles since WordPress packages still use @import internally
 @import 'Gutenberg';

@@ -1,4 +1,4 @@
-@import 'styles/Variables';
+@use 'styles/Variables';
 
 .post-list {
   display: grid;
@@ -7,7 +7,7 @@
   row-gap: 6rem;
   margin-bottom: 6rem;
 
-  @media (min-width: $breakpoint-small) {
+  @media (min-width: Variables.$breakpoint-small) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -44,13 +44,13 @@
 .image {
   width: 100%;
   margin: 0;
-  height: auto;
+  height: 100%;
 }
 
 .image-holder {
   margin-bottom: 3rem;
 
-  @media (min-width: $breakpoint-small) {
-    aspect-ratio: 1 / 1;
+  @media (min-width: Variables.$breakpoint-small) {
+    aspect-ratio: 4 / 3;
   }
 }
